@@ -8,17 +8,17 @@ import javax.persistence.ManyToOne;
 
 @Entity
 public class Asiento {
-	
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private long id;
-	
+
 	private String fila;
-	
+
 	private int numero;
-	
+
 	private boolean ocupado;
-	
+
 	@ManyToOne
 	private Sector sector;
 
@@ -61,5 +61,5 @@ public class Asiento {
 	public void setSector(Sector sector) {
 		this.sector = sector;
 	}
-		
+
 }
