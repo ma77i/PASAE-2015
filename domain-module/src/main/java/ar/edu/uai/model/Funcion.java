@@ -8,7 +8,6 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinTable;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 
@@ -70,13 +69,13 @@ public class Funcion {
 		this.espectaculo = espectaculo;
 	}
 
-	public Collection<Sector> getSectores() {
+	/*public Collection<Sector> getSectores() {
 		return sectores;
 	}
 
 	public void setSectores(Collection<Sector> sectores) {
 		this.sectores = sectores;
-	}
+	}*/
 
 	public Collection<Venta> getVentas() {
 		return ventas;

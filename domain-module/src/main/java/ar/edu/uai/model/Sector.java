@@ -41,6 +41,7 @@ public class Sector {
 	private Espectaculo espectaculo;
 	
 	private boolean checkearDisponibilidad(){
+		return agotado;
 		
 		
 	}

@@ -32,11 +32,11 @@ public class Venta {
 	@ManyToOne
 	private Funcion funcion;
 	
-	@OneToMany
+/*	@OneToMany
 	@JoinTable(name = "VENT_ASI", joinColumns = @JoinColumn(name = "VENT_ID"), inverseJoinColumns = @JoinColumn(name = "ASI_ID"))
 	private Collection<Asiento> asientos;
 	//One to many unidireccional,la venta conoce los asientos unicamente.
-	
+*/	
     @ManyToOne
 	private Espectador comprador;
 	
@@ -102,12 +102,12 @@ public class Venta {
 		this.funcion = funcion;
 	}
 
-	public Collection<Asiento> getAsientos() {
+/*	public Collection<Asiento> getAsientos() {
 		return asientos;
 	}
 
 	public void setAsientos(Collection<Asiento> asientos) {
 		this.asientos = asientos;
-	}
+	}*/
 
 }
