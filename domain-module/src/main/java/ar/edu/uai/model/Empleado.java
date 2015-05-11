@@ -5,23 +5,12 @@ import javax.persistence.Entity;
 @Entity
 public class Empleado extends Usuario {
 
-	@Override
-	public boolean isAdministrador() {
-		// TODO Auto-generated method stub
-		return false;
+	public Empleado(String email, String password, String nombre,
+			String apellido) {
+		super(email, password, nombre, apellido);
+		// TODO Auto-generated constructor stub
 	}
 
-	@Override
-	public boolean isEmpleado() {
-		// TODO Auto-generated method stub
-		return true;
-	}
-
-	@Override
-	public boolean isEspectador() {
-		// TODO Auto-generated method stub
-		return false;
-	}
 	
 	
 }

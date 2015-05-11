@@ -26,17 +26,19 @@ public class Sector {
 	@OneToMany(mappedBy="sector")
 	private Collection<Asiento> asientos;
 	
-	public Teatro getTeatro() {
-		return teatro;
-	}
-
-	public void setTeatro(Teatro teatro) {
-		this.teatro = teatro;
-	}
-
-	@ManyToOne
-	private Teatro teatro;
 	
+	public Sector() {
+		
+	}
+
+	public Espectaculo getEspectaculo() {
+		return espectaculo;
+	}
+
+	public void setEspectaculo(Espectaculo espectaculo) {
+		this.espectaculo = espectaculo;
+	}
+
 	@ManyToOne
 	private Espectaculo espectaculo;
 	

@@ -8,8 +8,10 @@ import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
 
 @Entity
-@Inheritance(strategy = InheritanceType.JOINED)
+@Inheritance(strategy = InheritanceType.SINGLE_TABLE)
 public abstract class Usuario {
+
+	
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
@@ -23,11 +25,14 @@ public abstract class Usuario {
 
 	private String apellido;
 	
-	public abstract boolean isEspectador();
 	
-	public abstract boolean isEmpleado();
-
-	public abstract boolean isAdministrador();
+	public Usuario(String email, String password, String nombre,
+			String apellido) {
+		this.email = email;
+		this.password = password;
+		this.nombre = nombre;
+		this.apellido = apellido;
+	}
 
 	public long getId() {
 		return id;

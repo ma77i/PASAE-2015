@@ -9,6 +9,10 @@ import javax.persistence.OneToMany;
 @Entity
 public class Espectaculo {
 
+	public Espectaculo() {
+		
+	}
+
 	private long id;
 	
 	private String nombre;

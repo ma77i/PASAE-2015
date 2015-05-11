@@ -14,6 +14,10 @@ import javax.persistence.OneToMany;
 @Entity
 public class Venta {
 	
+	public Venta() {
+	
+	}
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private long id;

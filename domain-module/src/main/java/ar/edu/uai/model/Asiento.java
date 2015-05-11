@@ -9,6 +9,10 @@ import javax.persistence.ManyToOne;
 @Entity
 public class Asiento {
 
+	public Asiento() {
+		
+	}
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private long id;

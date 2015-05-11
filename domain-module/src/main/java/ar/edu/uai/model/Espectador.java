@@ -10,28 +10,18 @@ public class Espectador extends Usuario {
 	
 	
 	
+	public Espectador(String email, String password, String nombre,
+			String apellido) {
+		super(email, password, nombre, apellido);
+		// TODO Auto-generated constructor stub
+	}
+
 	@OneToMany(mappedBy="comprador")
 	private Collection<Venta> compras;
 	
 	private Collection<Tarjeta> tarjetas;
 	//posible interfaz,consultar.
 
-	@Override
-	public boolean isEspectador() {
-		// TODO Auto-generated method stub
-		return true;
-	}
-
-	@Override
-	public boolean isEmpleado() {
-		// TODO Auto-generated method stub
-		return false;
-	}
-
-	@Override
-	public boolean isAdministrador() {
-		// TODO Auto-generated method stub
-		return false;
-	}
+	
 
 }
