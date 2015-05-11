@@ -19,6 +19,10 @@ public class Funcion {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private long id;
 	
+	public Funcion() {
+		
+	}
+
 	private Date fecha;
 	
 	private Time hora;

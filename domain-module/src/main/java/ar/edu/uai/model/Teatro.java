@@ -17,12 +17,12 @@ public class Teatro {
 	
 	
 	
-	@OneToMany (mappedBy="sector")
-	private Collection<Sector> sectores;
-	
-	
 	@OneToMany (mappedBy="espectaculo")
     private Collection<Espectaculo> espectaculos;
+
+	public Teatro() {
+		
+	}
 
 	public String getNombre() {
 		return nombre;
