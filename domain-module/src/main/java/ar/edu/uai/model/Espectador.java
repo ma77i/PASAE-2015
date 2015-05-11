@@ -3,11 +3,10 @@ package ar.edu.uai.model;
 import java.util.Collection;
 
 import javax.persistence.Entity;
-import javax.persistence.JoinTable;
 import javax.persistence.OneToMany;
 
 @Entity
-public class Espectador extends Usuario{
+public class Espectador extends Usuario {
 	
 	
 	
