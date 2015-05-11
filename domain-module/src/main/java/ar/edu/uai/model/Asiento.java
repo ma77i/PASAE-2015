@@ -61,7 +61,5 @@ public class Asiento {
 	public void setSector(Sector sector) {
 		this.sector = sector;
 	}
-	
-	
-	
+		
 }
