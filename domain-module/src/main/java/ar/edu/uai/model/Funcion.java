@@ -90,7 +90,7 @@ public class Funcion {
 	}
 
 	/**
-	 * Retorna el número de asientos libres para cada sector.
+	 * Retorna el n&ucute;mero de asientos libres para cada sector.
 	 * 
 	 * @return
 	 */

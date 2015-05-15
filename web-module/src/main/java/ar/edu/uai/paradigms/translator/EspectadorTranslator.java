@@ -1,8 +1,6 @@
 package ar.edu.uai.paradigms.translator;
 
 import ar.edu.uai.model.Espectador;
-import ar.edu.uai.model.Person;
-import ar.edu.uai.model.Usuario;
 import ar.edu.uai.paradigms.dto.EspectadorDTO;
 
 
