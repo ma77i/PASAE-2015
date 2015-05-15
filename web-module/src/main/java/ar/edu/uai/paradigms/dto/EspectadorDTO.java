@@ -68,7 +68,7 @@ public class EspectadorDTO {
 
 	@Override
 	public String toString() {
-		return "EspectadorDTO [nombre=" + nombre + ", age=" + apellido + "]";
+		return "EspectadorDTO [nombre=" + nombre + ", apellido=" + apellido + "]";
 	}
 
 

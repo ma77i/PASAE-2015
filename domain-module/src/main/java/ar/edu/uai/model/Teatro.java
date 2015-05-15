@@ -16,7 +16,6 @@ public class Teatro {
 	private String direccion;
 	
 	
-	
 	@OneToMany (mappedBy="espectaculo")
     private Collection<Espectaculo> espectaculos;
 
@@ -40,13 +39,7 @@ public class Teatro {
 		this.direccion = direccion;
 	}
 
-	public Collection<Sector> getSectores() {
-		return sectores;
-	}
-
-	public void setSectores(Collection<Sector> sectores) {
-		this.sectores = sectores;
-	}
+	
 
 	public Collection<Espectaculo> getEspectaculos() {
 		return espectaculos;

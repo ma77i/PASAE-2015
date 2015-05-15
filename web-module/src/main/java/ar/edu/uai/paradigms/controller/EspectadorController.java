@@ -15,7 +15,7 @@ import ar.edu.uai.paradigms.translator.EspectadorTranslator;
  */
 
 @Controller
-@RequestMapping("/persons")
+@RequestMapping("/espectador")
 public class EspectadorController {
 
 	public EspectadorController(
@@ -34,14 +34,14 @@ public class EspectadorController {
 	private EspectadorTranslator espectadorTranslator;
 
 	@RequestMapping(method = RequestMethod.POST, consumes = "application/json")
-	public @ResponseBody EspectadorDTO createPerson(@RequestBody EspectadorDTO espectadorDTO) {
+	public @ResponseBody EspectadorDTO createEspectador(@RequestBody EspectadorDTO espectadorDTO) {
 		LOGGER.debug("Received DTO: " + espectadorDTO);
-		return this.espectadorTranslator.translateToDTO( this.usuarioService
+		return this.espectadorTranslator.translateToDTO((Espectador) this.usuarioService
                 .saveUsuario(this.espectadorTranslator.translate(espectadorDTO)));
 	}
 
 	@RequestMapping(method = RequestMethod.GET, value = "/{identifier}")
-	public @ResponseBody EspectadorDTO getPerson(@PathVariable Long identifier) {
-		return this.espectadorTranslator.translateToDTO(this.usuarioService.retrievePerson(identifier));
+	public @ResponseBody EspectadorDTO getEspectador(@PathVariable long identifier) {
+		return this.espectadorTranslator.translateToDTO((Espectador) this.usuarioService.retrieveUsuario(identifier));
 	}
 }

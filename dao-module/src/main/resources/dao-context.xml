@@ -13,7 +13,17 @@
         </property>
     </bean>
 
-    <bean id="personDAO" class="ar.edu.uai.paradigms.dao.PersonDAO" />
+    <bean id="usuarioDAO" class="ar.edu.uai.paradigms.dao.UsuarioDAO" />
+    <bean id="administradorDAO" class="ar.edu.uai.paradigms.dao.AdministradorDAO" />
+    <bean id="espectadorDAO" class="ar.edu.uai.paradigms.dao.EspectadorDAO" />
+    <bean id="empleadoDAO" class="ar.edu.uai.paradigms.dao.EmpleadoDAO" />
+   
+    
+    
+    
+    
+    
+    
     <!-- DataSource -->
     <bean id="dataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource" lazy-init="true" destroy-method="close">
         <!--<property name="connectionCustomizerClassName" value="com.despegar.bookedia.persistence.dao.base.IsolationLevelC3POCustomizer" />-->
