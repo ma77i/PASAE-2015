@@ -1,10 +1,11 @@
 package ar.edu.uai.paradigms.service.impl;
 
-import ar.edu.uai.model.Person;
+
+
+
 import ar.edu.uai.model.Usuario;
-import ar.edu.uai.paradigms.dao.PersonDAO;
+
 import ar.edu.uai.paradigms.dao.UsuarioDAO;
-import ar.edu.uai.paradigms.service.PersonService;
 import ar.edu.uai.paradigms.service.UsuarioService;
 
 import org.springframework.transaction.annotation.Transactional;
@@ -20,11 +21,12 @@ public class UsuarioServiceImpl implements UsuarioService {
     @Transactional
     public Usuario saveUsuario(Usuario usuario) {
 		return this.usuarioDAO.create(usuario);
+		
 	}
 
     @Override
-    public Usuario retrieveUsuario(Long identifier) {
-        return this.usuarioDAO.retrieve(identifier);
+    public Usuario retrieveUsuario(long identifier) {
+       return this.usuarioDAO.retrieve(Usuario.class,identifier);
     }
 
 }
