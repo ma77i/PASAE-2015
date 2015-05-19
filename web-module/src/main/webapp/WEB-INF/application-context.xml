@@ -69,7 +69,7 @@
 		</property>
 	</bean>
 	<bean id="espectadorController" class="ar.edu.uai.paradigms.controller.EspectadorController">
-		<constructor-arg name="usuarioService" ref="usuarioService"/>
+		<constructor-arg name="espectadorService" ref="espectadorService"/>
 		<constructor-arg name="espectadorTranslator" ref="espectadorTranslator"/>
 	</bean>
 	<bean id="espectadorTranslator" class="ar.edu.uai.paradigms.translator.EspectadorTranslator" />

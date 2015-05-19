@@ -6,8 +6,9 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
 import ar.edu.uai.model.Espectador;
+import ar.edu.uai.model.Usuario;
 import ar.edu.uai.paradigms.dto.EspectadorDTO;
-import ar.edu.uai.paradigms.service.UsuarioService;
+import ar.edu.uai.paradigms.service.EspectadorService;
 import ar.edu.uai.paradigms.translator.EspectadorTranslator;
 
 /**
@@ -19,29 +20,29 @@ import ar.edu.uai.paradigms.translator.EspectadorTranslator;
 public class EspectadorController {
 
 	public EspectadorController(
-			UsuarioService usuarioService,
+			EspectadorService espectadorService,
 			EspectadorTranslator espectadorTranslator) {
 		super();
-		this.usuarioService = usuarioService;
+		this.espectadorService = espectadorService;
 		this.espectadorTranslator = espectadorTranslator;
 	}
 
 	private static final Logger LOGGER = LoggerFactory
 			.getLogger(EspectadorController.class);
 
-	private UsuarioService usuarioService;
+	private EspectadorService espectadorService;
 
 	private EspectadorTranslator espectadorTranslator;
 
 	@RequestMapping(method = RequestMethod.POST, consumes = "application/json")
 	public @ResponseBody EspectadorDTO createEspectador(@RequestBody EspectadorDTO espectadorDTO) {
 		LOGGER.debug("Received DTO: " + espectadorDTO);
-		return this.espectadorTranslator.translateToDTO((Espectador) this.usuarioService
-                .saveUsuario(this.espectadorTranslator.translate(espectadorDTO)));
+		return this.espectadorTranslator.translateToDTO((Espectador) this.espectadorService
+                .saveEspectador(this.espectadorTranslator.translate(espectadorDTO)));
 	}
 
 	@RequestMapping(method = RequestMethod.GET, value = "/{identifier}")
 	public @ResponseBody EspectadorDTO getEspectador(@PathVariable long identifier) {
-		return this.espectadorTranslator.translateToDTO((Espectador) this.usuarioService.retrieveUsuario(identifier));
+		return this.espectadorTranslator.translateToDTO((Espectador) this.espectadorService.retrieveEspectador(identifier));
 	}
 }
