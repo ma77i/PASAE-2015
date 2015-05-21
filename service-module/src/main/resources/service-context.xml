@@ -5,7 +5,12 @@
 
     <import resource="classpath:dao-context.xml" />
 
-	<bean id="espectadorService" class="ar.edu.uai.paradigms.service.impl.EspectadorServiceImpl">
+	<bean id="espectadorService" class="ar.edu.uai.paradigms.service.impl.EspectadorService">
         <constructor-arg ref="usuarioDAO" />
     </bean>
+    
+    <bean id="espectadorService" class="ar.edu.uai.paradigms.service.impl.EspectadorService">
+        <constructor-arg ref="usuarioDAO" />
+    </bean>
+   
 </beans>
