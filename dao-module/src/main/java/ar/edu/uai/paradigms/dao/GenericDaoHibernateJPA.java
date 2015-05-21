@@ -13,7 +13,7 @@ public class GenericDaoHibernateJPA <T> implements GenericDAO<T> {
 	@Override
 	public T create(T entity) {
 		this.entityManager.persist(entity);
-		return null;
+		return entity;
 	}
 
 	@Override

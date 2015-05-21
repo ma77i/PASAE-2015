@@ -6,23 +6,23 @@ import ar.edu.uai.paradigms.dao.UsuarioDAO;
 
 public abstract class UsuarioService<T> {
     
-	private UsuarioDAO usuarioDAO;
+	private T usuarioDAO ;
 	
-	public UsuarioDAO getUsuarioDAO() {
+	public T getUsuarioDAO() {
 		return usuarioDAO;
 	}
 
-	public void setUsuarioDAO(UsuarioDAO usuarioDAO) {
+	public void setUsuarioDAO(T usuarioDAO) {
 		this.usuarioDAO = usuarioDAO;
 	}
 
-	public UsuarioService(UsuarioDAO usuarioDAO) {
+	public UsuarioService(T usuarioDAO) {
 		
 		this.usuarioDAO = usuarioDAO;
 	}
     
      public T saveUsuario(T usuario) {
-		return   usuarioDAO.create(usuario);
+		return  usuarioDAO.create(usuario);
 	}
     
     public T retrieveUsuario(long identifier) {
