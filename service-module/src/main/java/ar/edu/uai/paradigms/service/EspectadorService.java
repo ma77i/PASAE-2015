@@ -1,13 +1,15 @@
 package ar.edu.uai.paradigms.service;
-import ar.edu.uai.model.Espectador;
-import ar.edu.uai.model.Usuario;
+
+import ar.edu.uai.paradigms.dao.UsuarioDAO;
+
+public class EspectadorService<T> extends UsuarioService<T> {
+
+	public EspectadorService(UsuarioDAO usuarioDAO) {
+		super(usuarioDAO);
+		// TODO Auto-generated constructor stub
+	}
 
 
-public interface EspectadorService {
-
-	public Usuario saveEspectador(Espectador usuario);
-
-   public Usuario retrieveEspectador(long identifier);
-
-
+	
+  
 }
