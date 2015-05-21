@@ -37,12 +37,12 @@ public class EspectadorController {
 	@RequestMapping(method = RequestMethod.POST, consumes = "application/json")
 	public @ResponseBody EspectadorDTO createEspectador(@RequestBody EspectadorDTO espectadorDTO) {
 		LOGGER.debug("Received DTO: " + espectadorDTO);
-		return this.espectadorTranslator.translateToDTO((Espectador) this.espectadorService
-                .saveEspectador(this.espectadorTranslator.translate(espectadorDTO)));
+		return this.espectadorTranslator.translateToDTO(this.espectadorService
+                .saveUsuario(this.espectadorTranslator.translate(espectadorDTO)));
 	}
 
 	@RequestMapping(method = RequestMethod.GET, value = "/{identifier}")
 	public @ResponseBody EspectadorDTO getEspectador(@PathVariable long identifier) {
-		return this.espectadorTranslator.translateToDTO((Espectador) this.espectadorService.retrieveEspectador(identifier));
+		return this.espectadorTranslator.translateToDTO((Espectador) this.espectadorService.retrieveUsuario(identifier));
 	}
 }
