@@ -1,27 +1,24 @@
 package ar.edu.uai.paradigms.service;
 
+import org.springframework.beans.factory.annotation.Required;
+
 import ar.edu.uai.model.Usuario;
 import ar.edu.uai.paradigms.dao.UsuarioDAO;
 
 
-public abstract class UsuarioService<T> {
+public abstract class UsuarioService<T extends Usuario> {
     
-	private UsuarioDAO usuarioDAO;
-	
-	public UsuarioDAO getUsuarioDAO() {
-		return usuarioDAO;
-	}
+	private UsuarioDAO<T> usuarioDAO;
 
-	public void setUsuarioDAO(UsuarioDAO usuarioDAO) {
+	private Class<T> persistentClass;
+
+	@Required
+	public void setUsuarioDAO(UsuarioDAO<T> usuarioDAO) {
 		this.usuarioDAO = usuarioDAO;
 	}
 
-	public UsuarioService(UsuarioDAO usuarioDAO) {
-		
-		this.usuarioDAO = usuarioDAO;
-	}
     
-     public T saveUsuario(T usuario) {
+     public Usuario saveUsuario(T usuario) {
 		return   usuarioDAO.create(usuario);
 	}
     
