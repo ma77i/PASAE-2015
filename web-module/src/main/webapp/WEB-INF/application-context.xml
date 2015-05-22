@@ -73,4 +73,20 @@
 		<constructor-arg name="espectadorTranslator" ref="espectadorTranslator"/>
 	</bean>
 	<bean id="espectadorTranslator" class="ar.edu.uai.paradigms.translator.EspectadorTranslator" />
+	
+	<bean id="empleadoController" class="ar.edu.uai.paradigms.controller.EmpleadoController">
+		<constructor-arg name="empleadoService" ref="empleadoService"/>
+		<constructor-arg name="empleadoTranslator" ref="empleadoTranslator"/>
+	</bean>
+	<bean id="empleadoTranslator" class="ar.edu.uai.paradigms.translator.EmpleadoTranslator" />
+	
+	<bean id="administradorController" class="ar.edu.uai.paradigms.controller.AdministradorController">
+		<constructor-arg name="administradorService" ref="administradorService"/>
+		<constructor-arg name="administradorTranslator" ref="administradorTranslator"/>
+	</bean>
+	
+	<bean id="administradorTranslator" class="ar.edu.uai.paradigms.translator.AdministradorTranslator" />
+	
+	
+	
 </beans>
