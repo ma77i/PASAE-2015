@@ -22,7 +22,7 @@ public abstract class UsuarioService<T extends Usuario> {
 		return   usuarioDAO.create(usuario);
 	}
     
-    public T retrieveUsuario(long identifier) {
+    public Usuario retrieveUsuario(long identifier) {
 		return this.usuarioDAO.retrieve(Usuario.class, identifier);
 	}
 
