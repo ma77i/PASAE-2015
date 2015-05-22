@@ -34,17 +34,16 @@ public class EmpleadoController {
 
 	private EmpleadoTranslator empleadoTranslator;
 
-	@SuppressWarnings("unchecked")
 	@RequestMapping(method = RequestMethod.POST, consumes = "application/json")
 	public @ResponseBody EmpleadoDTO createEmpleado(@RequestBody EmpleadoDTO empleadoDTO) {
 		LOGGER.debug("Received DTO: " + empleadoDTO);
-		return this.empleadoTranslator.translateToDTO((Empleado) this.empleadoService
+		return this.empleadoTranslator.translateToDTO( (Empleado) this.empleadoService
                 .saveUsuario(this.empleadoTranslator.translate(empleadoDTO)));
 	}
-
+		
 	@RequestMapping(method = RequestMethod.GET, value = "/{identifier}")
 	public @ResponseBody EmpleadoDTO getEmpleado(@PathVariable long identifier) {
-		return this.empleadoTranslator.translateToDTO((Empleado) this.empleadoService.retrieveUsuario(identifier));
+		return this.empleadoTranslator.translateToDTO( (Empleado) this.empleadoService.retrieveUsuario(identifier));
 	}
 
 }

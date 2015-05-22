@@ -5,15 +5,15 @@
 
     <import resource="classpath:dao-context.xml" />
 
-	<bean id="espectadorService" class="ar.edu.uai.paradigms.service.impl.EspectadorService">
+	<bean id="espectadorService" class="ar.edu.uai.paradigms.service.EspectadorService">
         <constructor-arg ref="usuarioDAO" />
     </bean>
     
-    <bean id="empleadoService" class="ar.edu.uai.paradigms.service.impl.EmpleadoService">
+    <bean id="empleadoService" class="ar.edu.uai.paradigms.service.EmpleadoService">
         <constructor-arg ref="usuarioDAO" />
     </bean>
     
-    <bean id="administradorService" class="ar.edu.uai.paradigms.service.impl.AdministradorService">
+    <bean id="administradorService" class="ar.edu.uai.paradigms.service.AdministradorService">
         <constructor-arg ref="usuarioDAO" />
     </bean>
    
