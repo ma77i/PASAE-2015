@@ -34,15 +34,16 @@ public class EspectadorController {
 
 	private EspectadorTranslator espectadorTranslator;
 
+	
 	@RequestMapping(method = RequestMethod.POST, consumes = "application/json")
 	public @ResponseBody EspectadorDTO createEspectador(@RequestBody EspectadorDTO espectadorDTO) {
 		LOGGER.debug("Received DTO: " + espectadorDTO);
-		return this.espectadorTranslator.translateToDTO((Espectador) this.espectadorService
+		return this.espectadorTranslator.translateToDTO( (Espectador) this.espectadorService
                 .saveUsuario(this.espectadorTranslator.translate(espectadorDTO)));
 	}
 
 	@RequestMapping(method = RequestMethod.GET, value = "/{identifier}")
 	public @ResponseBody EspectadorDTO getEspectador(@PathVariable long identifier) {
-		return this.espectadorTranslator.translateToDTO((Espectador) this.espectadorService.retrieveUsuario(identifier));
+		return this.espectadorTranslator.translateToDTO( (Espectador) this.espectadorService.retrieveUsuario(identifier));
 	}
 }

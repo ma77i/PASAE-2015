@@ -41,13 +41,13 @@ public class AdministradorController {
 	@RequestMapping(method = RequestMethod.POST, consumes = "application/json")
 	public @ResponseBody AdministradorDTO createAdministrador(@RequestBody AdministradorDTO administradorDTO) {
 		LOGGER.debug("Received DTO: " + administradorDTO);
-		return this.administradorTranslator.translateToDTO((Administrador) this.administradorService
+		return this.administradorTranslator.translateToDTO( (Administrador) this.administradorService
                 .saveUsuario(this.administradorTranslator.translate(administradorDTO)));
 	}
 
 	@RequestMapping(method = RequestMethod.GET, value = "/{identifier}")
 	public @ResponseBody AdministradorDTO getAdministrador(@PathVariable long identifier) {
-		return this.administradorTranslator.translateToDTO((Administrador) this.administradorService.retrieveUsuario(identifier));
+		return this.administradorTranslator.translateToDTO( (Administrador) this.administradorService.retrieveUsuario(identifier));
 	}
 
 	
