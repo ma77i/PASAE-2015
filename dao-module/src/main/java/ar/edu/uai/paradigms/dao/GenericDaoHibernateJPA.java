@@ -4,7 +4,7 @@ import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 
 
-public class GenericDaoHibernateJPA <T> implements GenericDAO<T> {
+public abstract class GenericDaoHibernateJPA <T> implements GenericDAO<T> {
 	@PersistenceContext(unitName = "paradigms-persistence-unit")
     public EntityManager entityManager;
 	public Class <T> persistentClass;
@@ -13,7 +13,7 @@ public class GenericDaoHibernateJPA <T> implements GenericDAO<T> {
 	@Override
 	public T create(T entity) {
 		this.entityManager.persist(entity);
-		return null;
+		return entity;
 	}
 
 	@Override
