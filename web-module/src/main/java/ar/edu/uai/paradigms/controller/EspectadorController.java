@@ -37,7 +37,7 @@ public class EspectadorController {
 	@RequestMapping(method = RequestMethod.POST, consumes = "application/json")
 	public @ResponseBody EspectadorDTO createEspectador(@RequestBody EspectadorDTO espectadorDTO) {
 		LOGGER.debug("Received DTO: " + espectadorDTO);
-		return this.espectadorTranslator.translateToDTO(this.espectadorService
+		return this.espectadorTranslator.translateToDTO((Espectador) this.espectadorService
                 .saveUsuario(this.espectadorTranslator.translate(espectadorDTO)));
 	}
 
