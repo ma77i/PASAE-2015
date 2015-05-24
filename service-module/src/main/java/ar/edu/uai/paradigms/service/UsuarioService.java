@@ -1,6 +1,8 @@
 package ar.edu.uai.paradigms.service;
 
 
+import org.springframework.transaction.annotation.Transactional;
+
 import ar.edu.uai.model.Usuario;
 import ar.edu.uai.paradigms.dao.UsuarioDAO;
 
@@ -18,12 +20,12 @@ public abstract class UsuarioService<T extends Usuario> {
 	
 
 	/*@Required
-	public void setUsuarioDAO(UsuarioDAO<T> usuarioDAO) {
+	public void setUsuarioDAO(UsuarioDAO<T> usuarioDAO) { 
 		super();
 		this.usuarioDAO = usuarioDAO;
 	}
 */
-    
+    @Transactional
      public Usuario saveUsuario(T usuario) {
 		return   usuarioDAO.create(usuario);
 	}
