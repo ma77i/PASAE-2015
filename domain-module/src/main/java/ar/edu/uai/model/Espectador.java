@@ -19,7 +19,7 @@ public class Espectador extends Usuario {
 	@OneToMany(mappedBy="comprador")
 	private Collection<Venta> compras;
 	
-	private Collection<Tarjeta> tarjetas;
+//	private Collection<Tarjeta> tarjetas;
 	//posible interfaz,consultar.
 
 	

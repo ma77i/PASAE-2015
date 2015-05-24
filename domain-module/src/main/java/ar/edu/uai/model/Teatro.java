@@ -19,7 +19,7 @@ public class Teatro {
 	private String direccion;
 	
 	
-	@OneToMany (mappedBy="espectaculo")
+	@OneToMany (mappedBy="teatro")
     private Collection<Espectaculo> espectaculos;
 
 	public Teatro() {

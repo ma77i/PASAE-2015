@@ -1,6 +1,5 @@
 package ar.edu.uai.paradigms.service;
 
-import org.springframework.beans.factory.annotation.Required;
 
 import ar.edu.uai.model.Usuario;
 import ar.edu.uai.paradigms.dao.UsuarioDAO;
