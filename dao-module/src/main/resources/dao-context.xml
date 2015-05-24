@@ -13,10 +13,10 @@
         </property>
     </bean>
 
-    <bean id="usuarioDAO" class="ar.edu.uai.paradigms.dao.UsuarioDAO" />
-    <bean id="administradorDAO" class="ar.edu.uai.paradigms.dao.AdministradorDAO" />
-    <bean id="espectadorDAO" class="ar.edu.uai.paradigms.dao.EspectadorDAO" />
-    <bean id="empleadoDAO" class="ar.edu.uai.paradigms.dao.EmpleadoDAO" />
+    <bean id="usuarioDAO" class="ar.edu.uai.paradigms.dao.UsuarioDAOImplHibernateJPA" />
+    <bean id="administradorDAO" class="ar.edu.uai.paradigms.dao.AdministradorDAOImplHibernateJPA" />
+    <bean id="espectadorDAO" class="ar.edu.uai.paradigms.dao.EspectadorDAOImplHibernateJPA" />
+    <bean id="empleadoDAO" class="ar.edu.uai.paradigms.dao.EmpleadoDAOImplHibernateJPA" />
    
     
     
