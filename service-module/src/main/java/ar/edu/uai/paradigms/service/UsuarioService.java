@@ -7,11 +7,11 @@ import ar.edu.uai.paradigms.dao.UsuarioDAO;
 
 public abstract class UsuarioService<T extends Usuario> {
     
-	private UsuarioDAO<T> usuarioDAO;
+	private UsuarioDAO usuarioDAO;
 
 	//private Class<T> persistentClass;
 	
-	public UsuarioService(UsuarioDAO<T> usuarioDAO) {
+	public UsuarioService(UsuarioDAO usuarioDAO) {
 		
 		this.usuarioDAO = usuarioDAO;
 	}
