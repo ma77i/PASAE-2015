@@ -3,13 +3,16 @@ package ar.edu.uai.model;
 import java.util.Collection;
 
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
 import javax.persistence.OneToMany;
 
 
 @Entity
 public class Teatro {
 
-	
+	@Id @GeneratedValue
+	private long id;
 	
 	private String nombre;
 	
@@ -47,6 +50,14 @@ public class Teatro {
 
 	public void setEspectaculos(Collection<Espectaculo> espectaculos) {
 		this.espectaculos = espectaculos;
+	}
+
+	public long getId() {
+		return id;
+	}
+
+	public void setId(long id) {
+		this.id = id;
 	}
 	
 	

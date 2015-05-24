@@ -9,13 +9,6 @@ public class EspectadorService extends UsuarioService<Usuario> {
 	public EspectadorService(UsuarioDAO usuarioDAO) {
 		super(usuarioDAO);
 		// TODO Auto-generated constructor stub
-	}
-
-	
-
-	
-
-
-	
+	}	
   
 }
