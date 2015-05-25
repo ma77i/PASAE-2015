@@ -9,11 +9,10 @@ import ar.edu.uai.paradigms.dao.UsuarioDAO;
 
 public abstract class UsuarioService<T extends Usuario> {
     
-	private UsuarioDAO usuarioDAO;
+	private UsuarioDAO<T> usuarioDAO;
 
-	//private Class<T> persistentClass;
 	
-	public UsuarioService(UsuarioDAO usuarioDAO) {
+	public UsuarioService(UsuarioDAO<T> usuarioDAO) {
 		
 		this.usuarioDAO = usuarioDAO;
 	}
@@ -31,7 +30,7 @@ public abstract class UsuarioService<T extends Usuario> {
 	}
     
     public Usuario retrieveUsuario(long identifier) {
-	    return this.usuarioDAO.retrieve(Usuario.class, identifier);
+	   return this.usuarioDAO.retrieve(usuarioDAO.getPersistentClass(), identifier);
 	}
 
 
