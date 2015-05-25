@@ -4,6 +4,6 @@ import ar.edu.uai.model.Administrador;
 
 
 
-public interface AdministradorDAO extends GenericDAO<Administrador> {
+public interface AdministradorDAO extends UsuarioDAO<Administrador> {
 
 }
