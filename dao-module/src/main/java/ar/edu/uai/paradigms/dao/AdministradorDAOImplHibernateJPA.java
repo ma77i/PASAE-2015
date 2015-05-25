@@ -4,6 +4,6 @@ import ar.edu.uai.model.Administrador;
 
 
 
-public class AdministradorDAOImplHibernateJPA extends GenericDaoHibernateJPA <Administrador> implements AdministradorDAO {
+public class AdministradorDAOImplHibernateJPA extends UsuarioDAOImplHibernateJPA <Administrador> implements AdministradorDAO {
 
 }
