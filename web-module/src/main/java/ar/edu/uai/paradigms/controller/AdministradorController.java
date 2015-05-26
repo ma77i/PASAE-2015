@@ -22,8 +22,7 @@ import ar.edu.uai.paradigms.translator.EspectadorTranslator;
 @RequestMapping("/administrador")
 public class AdministradorController {
 
-	public AdministradorController(
-			AdministradorService administradorService,
+	public AdministradorController(AdministradorService administradorService,
 			AdministradorTranslator administradorTranslator) {
 		super();
 		this.administradorService = administradorService;
@@ -36,20 +35,24 @@ public class AdministradorController {
 	private AdministradorService administradorService;
 
 	private AdministradorTranslator administradorTranslator;
-	
-	
+
 	@RequestMapping(method = RequestMethod.POST, consumes = "application/json")
-	public @ResponseBody AdministradorDTO createAdministrador(@RequestBody AdministradorDTO administradorDTO) {
+	public @ResponseBody
+	AdministradorDTO createAdministrador(
+			@RequestBody AdministradorDTO administradorDTO) {
 		LOGGER.debug("Received DTO: " + administradorDTO);
-		return this.administradorTranslator.translateToDTO( (Administrador) this.administradorService
-                .saveUsuario(this.administradorTranslator.translate(administradorDTO)));
+		return this.administradorTranslator
+				.translateToDTO((Administrador) this.administradorService
+						.saveUsuario(this.administradorTranslator
+								.translate(administradorDTO)));
 	}
 
 	@RequestMapping(method = RequestMethod.GET, value = "/{identifier}")
-	public @ResponseBody AdministradorDTO getAdministrador(@PathVariable long identifier) {
-		return this.administradorTranslator.translateToDTO( (Administrador) this.administradorService.retrieveUsuario(identifier));
+	public @ResponseBody
+	AdministradorDTO getAdministrador(@PathVariable long identifier) {
+		return this.administradorTranslator
+				.translateToDTO((Administrador) this.administradorService
+						.retrieveUsuario(identifier));
 	}
 
-	
-	
-}	
+}

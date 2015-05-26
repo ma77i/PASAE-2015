@@ -7,7 +7,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import ar.edu.uai.paradigms.service.VentaService;
 import ar.edu.uai.paradigms.translator.VentaTranslator;
 
-
 @Controller
 @RequestMapping("/venta")
 public class VentaController {
@@ -26,6 +25,4 @@ public class VentaController {
 		this.ventaTranslator = ventaTranslator;
 	}
 
-	
-	
 }

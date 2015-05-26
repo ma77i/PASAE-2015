@@ -11,6 +11,7 @@ import ar.edu.uai.paradigms.translator.EspectaculoTranslator;
 @Controller
 @RequestMapping("/espectaculo")
 public class EspectaculoController {
+	
 	public EspectaculoController(EspectaculoService espectaculoService,
 			EspectaculoTranslator espectaculoTranslator) {
 		super();
@@ -25,6 +26,4 @@ public class EspectaculoController {
 
 	private EspectaculoTranslator espectaculoTranslator;
 
-	
-	
 }
