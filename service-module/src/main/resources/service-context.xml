@@ -16,5 +16,13 @@
     <bean id="administradorService" class="ar.edu.uai.paradigms.service.AdministradorService">
         <constructor-arg ref="usuarioDAO" />
     </bean>
-   
+    
+    <bean id="ventaService" class="ar.edu.uai.paradigms.service.VentaServiceImpl">
+        <constructor-arg ref="ventaDAO" />
+    </bean>
+    
+    <bean id="espectaculoService" class="ar.edu.uai.paradigms.service.EspectaculoServiceImpl">
+        <constructor-arg ref="espectaculoDAO" />
+    </bean>
+        
 </beans>
