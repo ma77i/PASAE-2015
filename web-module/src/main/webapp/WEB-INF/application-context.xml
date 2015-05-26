@@ -87,6 +87,22 @@
 	
 	<bean id="administradorTranslator" class="ar.edu.uai.paradigms.translator.AdministradorTranslator" />
 	
+	<bean id="ventaController" class="ar.edu.uai.paradigms.controller.VentaController">
+		<constructor-arg name="ventaService" ref="ventaService"/>
+		<constructor-arg name="ventaTranslator" ref="ventaTranslator"/>
+	</bean>
+	
+	<bean id="ventaTranslator" class="ar.edu.uai.paradigms.translator.VentaTranslator" />
+	
+	<bean id="espectaculoController" class="ar.edu.uai.paradigms.controller.EspectaculoController">
+		<constructor-arg name="espectaculoService" ref="espectaculoService"/>
+		<constructor-arg name="espectaculoTranslator" ref="espectaculoTranslator"/>
+	</bean>
+	
+	<bean id="espectaculoTranslator" class="ar.edu.uai.paradigms.translator.EspectaculoTranslator" />
+	
+	
+	
 	
 	
 </beans>

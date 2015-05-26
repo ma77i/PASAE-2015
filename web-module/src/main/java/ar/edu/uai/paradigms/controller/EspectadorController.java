@@ -40,6 +40,7 @@ public class EspectadorController {
 		LOGGER.debug("Received DTO: " + espectadorDTO);
 		return this.espectadorTranslator.translateToDTO( (Espectador) this.espectadorService
                 .saveUsuario(this.espectadorTranslator.translate(espectadorDTO)));
+		
 	}
 
 	@RequestMapping(method = RequestMethod.GET, value = "/{identifier}")
