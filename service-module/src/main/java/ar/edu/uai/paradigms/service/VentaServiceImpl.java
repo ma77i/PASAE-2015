@@ -1,5 +1,7 @@
 package ar.edu.uai.paradigms.service;
 
+import java.util.Collection;
+
 import org.springframework.transaction.annotation.Transactional;
 
 import ar.edu.uai.model.Venta;
@@ -16,14 +18,20 @@ public class VentaServiceImpl implements VentaService {
 
 	@Transactional
 	public Venta saveVenta(Venta venta) {
-		// TODO Auto-generated method stub
-		return null;
+		 return ventaDAO.create(venta);
 	}
 
 	@Override
 	public Venta retrieveVenta(long identifier) {
-		// TODO Auto-generated method stub
+		
+		return ventaDAO.retrieve(ventaDAO.getPersistentClass(), identifier);
+	}
+
+	@Override
+	public Collection<Venta> listarVentas() {
 		return null;
+		
+		
 	}
 
 	
