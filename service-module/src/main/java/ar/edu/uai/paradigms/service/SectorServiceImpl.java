@@ -15,20 +15,17 @@ public class SectorServiceImpl implements SectorService {
 
 	@Override
 	public Sector saveSector(Sector sector) {
-		// TODO Auto-generated method stub
-		return null;
+		return sectorDAO.create(sector);
 	}
 
 	@Override
 	public Sector retrieveSector(long identifier) {
-		// TODO Auto-generated method stub
-		return null;
+		return sectorDAO.retrieve(sectorDAO.getPersistentClass(), identifier);
 	}
 
 	@Override
 	public Collection<Sector> listarSectores() {
-		// TODO Auto-generated method stub
-		return null;
+		return sectorDAO.list();
 	}
 
 }
