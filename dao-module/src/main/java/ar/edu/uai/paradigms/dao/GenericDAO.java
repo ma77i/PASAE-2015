@@ -16,5 +16,5 @@ public interface GenericDAO<T> {
     public T retrieve(Class<T> tipo,long identifier);
     public T update(T entity);
     public void delete(long identifier);
-  //  public Collection<T> list();
+    public Collection<T> list();
 }

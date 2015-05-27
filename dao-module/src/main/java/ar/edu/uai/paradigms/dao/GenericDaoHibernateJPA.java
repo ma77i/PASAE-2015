@@ -1,7 +1,10 @@
 package ar.edu.uai.paradigms.dao;
 
+import java.util.Collection;
+
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.persistence.Query;
 
 
 public abstract class GenericDaoHibernateJPA <T> implements GenericDAO<T> {
@@ -53,10 +56,10 @@ public abstract class GenericDaoHibernateJPA <T> implements GenericDAO<T> {
 		
 	}
 
-	
-
-	
-
-	
-
-}
+	@Override
+	public Collection<T> list() {
+        Query consulta=this.entityManager.createQuery("from"+ getPersistentClass().getSimpleName());
+        Collection<T>resultado=consulta.getResultList();
+	    return resultado;
+	}
+}	
