@@ -1,6 +1,8 @@
 package ar.edu.uai.paradigms.service;
 
 
+import java.util.Collection;
+
 import org.springframework.transaction.annotation.Transactional;
 
 import ar.edu.uai.model.Usuario;
@@ -25,13 +27,28 @@ public abstract class UsuarioService<T extends Usuario> {
 	}
 */
     @Transactional
-     public Usuario saveUsuario(T usuario) {
+     public T saveUsuario(T usuario) {
 		return   usuarioDAO.create(usuario);
 	}
     
-    public Usuario retrieveUsuario(long identifier) {
+    public T retrieveUsuario(long identifier) {
 	   return this.usuarioDAO.retrieve(usuarioDAO.getPersistentClass(), identifier);
 	}
+    
+  /*  public Collection<Usuario> listarUsuarios(){
+		return  usuarioDAO.list();
+    	
+    }
+   */ 
+    public T modificarDatosPersonales(T u){
+		return this.usuarioDAO.update(u);
+    	
+    }
+    public T modificarContrasena(T u){
+		return usuarioDAO.update(u);
+    	
+    }
+    
 
 
 	

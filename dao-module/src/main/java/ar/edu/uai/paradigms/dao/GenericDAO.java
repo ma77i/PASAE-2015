@@ -1,5 +1,7 @@
 package ar.edu.uai.paradigms.dao;
 
+import java.util.Collection;
+
 
 /**
  * Created by Federico on 19/10/2014.
@@ -14,4 +16,5 @@ public interface GenericDAO<T> {
     public T retrieve(Class<T> tipo,long identifier);
     public T update(T entity);
     public void delete(long identifier);
+  //  public Collection<T> list();
 }
