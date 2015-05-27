@@ -10,13 +10,9 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import ar.edu.uai.model.Administrador;
-import ar.edu.uai.model.Empleado;
 import ar.edu.uai.paradigms.dto.AdministradorDTO;
-import ar.edu.uai.paradigms.dto.EmpleadoDTO;
 import ar.edu.uai.paradigms.service.AdministradorService;
-import ar.edu.uai.paradigms.service.EspectadorService;
 import ar.edu.uai.paradigms.translator.AdministradorTranslator;
-import ar.edu.uai.paradigms.translator.EspectadorTranslator;
 
 @Controller
 @RequestMapping("/administrador")
