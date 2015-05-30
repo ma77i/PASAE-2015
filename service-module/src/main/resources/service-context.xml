@@ -6,15 +6,15 @@
     <import resource="classpath:dao-context.xml" />
 
 	<bean id="espectadorService" class="ar.edu.uai.paradigms.service.EspectadorService">
-        <constructor-arg ref="usuarioDAO" />
+          <property name="usuarioDAO" ref="usuarioDAO" />
     </bean>
     
     <bean id="empleadoService" class="ar.edu.uai.paradigms.service.EmpleadoService">
-        <constructor-arg ref="usuarioDAO" />
+          <property name="usuarioDAO" ref="usuarioDAO" />
     </bean>
     
     <bean id="administradorService" class="ar.edu.uai.paradigms.service.AdministradorService">
-        <constructor-arg ref="usuarioDAO" />
+         <property name="usuarioDAO" ref="usuarioDAO" />
     </bean>
     
     <bean id="ventaService" class="ar.edu.uai.paradigms.service.VentaServiceImpl">
@@ -25,4 +25,11 @@
         <constructor-arg ref="espectaculoDAO" />
     </bean>
         
+     <bean id="sectorService" class="ar.edu.uai.paradigms.service.SectorServiceImpl">
+        <constructor-arg ref="sectorDAO" />
+    </bean> 
+    
+    <bean id="espectadorService2" class="ar.edu.uai.paradigms.service.EspectadorService" >
+      <property name="espectadorDAO" ref="espectadorDAO" />
+     </bean>   
 </beans>
