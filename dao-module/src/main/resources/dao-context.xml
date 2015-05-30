@@ -18,7 +18,8 @@
     <bean id="espectadorDAO" class="ar.edu.uai.paradigms.dao.EspectadorDAOImplHibernateJPA" />
     <bean id="empleadoDAO" class="ar.edu.uai.paradigms.dao.EmpleadoDAOImplHibernateJPA" />
     <bean id="ventaDAO" class="ar.edu.uai.paradigms.dao.VentaDAOImplHibernateJPA" />
-     <bean id="espectaculoDAO" class="ar.edu.uai.paradigms.dao.EspectaculoDAOImplHibernateJPA" />
+    <bean id="espectaculoDAO" class="ar.edu.uai.paradigms.dao.EspectaculoDAOImplHibernateJPA" />
+    <bean id="sectorDAO" class="ar.edu.uai.paradigms.dao.SectorDAOImplHibernateJPA" />
     
     
     

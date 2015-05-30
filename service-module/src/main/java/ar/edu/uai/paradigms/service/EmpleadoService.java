@@ -6,11 +6,7 @@ import ar.edu.uai.paradigms.dao.UsuarioDAO;
 
 public class EmpleadoService extends  UsuarioService<Usuario>{
 
-	public EmpleadoService(UsuarioDAO usuarioDAO) {
-		super(usuarioDAO);
-		// TODO Auto-generated constructor stub
-	}
-
+	
 	
 	
 

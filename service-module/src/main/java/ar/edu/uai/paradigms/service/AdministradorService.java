@@ -5,10 +5,7 @@ import ar.edu.uai.paradigms.dao.UsuarioDAO;
 
 public class AdministradorService extends UsuarioService<Usuario> {
 
-	public AdministradorService(UsuarioDAO usuarioDAO) {
-		super(usuarioDAO);
-		// TODO Auto-generated constructor stub
-	}
+	
 
 	
 	
