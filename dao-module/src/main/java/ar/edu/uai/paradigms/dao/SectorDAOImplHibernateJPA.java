@@ -13,6 +13,7 @@ public class SectorDAOImplHibernateJPA extends GenericDaoHibernateJPA<Sector>
 				.createQuery("select count(a) from Sector as s join s.asientos as a where a.ocupado ='true' and s.nombre=?");
 		consulta.setParameter(1, sector);
 		return (Long) consulta.getSingleResult();
+		//prueba
 
 	}
 }
