@@ -26,9 +26,19 @@ public class Sector {
 	@OneToMany(mappedBy="sector")
 	private Collection<Asiento> asientos;
 	
+	private String nombre;
+	
 	
 	public Sector() {
 		
+	}
+
+	public String getNombre() {
+		return nombre;
+	}
+
+	public void setNombre(String nombre) {
+		this.nombre = nombre;
 	}
 
 	public Espectaculo getEspectaculo() {
