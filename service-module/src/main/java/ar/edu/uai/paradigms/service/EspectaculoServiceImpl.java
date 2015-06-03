@@ -1,5 +1,7 @@
 package ar.edu.uai.paradigms.service;
 
+import java.util.Collection;
+
 import org.springframework.transaction.annotation.Transactional;
 
 import ar.edu.uai.model.Espectaculo;
@@ -29,6 +31,16 @@ public class EspectaculoServiceImpl implements EspectaculoService{
 	@Override
 	public void deleteEspectaculo(long identifier) {
 		this.espectaculoDAO.delete(identifier);;
+	}
+
+	@Override
+	public Collection<Espectaculo> listarEspectaculos() {
+		return this.espectaculoDAO.list();
+	}
+
+	@Override
+	public Espectaculo modificarEspectaculo(Espectaculo espectaculo) {
+		return espectaculoDAO.update(espectaculo);	
 	}
 
 }
