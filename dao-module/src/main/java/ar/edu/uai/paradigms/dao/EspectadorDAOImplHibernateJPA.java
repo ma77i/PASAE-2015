@@ -11,11 +11,12 @@ import ar.edu.uai.model.Venta;
 public class EspectadorDAOImplHibernateJPA extends UsuarioDAOImplHibernateJPA <Espectador> implements EspectadorDAO  {
 
 	@Override
-	public Collection<Venta> listarCompras(long identifier) {
-		return null;
-    //Query consulta=this.entityManager.createQuery());
-	 
+	public Collection<Venta> listarCompras(String usuario) {
 		
+    Query consulta=this.entityManager.createQuery("from Venta as v where v.comprador=?");
+    consulta.setParameter(1,usuario);
+    return consulta.getResultList();
+
 		
 		
 		

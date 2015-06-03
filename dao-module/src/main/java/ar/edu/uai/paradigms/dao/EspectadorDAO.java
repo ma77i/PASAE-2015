@@ -12,6 +12,6 @@ public interface EspectadorDAO extends UsuarioDAO<Espectador> {
 	  
 	//Aca se agregan definen encabezados de metodos particulares de la entidad Espectador que luego van a ser implementados por EspectadorDAOImplHibernateJPA
 
-	public Collection<Venta> listarCompras(long identifier);
+	public Collection<Venta> listarCompras(String usuario);
 	
 }
