@@ -31,5 +31,16 @@
     
     <bean id="espectadorService2" class="ar.edu.uai.paradigms.service.EspectadorService" >
       <property name="espectadorDAO" ref="espectadorDAO" />
-     </bean>   
+     </bean>
+     
+     <bean id="empleadoService2" class="ar.edu.uai.paradigms.service.EmpleadoService">
+          <property name="usuarioDAO" ref="empleadoDAO" />
+    </bean>
+       
+     <bean id="administradorService2" class="ar.edu.uai.paradigms.service.AdministradorService" >
+      <property name="administradorDAO" ref="administradorDAO" />
+      <property name="espectadorService" ref="espectadorService2" />
+      <property name="empleadoService" ref="empleadoService2" />
+     </bean>  
+     
 </beans>
