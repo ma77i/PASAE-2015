@@ -5,6 +5,8 @@ import ar.edu.uai.model.Espectaculo;
 
 public interface EspectaculoService {
 	public Espectaculo saveEspectaculo(Espectaculo espectaculo);
+
 	public Espectaculo retrieveEspectaculo(long identifier);
 
+	public void deleteEspectaculo(long identifier);
 }

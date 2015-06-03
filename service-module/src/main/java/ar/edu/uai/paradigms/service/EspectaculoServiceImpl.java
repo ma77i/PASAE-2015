@@ -15,14 +15,20 @@ public class EspectaculoServiceImpl implements EspectaculoService{
 
 	@Transactional
 	public Espectaculo saveEspectaculo(Espectaculo espectaculo) {
-		// TODO Auto-generated method stub
-		return null;
+		// Quizá debería tener un create en caso de existir ( consultar ) 
+		this.espectaculoDAO.update(espectaculo);
+		return espectaculo;
 	}
 
 	@Override
 	public Espectaculo retrieveEspectaculo(long identifier) {
-		// TODO Auto-generated method stub
-		return null;
+		//TODO agregar filtros
+		return this.espectaculoDAO.retrieve(this.espectaculoDAO.getPersistentClass(), identifier);
+	}
+
+	@Override
+	public void deleteEspectaculo(long identifier) {
+		this.espectaculoDAO.delete(identifier);;
 	}
 
 }
