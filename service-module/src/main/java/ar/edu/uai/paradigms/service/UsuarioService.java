@@ -33,7 +33,7 @@ public abstract class UsuarioService<T extends Usuario> {
 	}
     
     public T retrieveUsuario(long identifier) {
-	   return this.usuarioDAO.retrieve(usuarioDAO.getPersistentClass(), identifier);
+	   return this.usuarioDAO.retrieve((Class<T>) Usuario.class,identifier);
 	}
     
   /*  public Collection<Usuario> listarUsuarios(){

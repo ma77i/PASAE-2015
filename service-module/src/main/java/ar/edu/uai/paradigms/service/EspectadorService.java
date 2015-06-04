@@ -25,15 +25,6 @@ public class EspectadorService extends UsuarioService<Usuario> {
 		this.espectadorDAO = espectadorDAO;
 	}
 
-
-
-    public Collection<Venta> listasCompras(String usuario){
-		
-		return espectadorDAO.listarCompras(usuario);
-		
-		
-	}
-    
     public Collection<Espectador>listarEspectadores(){
     	return espectadorDAO.list();
     }

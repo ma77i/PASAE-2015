@@ -13,9 +13,6 @@ public class AdministradorService extends UsuarioService<Usuario> {
    
 	private AdministradorDAO administradorDAO;
 
-	private EspectadorService espectadorService;
-	
-	private EmpleadoService empleadoService;
 	
 	public AdministradorDAO getAdministradorDAO() {
 		return administradorDAO;
@@ -25,32 +22,10 @@ public class AdministradorService extends UsuarioService<Usuario> {
 		this.administradorDAO = administradorDAO;
 	}   
 	
-	public EspectadorService getEspectadorService() {
-		return espectadorService;
-	}
 
-	public void setEspectadorService(EspectadorService espectadorService) {
-		this.espectadorService = espectadorService;
-	}
 
-	public EmpleadoService getEmpleadoService() {
-		return empleadoService;
-	}
-
-	public void setEmpleadoService(EmpleadoService empleadoService) {
-		this.empleadoService = empleadoService;
-	}
     
-    public Collection<Espectador> listarEspectadores(){
-		return espectadorService.listarEspectadores();
-		
-    }
-    
-    public Collection<Empleado> listarEmpleados(){
-     	return empleadoService.listarEmpleados();
-       
-    }
-    
+  
 	
    
     

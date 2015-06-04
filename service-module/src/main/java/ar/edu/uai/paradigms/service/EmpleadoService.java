@@ -15,17 +15,7 @@ import ar.edu.uai.paradigms.dao.UsuarioDAO;
 public class EmpleadoService extends  UsuarioService<Usuario>{
 
 
-	private EmpleadoDAO empleadoDAO; 
-
-	private EspectaculoService espectaculoService;
-	
-	public EspectaculoService getEspectaculoService() {
-		return espectaculoService;
-	}
-
-	public void setEspectaculoService(EspectaculoService espectaculoService) {
-		this.espectaculoService = espectaculoService;
-	}
+	private EmpleadoDAO empleadoDAO;
 
 	public EmpleadoDAO getEmpleadoDAO() {
 		return empleadoDAO;
@@ -33,35 +23,13 @@ public class EmpleadoService extends  UsuarioService<Usuario>{
 
 	public void setEmpleadoDAO(EmpleadoDAO empleadoDAO) {
 		this.empleadoDAO = empleadoDAO;
-	}
-    
-	public Collection<Empleado>listarEmpleados(){
-    	return empleadoDAO.list();
-    }	
-	
-	public Collection<Funcion>listarFunciones(){
-		return null;
- 	 //esto iria con lo de lucas	
-	}
-	
-	public Collection<Espectaculo> listarEspectaculos(){
-		return espectaculoService.listarEspectaculos();
-	}
-	
-	public Espectaculo saveEspectaculo(Espectaculo espectaculo){
-		 return this.espectaculoService.saveEspectaculo(espectaculo);
-	}
-    
-	public void deleteEspectaculo(long identifier){
-		 this.espectaculoService.deleteEspectaculo(identifier);
-	}
-	
-	public Espectaculo retrieveEspectaculo(long identifier){
-		return espectaculoService.retrieveEspectaculo(identifier);
-	}
+	} 
 
-    public Espectaculo modificarEspectaculo(Espectaculo espectaculo){
-    	return espectaculoService.modificarEspectaculo(espectaculo);
-    }
+	public Collection<Empleado>listarEmpleados(){
+		return empleadoDAO.list();
+	}
+	
+	
+
 	
 }
