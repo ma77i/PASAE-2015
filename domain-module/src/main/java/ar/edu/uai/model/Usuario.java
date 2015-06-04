@@ -29,6 +29,10 @@ public abstract class Usuario {
 	
 	private String usuario;
 	
+	public Usuario(){
+		
+	}
+	
 	
 	public Usuario(String email, String password, String nombre,
 			String apellido) {
