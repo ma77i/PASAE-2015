@@ -5,15 +5,18 @@ import java.util.Collection;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
+import java.lang.reflect.ParameterizedType;
 
 
 public abstract class GenericDaoHibernateJPA <T> implements GenericDAO<T> {
 	@PersistenceContext(unitName = "paradigms-persistence-unit")
     public EntityManager entityManager;
-	public Class <T> persistentClass;
+	public Class persistentClass;
 
-	
-	
+	public GenericDaoHibernateJPA() {
+		persistentClass = (Class) ((ParameterizedType) getClass().getGenericSuperclass()).getActualTypeArguments()[0];  
+		//obtener el tipo por reflexion
+	}
 	
 	
 	
