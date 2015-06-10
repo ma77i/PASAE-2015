@@ -16,21 +16,33 @@ public class Sector {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private long id;
+
+	private String nombre;
 	
-	private float monto;
+	private Float monto;
 	
-	private boolean agotado;
+	private Boolean agotado;
 	
-	private int asientosLibres;
+	private Integer asientosLibres;
 	
 	@OneToMany(mappedBy="sector")
 	private Collection<Asiento> asientos;
+
+	@ManyToOne
+	private Espectaculo espectaculo;
 	
-	private String nombre;
+
 	
 	
 	public Sector() {
 		
+	}
+
+	public Sector(String nombre, Float monto, Espectaculo espectaculo, int asientosLibres) {
+		this.monto = monto;
+		this.nombre = nombre;
+		this.espectaculo = espectaculo;
+		this.asientosLibres = asientosLibres;
 	}
 
 	public String getNombre() {
@@ -47,15 +59,6 @@ public class Sector {
 
 	public void setEspectaculo(Espectaculo espectaculo) {
 		this.espectaculo = espectaculo;
-	}
-
-	@ManyToOne
-	private Espectaculo espectaculo;
-	
-	private boolean checkearDisponibilidad(){
-		return agotado;
-		
-		
 	}
 
 	public long getId() {
