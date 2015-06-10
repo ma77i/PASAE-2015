@@ -1,9 +1,14 @@
 package ar.edu.uai.paradigms.controller;
 
+import ar.edu.uai.model.Empleado;
+import ar.edu.uai.model.Espectaculo;
+import ar.edu.uai.paradigms.dto.EmpleadoDTO;
+import ar.edu.uai.paradigms.dto.EspectaculoDTO;
+import ar.edu.uai.paradigms.dto.EspectadorDTO;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 
 import ar.edu.uai.paradigms.service.EspectaculoService;
 import ar.edu.uai.paradigms.translator.EspectaculoTranslator;
@@ -25,5 +30,24 @@ public class EspectaculoController {
 	private EspectaculoService espectaculoService;
 
 	private EspectaculoTranslator espectaculoTranslator;
+
+	@RequestMapping(method = RequestMethod.POST, consumes = "application/json")
+	public @ResponseBody
+	EspectaculoDTO createEspectaculo(@RequestBody EspectaculoDTO espectaculoDTO) {
+		LOGGER.debug("Received DTO: " + espectaculoDTO);
+		return this.espectaculoTranslator
+				.translateToDTO((Espectaculo) this.espectaculoService
+						.saveEspectaculo(this.espectaculoTranslator
+								.translate(espectaculoDTO)));
+	}
+
+	@RequestMapping(method = RequestMethod.GET, value = "/{identifier}")
+	public @ResponseBody
+	EspectaculoDTO getEspectaculo (@PathVariable long identifier) {
+		return this.espectaculoTranslator
+				.translateToDTO((Espectaculo) this.espectaculoService
+						.retrieveEspectaculo(identifier));
+	}
+
 
 }
