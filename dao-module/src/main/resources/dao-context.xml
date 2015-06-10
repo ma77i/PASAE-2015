@@ -20,6 +20,7 @@
     <bean id="ventaDAO" class="ar.edu.uai.paradigms.dao.VentaDAOImplHibernateJPA" />
     <bean id="espectaculoDAO" class="ar.edu.uai.paradigms.dao.EspectaculoDAOImplHibernateJPA" />
     <bean id="sectorDAO" class="ar.edu.uai.paradigms.dao.SectorDAOImplHibernateJPA" />
+    <bean id="teatroDAO" class="ar.edu.uai.paradigms.dao.TeatroDAOImplHibernateJPA" />
     
     
     

@@ -10,16 +10,7 @@ import ar.edu.uai.model.Venta;
 
 public class EspectadorDAOImplHibernateJPA extends UsuarioDAOImplHibernateJPA <Espectador> implements EspectadorDAO  {
 
-	@Override
-	public Collection<Venta> listarCompras(long identifier) {
-		return null;
-    //Query consulta=this.entityManager.createQuery());
-	 
-		
-		
-		
-		
-	}
+	
 	
 
 }

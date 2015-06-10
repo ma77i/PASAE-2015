@@ -9,6 +9,10 @@ import javax.persistence.OneToMany;
 public class Espectador extends Usuario {
 	
 	
+	public Espectador(){
+		
+	}
+	
 	
 	public Espectador(String email, String password, String nombre,
 			String apellido) {

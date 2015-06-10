@@ -13,6 +13,8 @@ public abstract class Usuario {
 
 	
 
+	
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	protected long id;
@@ -24,6 +26,12 @@ public abstract class Usuario {
 	private String nombre;
 
 	private String apellido;
+	
+	private String usuario;
+	
+	public Usuario(){
+		
+	}
 	
 	
 	public Usuario(String email, String password, String nombre,
@@ -72,5 +80,13 @@ public abstract class Usuario {
 
 	public void setApellido(String apellido) {
 		this.apellido = apellido;
+	}
+    
+	public String getUsuario() {
+		return usuario;
+	}
+
+	public void setUsuario(String usuario) {
+		this.usuario = usuario;
 	}
 }

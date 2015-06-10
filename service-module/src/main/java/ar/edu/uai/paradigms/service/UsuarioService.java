@@ -1,9 +1,7 @@
 package ar.edu.uai.paradigms.service;
 
 
-import java.util.Collection;
 
-import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.transaction.annotation.Transactional;
 
 import ar.edu.uai.model.Usuario;
@@ -35,7 +33,7 @@ public abstract class UsuarioService<T extends Usuario> {
 	}
     
     public T retrieveUsuario(long identifier) {
-	   return this.usuarioDAO.retrieve(usuarioDAO.getPersistentClass(), identifier);
+	   return this.usuarioDAO.retrieve((Class<T>) Usuario.class,identifier);
 	}
     
   /*  public Collection<Usuario> listarUsuarios(){
@@ -51,6 +49,7 @@ public abstract class UsuarioService<T extends Usuario> {
 		return usuarioDAO.update(u);
     	
     }
+   
     
 
 
