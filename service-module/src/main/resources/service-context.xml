@@ -18,18 +18,31 @@
     </bean>
     
     <bean id="ventaService" class="ar.edu.uai.paradigms.service.VentaServiceImpl">
-        <constructor-arg ref="ventaDAO" />
-    </bean>
+          <property name="ventaDAO" ref="ventaDAO" />
+     </bean>
     
     <bean id="espectaculoService" class="ar.edu.uai.paradigms.service.EspectaculoServiceImpl">
-        <constructor-arg ref="espectaculoDAO" />
+       <property name="espectaculoDAO" ref="espectaculoDAO" />
     </bean>
         
      <bean id="sectorService" class="ar.edu.uai.paradigms.service.SectorServiceImpl">
-        <constructor-arg ref="sectorDAO" />
+        <property name="sectorDAO" ref="sectorDAO" />
     </bean> 
     
-    <bean id="espectadorService2" class="ar.edu.uai.paradigms.service.EspectadorService" >
+    <bean id="espectadorServiceConcreta" class="ar.edu.uai.paradigms.service.EspectadorService" >
       <property name="espectadorDAO" ref="espectadorDAO" />
-     </bean>   
+     </bean>
+     
+     <bean id="empleadoServiceConcreta" class="ar.edu.uai.paradigms.service.EmpleadoService">
+          <property name="empleadoDAO" ref="empleadoDAO" />
+     </bean>
+       
+     <bean id="administradorServiceConcreta" class="ar.edu.uai.paradigms.service.AdministradorService" >
+      <property name="administradorDAO" ref="administradorDAO" />
+     </bean>  
+     
+     <bean id="teatroService" class="ar.edu.uai.paradigms.service.TeatroServiceImpl" >
+      <property name="teatroDAO" ref="teatroDAO" />
+     </bean> 
+     
 </beans>

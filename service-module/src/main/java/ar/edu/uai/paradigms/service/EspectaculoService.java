@@ -1,6 +1,9 @@
 package ar.edu.uai.paradigms.service;
 
+import java.util.Collection;
+
 import ar.edu.uai.model.Espectaculo;
+import ar.edu.uai.model.Sector;
 
 
 public interface EspectaculoService {
@@ -9,4 +12,8 @@ public interface EspectaculoService {
 	public Espectaculo retrieveEspectaculo(long identifier);
 
 	public void deleteEspectaculo(long identifier);
+	
+	public Collection<Espectaculo> listarEspectaculos();
+	
+	public Espectaculo modificarEspectaculo(Espectaculo espectaculo);
 }
