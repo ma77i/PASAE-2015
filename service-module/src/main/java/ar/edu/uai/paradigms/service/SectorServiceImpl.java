@@ -42,4 +42,12 @@ public class SectorServiceImpl implements SectorService {
 		return sectorDAO.list();
 	}
 
+	public boolean hayDisponibilidad (String sector, Integer nro_asientos) {
+		return (sectorDAO.chequearDisponibilidad(sector) > nro_asientos);
+	}
+
+	public Integer asientosDisponibles (String sector) {
+		return (sectorDAO.chequearDisponibilidad(sector));
+	}
+
 }
