@@ -7,12 +7,12 @@ import ar.edu.uai.paradigms.dto.AdministradorDTO;
 
 public class AdministradorTranslator {
 
-	public Administrador translate(AdministradorDTO espectadorDTO) {
-		return new Administrador(null, null, espectadorDTO.getName(),espectadorDTO.getApellido());
+	public Administrador translate(AdministradorDTO administradorDTO) {
+		return new Administrador(null, null, administradorDTO.getName(),administradorDTO.getApellido());
 	}
 
-	public AdministradorDTO translateToDTO(Administrador espectador) {
-		return new AdministradorDTO(null, null, espectador.getNombre(),espectador.getApellido());
+	public AdministradorDTO translateToDTO(Administrador usuario) {
+		return new AdministradorDTO(null, null, usuario.getNombre(),usuario.getApellido());
 	}
 	
 	

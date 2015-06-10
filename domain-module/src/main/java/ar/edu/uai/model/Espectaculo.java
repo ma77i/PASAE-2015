@@ -16,6 +16,11 @@ public class Espectaculo {
 		
 	}
 
+	public Espectaculo(String nombre, String descripcion) {
+		this.nombre = nombre;
+		this.descripcion = descripcion;
+	}
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private long id;
@@ -32,7 +37,7 @@ public class Espectaculo {
 	 
 	@ManyToOne
 	private Teatro teatro;
-	
+
 	public long getId() {
 		return id;
 	}

@@ -8,11 +8,11 @@ public class SectorDAOImplHibernateJPA extends GenericDaoHibernateJPA<Sector>
 		implements SectorDAO {
 
 	@Override
-	public Long chequearDisponibilidad(String sector) {
+	public Integer chequearDisponibilidad(String sector) {
 		Query consulta = this.entityManager
 				.createQuery("select count(a) from Sector as s join s.asientos as a where a.ocupado ='true' and s.nombre=?");
 		consulta.setParameter(1, sector);
-		return (Long) consulta.getSingleResult();
+		return (Integer) consulta.getSingleResult();
 
 	}
 }
