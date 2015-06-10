@@ -1,9 +1,11 @@
 package ar.edu.uai.paradigms.controller;
 
+
+import ar.edu.uai.paradigms.dto.VentaDTO;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 import ar.edu.uai.paradigms.service.VentaService;
 import ar.edu.uai.paradigms.translator.VentaTranslator;
 
@@ -24,5 +26,27 @@ public class VentaController {
 		this.ventaService = ventaService;
 		this.ventaTranslator = ventaTranslator;
 	}
+	@RequestMapping(method = RequestMethod.POST, consumes = "application/json")
+	public @ResponseBody
+	VentaDTO createVenta(@RequestBody VentaDTO ventaDTO) {
+		LOGGER.debug("Received DTO: " + ventaDTO);
+		return this.ventaTranslator
+				.translateToDTO(this.ventaService
+						.saveVenta(this.ventaTranslator
+								.translate(ventaDTO)));
+	}
+
+	@RequestMapping(method = RequestMethod.GET, value = "/{identifier}")
+	public @ResponseBody
+	VentaDTO getVenta(@PathVariable long identifier) {
+		return this.ventaTranslator
+				.translateToDTO(this.ventaService
+						.retrieveVenta(identifier));
+	}
+
+
+
+
+
 
 }
