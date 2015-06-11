@@ -1,10 +1,9 @@
 package ar.edu.uai.paradigms.dao;
 
-import java.util.Collection;
+import ar.edu.uai.model.Venta;
 
 import javax.persistence.Query;
-
-import ar.edu.uai.model.Venta;
+import java.util.Collection;
 
 public class VentaDAOImplHibernateJPA  extends GenericDaoHibernateJPA<Venta> implements VentaDAO {
 
@@ -14,7 +13,6 @@ public class VentaDAOImplHibernateJPA  extends GenericDaoHibernateJPA<Venta> imp
 		Query consulta=this.entityManager.createQuery("from Venta as v where v.comprador=?");
 	    consulta.setParameter(1,espectador);
 	    return consulta.getResultList();
-		
 		
 	}
 
