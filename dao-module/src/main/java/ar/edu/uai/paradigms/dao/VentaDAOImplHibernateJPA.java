@@ -9,13 +9,11 @@ import ar.edu.uai.model.Venta;
 public class VentaDAOImplHibernateJPA  extends GenericDaoHibernateJPA<Venta> implements VentaDAO {
 
 	@Override
-	public Collection<Venta> listarComprasDeEspectador(String espectador) {
-		
-		Query consulta=this.entityManager.createQuery("from Venta as v where v.comprador=?");
-	    consulta.setParameter(1,espectador);
+	public Collection<Venta> listarComprasDeEspectador(long id_espectador) {
+
+		Query consulta=this.entityManager.createQuery("from Venta as v where v.comprador.id=?");
+	    consulta.setParameter(1,id_espectador);
 	    return consulta.getResultList();
-		
-		
 	}
 
 }

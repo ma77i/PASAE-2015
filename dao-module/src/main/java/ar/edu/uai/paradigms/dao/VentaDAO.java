@@ -6,6 +6,6 @@ import ar.edu.uai.model.Venta;
 
 public interface VentaDAO extends GenericDAO<Venta> {
 
-	public Collection<Venta> listarComprasDeEspectador(String espectador);
+	public Collection<Venta> listarComprasDeEspectador(long id_espectador);
 	  
 }
