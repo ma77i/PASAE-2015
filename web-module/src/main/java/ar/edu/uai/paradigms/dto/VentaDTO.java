@@ -15,8 +15,8 @@ public class VentaDTO {
     private float costoAdicional;
     private Date fechaVenta;
     private int cuotas;
-    private Funcion funcion;
-    private Espectador comprador;
+    private Funcion funcion; //VA ACA
+    private Espectador comprador; //VA ACA
 
     @JsonCreator
     public VentaDTO(@JsonProperty("monto")float monto, @JsonProperty("costoAdicional")float costoAdicional, @JsonProperty("fechaVenta") Date fechaVenta,@JsonProperty("cuotas") int cuotas,@JsonProperty("Funcion") Funcion funcion,@JsonProperty("comprador") Espectador comprador) {
@@ -77,4 +77,8 @@ public class VentaDTO {
     public void setComprador(Espectador comprador) {
         this.comprador = comprador;
     }
+    public String toString() {
+        return "VentaDTO [monto=" + monto + ", costoAdicional=" + costoAdicional + ", fechaVenta=" + fechaVenta + ",cuotas=" + cuotas +  "]"; //ACA VA LA FUNCION Y ESPECTACULO ?
+    }
+
 }

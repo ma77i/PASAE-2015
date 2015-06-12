@@ -56,4 +56,10 @@ public class EspectaculoServiceImpl implements EspectaculoService {
 		return espectaculoDAO.update(espectaculo);
 	}
 
+	@Override
+	public Collection<Espectaculo> listarEspectaculosDeTeatro(long id_teatro){
+		return espectaculoDAO.listarEspectaculosDeTeatro(id_teatro);
+	}
+
+
 }
