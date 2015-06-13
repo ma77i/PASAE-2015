@@ -16,4 +16,6 @@ public interface EspectaculoService {
 	public Collection<Espectaculo> listarEspectaculos();
 	
 	public Espectaculo modificarEspectaculo(Espectaculo espectaculo);
+
+	public Collection<Espectaculo> listarEspectaculosDeTeatro(long id_teatro);
 }
