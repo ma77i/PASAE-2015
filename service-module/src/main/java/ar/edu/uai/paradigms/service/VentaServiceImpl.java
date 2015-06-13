@@ -1,11 +1,10 @@
 package ar.edu.uai.paradigms.service;
 
-import java.util.Collection;
-
-import org.springframework.transaction.annotation.Transactional;
-
 import ar.edu.uai.model.Venta;
 import ar.edu.uai.paradigms.dao.VentaDAO;
+import org.springframework.transaction.annotation.Transactional;
+
+import java.util.Collection;
 
 public class VentaServiceImpl implements VentaService {
 
@@ -50,18 +49,17 @@ public class VentaServiceImpl implements VentaService {
 	}
 
 	@Override
-	public Float calcularMontoFinal() {
-		return null;
+	public Float calcularMontoFinal(long id_sector, long id_espectaculo) {
+		return (this.calcularMontoNeto(id_sector, id_espectaculo) - this.aplicarDescuento(id_espectaculo));
 	}
 
 	@Override
-	public Float calcularCostoNeto() {
-		// TODO Auto-generated method stub
-		return null;
+	public Float calcularMontoNeto(long id_sector, long id_espectaculo) {
+		return ventaDAO.calcularMontoNeto(id_sector, id_espectaculo);
 	}
 
 	@Override
-	public Float aplicarDescuento() {
+	public Float aplicarDescuento(long id_espectaculo) {
 		// TODO Auto-generated method stub
 		return null;
 	}
