@@ -35,12 +35,7 @@ public abstract class UsuarioService<T extends Usuario> {
     public T retrieveUsuario(long identifier) {
 	   return this.usuarioDAO.retrieve((Class<T>) Usuario.class,identifier);
 	}
-    
-  /*  public Collection<Usuario> listarUsuarios(){
-		return  usuarioDAO.list();
-    	
-    }
-   */ 
+
     public T modificarDatosPersonales(T u){
 		return this.usuarioDAO.update(u);
     	

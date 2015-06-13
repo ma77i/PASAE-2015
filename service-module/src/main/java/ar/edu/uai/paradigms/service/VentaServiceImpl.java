@@ -45,8 +45,8 @@ public class VentaServiceImpl implements VentaService {
 	}
 
 	@Override
-	public Collection<Venta> listarComprasDeEspectador(String espectador) {
-		return ventaDAO.listarComprasDeEspectador(espectador);
+	public Collection<Venta> listarComprasDeEspectador(long id_espectador) {
+		return ventaDAO.listarComprasDeEspectador(id_espectador);
 	}
 
 	@Override

@@ -13,4 +13,10 @@ public class EspectaculoDAOImplHibernateJPA extends GenericDaoHibernateJPA<Espec
         consulta.setParameter(1,id_teatro);
         return consulta.getResultList();
     }
+
+
+
+
+
+
 }
