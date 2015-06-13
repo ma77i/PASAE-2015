@@ -16,4 +16,6 @@ public class VentaDAOImplHibernateJPA  extends GenericDaoHibernateJPA<Venta> imp
 	    return consulta.getResultList();
 	}
 
+	//AGREGO COMENTARIO
+
 }
