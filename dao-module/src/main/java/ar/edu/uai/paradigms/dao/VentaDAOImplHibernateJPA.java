@@ -16,4 +16,12 @@ public class VentaDAOImplHibernateJPA  extends GenericDaoHibernateJPA<Venta> imp
 		
 	}
 
+	public Float calcularMontoNeto(long id_sector, long id_espectaculo) {
+
+		Query consulta=this.entityManager.createQuery("select s.monto from Sector where s.id=? and s.espectaculo.id=?");
+		consulta.setParameter(1, id_sector);
+		consulta.setParameter(2, id_espectaculo);
+		return (Float) consulta.getSingleResult();
+	}
+
 }
