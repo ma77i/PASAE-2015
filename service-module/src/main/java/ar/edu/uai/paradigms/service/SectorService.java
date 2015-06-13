@@ -17,6 +17,8 @@ public interface SectorService {
 
 	public Integer cantidadAsientosDisponibles (long id_sector );
 
+	public Collection<Asiento> asientosDeSector (long id_sector);
+
 	public Collection <Asiento> asientosDisponiblesDeSector (long id_sector);
 
 	public Collection <Asiento> asientosOcupadosDeSector (long id_sector);

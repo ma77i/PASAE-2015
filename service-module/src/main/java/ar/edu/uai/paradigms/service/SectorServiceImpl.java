@@ -51,6 +51,12 @@ public class SectorServiceImpl implements SectorService {
 	}
 
 	@Override
+	public Collection<Asiento> asientosDeSector(long id_sector) {
+		return (sectorDAO.asientosDeSector (id_sector));
+	}
+
+
+	@Override
 	public Collection<Asiento> asientosDisponiblesDeSector(long id_sector) {
 		return (sectorDAO.asientosDisponiblesDeSector(id_sector));
 	}

@@ -10,7 +10,7 @@ import javax.persistence.ManyToOne;
 public class Asiento {
 
 	public Asiento() {
-		
+
 	}
 
 	@Id
@@ -25,6 +25,13 @@ public class Asiento {
 
 	@ManyToOne
 	private Sector sector;
+
+	public Asiento(String fila, int numero, boolean ocupado, Sector sector) {
+		this.fila = fila;
+		this.numero = numero;
+		this.ocupado = ocupado;
+		this.sector = sector;
+	}
 
 	public long getId() {
 		return id;

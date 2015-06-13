@@ -9,6 +9,8 @@ public interface SectorDAO extends GenericDAO<Sector> {
 	
 	public Integer chequearDisponibilidad (long id_sector);
 
+	public Collection<Asiento> asientosDeSector (long id_sector);
+
 	public Collection<Asiento> asientosDisponiblesDeSector (long id_sector);
 
 	public Collection<Asiento> asientosOcupadosDeSector (long id_sector);
