@@ -15,17 +15,17 @@ public class VentaDTO {
     private float costoAdicional;
     private Date fechaVenta;
     private int cuotas;
-    private Funcion funcion; //VA ACA
+    //private Funcion funcion; //VA ACA
     private Espectador comprador; //VA ACA
 
     @JsonCreator
-    public VentaDTO(@JsonProperty("monto")float monto, @JsonProperty("costoAdicional")float costoAdicional, @JsonProperty("fechaVenta") Date fechaVenta,@JsonProperty("cuotas") int cuotas,@JsonProperty("Funcion") Funcion funcion,@JsonProperty("comprador") Espectador comprador) {
+    public VentaDTO(@JsonProperty("monto")float monto, @JsonProperty("costoAdicional")float costoAdicional, @JsonProperty("fechaVenta") Date fechaVenta,@JsonProperty("cuotas") int cuotas,@JsonProperty("comprador") Espectador comprador) {
         super();
         this.setMonto(monto);
         this.setCostoAdicional(costoAdicional);
         this.setFechaVenta(fechaVenta);
         this.setCuotas(cuotas);
-        this.setFuncion(funcion);
+        //this.setFuncion(funcion);
         this.setComprador(comprador);
     }
 
@@ -62,14 +62,14 @@ public class VentaDTO {
         this.fechaVenta = fechaVenta;
     }
 
-    public Funcion getFuncion() {
+    /*public Funcion getFuncion() {
         return funcion;
     }
 
     public void setFuncion(Funcion funcion) {
         this.funcion = funcion;
     }
-
+*/
     public Espectador getComprador() {
         return comprador;
     }
@@ -78,7 +78,7 @@ public class VentaDTO {
         this.comprador = comprador;
     }
     public String toString() {
-        return "VentaDTO [monto=" + monto + ", costoAdicional=" + costoAdicional + ", fechaVenta=" + fechaVenta + ",cuotas=" + cuotas +  "]"; //ACA VA LA FUNCION Y ESPECTACULO ?
+        return "VentaDTO [monto=" + monto + ", costoAdicional=" + costoAdicional + ", fechaVenta=" + fechaVenta + ",cuotas=" + cuotas +",comprador=" + comprador+"]"; //ACA VA LA FUNCION Y ESPECTACULO ?
     }
 
 }

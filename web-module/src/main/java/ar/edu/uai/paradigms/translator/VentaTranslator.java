@@ -6,11 +6,11 @@ import ar.edu.uai.paradigms.dto.VentaDTO;
 public class VentaTranslator {
 
     public Venta translate(VentaDTO ventaDTO) {
-        return new Venta(ventaDTO.getMonto(), ventaDTO.getCostoAdicional(),ventaDTO.getFechaVenta(),ventaDTO.getCuotas(),ventaDTO.getFuncion(),ventaDTO.getComprador());
+        return new Venta(ventaDTO.getMonto(), ventaDTO.getCostoAdicional(),ventaDTO.getFechaVenta(),ventaDTO.getCuotas(),ventaDTO.getComprador());
     }
 
     public VentaDTO translateToDTO(Venta venta) {
-        return new VentaDTO(venta.getMonto(),venta.getCostoAdicional(),venta.getFechaVenta(),venta.getCoutas(),venta.getFuncion(),venta.getComprador());
+        return new VentaDTO(venta.getMonto(),venta.getCostoAdicional(),venta.getFechaVenta(),venta.getCoutas(),venta.getComprador());
     }
 
 }
