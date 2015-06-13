@@ -1,11 +1,11 @@
 package ar.edu.uai.paradigms.service;
 
-import java.util.Collection;
-
-import org.springframework.transaction.annotation.Transactional;
-
+import ar.edu.uai.model.Asiento;
 import ar.edu.uai.model.Sector;
 import ar.edu.uai.paradigms.dao.SectorDAO;
+import org.springframework.transaction.annotation.Transactional;
+
+import java.util.Collection;
 
 public class SectorServiceImpl implements SectorService {
 
@@ -33,8 +33,8 @@ public class SectorServiceImpl implements SectorService {
 	}
 
 	@Override
-	public Sector retrieveSector(long identifier) {
-		return sectorDAO.retrieve(Sector.class, identifier);
+	public Sector retrieveSector(long id_sector) {
+		return sectorDAO.retrieve(Sector.class, id_sector);
 	}
 
 	@Override
@@ -42,12 +42,29 @@ public class SectorServiceImpl implements SectorService {
 		return sectorDAO.list();
 	}
 
-	public boolean hayDisponibilidad (String sector, Integer nro_asientos) {
-		return (sectorDAO.chequearDisponibilidad(sector) > nro_asientos);
+	public boolean hayDisponibilidad (long id_sector, Integer nro_asientos) {
+		return (sectorDAO.chequearDisponibilidad(id_sector) > nro_asientos);
 	}
 
-	public Integer asientosDisponibles (String sector) {
-		return (sectorDAO.chequearDisponibilidad(sector));
+	public Integer cantidadAsientosDisponibles (long id_sector) {
+		return (sectorDAO.chequearDisponibilidad(id_sector));
 	}
+
+	@Override
+	public Collection<Asiento> asientosDeSector(long id_sector) {
+		return (sectorDAO.asientosDeSector (id_sector));
+	}
+
+
+	@Override
+	public Collection<Asiento> asientosDisponiblesDeSector(long id_sector) {
+		return (sectorDAO.asientosDisponiblesDeSector(id_sector));
+	}
+
+	@Override
+	public Collection<Asiento> asientosOcupadosDeSector(long id_sector) {
+		return (sectorDAO.asientosDisponiblesDeSector(id_sector));
+	}
+
 
 }
