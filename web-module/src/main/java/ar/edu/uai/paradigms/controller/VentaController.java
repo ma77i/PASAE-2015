@@ -1,6 +1,7 @@
 package ar.edu.uai.paradigms.controller;
 
 
+import ar.edu.uai.model.Venta;
 import ar.edu.uai.paradigms.dto.VentaDTO;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -8,6 +9,9 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import ar.edu.uai.paradigms.service.VentaService;
 import ar.edu.uai.paradigms.translator.VentaTranslator;
+
+import java.util.ArrayList;
+import java.util.Collection;
 
 @Controller
 @RequestMapping("/venta")
@@ -44,7 +48,21 @@ public class VentaController {
 						.retrieveVenta(identifier));
 	}
 
+	@RequestMapping(method = RequestMethod.GET, value = "/{identifier}/MisCompras")
+	public @ResponseBody Collection<VentaDTO> misCompras(@PathVariable long identifier ){
+    Collection<VentaDTO> misCompras= new ArrayList<VentaDTO>();
 
+	Collection<Venta> compras=(this.ventaService.listarComprasDeEspectador(identifier));
+    for (Venta v: compras){
+		 misCompras.add(ventaTranslator.translateToDTO(v));
+	}
+    return misCompras;
+	}
+
+	@RequestMapping(method = RequestMethod.POST,consumes = "application/json")
+	public @ResponseBody VentaDTO realizarCompra(@RequestBody VentaDTO ventaDTO ){
+		return (this.ventaTranslator.translateToDTO(this.ventaService.saveVenta(this.ventaTranslator.translate(ventaDTO))));
+	}
 
 
 

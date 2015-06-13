@@ -1,5 +1,7 @@
 package ar.edu.uai.paradigms.controller;
 
+import ar.edu.uai.paradigms.dto.VentaDTO;
+import ar.edu.uai.paradigms.service.VentaService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
@@ -10,6 +12,9 @@ import ar.edu.uai.paradigms.dto.EspectadorDTO;
 import ar.edu.uai.paradigms.service.EspectadorService;
 import ar.edu.uai.paradigms.translator.EspectadorTranslator;
 
+import java.util.ArrayList;
+import java.util.Collection;
+
 /**
  * Created by Federico Donnarumma on 10/15/14.
  */
@@ -17,9 +22,9 @@ import ar.edu.uai.paradigms.translator.EspectadorTranslator;
 @Controller
 @RequestMapping("/espectador")
 public class EspectadorController {
-   
+
 	public EspectadorController(EspectadorService espectadorService,
-			EspectadorTranslator espectadorTranslator) {
+								EspectadorTranslator espectadorTranslator) {
 		super();
 		this.espectadorService = espectadorService;
 		this.espectadorTranslator = espectadorTranslator;
@@ -30,10 +35,12 @@ public class EspectadorController {
 
 	private EspectadorService espectadorService;
 
+
 	private EspectadorTranslator espectadorTranslator;
 
 	@RequestMapping(method = RequestMethod.POST, consumes = "application/json")
-	public @ResponseBody
+	public
+	@ResponseBody
 	EspectadorDTO createEspectador(@RequestBody EspectadorDTO espectadorDTO) {
 		LOGGER.debug("Received DTO: " + espectadorDTO);
 		return this.espectadorTranslator
@@ -44,10 +51,51 @@ public class EspectadorController {
 	}
 
 	@RequestMapping(method = RequestMethod.GET, value = "/{identifier}")
-	public @ResponseBody
+	public
+	@ResponseBody
 	EspectadorDTO getEspectador(@PathVariable long identifier) {
 		return this.espectadorTranslator
 				.translateToDTO((Espectador) this.espectadorService
 						.retrieveUsuario(identifier));
 	}
+
+	@RequestMapping(method = RequestMethod.POST)
+	public @ResponseBody  EspectadorDTO cambiarDatosPersonales(@RequestBody EspectadorDTO espectadorDTO) {
+		LOGGER.debug("Received DTO: " + espectadorDTO);
+		return this.espectadorTranslator.translateToDTO((Espectador)this.espectadorService.modificarDatosPersonales(this.espectadorTranslator.translate(espectadorDTO)));
+	}
+
+	@RequestMapping(method = RequestMethod.POST)
+	public @ResponseBody  EspectadorDTO cambiarContrasena(@RequestBody EspectadorDTO espectadorDTO) {
+		LOGGER.debug("Received DTO: " + espectadorDTO);
+		return this.espectadorTranslator.translateToDTO((Espectador)this.espectadorService.modificarContrasena(this.espectadorTranslator.translate(espectadorDTO)));
+	}
+
+	@RequestMapping(method = RequestMethod.GET, value = "/listadoEspectadores")
+	public @ResponseBody Collection<EspectadorDTO> listadoEspectadores() {
+		Collection<Espectador>lista=this.espectadorService.listarEspectadores();
+		Collection<EspectadorDTO> espectadores= new ArrayList<EspectadorDTO>();
+		for(Espectador espectador: lista ){
+			espectadores.add(espectadorTranslator.translateToDTO(espectador));
+		}
+		return  espectadores;
+
+
+	}
+
+
+
+
+
+
+
+
+
+
+
+
 }
+
+
+
+

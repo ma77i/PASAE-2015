@@ -8,7 +8,7 @@ public interface VentaService {
 	public Venta saveVenta(Venta venta);
 	public Venta retrieveVenta(long identifier);
 	public Collection<Venta> listarVentas();
-	public Collection<Venta> listarComprasDeEspectador(String espectador);
+	public Collection<Venta> listarComprasDeEspectador(long id_espectador);
 	public Float calcularMontoFinal();
 	public Float calcularCostoNeto();
 	public Float aplicarDescuento();
