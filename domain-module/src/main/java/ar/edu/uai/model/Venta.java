@@ -15,8 +15,19 @@ import javax.persistence.OneToMany;
 public class Venta {
 	
 	public Venta() {
-	
+
 	}
+
+	public Venta(float monto, float costoAdicional, Date fechaVenta, int coutas, Funcion funcion, Espectador comprador) {
+		this.monto = monto;
+		this.costoAdicional = costoAdicional;
+		this.fechaVenta = fechaVenta;
+		this.coutas = coutas;
+		this.funcion = funcion;
+		this.comprador = comprador;
+	}
+
+
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
@@ -43,7 +54,9 @@ public class Venta {
 */	
     @ManyToOne
 	private Espectador comprador;
-	
+
+
+
 	/**
 	 * Aplica descuento a la venta
 	 */
@@ -104,6 +117,14 @@ public class Venta {
 
 	public void setFuncion(Funcion funcion) {
 		this.funcion = funcion;
+	}
+
+	public Espectador getComprador() {
+		return comprador;
+	}
+
+	public void setComprador(Espectador comprador) {
+		this.comprador = comprador;
 	}
 
 /*	public Collection<Asiento> getAsientos() {

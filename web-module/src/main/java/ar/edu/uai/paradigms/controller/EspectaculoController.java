@@ -13,12 +13,15 @@ import org.springframework.web.bind.annotation.*;
 import ar.edu.uai.paradigms.service.EspectaculoService;
 import ar.edu.uai.paradigms.translator.EspectaculoTranslator;
 
+import java.util.ArrayList;
+import java.util.Collection;
+
 @Controller
 @RequestMapping("/espectaculo")
 public class EspectaculoController {
-	
+
 	public EspectaculoController(EspectaculoService espectaculoService,
-			EspectaculoTranslator espectaculoTranslator) {
+								 EspectaculoTranslator espectaculoTranslator) {
 		super();
 		this.espectaculoService = espectaculoService;
 		this.espectaculoTranslator = espectaculoTranslator;
@@ -32,22 +35,37 @@ public class EspectaculoController {
 	private EspectaculoTranslator espectaculoTranslator;
 
 	@RequestMapping(method = RequestMethod.POST, consumes = "application/json")
-	public @ResponseBody
+	public
+	@ResponseBody
 	EspectaculoDTO createEspectaculo(@RequestBody EspectaculoDTO espectaculoDTO) {
 		LOGGER.debug("Received DTO: " + espectaculoDTO);
 		return this.espectaculoTranslator
-				.translateToDTO((Espectaculo) this.espectaculoService
+				.translateToDTO(this.espectaculoService
 						.saveEspectaculo(this.espectaculoTranslator
 								.translate(espectaculoDTO)));
 	}
 
 	@RequestMapping(method = RequestMethod.GET, value = "/{identifier}")
-	public @ResponseBody
-	EspectaculoDTO getEspectaculo (@PathVariable long identifier) {
+	public
+	@ResponseBody
+	EspectaculoDTO getEspectaculo(@PathVariable long identifier) {
 		return this.espectaculoTranslator
-				.translateToDTO((Espectaculo) this.espectaculoService
+				.translateToDTO(this.espectaculoService
 						.retrieveEspectaculo(identifier));
 	}
+
+	@RequestMapping(method = RequestMethod.GET, value = "/listadoEspectaculos")
+	public @ResponseBody Collection<EspectaculoDTO> listadoEspectaculos() {
+
+		Collection<EspectaculoDTO> espectaculos = new ArrayList<EspectaculoDTO>();
+		Collection<Espectaculo> coleccion = this.espectaculoService.listarEspectaculos();
+		for (Espectaculo e : coleccion) {
+			espectaculos.add(espectaculoTranslator.translateToDTO(e));
+		}
+		return espectaculos;
+	}
+
+
 
 
 }

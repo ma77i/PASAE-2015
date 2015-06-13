@@ -73,4 +73,5 @@ public class Espectaculo {
 	public void setDescripcion(String descripcion) {
 		this.descripcion = descripcion;
 	}
+
 }
