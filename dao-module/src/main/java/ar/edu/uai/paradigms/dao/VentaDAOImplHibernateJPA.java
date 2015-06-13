@@ -24,4 +24,6 @@ public class VentaDAOImplHibernateJPA  extends GenericDaoHibernateJPA<Venta> imp
 		return (Float) consulta.getSingleResult();
 	}
 
+	//AGREGO COMENTARIO
+
 }
