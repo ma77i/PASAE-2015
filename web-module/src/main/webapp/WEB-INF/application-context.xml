@@ -100,8 +100,7 @@
 	</bean>
 	
 	<bean id="espectaculoTranslator" class="ar.edu.uai.paradigms.translator.EspectaculoTranslator" />
-	
-	
+
 	
 	
 	
