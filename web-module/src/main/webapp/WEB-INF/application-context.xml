@@ -100,12 +100,9 @@
 	</bean>
 	
 	<bean id="espectaculoTranslator" class="ar.edu.uai.paradigms.translator.EspectaculoTranslator" />
-	
-	<bean id="sectorController" class="ar.edu.uai.paradigms.controller.SectorController">
-		<constructor-arg name="sectorService" ref="sectorService"/>
-		<constructor-arg name="sectorTranslator" ref="sectorTranslator"/>
+	   <property name="espectadorService" ref="espectadorService" />
+	    <property name="espectaculoService" ref="espectaculoService" />
 	</bean>
-	
 	
 	
 	

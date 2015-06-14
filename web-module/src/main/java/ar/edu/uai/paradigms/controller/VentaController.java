@@ -59,7 +59,7 @@ public class VentaController {
     return misCompras;
 	}
 
-	@RequestMapping(method = RequestMethod.POST,consumes = "application/json")
+	@RequestMapping(method = RequestMethod.POST,consumes = "application/json",value="/RealizarCompra")
 	public @ResponseBody VentaDTO realizarCompra(@RequestBody VentaDTO ventaDTO ){
 		return (this.ventaTranslator.translateToDTO(this.ventaService.saveVenta(this.ventaTranslator.translate(ventaDTO))));
 	}

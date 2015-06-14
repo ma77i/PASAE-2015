@@ -18,12 +18,12 @@ public class Venta {
 
 	}
 
-	public Venta(float monto, float costoAdicional, Date fechaVenta, int coutas, Espectador comprador) {
+	public Venta(float monto, float costoAdicional, Date fechaVenta, int coutas, Funcion funcion,Espectador comprador) {
 		this.monto = monto;
 		this.costoAdicional = costoAdicional;
 		this.fechaVenta = fechaVenta;
 		this.coutas = coutas;
-		//this.funcion = funcion;
+		this.funcion = funcion;
 		this.comprador = comprador;
 	}
 
