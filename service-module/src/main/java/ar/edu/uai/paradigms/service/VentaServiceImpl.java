@@ -55,8 +55,8 @@ public class VentaServiceImpl implements VentaService {
 
 	@Override
 	public Float calcularMontoNeto(long id_sector, long id_espectaculo) {
-		//return ventaDAO.calcularMontoNeto(id_sector, id_espectaculo);
-	  return null;
+		return ventaDAO.calcularMontoNeto(id_sector, id_espectaculo);
+
 	}
 
 	@Override
