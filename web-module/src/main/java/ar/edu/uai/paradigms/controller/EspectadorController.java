@@ -59,13 +59,13 @@ public class EspectadorController {
 						.retrieveUsuario(identifier));
 	}
 
-	@RequestMapping(method = RequestMethod.POST)
+	@RequestMapping(method = RequestMethod.POST, value="/cambiarContrasena")
 	public @ResponseBody  EspectadorDTO cambiarDatosPersonales(@RequestBody EspectadorDTO espectadorDTO) {
 		LOGGER.debug("Received DTO: " + espectadorDTO);
 		return this.espectadorTranslator.translateToDTO((Espectador)this.espectadorService.modificarDatosPersonales(this.espectadorTranslator.translate(espectadorDTO)));
 	}
 
-	@RequestMapping(method = RequestMethod.POST)
+	@RequestMapping(method = RequestMethod.POST,value="/cambiarPassword")
 	public @ResponseBody  EspectadorDTO cambiarContrasena(@RequestBody EspectadorDTO espectadorDTO) {
 		LOGGER.debug("Received DTO: " + espectadorDTO);
 		return this.espectadorTranslator.translateToDTO((Espectador)this.espectadorService.modificarContrasena(this.espectadorTranslator.translate(espectadorDTO)));
