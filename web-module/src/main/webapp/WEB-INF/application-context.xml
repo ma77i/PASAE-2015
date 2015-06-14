@@ -99,11 +99,7 @@
 		<constructor-arg name="espectaculoTranslator" ref="espectaculoTranslator"/>
 	</bean>
 	
-	<bean id="espectaculoTranslator" class="ar.edu.uai.paradigms.translator.EspectaculoTranslator" >
-	    <property name="espectadorService" ref="espectadorService" />
-        <property name="espectaculoService" ref="espectaculoService" />
-	</bean>
-	
-	
+	<bean id="espectaculoTranslator" class="ar.edu.uai.paradigms.translator.EspectaculoTranslator" />
+
 	
 </beans>
