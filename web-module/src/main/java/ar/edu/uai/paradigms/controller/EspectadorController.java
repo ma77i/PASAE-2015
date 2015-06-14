@@ -1,16 +1,13 @@
 package ar.edu.uai.paradigms.controller;
 
-import ar.edu.uai.paradigms.dto.VentaDTO;
-import ar.edu.uai.paradigms.service.VentaService;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.*;
-
 import ar.edu.uai.model.Espectador;
 import ar.edu.uai.paradigms.dto.EspectadorDTO;
 import ar.edu.uai.paradigms.service.EspectadorService;
 import ar.edu.uai.paradigms.translator.EspectadorTranslator;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
 import java.util.Collection;
@@ -59,13 +56,13 @@ public class EspectadorController {
 						.retrieveUsuario(identifier));
 	}
 
-	@RequestMapping(method = RequestMethod.POST)
+	@RequestMapping(value = "/{identifier}/cambiardatos", method = RequestMethod.POST, consumes = "application/json")
 	public @ResponseBody  EspectadorDTO cambiarDatosPersonales(@RequestBody EspectadorDTO espectadorDTO) {
 		LOGGER.debug("Received DTO: " + espectadorDTO);
 		return this.espectadorTranslator.translateToDTO((Espectador)this.espectadorService.modificarDatosPersonales(this.espectadorTranslator.translate(espectadorDTO)));
 	}
 
-	@RequestMapping(method = RequestMethod.POST)
+	@RequestMapping(value = "/{identifier}/cambiarpass", method = RequestMethod.POST, consumes = "application/json")
 	public @ResponseBody  EspectadorDTO cambiarContrasena(@RequestBody EspectadorDTO espectadorDTO) {
 		LOGGER.debug("Received DTO: " + espectadorDTO);
 		return this.espectadorTranslator.translateToDTO((Espectador)this.espectadorService.modificarContrasena(this.espectadorTranslator.translate(espectadorDTO)));
