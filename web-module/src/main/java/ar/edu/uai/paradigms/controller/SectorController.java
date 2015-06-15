@@ -1,7 +1,6 @@
 package ar.edu.uai.paradigms.controller;
 
 import ar.edu.uai.model.Asiento;
-import ar.edu.uai.model.Sector;
 import ar.edu.uai.paradigms.dto.AsientoDTO;
 import ar.edu.uai.paradigms.dto.SectorDTO;
 import ar.edu.uai.paradigms.service.SectorService;
@@ -33,12 +32,18 @@ public class SectorController {
 
     private AsientoTranslator asientoTranslator;
 
+    public SectorController(SectorService sectorService, SectorTranslator sectorTranslator, AsientoTranslator asientoTranslator) {
+        this.sectorService = sectorService;
+        this.sectorTranslator = sectorTranslator;
+        this.asientoTranslator = asientoTranslator;
+    }
+
     @RequestMapping(method = RequestMethod.POST, consumes = "application/json")
     public @ResponseBody
     SectorDTO createSector (@RequestBody SectorDTO sectorDTO) {
         LOGGER.debug("Received DTO: " + sectorDTO);
         return this.sectorTranslator
-                .translateToDTO((Sector) this.sectorService
+                .translateToDTO(this.sectorService
                         .saveSector(this.sectorTranslator
                                 .translate(sectorDTO)));
     }
@@ -47,8 +52,8 @@ public class SectorController {
     public @ResponseBody
     SectorDTO getSector (@PathVariable long identifier) {
         return this.sectorTranslator
-                .translateToDTO((Sector) this.sectorService
-                        .retrieveSector(identifier));
+                .translateToDTO((this.sectorService
+                        .retrieveSector(identifier)));
     }
 
 
