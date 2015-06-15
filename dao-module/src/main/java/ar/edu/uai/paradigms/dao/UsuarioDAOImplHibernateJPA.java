@@ -20,7 +20,7 @@ public class UsuarioDAOImplHibernateJPA<T> extends GenericDaoHibernateJPA<T> imp
         }
         catch (NoResultException e) {
 
-            System.out.println("HAY UN USUARIO CON ESE NOMBRE");
+            System.out.println(" NO HAY UN USUARIO CON ESE NOMBRE");
             return null;
         }
 

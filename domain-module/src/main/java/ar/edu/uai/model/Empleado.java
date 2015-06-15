@@ -6,8 +6,8 @@ import javax.persistence.Entity;
 public class Empleado extends Usuario {
 
 	public Empleado(String email, String password, String nombre,
-			String apellido) {
-		super(email, password, nombre, apellido);
+			String apellido,String usuario) {
+		super(email, password, nombre, apellido,usuario);
 		// TODO Auto-generated constructor stub
 	}
 

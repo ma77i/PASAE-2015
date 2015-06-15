@@ -35,11 +35,12 @@ public abstract class Usuario {
 	
 	
 	public Usuario(String email, String password, String nombre,
-			String apellido) {
+			String apellido,String usuario) {
 		this.email = email;
 		this.password = password;
 		this.nombre = nombre;
 		this.apellido = apellido;
+		this.usuario=usuario;
 	}
 
 	public long getId() {
