@@ -7,11 +7,11 @@ import ar.edu.uai.paradigms.dto.EmpleadoDTO;
 public class EmpleadoTranslator {
 	
 	public Empleado translate(EmpleadoDTO empleadoDTO) {
-		return new Empleado(null, null, empleadoDTO.getName(),empleadoDTO.getApellido());
+		return new Empleado(empleadoDTO.getEmail(), empleadoDTO.getPassword(), empleadoDTO.getName(),empleadoDTO.getApellido(),empleadoDTO.getUsuario());
 	}
 
 	public EmpleadoDTO translateToDTO(Empleado usuario) {
-		return new EmpleadoDTO(null, null, usuario.getNombre(),usuario.getApellido());
+		return new EmpleadoDTO(usuario.getEmail(), usuario.getPassword(), usuario.getNombre(),usuario.getApellido(),usuario.getUsuario());
 	}
 
 }

@@ -8,17 +8,37 @@ public class EmpleadoDTO {
 	private String password;
 	private String nombre;
 	private String apellido;
+	private String usuario;
 
 	@JsonCreator
-	public EmpleadoDTO(@JsonProperty("email")String email, @JsonProperty("password")String password, @JsonProperty("nombre")String nombre, @JsonProperty("apellido")String apellido) {
+	public EmpleadoDTO(@JsonProperty("email") String email,
+			@JsonProperty("password") String password,
+			@JsonProperty("nombre") String nombre,
+			@JsonProperty("apellido") String apellido,
+			@JsonProperty("usuario") String usuario) {
 		super();
 		this.setEmail(email);
 		this.setPassword(password);
 		this.nombre = nombre;
-		this.apellido= apellido;
+		this.apellido = apellido;
+		this.usuario = usuario;
 	}
 
-	
+	public String getEmail() {
+		return email;
+	}
+
+	public void setEmail(String email) {
+		this.email = email;
+	}
+
+	public String getPassword() {
+		return password;
+	}
+
+	public void setPassword(String password) {
+		this.password = password;
+	}
 
 	public String getName() {
 		return nombre;
@@ -28,7 +48,6 @@ public class EmpleadoDTO {
 		this.nombre = nombre;
 	}
 
-
 	public String getApellido() {
 		return apellido;
 	}
@@ -37,35 +56,17 @@ public class EmpleadoDTO {
 		this.apellido = apellido;
 	}
 
-
-
-	public String getEmail() {
-		return email;
+	public String getUsuario() {
+		return usuario;
 	}
 
-
-
-	public void setEmail(String email) {
-		this.email = email;
+	public void setUsuario(String usuario) {
+		this.usuario = usuario;
 	}
-
-
-
-	public String getPassword() {
-		return password;
-	}
-
-
-
-	public void setPassword(String password) {
-		this.password = password;
-	}
-	
 
 	@Override
 	public String toString() {
 		return "EmpleadoDTO [nombre=" + nombre + ", apellido=" + apellido + "]";
 	}
-
 
 }
