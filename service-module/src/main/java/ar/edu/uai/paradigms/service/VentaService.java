@@ -1,5 +1,6 @@
 package ar.edu.uai.paradigms.service;
 
+import ar.edu.uai.model.Espectador;
 import ar.edu.uai.model.Venta;
 
 import java.util.Collection;
@@ -12,5 +13,6 @@ public interface VentaService {
 	public Float calcularMontoFinal(long id_sector, long id_espectaculo);
 	public Float calcularMontoNeto(long id_sector, long id_espectaculo);
 	public Float aplicarDescuento(long id_espectaculo);
+	public void agregarVentaParaEspectador(Espectador espectador,Venta venta);
 	
 }

@@ -2,6 +2,7 @@ package ar.edu.uai.paradigms.service;
 
 import java.util.Collection;
 
+import ar.edu.uai.model.Funcion;
 import org.springframework.transaction.annotation.Transactional;
 
 import ar.edu.uai.model.Espectaculo;
@@ -43,7 +44,6 @@ public class EspectaculoServiceImpl implements EspectaculoService {
 	@Override
 	public void deleteEspectaculo(long identifier) {
 		this.espectaculoDAO.delete(identifier);
-		;
 	}
 
 	@Override
@@ -59,6 +59,11 @@ public class EspectaculoServiceImpl implements EspectaculoService {
 	@Override
 	public Collection<Espectaculo> listarEspectaculosDeTeatro(long id_teatro){
 		return espectaculoDAO.listarEspectaculosDeTeatro(id_teatro);
+	}
+
+	@Override
+	public Funcion getFuncionDeEspectaculo(long id_funcion) {
+		return  espectaculoDAO.listarFuncionesDeEspectaculo(id_funcion);
 	}
 
 
