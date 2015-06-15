@@ -1,5 +1,6 @@
 package ar.edu.uai.paradigms.service;
 
+import ar.edu.uai.model.Espectador;
 import ar.edu.uai.model.Venta;
 import ar.edu.uai.paradigms.dao.VentaDAO;
 import org.springframework.transaction.annotation.Transactional;
@@ -63,6 +64,12 @@ public class VentaServiceImpl implements VentaService {
 	public Float aplicarDescuento(long id_espectaculo) {
 		// TODO Auto-generated method stub
 		return null;
+	}
+
+	@Override
+	public void agregarVentaParaEspectador(Espectador espectador,Venta venta) {
+          espectador.getCompras().add(venta);
+
 	}
 
 }

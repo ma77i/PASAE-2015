@@ -20,8 +20,20 @@ public class Espectador extends Usuario {
 		// TODO Auto-generated constructor stub
 	}
 
+
+
 	@OneToMany(mappedBy="comprador")
 	private Collection<Venta> compras;
+
+	public Collection<Venta> getCompras() {
+		return compras;
+	}
+
+	public void setCompras(Collection<Venta> compras) {
+		this.compras = compras;
+	}
+
+
 	
 //	private Collection<Tarjeta> tarjetas;
 	//posible interfaz,consultar.
