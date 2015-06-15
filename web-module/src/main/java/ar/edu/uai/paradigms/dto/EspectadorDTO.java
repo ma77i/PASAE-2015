@@ -7,22 +7,39 @@ import com.fasterxml.jackson.annotation.JsonProperty;
  * Created by Federico Donnarumma on 10/15/14.
  */
 public class EspectadorDTO {
-	
+
+	private long espectadorId;
 	private String email;
 	private String password;
 	private String nombre;
 	private String apellido;
+	private String usuario;
 
 	@JsonCreator
-	public EspectadorDTO(@JsonProperty("email")String email, @JsonProperty("password")String password, @JsonProperty("nombre")String nombre, @JsonProperty("apellido")String apellido) {
+	public EspectadorDTO(@JsonProperty("email")String email, @JsonProperty("password")String password, @JsonProperty("nombre")String nombre, @JsonProperty("apellido")String apellido,@JsonProperty("usuario")String usuario) {
 		super();
 		this.setEmail(email);
 		this.setPassword(password);
 		this.nombre = nombre;
 		this.apellido= apellido;
+		this.usuario=usuario;
 	}
 
-	
+	public String getUsuario() {
+		return usuario;
+	}
+
+	public void setUsuario(String usuario) {
+		this.usuario = usuario;
+	}
+
+	public Long getEspectadorId() {
+		return espectadorId;
+	}
+
+	public void setEspectadorId(Long espectadorId) {
+		this.espectadorId = espectadorId;
+	}
 
 	public String getName() {
 		return nombre;
@@ -64,11 +81,13 @@ public class EspectadorDTO {
 	public void setPassword(String password) {
 		this.password = password;
 	}
-	
+
+
+
 
 	@Override
 	public String toString() {
-		return "EspectadorDTO [nombre=" + nombre + ", apellido=" + apellido + "]";
+		return "EspectadorDTO [email=" + email + ", password=" + password + ", nombre=" + nombre+",apellido=" + apellido +",usuario=" + usuario + "]";
 	}
 
 

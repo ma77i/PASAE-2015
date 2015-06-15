@@ -1,6 +1,7 @@
 package ar.edu.uai.paradigms.controller;
 
 import ar.edu.uai.model.Espectador;
+import ar.edu.uai.model.Usuario;
 import ar.edu.uai.paradigms.dto.EspectadorDTO;
 import ar.edu.uai.paradigms.service.EspectadorService;
 import ar.edu.uai.paradigms.translator.EspectadorTranslator;
@@ -32,16 +33,16 @@ public class EspectadorController {
 
 	private EspectadorService espectadorService;
 
-
 	private EspectadorTranslator espectadorTranslator;
 
 	@RequestMapping(method = RequestMethod.POST, consumes = "application/json")
-	public
-	@ResponseBody
+	public @ResponseBody
 	EspectadorDTO createEspectador(@RequestBody EspectadorDTO espectadorDTO) {
+
 		LOGGER.debug("Received DTO: " + espectadorDTO);
+		Usuario espectador=espectadorService.existeUsuario(espectadorDTO.getUsuario());
 		return this.espectadorTranslator
-				.translateToDTO((Espectador) this.espectadorService
+				.translateToDTO(this.espectadorService
 						.saveUsuario(this.espectadorTranslator
 								.translate(espectadorDTO)));
 
@@ -52,20 +53,20 @@ public class EspectadorController {
 	@ResponseBody
 	EspectadorDTO getEspectador(@PathVariable long identifier) {
 		return this.espectadorTranslator
-				.translateToDTO((Espectador) this.espectadorService
+				.translateToDTO( this.espectadorService
 						.retrieveUsuario(identifier));
 	}
 
 	@RequestMapping(value = "/{identifier}/cambiardatos", method = RequestMethod.POST, consumes = "application/json")
 	public @ResponseBody  EspectadorDTO cambiarDatosPersonales(@RequestBody EspectadorDTO espectadorDTO) {
 		LOGGER.debug("Received DTO: " + espectadorDTO);
-		return this.espectadorTranslator.translateToDTO((Espectador)this.espectadorService.modificarDatosPersonales(this.espectadorTranslator.translate(espectadorDTO)));
+		return this.espectadorTranslator.translateToDTO(this.espectadorService.modificarDatosPersonales(this.espectadorTranslator.translate(espectadorDTO)));
 	}
 
 	@RequestMapping(value = "/{identifier}/cambiarpass", method = RequestMethod.POST, consumes = "application/json")
 	public @ResponseBody  EspectadorDTO cambiarContrasena(@RequestBody EspectadorDTO espectadorDTO) {
 		LOGGER.debug("Received DTO: " + espectadorDTO);
-		return this.espectadorTranslator.translateToDTO((Espectador)this.espectadorService.modificarContrasena(this.espectadorTranslator.translate(espectadorDTO)));
+		return this.espectadorTranslator.translateToDTO(this.espectadorService.modificarContrasena(this.espectadorTranslator.translate(espectadorDTO)));
 	}
 
 	@RequestMapping(method = RequestMethod.GET, value = "/listadoEspectadores")

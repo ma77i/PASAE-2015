@@ -44,6 +44,9 @@ public abstract class UsuarioService<T extends Usuario> {
 		return usuarioDAO.update(u);
     	
     }
+	public Usuario existeUsuario(String usuario){
+		return usuarioDAO.existeUsuario(usuario);
+	}
    
     
 

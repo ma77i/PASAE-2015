@@ -9,14 +9,16 @@ public class AdministradorDTO {
 	private String password;
 	private String nombre;
 	private String apellido;
+    private String usuario;
 
 	@JsonCreator
-	public AdministradorDTO(@JsonProperty("email")String email, @JsonProperty("password")String password, @JsonProperty("nombre")String nombre, @JsonProperty("apellido")String apellido) {
+	public AdministradorDTO(@JsonProperty("email")String email, @JsonProperty("password")String password, @JsonProperty("nombre")String nombre, @JsonProperty("apellido")String apellido,@JsonProperty("usuario") String usuario) {
 		super();
 		this.setEmail(email);
 		this.setPassword(password);
 		this.nombre = nombre;
 		this.apellido= apellido;
+		this.usuario=usuario;
 	}
 
 	
@@ -61,6 +63,28 @@ public class AdministradorDTO {
 	public void setPassword(String password) {
 		this.password = password;
 	}
+	
+	public String getNombre() {
+		return nombre;
+	}
+
+
+
+	public void setNombre(String nombre) {
+		this.nombre = nombre;
+	}
+	
+    
+    public String getUsuario() {
+		return usuario;
+	}
+
+
+
+	public void setUsuario(String usuario) {
+		this.usuario = usuario;
+	}
+    
 	
 
 	@Override
