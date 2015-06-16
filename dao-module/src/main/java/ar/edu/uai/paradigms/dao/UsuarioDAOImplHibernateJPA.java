@@ -23,10 +23,11 @@ public class UsuarioDAOImplHibernateJPA<T> extends GenericDaoHibernateJPA<T> imp
             System.out.println(" NO HAY UN USUARIO CON ESE NOMBRE");
             return null;
         }
-
-
-
-
+    }
+    
+    @Override
+    public String getUserRole(long id,String password){
+    	return "";
     }
 
 
