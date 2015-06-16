@@ -1,6 +1,5 @@
 package ar.edu.uai.paradigms.dto;
 
-import ar.edu.uai.model.Espectaculo;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
@@ -11,14 +10,14 @@ public class SectorDTO {
 
     private String nombre;
     private Float monto;
-    private Espectaculo espectaculo; //VA ACA????
+    private long id_espectaculo; //VA ACA????
     private Integer asientosLibres;
 
     @JsonCreator
-    public SectorDTO(@JsonProperty("nombre") String nombre, @JsonProperty("monto")Float monto, @JsonProperty("espectaculo") Espectaculo espectaculo, @JsonProperty("asientosLibres") Integer asientosLibres) {
+    public SectorDTO(@JsonProperty("nombre") String nombre, @JsonProperty("monto")Float monto, @JsonProperty("id_espectaculo") long id_espectaculo, @JsonProperty("asientosLibres") Integer asientosLibres) {
         this.nombre = nombre;
         this.monto = monto;
-        this.espectaculo=espectaculo;
+        this.id_espectaculo=id_espectaculo;
         this.asientosLibres=asientosLibres;
     }
 
@@ -39,12 +38,12 @@ public class SectorDTO {
         this.monto = monto;
     }
 
-    public Espectaculo getEspectaculo() {
-        return espectaculo;
+    public long getEspectaculo() {
+        return id_espectaculo;
     }
 
-    public void setEspectaculo(Espectaculo espectaculo) {
-        this.espectaculo = espectaculo;
+    public void setEspectaculo(long id_espectaculo) {
+        this.id_espectaculo = id_espectaculo;
     }
 
     public Integer getAsientosLibres() {
