@@ -1,6 +1,5 @@
 package ar.edu.uai.paradigms.dto;
 
-import ar.edu.uai.model.Sector;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
@@ -15,14 +14,14 @@ public class AsientoDTO {
 
     private boolean ocupado;
 
-    private Sector sector;
+    private long id_sector;
 
     @JsonCreator
-    public AsientoDTO(@JsonProperty ("fila") String fila, @JsonProperty("numero") int numero, @JsonProperty ("ocupado") boolean ocupado, @JsonProperty ("sector") Sector sector) {
+    public AsientoDTO(@JsonProperty ("fila") String fila, @JsonProperty("numero") int numero, @JsonProperty ("ocupado") boolean ocupado, @JsonProperty ("id_sector") long id_sector) {
         this.fila = fila;
         this.numero = numero;
         this.ocupado = ocupado;
-        this.sector = sector;
+        this.id_sector = id_sector;
     }
 
 
@@ -50,12 +49,12 @@ public class AsientoDTO {
         this.ocupado = ocupado;
     }
 
-    public Sector getSector() {
-        return sector;
+    public long getSector() {
+        return id_sector;
     }
 
-    public void setSector(Sector sector) {
-        this.sector = sector;
+    public void setSector(long id_sector) {
+        this.id_sector = id_sector;
     }
 
     public String toString() {
