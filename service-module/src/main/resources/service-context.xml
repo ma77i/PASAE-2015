@@ -45,4 +45,8 @@
       <property name="teatroDAO" ref="teatroDAO" />
      </bean> 
      
+     <bean id="loginService" class="ar.edu.uai.paradigms.service.LoginServiceImpl" >
+      <property name="usuarioDAO" ref="usuarioDAO" />
+     </bean> 
+     
 </beans>

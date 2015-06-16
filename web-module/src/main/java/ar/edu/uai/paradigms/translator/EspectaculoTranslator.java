@@ -5,13 +5,12 @@ import ar.edu.uai.paradigms.dto.EspectaculoDTO;
 
 public class EspectaculoTranslator {
 
-    public Espectaculo translate(EspectaculoDTO espectaculoDTO) {
-        return new Espectaculo(espectaculoDTO.getNombre(), espectaculoDTO.getDescripcion());
-    }
+	public Espectaculo translate(EspectaculoDTO espectaculoDTO) {
+		return new Espectaculo(espectaculoDTO.getNombre(), espectaculoDTO.getDescripcion());
+	}
 
-    public EspectaculoDTO translateToDTO(Espectaculo espectaculo) {
-        return new EspectaculoDTO(espectaculo.getNombre(),espectaculo.getDescripcion());
-    }
-
+	public EspectaculoDTO translateToDTO(Espectaculo espectaculo) {
+		return new EspectaculoDTO(espectaculo.getNombre(), espectaculo.getDescripcion());
+	}
 
 }

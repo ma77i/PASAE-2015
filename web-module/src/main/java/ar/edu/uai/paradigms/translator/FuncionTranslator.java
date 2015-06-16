@@ -6,15 +6,16 @@ import ar.edu.uai.paradigms.dto.FuncionDTO;
 import ar.edu.uai.paradigms.dto.SectorDTO;
 
 public class FuncionTranslator {
-	
-	/*
-	  public Funcion translate(FuncionDTO funcionDTO) {
-	        // new Funcion(funcionDTO.getFecha(),funcionDTO.getHora(), funcionDTO.getEspectaculoId());
-	    }
 
-	    public FuncionDTO translateToDTO(Funcion funcion) {
-	        //return new FuncionDTO(funcion.getFecha(),funcion.getHora(),funcion.getEspectaculo().getId());
-	    }*/
-	
+	/*
+	 * public Funcion translate(FuncionDTO funcionDTO) { // new
+	 * Funcion(funcionDTO.getFecha(),funcionDTO.getHora(),
+	 * funcionDTO.getEspectaculoId()); }
+	 * 
+	 * public FuncionDTO translateToDTO(Funcion funcion) { //return new
+	 * FuncionDTO
+	 * (funcion.getFecha(),funcion.getHora(),funcion.getEspectaculo().getId());
+	 * }
+	 */
 
 }

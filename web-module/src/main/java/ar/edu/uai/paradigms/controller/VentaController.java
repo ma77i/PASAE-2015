@@ -1,6 +1,5 @@
 package ar.edu.uai.paradigms.controller;
 
-
 import java.util.ArrayList;
 import java.util.Collection;
 
@@ -15,61 +14,46 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import ar.edu.uai.model.Venta;
 import ar.edu.uai.paradigms.dto.VentaDTO;
-import ar.edu.uai.paradigms.service.EspectaculoService;
-import ar.edu.uai.paradigms.service.EspectadorService;
 import ar.edu.uai.paradigms.service.VentaService;
 import ar.edu.uai.paradigms.translator.VentaTranslator;
-
 
 @Controller
 @RequestMapping("/venta")
 public class VentaController {
 
-
-	private static final Logger LOGGER = LoggerFactory
-			.getLogger(VentaController.class);
+	private static final Logger LOGGER = LoggerFactory.getLogger(VentaController.class);
 
 	private VentaService ventaService;
 
 	private VentaTranslator ventaTranslator;
 
-	public VentaController(VentaService ventaService,
-			VentaTranslator ventaTranslator) {
+	public VentaController(VentaService ventaService, VentaTranslator ventaTranslator) {
 		super();
 		this.ventaService = ventaService;
 		this.ventaTranslator = ventaTranslator;
 	}
 
 	@RequestMapping(method = RequestMethod.POST, consumes = "application/json")
-	public @ResponseBody
-	VentaDTO createVenta(@RequestBody VentaDTO ventaDTO) {
+	public @ResponseBody VentaDTO createVenta(@RequestBody VentaDTO ventaDTO) {
 		LOGGER.debug("Received DTO: " + ventaDTO);
-		
-         return this.ventaTranslator
-				.translateToDTO(this.ventaService
-						.saveVenta(this.ventaTranslator
-								.translate(ventaDTO)));
+
+		return this.ventaTranslator.translateToDTO(this.ventaService.saveVenta(this.ventaTranslator.translate(ventaDTO)));
 	}
-    
+
 	@RequestMapping(method = RequestMethod.GET, value = "/{identifier}")
-	public @ResponseBody
-	VentaDTO getVenta(@PathVariable long identifier) {
-		return this.ventaTranslator
-				.translateToDTO(this.ventaService
-						.retrieveVenta(identifier));
+	public @ResponseBody VentaDTO getVenta(@PathVariable long identifier) {
+		return this.ventaTranslator.translateToDTO(this.ventaService.retrieveVenta(identifier));
 	}
 
 	@RequestMapping(method = RequestMethod.GET, value = "/{identifier}/MisCompras")
-	public @ResponseBody Collection<VentaDTO> misCompras(@PathVariable long identifier ){
-    Collection<VentaDTO> misCompras= new ArrayList<VentaDTO>();
+	public @ResponseBody Collection<VentaDTO> misCompras(@PathVariable long identifier) {
+		Collection<VentaDTO> misCompras = new ArrayList<VentaDTO>();
 
-	Collection<Venta> compras=(this.ventaService.listarComprasDeEspectador(identifier));
-    for (Venta v: compras){
-		 misCompras.add(ventaTranslator.translateToDTO(v));
+		Collection<Venta> compras = (this.ventaService.listarComprasDeEspectador(identifier));
+		for (Venta v : compras) {
+			misCompras.add(ventaTranslator.translateToDTO(v));
+		}
+		return misCompras;
 	}
-    return misCompras;
-	}
-
-
 
 }

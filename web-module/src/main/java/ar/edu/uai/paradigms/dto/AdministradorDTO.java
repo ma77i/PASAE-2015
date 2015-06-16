@@ -12,15 +12,15 @@ public class AdministradorDTO {
     private String usuario;
 
 	@JsonCreator
-	public AdministradorDTO(@JsonProperty("email")String email, @JsonProperty("password")String password, @JsonProperty("nombre")String nombre, @JsonProperty("apellido")String apellido,@JsonProperty("usuario") String usuario) {
+	public AdministradorDTO(@JsonProperty("email") String email, @JsonProperty("password") String password, @JsonProperty("nombre") String nombre,
+			@JsonProperty("apellido") String apellido, @JsonProperty("usuario") String usuario) {
 		super();
 		this.setEmail(email);
 		this.setPassword(password);
 		this.nombre = nombre;
-		this.apellido= apellido;
-		this.usuario=usuario;
+		this.apellido = apellido;
+		this.usuario = usuario;
 	}
-
 	
 
 	public String getName() {

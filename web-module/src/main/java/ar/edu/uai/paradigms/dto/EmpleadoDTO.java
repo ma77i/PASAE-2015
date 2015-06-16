@@ -11,11 +11,8 @@ public class EmpleadoDTO {
 	private String usuario;
 
 	@JsonCreator
-	public EmpleadoDTO(@JsonProperty("email") String email,
-			@JsonProperty("password") String password,
-			@JsonProperty("nombre") String nombre,
-			@JsonProperty("apellido") String apellido,
-			@JsonProperty("usuario") String usuario) {
+	public EmpleadoDTO(@JsonProperty("email") String email, @JsonProperty("password") String password, @JsonProperty("nombre") String nombre,
+			@JsonProperty("apellido") String apellido, @JsonProperty("usuario") String usuario) {
 		super();
 		this.setEmail(email);
 		this.setPassword(password);
