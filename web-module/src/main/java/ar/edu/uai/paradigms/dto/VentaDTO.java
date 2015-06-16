@@ -18,15 +18,11 @@ public class VentaDTO {
 	private int cuotas;
 	private Long espectaculoId;
 	private Long funcionId;
-	private Long espectadorId; 
+	private Long espectadorId;
 
 	@JsonCreator
-	public VentaDTO(@JsonProperty("monto") float monto,
-			@JsonProperty("costoAdicional") float costoAdicional,
-			@JsonProperty("fechaVenta") Date fechaVenta,
-			@JsonProperty("cuotas") int cuotas,
-			@JsonProperty("espectaculoId") long espectaculoId,
-			@JsonProperty("funcionId") long funcionId,
+	public VentaDTO(@JsonProperty("monto") float monto, @JsonProperty("costoAdicional") float costoAdicional, @JsonProperty("fechaVenta") Date fechaVenta,
+			@JsonProperty("cuotas") int cuotas, @JsonProperty("espectaculoId") long espectaculoId, @JsonProperty("funcionId") long funcionId,
 			@JsonProperty("espectadorId") long espectadorId) {
 		super();
 		this.setMonto(monto);
@@ -94,11 +90,13 @@ public class VentaDTO {
 	}
 
 	public String toString() {
-		return "VentaDTO [monto=" + monto + ", costoAdicional="
-				+ costoAdicional + ", fechaVenta=" + fechaVenta + ",cuotas="
-				+ cuotas + ",comprador=" + espectadorId + "]"; // ACA VA LA
-																// FUNCION Y
-																// ESPECTACULO ?
+		return "VentaDTO [monto=" + monto + ", costoAdicional=" + costoAdicional + ", fechaVenta=" + fechaVenta + ",cuotas=" + cuotas + ",comprador=" + espectadorId + "]"; // ACA
+																																											// VA
+																																											// LA
+																																											// FUNCION
+																																											// Y
+																																											// ESPECTACULO
+																																											// ?
 	}
 
 }

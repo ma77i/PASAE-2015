@@ -9,18 +9,18 @@ import ar.edu.uai.paradigms.service.EspectaculoService;
  */
 public class SectorTranslator {
 
-    private EspectaculoService espectaculoService;
+	private EspectaculoService espectaculoService;
 
-    public void setEspectaculoService(EspectaculoService espectaculoService) {
-        this.espectaculoService = espectaculoService;
-    }
+	public void setEspectaculoService(EspectaculoService espectaculoService) {
+		this.espectaculoService = espectaculoService;
+	}
 
-    public Sector translate(SectorDTO sectorDTO) {
+	public Sector translate(SectorDTO sectorDTO) {
 
-        return new Sector(sectorDTO.getNombre(), sectorDTO.getMonto(), espectaculoService.retrieveEspectaculo(sectorDTO.getEspectaculo()), sectorDTO.getAsientosLibres());
-    }
+		return new Sector(sectorDTO.getNombre(), sectorDTO.getMonto(), espectaculoService.retrieveEspectaculo(sectorDTO.getEspectaculo()), sectorDTO.getAsientosLibres());
+	}
 
-    public SectorDTO translateToDTO(Sector sector) {
-        return new SectorDTO(sector.getNombre(),sector.getMonto(),sector.getEspectaculo().getId(), sector.getAsientosLibres());
-    }
+	public SectorDTO translateToDTO(Sector sector) {
+		return new SectorDTO(sector.getNombre(), sector.getMonto(), sector.getEspectaculo().getId(), sector.getAsientosLibres());
+	}
 }

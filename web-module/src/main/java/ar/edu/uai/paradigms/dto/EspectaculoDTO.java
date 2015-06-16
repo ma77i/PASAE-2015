@@ -8,33 +8,33 @@ import com.fasterxml.jackson.annotation.JsonProperty;
  */
 public class EspectaculoDTO {
 
-    private String nombre;
-    private String descripcion;
+	private String nombre;
+	private String descripcion;
 
-    @JsonCreator
-    public EspectaculoDTO(@JsonProperty("nombre") String nombre, @JsonProperty("descripcion")String descripcion) {
-        this.nombre = nombre;
-        this.descripcion = descripcion;
-    }
+	@JsonCreator
+	public EspectaculoDTO(@JsonProperty("nombre") String nombre, @JsonProperty("descripcion") String descripcion) {
+		this.nombre = nombre;
+		this.descripcion = descripcion;
+	}
 
-    public String getNombre() {
-        return nombre;
-    }
+	public String getNombre() {
+		return nombre;
+	}
 
-    public void setNombre(String nombre) {
-        this.nombre = nombre;
-    }
+	public void setNombre(String nombre) {
+		this.nombre = nombre;
+	}
 
-    public String getDescripcion() {
-        return descripcion;
-    }
+	public String getDescripcion() {
+		return descripcion;
+	}
 
-    public void setDescripcion(String descripcion) {
-        this.descripcion = descripcion;
-    }
+	public void setDescripcion(String descripcion) {
+		this.descripcion = descripcion;
+	}
 
-    public String toString() {
-        return "EspectaculoDTO [nombre=" + nombre + ", descripcion=" + descripcion + "]";
-    }
+	public String toString() {
+		return "EspectaculoDTO [nombre=" + nombre + ", descripcion=" + descripcion + "]";
+	}
 
 }

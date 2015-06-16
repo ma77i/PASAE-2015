@@ -21,79 +21,53 @@ import java.util.Collection;
 @RequestMapping("/espectador")
 public class EspectadorController {
 
-	public EspectadorController(EspectadorService espectadorService,
-								EspectadorTranslator espectadorTranslator) {
+	public EspectadorController(EspectadorService espectadorService, EspectadorTranslator espectadorTranslator) {
 		super();
 		this.espectadorService = espectadorService;
 		this.espectadorTranslator = espectadorTranslator;
 	}
 
-	private static final Logger LOGGER = LoggerFactory
-			.getLogger(EspectadorController.class);
+	private static final Logger LOGGER = LoggerFactory.getLogger(EspectadorController.class);
 
 	private EspectadorService espectadorService;
 
 	private EspectadorTranslator espectadorTranslator;
 
 	@RequestMapping(method = RequestMethod.POST, consumes = "application/json")
-	public @ResponseBody
-	EspectadorDTO createEspectador(@RequestBody EspectadorDTO espectadorDTO) {
+	public @ResponseBody EspectadorDTO createEspectador(@RequestBody EspectadorDTO espectadorDTO) {
 
 		LOGGER.debug("Received DTO: " + espectadorDTO);
-		Usuario espectador=espectadorService.existeUsuario(espectadorDTO.getUsuario());
-		return this.espectadorTranslator
-				.translateToDTO(this.espectadorService
-						.saveUsuario(this.espectadorTranslator
-								.translate(espectadorDTO)));
+		Usuario espectador = espectadorService.existeUsuario(espectadorDTO.getUsuario());
+		return this.espectadorTranslator.translateToDTO(this.espectadorService.saveUsuario(this.espectadorTranslator.translate(espectadorDTO)));
 
 	}
 
 	@RequestMapping(method = RequestMethod.GET, value = "/{identifier}")
-	public
-	@ResponseBody
-	EspectadorDTO getEspectador(@PathVariable long identifier) {
-		return this.espectadorTranslator
-				.translateToDTO( this.espectadorService
-						.retrieveUsuario(identifier));
+	public @ResponseBody EspectadorDTO getEspectador(@PathVariable long identifier) {
+		return this.espectadorTranslator.translateToDTO(this.espectadorService.retrieveUsuario(identifier));
 	}
 
 	@RequestMapping(value = "/{identifier}/cambiardatos", method = RequestMethod.POST, consumes = "application/json")
-	public @ResponseBody  EspectadorDTO cambiarDatosPersonales(@RequestBody EspectadorDTO espectadorDTO) {
+	public @ResponseBody EspectadorDTO cambiarDatosPersonales(@RequestBody EspectadorDTO espectadorDTO) {
 		LOGGER.debug("Received DTO: " + espectadorDTO);
 		return this.espectadorTranslator.translateToDTO(this.espectadorService.modificarDatosPersonales(this.espectadorTranslator.translate(espectadorDTO)));
 	}
 
 	@RequestMapping(value = "/{identifier}/cambiarpass", method = RequestMethod.POST, consumes = "application/json")
-	public @ResponseBody  EspectadorDTO cambiarContrasena(@RequestBody EspectadorDTO espectadorDTO) {
+	public @ResponseBody EspectadorDTO cambiarContrasena(@RequestBody EspectadorDTO espectadorDTO) {
 		LOGGER.debug("Received DTO: " + espectadorDTO);
 		return this.espectadorTranslator.translateToDTO(this.espectadorService.modificarContrasena(this.espectadorTranslator.translate(espectadorDTO)));
 	}
 
 	@RequestMapping(method = RequestMethod.GET, value = "/listadoEspectadores")
 	public @ResponseBody Collection<EspectadorDTO> listadoEspectadores() {
-		Collection<Espectador>lista=this.espectadorService.listarEspectadores();
-		Collection<EspectadorDTO> espectadores= new ArrayList<EspectadorDTO>();
-		for(Espectador espectador: lista ){
+		Collection<Espectador> lista = this.espectadorService.listarEspectadores();
+		Collection<EspectadorDTO> espectadores = new ArrayList<EspectadorDTO>();
+		for (Espectador espectador : lista) {
 			espectadores.add(espectadorTranslator.translateToDTO(espectador));
 		}
-		return  espectadores;
-
+		return espectadores;
 
 	}
 
-
-
-
-
-
-
-
-
-
-
-
 }
-
-
-
-

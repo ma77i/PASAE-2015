@@ -23,22 +23,17 @@ public class VentaTranslator {
 	private EspectaculoService espectaculoService;
 
 	public Venta translate(VentaDTO ventaDTO) {
-		Espectador espectador = espectadorService.retrieveUsuario(ventaDTO
-				.getEspectadorId());
-		//Espectaculo espectaculo = espectaculoService.retrieveEspectaculo(ventaDTO.getEspectaculoId());
-		Funcion funcion = espectaculoService.getFuncionDeEspectaculo(ventaDTO
-				.getFuncionId());
-		
-		return new Venta(ventaDTO.getMonto(), ventaDTO.getCostoAdicional(),
-				ventaDTO.getFechaVenta(), ventaDTO.getCuotas(), funcion,
-				espectador);
+		Espectador espectador = espectadorService.retrieveUsuario(ventaDTO.getEspectadorId());
+		// Espectaculo espectaculo =
+		// espectaculoService.retrieveEspectaculo(ventaDTO.getEspectaculoId());
+		Funcion funcion = espectaculoService.getFuncionDeEspectaculo(ventaDTO.getFuncionId());
+
+		return new Venta(ventaDTO.getMonto(), ventaDTO.getCostoAdicional(), ventaDTO.getFechaVenta(), ventaDTO.getCuotas(), funcion, espectador);
 	}
 
 	public VentaDTO translateToDTO(Venta venta) {
-		return new VentaDTO(venta.getMonto(), venta.getCostoAdicional(),
-				venta.getFechaVenta(), venta.getCoutas(), venta.getFuncion()
-						.getEspectaculo().getId(), venta.getFuncion().getId(),
-				venta.getComprador().getId());
+		return new VentaDTO(venta.getMonto(), venta.getCostoAdicional(), venta.getFechaVenta(), venta.getCoutas(), venta.getFuncion().getEspectaculo().getId(), venta.getFuncion()
+				.getId(), venta.getComprador().getId());
 	}
 
 }
