@@ -17,8 +17,8 @@ public class VentaDTO {
 	private Date fechaVenta;
 	private int cuotas;
 	private Long espectaculoId;
-	private Long funcionId; // VA ACA
-	private Long espectadorId; // VA ACA
+	private Long funcionId;
+	private Long espectadorId; 
 
 	@JsonCreator
 	public VentaDTO(@JsonProperty("monto") float monto,

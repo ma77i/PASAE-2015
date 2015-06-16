@@ -11,6 +11,8 @@ public class VentaServiceImpl implements VentaService {
 
 	private VentaDAO ventaDAO;
 	
+	private EspectadorService espectadorService;
+
 	public VentaServiceImpl(){
 		
 	}
@@ -29,7 +31,9 @@ public class VentaServiceImpl implements VentaService {
 
 	@Transactional
 	public Venta saveVenta(Venta venta) {
-		return ventaDAO.create(venta);
+		Venta savedVenta = ventaDAO.create(venta);
+		this.agregarVentaParaEspectador(this.espectadorService.retrieveUsuario(venta.getComprador().getId()), savedVenta);
+		return savedVenta;
 	}
 
 	@Override
@@ -69,7 +73,7 @@ public class VentaServiceImpl implements VentaService {
 	@Override
 	public void agregarVentaParaEspectador(Espectador espectador,Venta venta) {
           espectador.getCompras().add(venta);
-
+  		  this.espectadorService.saveUsuario(espectador);
 	}
 
 }
