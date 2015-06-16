@@ -1,6 +1,5 @@
 package ar.edu.uai.paradigms.translator;
 
-import ar.edu.uai.model.Espectaculo;
 import ar.edu.uai.model.Espectador;
 import ar.edu.uai.model.Funcion;
 import ar.edu.uai.model.Venta;
