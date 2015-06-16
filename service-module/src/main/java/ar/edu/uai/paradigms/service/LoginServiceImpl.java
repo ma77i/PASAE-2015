@@ -11,7 +11,7 @@ public class LoginServiceImpl implements LoginService {
 	
 
 	@Override
-	public String getUserRole(int user_id) {
+	public String getUserRole(String email,String password) {
 		// TODO Auto-generated method stub
 		
 		return role;

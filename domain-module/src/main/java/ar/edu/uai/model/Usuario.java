@@ -83,10 +83,12 @@ public abstract class Usuario {
 		this.apellido = apellido;
 	}
     
+	@deprecated
 	public String getUsuario() {
 		return usuario;
 	}
-
+	
+	@deprecated
 	public void setUsuario(String usuario) {
 		this.usuario = usuario;
 	}

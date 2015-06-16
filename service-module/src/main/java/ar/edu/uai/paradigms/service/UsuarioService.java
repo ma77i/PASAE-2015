@@ -48,8 +48,8 @@ public abstract class UsuarioService<T extends Usuario> {
 		return usuarioDAO.existeUsuario(usuario);
 	}
 	
-	public String getUserRole(long id,String password){
-		return usuarioDAO.getUserRole(id,password);
+	public String getUserRole(String email,String password){
+		return usuarioDAO.getUserRole(email,password);
 	}
    
     
