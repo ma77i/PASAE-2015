@@ -9,6 +9,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
+import ar.edu.uai.paradigms.validation.Validator;
 
 import java.util.ArrayList;
 import java.util.Collection;
@@ -52,9 +53,9 @@ public class EspectadorController {
 	public
 	@ResponseBody
 	EspectadorDTO getEspectador(@PathVariable long identifier) {
-		return this.espectadorTranslator
-				.translateToDTO( this.espectadorService
-						.retrieveUsuario(identifier));
+		return Validator.validateObject(this.espectadorTranslator
+				.translateToDTO(this.espectadorService
+						.retrieveUsuario(identifier)));
 	}
 
 	@RequestMapping(value = "/{identifier}/cambiardatos", method = RequestMethod.POST, consumes = "application/json")
