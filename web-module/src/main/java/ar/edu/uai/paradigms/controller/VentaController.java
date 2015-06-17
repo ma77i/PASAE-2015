@@ -21,7 +21,7 @@ import java.util.Collection;
 
 @Controller
 @RequestMapping("/venta")
-public class VentaController {
+public class VentaController extends ErrorController {
 
 
 	private static final Logger LOGGER = LoggerFactory

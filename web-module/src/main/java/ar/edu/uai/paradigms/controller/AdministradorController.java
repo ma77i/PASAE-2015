@@ -16,7 +16,7 @@ import ar.edu.uai.paradigms.translator.AdministradorTranslator;
 
 @Controller
 @RequestMapping("/administrador")
-public class AdministradorController {
+public class AdministradorController extends ErrorController {
 
 	public AdministradorController(AdministradorService administradorService,
 			AdministradorTranslator administradorTranslator) {

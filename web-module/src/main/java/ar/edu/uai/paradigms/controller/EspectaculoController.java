@@ -18,7 +18,7 @@ import java.util.Collection;
 
 @Controller
 @RequestMapping("/espectaculo")
-public class EspectaculoController {
+public class EspectaculoController extends ErrorController {
 
 	public EspectaculoController(EspectaculoService espectaculoService,
 								 EspectaculoTranslator espectaculoTranslator) {
