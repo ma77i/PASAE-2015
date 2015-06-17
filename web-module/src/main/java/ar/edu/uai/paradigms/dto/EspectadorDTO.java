@@ -16,13 +16,14 @@ public class EspectadorDTO {
 	private String usuario;
 
 	@JsonCreator
-	public EspectadorDTO(@JsonProperty("email")String email, @JsonProperty("password")String password, @JsonProperty("nombre")String nombre, @JsonProperty("apellido")String apellido,@JsonProperty("usuario")String usuario) {
+	public EspectadorDTO(@JsonProperty("email") String email, @JsonProperty("password") String password, @JsonProperty("nombre") String nombre,
+			@JsonProperty("apellido") String apellido, @JsonProperty("usuario") String usuario) {
 		super();
 		this.setEmail(email);
 		this.setPassword(password);
 		this.nombre = nombre;
-		this.apellido= apellido;
-		this.usuario=usuario;
+		this.apellido = apellido;
+		this.usuario = usuario;
 	}
 
 	public String getUsuario() {
@@ -49,7 +50,6 @@ public class EspectadorDTO {
 		this.nombre = nombre;
 	}
 
-
 	public String getApellido() {
 		return apellido;
 	}
@@ -58,37 +58,25 @@ public class EspectadorDTO {
 		this.apellido = apellido;
 	}
 
-
-
 	public String getEmail() {
 		return email;
 	}
-
-
 
 	public void setEmail(String email) {
 		this.email = email;
 	}
 
-
-
 	public String getPassword() {
 		return password;
 	}
-
-
 
 	public void setPassword(String password) {
 		this.password = password;
 	}
 
-
-
-
 	@Override
 	public String toString() {
-		return "EspectadorDTO [email=" + email + ", password=" + password + ", nombre=" + nombre+",apellido=" + apellido +",usuario=" + usuario + "]";
+		return "EspectadorDTO [email=" + email + ", password=" + password + ", nombre=" + nombre + ",apellido=" + apellido + ",usuario=" + usuario + "]";
 	}
-
 
 }

@@ -47,6 +47,10 @@ public abstract class UsuarioService<T extends Usuario> {
 	public Usuario existeUsuario(String usuario){
 		return usuarioDAO.existeUsuario(usuario);
 	}
+	
+	public String getUserRole(String email,String password){
+		return usuarioDAO.getUserRole(email,password);
+	}
    
     
 
