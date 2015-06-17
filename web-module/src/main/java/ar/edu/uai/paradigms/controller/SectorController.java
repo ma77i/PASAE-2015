@@ -8,6 +8,8 @@ import ar.edu.uai.paradigms.translator.AsientoTranslator;
 import ar.edu.uai.paradigms.translator.SectorTranslator;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.dao.EmptyResultDataAccessException;
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
@@ -21,7 +23,7 @@ import java.util.Iterator;
 
 @Controller
 @RequestMapping("/sector")
-public class SectorController {
+public class SectorController extends ErrorController {
 
     private static final Logger LOGGER = LoggerFactory
             .getLogger(SectorController.class);
@@ -39,6 +41,7 @@ public class SectorController {
     }
 
     @RequestMapping(method = RequestMethod.POST, consumes = "application/json")
+    @ResponseStatus(HttpStatus.OK)
     public @ResponseBody
     SectorDTO createSector (@RequestBody SectorDTO sectorDTO) {
         LOGGER.debug("Received DTO: " + sectorDTO);
@@ -98,6 +101,12 @@ public class SectorController {
     }
 
 
-
+    @ExceptionHandler(EmptyResultDataAccessException.class)
+    @ResponseStatus(value= HttpStatus.NOT_FOUND,reason="Contact not found")
+    public void notFound() { }
 
 }
+
+
+
+

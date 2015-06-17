@@ -7,10 +7,14 @@ import ar.edu.uai.paradigms.service.EspectadorService;
 import ar.edu.uai.paradigms.translator.EspectadorTranslator;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.dao.DataAccessException;
+import org.springframework.dao.EmptyResultDataAccessException;
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Controller;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
-import ar.edu.uai.paradigms.validation.Validator;
 
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Collection;
 
@@ -20,7 +24,7 @@ import java.util.Collection;
 
 @Controller
 @RequestMapping("/espectador")
-public class EspectadorController {
+public class EspectadorController extends ErrorController {
 
 	public EspectadorController(EspectadorService espectadorService,
 								EspectadorTranslator espectadorTranslator) {
@@ -50,10 +54,11 @@ public class EspectadorController {
 	}
 
 	@RequestMapping(method = RequestMethod.GET, value = "/{identifier}")
+	@ResponseStatus(HttpStatus.OK)
 	public
 	@ResponseBody
 	EspectadorDTO getEspectador(@PathVariable long identifier) {
-		return Validator.validateObject(this.espectadorTranslator
+		return (this.espectadorTranslator
 				.translateToDTO(this.espectadorService
 						.retrieveUsuario(identifier)));
 	}
@@ -81,15 +86,6 @@ public class EspectadorController {
 
 
 	}
-
-
-
-
-
-
-
-
-
 
 
 
