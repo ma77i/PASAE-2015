@@ -21,7 +21,7 @@ import java.util.Iterator;
 
 @Controller
 @RequestMapping("/sector")
-public class SectorController {
+public class SectorController extends ErrorController {
 
 	private static final Logger LOGGER = LoggerFactory.getLogger(SectorController.class);
 

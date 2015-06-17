@@ -19,7 +19,7 @@ import ar.edu.uai.paradigms.translator.VentaTranslator;
 
 @Controller
 @RequestMapping("/venta")
-public class VentaController {
+public class VentaController extends ErrorController {
 
 	private static final Logger LOGGER = LoggerFactory.getLogger(VentaController.class);
 

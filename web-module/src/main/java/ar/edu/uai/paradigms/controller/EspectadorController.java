@@ -19,7 +19,7 @@ import java.util.Collection;
 
 @Controller
 @RequestMapping("/espectador")
-public class EspectadorController {
+public class EspectadorController extends ErrorController {
 
 	public EspectadorController(EspectadorService espectadorService, EspectadorTranslator espectadorTranslator) {
 		super();
