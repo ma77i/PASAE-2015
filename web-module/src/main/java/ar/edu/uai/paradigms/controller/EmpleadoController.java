@@ -16,38 +16,29 @@ import ar.edu.uai.paradigms.translator.EmpleadoTranslator;
 
 @Controller
 @RequestMapping("/empleado")
-public class EmpleadoController extends ErrorController {
+public class EmpleadoController {
 
-	public EmpleadoController(EmpleadoService empleadoService,
-			EmpleadoTranslator empleadoTranslator) {
+	public EmpleadoController(EmpleadoService empleadoService, EmpleadoTranslator empleadoTranslator) {
 		super();
 		this.empleadoService = empleadoService;
 		this.empleadoTranslator = empleadoTranslator;
 	}
 
-	private static final Logger LOGGER = LoggerFactory
-			.getLogger(EspectadorController.class);
+	private static final Logger LOGGER = LoggerFactory.getLogger(EspectadorController.class);
 
 	private EmpleadoService empleadoService;
 
 	private EmpleadoTranslator empleadoTranslator;
 
 	@RequestMapping(method = RequestMethod.POST, consumes = "application/json")
-	public @ResponseBody
-	EmpleadoDTO createEmpleado(@RequestBody EmpleadoDTO empleadoDTO) {
+	public @ResponseBody EmpleadoDTO createEmpleado(@RequestBody EmpleadoDTO empleadoDTO) {
 		LOGGER.debug("Received DTO: " + empleadoDTO);
-		return this.empleadoTranslator
-				.translateToDTO((Empleado) this.empleadoService
-						.saveUsuario(this.empleadoTranslator
-								.translate(empleadoDTO)));
+		return this.empleadoTranslator.translateToDTO((Empleado) this.empleadoService.saveUsuario(this.empleadoTranslator.translate(empleadoDTO)));
 	}
 
 	@RequestMapping(method = RequestMethod.GET, value = "/{identifier}")
-	public @ResponseBody
-	EmpleadoDTO getEmpleado(@PathVariable long identifier) {
-		return this.empleadoTranslator
-				.translateToDTO((Empleado) this.empleadoService
-						.retrieveUsuario(identifier));
+	public @ResponseBody EmpleadoDTO getEmpleado(@PathVariable long identifier) {
+		return this.empleadoTranslator.translateToDTO((Empleado) this.empleadoService.retrieveUsuario(identifier));
 	}
 
 }

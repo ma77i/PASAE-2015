@@ -9,17 +9,17 @@ import ar.edu.uai.paradigms.service.SectorService;
  */
 public class AsientoTranslator {
 
-    private SectorService sectorService;
+	private SectorService sectorService;
 
-    public void setSectorService(SectorService sectorService) {
-        this.sectorService = sectorService;
-    }
+	public void setSectorService(SectorService sectorService) {
+		this.sectorService = sectorService;
+	}
 
-    public Asiento translate(AsientoDTO asientoDTO) {
-        return new Asiento(asientoDTO.getFila(), asientoDTO.getNumero(), asientoDTO.isOcupado(), sectorService.retrieveSector(asientoDTO.getSector()));
-    }
+	public Asiento translate(AsientoDTO asientoDTO) {
+		return new Asiento(asientoDTO.getFila(), asientoDTO.getNumero(), asientoDTO.isOcupado(), sectorService.retrieveSector(asientoDTO.getSector()));
+	}
 
-    public AsientoDTO translateToDTO(Asiento asiento) {
-        return new AsientoDTO(asiento.getFila(),asiento.getNumero(),asiento.isOcupado(), asiento.getSector().getId());
-    }
+	public AsientoDTO translateToDTO(Asiento asiento) {
+		return new AsientoDTO(asiento.getFila(), asiento.getNumero(), asiento.isOcupado(), asiento.getSector().getId());
+	}
 }

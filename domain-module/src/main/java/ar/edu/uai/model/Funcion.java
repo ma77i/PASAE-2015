@@ -15,6 +15,13 @@ import javax.persistence.OneToMany;
 public class Funcion {
 
 	
+	public Funcion(Date fecha, Date hora, Espectaculo espectaculo){
+		this.fecha = fecha;
+		this.hora = hora;
+		this.espectaculo = espectaculo;
+		
+	}
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private long id;
@@ -25,7 +32,7 @@ public class Funcion {
 
 	private Date fecha;
 	
-	private Time hora;
+	private Date hora;
 	
 	@ManyToOne
 	private Espectaculo espectaculo;
@@ -57,11 +64,11 @@ public class Funcion {
 		this.fecha = fecha;
 	}
 
-	public Time getHora() {
+	public Date getHora() {
 		return hora;
 	}
 
-	public void setHora(Time hora) {
+	public void setHora(Date hora) {
 		this.hora = hora;
 	}
 

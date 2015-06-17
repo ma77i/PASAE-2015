@@ -18,40 +18,29 @@ import java.util.Collection;
 
 @Controller
 @RequestMapping("/espectaculo")
-public class EspectaculoController extends ErrorController {
+public class EspectaculoController {
 
-	public EspectaculoController(EspectaculoService espectaculoService,
-								 EspectaculoTranslator espectaculoTranslator) {
+	public EspectaculoController(EspectaculoService espectaculoService, EspectaculoTranslator espectaculoTranslator) {
 		super();
 		this.espectaculoService = espectaculoService;
 		this.espectaculoTranslator = espectaculoTranslator;
 	}
 
-	private static final Logger LOGGER = LoggerFactory
-			.getLogger(EspectaculoController.class);
+	private static final Logger LOGGER = LoggerFactory.getLogger(EspectaculoController.class);
 
 	private EspectaculoService espectaculoService;
 
 	private EspectaculoTranslator espectaculoTranslator;
 
 	@RequestMapping(method = RequestMethod.POST, consumes = "application/json")
-	public
-	@ResponseBody
-	EspectaculoDTO createEspectaculo(@RequestBody EspectaculoDTO espectaculoDTO) {
+	public @ResponseBody EspectaculoDTO createEspectaculo(@RequestBody EspectaculoDTO espectaculoDTO) {
 		LOGGER.debug("Received DTO: " + espectaculoDTO);
-		return this.espectaculoTranslator
-				.translateToDTO(this.espectaculoService
-						.saveEspectaculo(this.espectaculoTranslator
-								.translate(espectaculoDTO)));
+		return this.espectaculoTranslator.translateToDTO(this.espectaculoService.saveEspectaculo(this.espectaculoTranslator.translate(espectaculoDTO)));
 	}
 
 	@RequestMapping(method = RequestMethod.GET, value = "/{identifier}")
-	public
-	@ResponseBody
-	EspectaculoDTO getEspectaculo(@PathVariable long identifier) {
-		return this.espectaculoTranslator
-				.translateToDTO(this.espectaculoService
-						.retrieveEspectaculo(identifier));
+	public @ResponseBody EspectaculoDTO getEspectaculo(@PathVariable long identifier) {
+		return this.espectaculoTranslator.translateToDTO(this.espectaculoService.retrieveEspectaculo(identifier));
 	}
 
 	@RequestMapping(method = RequestMethod.GET, value = "/listadoEspectaculos")
@@ -64,8 +53,5 @@ public class EspectaculoController extends ErrorController {
 		}
 		return espectaculos;
 	}
-
-
-
 
 }
