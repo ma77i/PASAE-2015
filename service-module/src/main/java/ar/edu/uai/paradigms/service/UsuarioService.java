@@ -1,12 +1,10 @@
 package ar.edu.uai.paradigms.service;
 
 
-
-import org.springframework.transaction.annotation.Transactional;
-
 import ar.edu.uai.model.Usuario;
 import ar.edu.uai.paradigms.dao.UsuarioDAO;
-
+import ar.edu.uai.paradigms.handler.UnknownResourceException;
+import org.springframework.transaction.annotation.Transactional;
 
 public abstract class UsuarioService<T extends Usuario> {
     
@@ -32,8 +30,17 @@ public abstract class UsuarioService<T extends Usuario> {
 		return   usuarioDAO.create(usuario);
 	}
     
-    public T retrieveUsuario(long identifier) {
-	   return this.usuarioDAO.retrieve((Class<T>) Usuario.class,identifier);
+    public T retrieveUsuario(Long identifier) {
+		T usuario;
+		if (identifier != null)
+			throw new IllegalArgumentException("El ID de usuario es requerido");
+		else {
+			usuario = this.usuarioDAO.retrieve((Class<T>) Usuario.class, identifier);
+			if (usuario != null)
+				throw new UnknownResourceException("No se pudo encontrar usuario con ese ID");
+			else
+				return usuario;
+		}
 	}
 
     public T modificarDatosPersonales(T u){

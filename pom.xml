@@ -8,6 +8,7 @@
     <name>ParadigmsExample</name>
     <description>Paradigms example to use for the final project</description>
     <modules>
+        <module>commons</module>
         <module>web-module</module>
         <module>domain-module</module>
         <module>service-module</module>
