@@ -21,7 +21,7 @@ public class SimpleAuthenticationProvider implements AuthenticationProvider {
 		this.loginService = loginService;
 	}
 	
-	LoginService loginService;
+	private LoginService loginService;
 	
     @Override
     public Authentication authenticate(Authentication authentication) {
@@ -49,4 +49,12 @@ public class SimpleAuthenticationProvider implements AuthenticationProvider {
     public boolean supports(Class<?> authentication) {
         return authentication.equals(UsernamePasswordAuthenticationToken.class);
     }
+
+	public LoginService getLoginService() {
+		return loginService;
+	}
+
+	public void setLoginService(LoginService loginService) {
+		this.loginService = loginService;
+	}
 }

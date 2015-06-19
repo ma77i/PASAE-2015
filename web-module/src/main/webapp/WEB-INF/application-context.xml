@@ -47,7 +47,9 @@
     <bean id="successHandler"
         class="ar.edu.uai.paradigms.authentication.SavedRequestAwareAuthenticationSuccessHandler"/>
     <bean id="simpleAuthenticationProvider"
-        class="ar.edu.uai.paradigms.authentication.SimpleAuthenticationProvider"/>
+        class="ar.edu.uai.paradigms.authentication.SimpleAuthenticationProvider">
+        <constructor-arg name="loginService" ref="loginService"/>
+    </bean>
     <bean id="failureHandler"
         class="org.springframework.security.web.authentication.SimpleUrlAuthenticationFailureHandler"/>
 
