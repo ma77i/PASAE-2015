@@ -8,11 +8,11 @@
     <name>ParadigmsExample</name>
     <description>Paradigms example to use for the final project</description>
     <modules>
-        <module>commons</module>
         <module>web-module</module>
         <module>domain-module</module>
         <module>service-module</module>
         <module>dao-module</module>
+        <module>commons</module>
     </modules>
     <properties>
         <spring.version>4.1.1.RELEASE</spring.version>

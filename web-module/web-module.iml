@@ -10,7 +10,7 @@
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
-    <orderEntry type="module" module-name="commons" />
+    <orderEntry type="library" name="Maven: ar.edu.uai.paradigms:commons:1.0-SNAPSHOT" level="project" />
     <orderEntry type="module" module-name="service-module" />
     <orderEntry type="module" module-name="dao-module" />
     <orderEntry type="library" name="Maven: org.hibernate:hibernate-entitymanager:4.3.5.Final" level="project" />
