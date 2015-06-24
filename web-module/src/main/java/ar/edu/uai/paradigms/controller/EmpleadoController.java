@@ -16,7 +16,7 @@ import ar.edu.uai.paradigms.translator.EmpleadoTranslator;
 
 @Controller
 @RequestMapping("/empleado")
-public class EmpleadoController extends ErrorController {
+public class EmpleadoController  {
 
 	public EmpleadoController(EmpleadoService empleadoService, EmpleadoTranslator empleadoTranslator) {
 		super();
