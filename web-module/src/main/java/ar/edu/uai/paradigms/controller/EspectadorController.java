@@ -10,6 +10,9 @@ import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
+import javax.validation.constraints.Digits;
+import javax.validation.constraints.NotNull;
 import java.util.ArrayList;
 import java.util.Collection;
 
@@ -19,7 +22,7 @@ import java.util.Collection;
 
 @Controller
 @RequestMapping("/espectador")
-public class EspectadorController extends ErrorController {
+public class EspectadorController {
 
 	public EspectadorController(EspectadorService espectadorService, EspectadorTranslator espectadorTranslator) {
 		super();
@@ -43,7 +46,7 @@ public class EspectadorController extends ErrorController {
 	}
 
 	@RequestMapping(method = RequestMethod.GET, value = "/{identifier}")
-	public @ResponseBody EspectadorDTO getEspectador(@PathVariable long identifier) {
+	public @ResponseBody EspectadorDTO getEspectador(@PathVariable @Valid @NotNull @Digits(integer = 1, fraction = 0) long identifier) {
 		return this.espectadorTranslator.translateToDTO(this.espectadorService.retrieveUsuario(identifier));
 	}
 

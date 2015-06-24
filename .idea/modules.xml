@@ -3,7 +3,6 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/ParadigmsExample.iml" filepath="$PROJECT_DIR$/ParadigmsExample.iml" />
-      <module fileurl="file://$PROJECT_DIR$/commons/commons.iml" filepath="$PROJECT_DIR$/commons/commons.iml" />
       <module fileurl="file://$PROJECT_DIR$/dao-module/dao-module.iml" filepath="$PROJECT_DIR$/dao-module/dao-module.iml" />
       <module fileurl="file://$PROJECT_DIR$/domain-module/domain-module.iml" filepath="$PROJECT_DIR$/domain-module/domain-module.iml" />
       <module fileurl="file://$PROJECT_DIR$/service-module/service-module.iml" filepath="$PROJECT_DIR$/service-module/service-module.iml" />
