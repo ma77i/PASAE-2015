@@ -20,7 +20,7 @@
     <context:annotation-config/>
 
     <sec:http entry-point-ref="restAuthenticationEntryPoint">
-        <sec:intercept-url pattern="/**" access="ROLE_ADMIN"/>
+        <sec:intercept-url pattern="/sarlanga" access="ROLE_ADMIN"/>
         <sec:custom-filter ref="customFilter" position="FORM_LOGIN_FILTER"/>
         <sec:logout/>
     </sec:http>
@@ -33,7 +33,7 @@
     class="org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter">
         <property name="authenticationManager" ref="authenticationManager"/>
         <property name="authenticationSuccessHandler" ref="successHandler"/>
-        <property name="authenticationFailureHandler" ref="failureHandler"/>
+        <property name="authenticationFailureHandler" ref="restExceptionResolver"/>
         <property name="passwordParameter" value="password"/>
         <property name="usernameParameter" value="username"/>
         <property name="requiresAuthenticationRequestMatcher">
@@ -111,6 +111,8 @@
 
     <bean id="asientoTranslator" class="ar.edu.uai.paradigms.translator.AsientoTranslator" />
 
+    <bean id="defaultController" class="ar.edu.uai.paradigms.controller.DefaultController" />
+
 
     <bean id="httpErrorMessageSource"
           class="org.springframework.context.support.ReloadableResourceBundleMessageSource"
@@ -123,7 +125,8 @@
         <property name="defaultContentType" value="application/json" />
         <property name="exceptionHandlers">
             <map>
-                <entry key="ar.edu.uai.paradigms.service.UsuarioService.MyException" value="404" />
+                <entry key="ar.edu.uai.paradigms.customex.MyCustomException" value="404" />
+                <entry key="ar.edu.uai.paradigms.customex.CustomUnauthorizedEx" value="401" />
             </map>
         </property>
     </bean>
