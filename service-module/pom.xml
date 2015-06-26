@@ -11,6 +11,11 @@
 	<dependencies>
 		<dependency>
 			<groupId>ar.edu.uai.paradigms</groupId>
+			<artifactId>ex-validator-module</artifactId>
+			<version>${project.parent.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>ar.edu.uai.paradigms</groupId>
 			<artifactId>domain-module</artifactId>
 			<version>${project.parent.version}</version>
 		</dependency>

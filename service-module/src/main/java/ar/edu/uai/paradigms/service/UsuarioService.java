@@ -3,12 +3,8 @@ package ar.edu.uai.paradigms.service;
 
 import ar.edu.uai.model.Usuario;
 import ar.edu.uai.paradigms.dao.UsuarioDAO;
-import org.hibernate.annotations.Type;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.validation.annotation.Validated;
-
-import javax.validation.constraints.Digits;
-import javax.validation.constraints.NotNull;
 
 
 @Validated
@@ -32,11 +28,11 @@ public abstract class UsuarioService<T extends Usuario> {
 
 
 	@Transactional
-     public T saveUsuario(@NotNull T usuario) {
+     public T saveUsuario(T usuario) {
 		return   usuarioDAO.create(usuario);
 	}
     
-    public T retrieveUsuario(@NotNull @Digits(integer = 100, fraction = 0) Long identifier) {
+    public T retrieveUsuario(Long identifier) {
 		T usuario;
 		/*if (identifier != null)
 			throw new MyException("El ID de usuario es requerido");
@@ -66,11 +62,6 @@ public abstract class UsuarioService<T extends Usuario> {
 		return usuarioDAO.getUserRole(email,password);
 	}
    
-    public static class MyException extends RuntimeException {
-		MyException(String message) {
-			super(message);
-		}
-	}
 
 
 	
