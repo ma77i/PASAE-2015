@@ -8,11 +8,11 @@ import ar.edu.uai.paradigms.translator.EspectadorTranslator;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 
-import javax.validation.Valid;
-import javax.validation.constraints.Digits;
-import javax.validation.constraints.NotNull;
 import java.util.ArrayList;
 import java.util.Collection;
 
@@ -46,7 +46,7 @@ public class EspectadorController {
 	}
 
 	@RequestMapping(method = RequestMethod.GET, value = "/{identifier}")
-	public @ResponseBody EspectadorDTO getEspectador(@PathVariable @Valid @NotNull @Digits(integer = 1, fraction = 0) long identifier) {
+	public @ResponseBody EspectadorDTO getEspectador(long identifier) {
 		return this.espectadorTranslator.translateToDTO(this.espectadorService.retrieveUsuario(identifier));
 	}
 

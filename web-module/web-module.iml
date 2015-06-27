@@ -58,5 +58,6 @@
     <orderEntry type="library" name="Maven: cz.jirutka.spring:spring-rest-exception-handler:1.0.3" level="project" />
     <orderEntry type="library" name="Maven: org.springframework:spring-context:4.1.1.RELEASE" level="project" />
     <orderEntry type="library" name="Maven: javax.validation:validation-api:1.1.0.Final" level="project" />
+    <orderEntry type="library" name="Maven: org.json:json:20141113" level="project" />
   </component>
 </module>
