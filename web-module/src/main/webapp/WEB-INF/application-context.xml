@@ -33,7 +33,7 @@
     class="org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter">
         <property name="authenticationManager" ref="authenticationManager"/>
         <property name="authenticationSuccessHandler" ref="successHandler"/>
-        <property name="authenticationFailureHandler" ref="restExceptionResolver"/>
+        <property name="authenticationFailureHandler" ref="failureHandler"/>
         <property name="passwordParameter" value="password"/>
         <property name="usernameParameter" value="username"/>
         <property name="requiresAuthenticationRequestMatcher">
@@ -125,7 +125,7 @@
         <property name="defaultContentType" value="application/json" />
         <property name="exceptionHandlers">
             <map>
-                <entry key="ar.edu.uai.paradigms.customex.MyCustomException" value="404" />
+                <entry key="ar.edu.uai.paradigms.customex.CustomResourceNotFoundEx" value="404" />
                 <entry key="ar.edu.uai.paradigms.customex.CustomUnauthorizedEx" value="401" />
             </map>
         </property>
