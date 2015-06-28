@@ -1,5 +1,6 @@
 package ar.edu.uai.paradigms.service;
 
+import org.springframework.beans.factory.annotation.Required;
 import org.springframework.transaction.annotation.Transactional;
 
 import ar.edu.uai.model.Teatro;
@@ -13,6 +14,7 @@ public class TeatroServiceImpl implements TeatroService {
 		return teatroDAO;
 	}
 
+	@Required
 	public void setTeatroDAO(TeatroDAO teatroDAO) {
 		this.teatroDAO = teatroDAO;
 	}
