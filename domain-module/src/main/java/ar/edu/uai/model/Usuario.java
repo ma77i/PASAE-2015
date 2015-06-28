@@ -1,11 +1,6 @@
 package ar.edu.uai.model;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.Inheritance;
-import javax.persistence.InheritanceType;
+import javax.persistence.*;
 
 @Entity
 @Inheritance(strategy = InheritanceType.SINGLE_TABLE)
@@ -19,6 +14,8 @@ public abstract class Usuario {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	protected long id;
 
+
+	@Column(name = "EMAIL", unique = true)
 	private String email;
 
 	private String password;

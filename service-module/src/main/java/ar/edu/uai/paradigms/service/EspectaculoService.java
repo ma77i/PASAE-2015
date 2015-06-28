@@ -22,4 +22,8 @@ public interface EspectaculoService {
 
 	public Funcion getFuncionDeEspectaculo(long id_funcion);
 
+	public String existeEspectaculo(String nombre_espectaculo);
+
+	public Collection<Espectaculo>listarEspectaculosPorNombre(String nombre_espectaculo);
+
 }

@@ -10,10 +10,11 @@ import org.springframework.util.StringUtils;
 /**
  * Created by Federico on 19/10/2014.
  */
+
 @Aspect
 public class LoggingAspect {
 
-    @Before("execution(* ar.edu.uai.paradigms.dao.PersistentDAO.retrieve(..))")
+    @Before("execution(* ar.edu.uai.paradigms.dao.GenericDAO.retrieve(..))")
     public void auditDatabase(JoinPoint joinPoint) {
         Logger LOGGER = LoggerFactory.getLogger(joinPoint.getTarget().getClass());
         LOGGER.info("About to retrieve from database with parameters: {" + StringUtils.arrayToCommaDelimitedString(joinPoint.getArgs()) + "}");

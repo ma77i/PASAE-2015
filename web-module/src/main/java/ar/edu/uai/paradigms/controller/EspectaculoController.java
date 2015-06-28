@@ -18,7 +18,7 @@ import java.util.Collection;
 
 @Controller
 @RequestMapping("/espectaculo")
-public class EspectaculoController extends ErrorController {
+public class EspectaculoController {
 
 	public EspectaculoController(EspectaculoService espectaculoService, EspectaculoTranslator espectaculoTranslator) {
 		super();
@@ -35,6 +35,8 @@ public class EspectaculoController extends ErrorController {
 	@RequestMapping(method = RequestMethod.POST, consumes = "application/json")
 	public @ResponseBody EspectaculoDTO createEspectaculo(@RequestBody EspectaculoDTO espectaculoDTO) {
 		LOGGER.debug("Received DTO: " + espectaculoDTO);
+		String espectaculo= espectaculoService.existeEspectaculo(espectaculoDTO.getNombre());
+		//si espectaculo da blanco entonces recien puedo crear el espectaculo ya que me aseguro que no hay otro igual
 		return this.espectaculoTranslator.translateToDTO(this.espectaculoService.saveEspectaculo(this.espectaculoTranslator.translate(espectaculoDTO)));
 	}
 
@@ -53,5 +55,24 @@ public class EspectaculoController extends ErrorController {
 		}
 		return espectaculos;
 	}
+
+	@RequestMapping(value = "/{identifier}/cambiardatos", method = RequestMethod.POST, consumes = "application/json")
+	public @ResponseBody EspectaculoDTO modificarDatos(@RequestBody EspectaculoDTO espectaculoDTO) {
+		LOGGER.debug("Received DTO: " + espectaculoDTO);
+		return this.espectaculoTranslator.translateToDTO(this.espectaculoService.modificarEspectaculo(this.espectaculoTranslator.translate(espectaculoDTO)));
+	}
+
+	@RequestMapping(value = "/{nombre_espectaculo}/", method = RequestMethod.POST)
+	public @ResponseBody Collection<EspectaculoDTO> getEspectaculosPorNombre(@PathVariable String nombre_espectaculo) {
+		Collection<EspectaculoDTO> espectaculos = new ArrayList<EspectaculoDTO>();
+		Collection<Espectaculo> coleccion = this.espectaculoService.listarEspectaculosPorNombre(nombre_espectaculo);
+		for (Espectaculo e : coleccion) {
+			espectaculos.add(espectaculoTranslator.translateToDTO(e));
+		}
+		return espectaculos;
+	}
+
+
+
 
 }

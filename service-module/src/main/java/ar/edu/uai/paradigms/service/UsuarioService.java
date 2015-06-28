@@ -11,6 +11,8 @@ import ar.edu.uai.paradigms.dao.UsuarioDAO;
 public abstract class UsuarioService<T extends Usuario> {
     
 	private UsuarioDAO<T> usuarioDAO;
+
+
     
 	public UsuarioService(){
 		
@@ -18,8 +20,9 @@ public abstract class UsuarioService<T extends Usuario> {
 	
 	
 	public UsuarioService(UsuarioDAO<T> usuarioDAO) {
-		
+
 		this.usuarioDAO = usuarioDAO;
+
 	}
     
 	public void setUsuarioDAO(UsuarioDAO<T> usuarioDAO) {
@@ -36,16 +39,25 @@ public abstract class UsuarioService<T extends Usuario> {
 	   return this.usuarioDAO.retrieve((Class<T>) Usuario.class,identifier);
 	}
 
+	@Transactional
     public T modificarDatosPersonales(T u){
-		return this.usuarioDAO.update(u);
+		T usuario=this.retrieveUsuario(u.getId());
+		usuario.setEmail(u.getEmail());
+		usuario.setPassword(u.getPassword());
+		usuario.setNombre(u.getNombre());
+		usuario.setUsuario(u.getUsuario());
+		return this.usuarioDAO.update(usuario);
     	
     }
+	@Transactional
     public T modificarContrasena(T u){
-		return usuarioDAO.update(u);
+		T usuario=this.retrieveUsuario(u.getId());
+		usuario.setPassword(u.getPassword());
+		return usuarioDAO.update(usuario);
     	
     }
-	public Usuario existeUsuario(String usuario){
-		return usuarioDAO.existeUsuario(usuario);
+	public Usuario existeUsuario(String email){
+		return usuarioDAO.existeUsuario(email);
 	}
 	
 	public String getUserRole(String email,String password){

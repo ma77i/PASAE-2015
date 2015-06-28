@@ -21,11 +21,12 @@
     <bean id="espectaculoDAO" class="ar.edu.uai.paradigms.dao.EspectaculoDAOImplHibernateJPA" />
     <bean id="sectorDAO" class="ar.edu.uai.paradigms.dao.SectorDAOImplHibernateJPA" />
     <bean id="teatroDAO" class="ar.edu.uai.paradigms.dao.TeatroDAOImplHibernateJPA" />
-    
-    
-    
-    
-    
+    <bean id="tarjetaDAO" class="ar.edu.uai.paradigms.dao.TarjetaDAOImplHibernateJPA" />
+
+
+
+
+
     <!-- DataSource -->
     <bean id="dataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource" lazy-init="true" destroy-method="close">
         <!--<property name="connectionCustomizerClassName" value="com.despegar.bookedia.persistence.dao.base.IsolationLevelC3POCustomizer" />-->

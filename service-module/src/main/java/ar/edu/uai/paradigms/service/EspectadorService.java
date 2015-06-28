@@ -4,6 +4,7 @@ import java.util.Collection;
 
 import ar.edu.uai.model.Espectador;
 import ar.edu.uai.paradigms.dao.EspectadorDAO;
+import org.springframework.beans.factory.annotation.Required;
 
 
 public class EspectadorService extends UsuarioService<Espectador> {
@@ -15,13 +16,16 @@ public class EspectadorService extends UsuarioService<Espectador> {
 	
 	
 
+	@Required
     public void setEspectadorDAO(EspectadorDAO espectadorDAO) {
 		this.espectadorDAO = espectadorDAO;
 	}
 
     public Collection<Espectador>listarEspectadores(){
-    	return espectadorDAO.list();
-    }
+         System.out.println(espectadorDAO.getPersistentClass().getName());
+
+		return espectadorDAO.list();
+	}
     
   
 }

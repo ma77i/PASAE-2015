@@ -20,7 +20,8 @@
     <context:annotation-config/>
 
     <sec:http entry-point-ref="restAuthenticationEntryPoint">
-        <sec:intercept-url pattern="/**" access="ROLE_ADMIN"/>
+        <sec:intercept-url pattern="/sarlanga" access="ROLE_ADMIN"/>
+        <!--<sec:intercept-url pattern="/****" access="ROLE_ADMIN"/>-->
         <sec:custom-filter ref="customFilter" position="FORM_LOGIN_FILTER"/>
         <sec:logout/>
     </sec:http>
@@ -69,19 +70,23 @@
 		</property>
 	</bean>
 	<bean id="espectadorController" class="ar.edu.uai.paradigms.controller.EspectadorController">
-		<constructor-arg name="espectadorService" ref="espectadorService"/>
+		<constructor-arg name="espectadorService" ref="espectadorServiceConcreta"/>
 		<constructor-arg name="espectadorTranslator" ref="espectadorTranslator"/>
+        <constructor-arg name="tarjetaService" ref="tarjetaService"/>
+       <constructor-arg name="transaccionTranslator" ref="transaccionTranslator"/>
 	</bean>
+
+    <bean id="transaccionTranslator" class="ar.edu.uai.paradigms.translator.TransaccionTranslator"/>
 	<bean id="espectadorTranslator" class="ar.edu.uai.paradigms.translator.EspectadorTranslator" />
 	
 	<bean id="empleadoController" class="ar.edu.uai.paradigms.controller.EmpleadoController">
-		<constructor-arg name="empleadoService" ref="empleadoService"/>
+		<constructor-arg name="empleadoService" ref="empleadoServiceConcreta"/>
 		<constructor-arg name="empleadoTranslator" ref="empleadoTranslator"/>
 	</bean>
 	<bean id="empleadoTranslator" class="ar.edu.uai.paradigms.translator.EmpleadoTranslator" />
 	
 	<bean id="administradorController" class="ar.edu.uai.paradigms.controller.AdministradorController">
-		<constructor-arg name="administradorService" ref="administradorService"/>
+		<constructor-arg name="administradorService" ref="administradorServiceConcreta"/>
 		<constructor-arg name="administradorTranslator" ref="administradorTranslator"/>
 	</bean>
 	
@@ -92,13 +97,17 @@
 		<constructor-arg name="ventaTranslator" ref="ventaTranslator"/>
 	</bean>
 	
-	<bean id="ventaTranslator" class="ar.edu.uai.paradigms.translator.VentaTranslator" />
-	
-	<bean id="espectaculoController" class="ar.edu.uai.paradigms.controller.EspectaculoController">
+	<bean id="ventaTranslator" class="ar.edu.uai.paradigms.translator.VentaTranslator">
+       <property name="espectadorService" ref="espectadorServiceConcreta"/>
+       <property name="espectaculoService" ref="espectaculoService"/>
+       <property name="tarjetaService" ref="tarjetaService"/>
+    </bean>
+
+    <bean id="espectaculoController" class="ar.edu.uai.paradigms.controller.EspectaculoController">
 		<constructor-arg name="espectaculoService" ref="espectaculoService"/>
 		<constructor-arg name="espectaculoTranslator" ref="espectaculoTranslator"/>
 	</bean>
-	
+
 	<bean id="espectaculoTranslator" class="ar.edu.uai.paradigms.translator.EspectaculoTranslator" />
 
     <bean id="sectorController" class="ar.edu.uai.paradigms.controller.SectorController" >
@@ -107,8 +116,16 @@
         <constructor-arg name="asientoTranslator" ref="asientoTranslator" />
     </bean>
 
+    <bean id="tarjetaController" class="ar.edu.uai.paradigms.controller.TarjetaController">
+        <constructor-arg name="tarjetaService" ref="tarjetaService"/>
+        <constructor-arg name="tarjetaTranslator" ref="tarjetaTranslator"/>
+    </bean>
+
+
     <bean id="sectorTranslator" class="ar.edu.uai.paradigms.translator.SectorTranslator" />
 
     <bean id="asientoTranslator" class="ar.edu.uai.paradigms.translator.AsientoTranslator" />
-	
+
+    <bean id="tarjetaTranslator" class="ar.edu.uai.paradigms.translator.TarjetaTranslator"/>
+
 </beans>
