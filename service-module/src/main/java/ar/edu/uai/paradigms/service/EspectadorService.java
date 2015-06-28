@@ -4,13 +4,15 @@ import java.util.Collection;
 
 import ar.edu.uai.model.Espectador;
 import ar.edu.uai.paradigms.dao.EspectadorDAO;
+import ar.edu.uai.paradigms.validators.UsuarioValidator;
 
 
 public class EspectadorService extends UsuarioService<Espectador> {
     
 	
 
-	private EspectadorDAO espectadorDAO;  
+	private EspectadorDAO espectadorDAO;
+
 
 	
 	

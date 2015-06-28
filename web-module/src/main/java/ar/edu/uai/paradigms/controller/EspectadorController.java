@@ -5,14 +5,17 @@ import ar.edu.uai.model.Usuario;
 import ar.edu.uai.paradigms.dto.EspectadorDTO;
 import ar.edu.uai.paradigms.service.EspectadorService;
 import ar.edu.uai.paradigms.translator.EspectadorTranslator;
+import ar.edu.uai.paradigms.validators.UsuarioValidator;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.validation.Errors;
+import org.springframework.validation.ValidationUtils;
+import org.springframework.validation.Validator;
+import org.springframework.web.bind.WebDataBinder;
+import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.util.ArrayList;
 import java.util.Collection;
 
@@ -36,9 +39,10 @@ public class EspectadorController {
 
 	private EspectadorTranslator espectadorTranslator;
 
+
+
 	@RequestMapping(method = RequestMethod.POST, consumes = "application/json")
 	public @ResponseBody EspectadorDTO createEspectador(@RequestBody EspectadorDTO espectadorDTO) {
-
 		LOGGER.debug("Received DTO: " + espectadorDTO);
 		Usuario espectador = espectadorService.existeUsuario(espectadorDTO.getUsuario());
 		return this.espectadorTranslator.translateToDTO(this.espectadorService.saveUsuario(this.espectadorTranslator.translate(espectadorDTO)));
