@@ -12,10 +12,11 @@
 	<import resource="classpath:service-context.xml"/>
 
     <mvc:annotation-driven >
-<!--     	<mvc:message-converters> -->
-<!--     		<ref bean="jackson2HttpMessageConverter" /> -->
-<!--     	</mvc:message-converters> -->
     </mvc:annotation-driven>
+
+    <!--     	<mvc:message-converters>  dentro de annotation driven-->
+    <!--     		<ref bean="jackson2HttpMessageConverter" /> -->
+    <!--     	</mvc:message-converters> -->
 
     <context:annotation-config/>
 
@@ -127,6 +128,7 @@
             <map>
                 <entry key="ar.edu.uai.paradigms.customex.CustomResourceNotFoundEx" value="404" />
                 <entry key="ar.edu.uai.paradigms.customex.CustomUnauthorizedEx" value="401" />
+                <entry key="ar.edu.uai.paradigms.customex.CustomInvalidArgEx" value="408" />
             </map>
         </property>
     </bean>
