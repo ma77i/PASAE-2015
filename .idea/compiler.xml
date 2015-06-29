@@ -67,6 +67,13 @@
         <processorPath useClasspath="true" />
         <module name="ex-validator-module" />
       </profile>
+      <profile default="false" name="Annotation profile for customex-module" enabled="true">
+        <sourceOutputDir name="target\generated-sources\annotations" />
+        <sourceTestOutputDir name="target\generated-test-sources\test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <processorPath useClasspath="true" />
+        <module name="customex-module" />
+      </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
       <module name="commons" target="1.6" />
