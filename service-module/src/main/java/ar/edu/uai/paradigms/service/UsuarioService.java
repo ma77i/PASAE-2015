@@ -3,15 +3,9 @@ package ar.edu.uai.paradigms.service;
 
 import ar.edu.uai.model.Usuario;
 import ar.edu.uai.paradigms.dao.UsuarioDAO;
-import ar.edu.uai.paradigms.validators.UsuarioValidator;
 import org.springframework.transaction.annotation.Transactional;
-import org.springframework.validation.annotation.Validated;
-import org.springframework.web.bind.WebDataBinder;
-import org.springframework.web.bind.annotation.InitBinder;
 
-import javax.validation.Valid;
 
-@Validated
 public abstract class UsuarioService<T extends Usuario> {
 
 	private UsuarioDAO<T> usuarioDAO;
@@ -21,10 +15,6 @@ public abstract class UsuarioService<T extends Usuario> {
 
 	}
 
-	@InitBinder
-	public void initBinder(WebDataBinder binder) {
-		binder.setValidator(new UsuarioValidator());
-	}
 
 	public UsuarioService(UsuarioDAO<T> usuarioDAO) {
 
@@ -38,7 +28,7 @@ public abstract class UsuarioService<T extends Usuario> {
 
 
 	@Transactional
-	public T saveUsuario(@Valid T usuario) {
+	public T saveUsuario(T usuario) {
        /* BeanPropertyBindingResult result = new BeanPropertyBindingResult(usuario, "usuario");
         ValidationUtils.invokeValidator(usuarioValidator, usuario, result);
         if (result.hasErrors())

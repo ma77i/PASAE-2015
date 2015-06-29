@@ -24,20 +24,17 @@ public abstract class Usuario {
 
 	private String apellido;
 	
-	private String usuario;
-	
 	public Usuario(){
 		
 	}
 	
 	
 	public Usuario(String email, String password, String nombre,
-			String apellido,String usuario) {
+			String apellido) {
 		this.email = email;
 		this.password = password;
 		this.nombre = nombre;
 		this.apellido = apellido;
-		this.usuario=usuario;
 	}
 
 	public long getId() {
@@ -79,14 +76,5 @@ public abstract class Usuario {
 	public void setApellido(String apellido) {
 		this.apellido = apellido;
 	}
-    
-	@Deprecated
-	public String getUsuario() {
-		return usuario;
-	}
 
-	@Deprecated
-	public void setUsuario(String usuario) {
-		this.usuario = usuario;
-	}
 }
