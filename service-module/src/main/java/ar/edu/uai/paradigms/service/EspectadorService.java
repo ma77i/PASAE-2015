@@ -5,6 +5,7 @@ import java.util.Collection;
 import ar.edu.uai.model.Espectador;
 import ar.edu.uai.paradigms.dao.EspectadorDAO;
 import org.springframework.beans.factory.annotation.Required;
+import ar.edu.uai.paradigms.validators.UsuarioValidator;
 
 
 public class EspectadorService extends UsuarioService<Espectador> {

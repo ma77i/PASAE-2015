@@ -19,7 +19,7 @@ import java.util.Collection;
 
 @Controller
 @RequestMapping("/empleado")
-public class EmpleadoController {
+public class EmpleadoController  {
 
 	public EmpleadoController(EmpleadoService empleadoService, EmpleadoTranslator empleadoTranslator) {
 		super();

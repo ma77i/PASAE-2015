@@ -11,6 +11,11 @@
 	<dependencies>
 		<dependency>
 			<groupId>ar.edu.uai.paradigms</groupId>
+			<artifactId>ex-validator-module</artifactId>
+			<version>${project.parent.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>ar.edu.uai.paradigms</groupId>
 			<artifactId>domain-module</artifactId>
 			<version>${project.parent.version}</version>
 		</dependency>
@@ -18,6 +23,11 @@
 			<groupId>ar.edu.uai.paradigms</groupId>
 			<artifactId>dao-module</artifactId>
 			<version>${project.parent.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-web</artifactId>
+			<version>${spring.version}</version>
 		</dependency>
 	</dependencies>
 </project>

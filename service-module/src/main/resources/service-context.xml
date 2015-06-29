@@ -31,7 +31,7 @@
     
     <bean id="espectadorServiceConcreta" class="ar.edu.uai.paradigms.service.EspectadorService" parent="espectadorService" >
       <property name="espectadorDAO" ref="espectadorDAO" />
-     </bean>
+    </bean>
      
      <bean id="empleadoServiceConcreta" class="ar.edu.uai.paradigms.service.EmpleadoService" parent="empleadoService">
           <property name="empleadoDAO" ref="empleadoDAO" />

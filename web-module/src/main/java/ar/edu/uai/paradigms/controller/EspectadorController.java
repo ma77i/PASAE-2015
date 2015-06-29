@@ -7,11 +7,17 @@ import ar.edu.uai.paradigms.service.EspectadorService;
 import ar.edu.uai.paradigms.service.TarjetaService;
 import ar.edu.uai.paradigms.translator.EspectadorTranslator;
 import ar.edu.uai.paradigms.translator.TransaccionTranslator;
+import ar.edu.uai.paradigms.validators.UsuarioValidator;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
+import org.springframework.validation.Errors;
+import org.springframework.validation.ValidationUtils;
+import org.springframework.validation.Validator;
+import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.util.ArrayList;
 import java.util.Collection;
 
@@ -21,7 +27,7 @@ import java.util.Collection;
 
 @Controller
 @RequestMapping("/espectador")
-public class EspectadorController{
+public class EspectadorController {
 
 	public EspectadorController(EspectadorService espectadorService, EspectadorTranslator espectadorTranslator,TarjetaService tarjetaService,TransaccionTranslator transaccionTranslator) {
 		super();
@@ -32,7 +38,6 @@ public class EspectadorController{
 	}
 
 	private static final Logger LOGGER = LoggerFactory.getLogger(EspectadorController.class);
-
 
 	private EspectadorService espectadorService;
 
