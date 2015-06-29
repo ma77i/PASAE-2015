@@ -3,6 +3,7 @@ package ar.edu.uai.paradigms.service;
 import java.util.Collection;
 
 import ar.edu.uai.model.Funcion;
+import org.springframework.beans.factory.annotation.Required;
 import org.springframework.transaction.annotation.Transactional;
 
 import ar.edu.uai.model.Espectaculo;
@@ -12,10 +13,10 @@ public class EspectaculoServiceImpl implements EspectaculoService {
 
 	private EspectaculoDAO espectaculoDAO;
 
-	public EspectaculoServiceImpl (){
-		
+	public EspectaculoServiceImpl() {
+
 	}
-	
+
 	public EspectaculoServiceImpl(EspectaculoDAO espectaculoDAO) {
 		this.espectaculoDAO = espectaculoDAO;
 	}
@@ -24,6 +25,7 @@ public class EspectaculoServiceImpl implements EspectaculoService {
 		return espectaculoDAO;
 	}
 
+	@Required
 	public void setEspectaculoDAO(EspectaculoDAO espectaculoDAO) {
 		this.espectaculoDAO = espectaculoDAO;
 	}
@@ -51,20 +53,32 @@ public class EspectaculoServiceImpl implements EspectaculoService {
 		return this.espectaculoDAO.list();
 	}
 
-	@Override
+	@Transactional
 	public Espectaculo modificarEspectaculo(Espectaculo espectaculo) {
-		return espectaculoDAO.update(espectaculo);
+		Espectaculo e = this.retrieveEspectaculo(espectaculo.getId());
+		e.setNombre(espectaculo.getNombre());
+		e.setDescripcion(espectaculo.getDescripcion());
+		return espectaculoDAO.update(e);
 	}
 
 	@Override
-	public Collection<Espectaculo> listarEspectaculosDeTeatro(long id_teatro){
+	public Collection<Espectaculo> listarEspectaculosDeTeatro(long id_teatro) {
 		return espectaculoDAO.listarEspectaculosDeTeatro(id_teatro);
 	}
 
 	@Override
 	public Funcion getFuncionDeEspectaculo(long id_funcion) {
-		return  espectaculoDAO.listarFuncionesDeEspectaculo(id_funcion);
+		return espectaculoDAO.listarFuncionesDeEspectaculo(id_funcion);
 	}
 
+	@Override
+	public String existeEspectaculo(String nombre_espectaculo) {
+		return espectaculoDAO.existeEspectaculo(nombre_espectaculo);
+	}
 
+	@Override
+	public Collection<Espectaculo> listarEspectaculosPorNombre(String nombre_espectaculo) {
+		return espectaculoDAO.listarEspectaculosPorNombre(nombre_espectaculo);
+
+	}
 }

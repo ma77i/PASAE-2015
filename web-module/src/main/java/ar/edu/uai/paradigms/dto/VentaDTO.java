@@ -19,11 +19,12 @@ public class VentaDTO {
 	private Long espectaculoId;
 	private Long funcionId;
 	private Long espectadorId;
+	private Long tarjetaId;
 
 	@JsonCreator
 	public VentaDTO(@JsonProperty("monto") float monto, @JsonProperty("costoAdicional") float costoAdicional, @JsonProperty("fechaVenta") Date fechaVenta,
 			@JsonProperty("cuotas") int cuotas, @JsonProperty("espectaculoId") long espectaculoId, @JsonProperty("funcionId") long funcionId,
-			@JsonProperty("espectadorId") long espectadorId) {
+			@JsonProperty("espectadorId") long espectadorId, @JsonProperty("tarjetaId") long tarjetaId) {
 		super();
 		this.setMonto(monto);
 		this.setCostoAdicional(costoAdicional);
@@ -31,6 +32,7 @@ public class VentaDTO {
 		this.setCuotas(cuotas);
 		this.setFuncionId(funcionId);
 		this.setEspectadorId(espectadorId);
+		this.setTarjetaId(tarjetaId);
 	}
 
 	public float getMonto() {
@@ -89,6 +91,15 @@ public class VentaDTO {
 		this.espectaculoId = espectaculoId;
 	}
 
+	public Long getTarjetaId() {
+		return tarjetaId;
+	}
+
+	public void setTarjetaId(Long tarjetaId) {
+		this.tarjetaId = tarjetaId;
+	}
+
+
 	public String toString() {
 		return "VentaDTO [monto=" + monto + ", costoAdicional=" + costoAdicional + ", fechaVenta=" + fechaVenta + ",cuotas=" + cuotas + ",comprador=" + espectadorId + "]"; // ACA
 																																											// VA
@@ -98,5 +109,6 @@ public class VentaDTO {
 																																											// ESPECTACULO
 																																											// ?
 	}
+
 
 }

@@ -14,6 +14,9 @@ import ar.edu.uai.paradigms.dto.EmpleadoDTO;
 import ar.edu.uai.paradigms.service.EmpleadoService;
 import ar.edu.uai.paradigms.translator.EmpleadoTranslator;
 
+import java.util.ArrayList;
+import java.util.Collection;
+
 @Controller
 @RequestMapping("/empleado")
 public class EmpleadoController  {
@@ -33,12 +36,31 @@ public class EmpleadoController  {
 	@RequestMapping(method = RequestMethod.POST, consumes = "application/json")
 	public @ResponseBody EmpleadoDTO createEmpleado(@RequestBody EmpleadoDTO empleadoDTO) {
 		LOGGER.debug("Received DTO: " + empleadoDTO);
-		return this.empleadoTranslator.translateToDTO((Empleado) this.empleadoService.saveUsuario(this.empleadoTranslator.translate(empleadoDTO)));
+		return this.empleadoTranslator.translateToDTO(this.empleadoService.saveUsuario(this.empleadoTranslator.translate(empleadoDTO)));
 	}
 
 	@RequestMapping(method = RequestMethod.GET, value = "/{identifier}")
 	public @ResponseBody EmpleadoDTO getEmpleado(@PathVariable long identifier) {
-		return this.empleadoTranslator.translateToDTO((Empleado) this.empleadoService.retrieveUsuario(identifier));
+		return this.empleadoTranslator.translateToDTO(this.empleadoService.retrieveUsuario(identifier));
 	}
+
+	@RequestMapping(value = "/{identifier}/cambiardatos", method = RequestMethod.POST, consumes = "application/json")
+	public @ResponseBody EmpleadoDTO cambiarDatosPersonales(@RequestBody EmpleadoDTO empleadoDTO) {
+		LOGGER.debug("Received DTO: " + empleadoDTO);
+		return this.empleadoTranslator.translateToDTO(this.empleadoService.modificarDatosPersonales(this.empleadoTranslator.translate(empleadoDTO)));
+	}
+
+	@RequestMapping(method = RequestMethod.GET, value = "/listadoEmpleados")
+	public @ResponseBody Collection<EmpleadoDTO> listadoEmpleados() {
+		Collection<Empleado> lista = this.empleadoService.listarEmpleados();
+		Collection<EmpleadoDTO> empleados = new ArrayList<EmpleadoDTO>();
+		for (Empleado empleado : lista) {
+			empleados.add(empleadoTranslator.translateToDTO(empleado));
+		}
+		return empleados;
+	}
+
+
+
 
 }

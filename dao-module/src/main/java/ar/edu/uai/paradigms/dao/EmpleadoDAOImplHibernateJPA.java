@@ -5,4 +5,8 @@ import ar.edu.uai.model.Espectador;
 
 public class EmpleadoDAOImplHibernateJPA extends UsuarioDAOImplHibernateJPA <Empleado> implements EmpleadoDAO {
 
+    public EmpleadoDAOImplHibernateJPA() {
+         this.setPersistentClass(Empleado.class);
+    }
+
 }

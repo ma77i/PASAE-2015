@@ -1,10 +1,12 @@
 package ar.edu.uai.paradigms.controller;
 
 import ar.edu.uai.model.Espectador;
-import ar.edu.uai.model.Usuario;
 import ar.edu.uai.paradigms.dto.EspectadorDTO;
+import ar.edu.uai.paradigms.dto.TransaccionDTO;
 import ar.edu.uai.paradigms.service.EspectadorService;
+import ar.edu.uai.paradigms.service.TarjetaService;
 import ar.edu.uai.paradigms.translator.EspectadorTranslator;
+import ar.edu.uai.paradigms.translator.TransaccionTranslator;
 import ar.edu.uai.paradigms.validators.UsuarioValidator;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -27,10 +29,12 @@ import java.util.Collection;
 @RequestMapping("/espectador")
 public class EspectadorController {
 
-	public EspectadorController(EspectadorService espectadorService, EspectadorTranslator espectadorTranslator) {
+	public EspectadorController(EspectadorService espectadorService, EspectadorTranslator espectadorTranslator,TarjetaService tarjetaService,TransaccionTranslator transaccionTranslator) {
 		super();
 		this.espectadorService = espectadorService;
 		this.espectadorTranslator = espectadorTranslator;
+		this.tarjetaService=tarjetaService;
+		this.transaccionTranslator=transaccionTranslator;
 	}
 
 	private static final Logger LOGGER = LoggerFactory.getLogger(EspectadorController.class);
@@ -39,28 +43,31 @@ public class EspectadorController {
 
 	private EspectadorTranslator espectadorTranslator;
 
+	private TarjetaService tarjetaService;
 
+	private TransaccionTranslator transaccionTranslator;
 
 	@RequestMapping(method = RequestMethod.POST, consumes = "application/json")
 	public @ResponseBody EspectadorDTO createEspectador(@RequestBody EspectadorDTO espectadorDTO) {
+
 		LOGGER.debug("Received DTO: " + espectadorDTO);
-		Usuario espectador = espectadorService.existeUsuario(espectadorDTO.getUsuario());
+		//Usuario espectador = espectadorService.existeUsuario(espectadorDTO.getEmail());
 		return this.espectadorTranslator.translateToDTO(this.espectadorService.saveUsuario(this.espectadorTranslator.translate(espectadorDTO)));
 
 	}
 
 	@RequestMapping(method = RequestMethod.GET, value = "/{identifier}")
-	public @ResponseBody EspectadorDTO getEspectador(long identifier) {
+	public @ResponseBody EspectadorDTO getEspectador(@PathVariable long identifier) {
 		return this.espectadorTranslator.translateToDTO(this.espectadorService.retrieveUsuario(identifier));
 	}
 
-	@RequestMapping(value = "/{identifier}/cambiardatos", method = RequestMethod.POST, consumes = "application/json")
+	@RequestMapping(value = "/{identifier}/cambiar_datos_personales", method = RequestMethod.POST, consumes = "application/json")
 	public @ResponseBody EspectadorDTO cambiarDatosPersonales(@RequestBody EspectadorDTO espectadorDTO) {
 		LOGGER.debug("Received DTO: " + espectadorDTO);
 		return this.espectadorTranslator.translateToDTO(this.espectadorService.modificarDatosPersonales(this.espectadorTranslator.translate(espectadorDTO)));
 	}
 
-	@RequestMapping(value = "/{identifier}/cambiarpass", method = RequestMethod.POST, consumes = "application/json")
+	@RequestMapping(value = "/{identifier}/cambiar_clave", method = RequestMethod.POST, consumes = "application/json")
 	public @ResponseBody EspectadorDTO cambiarContrasena(@RequestBody EspectadorDTO espectadorDTO) {
 		LOGGER.debug("Received DTO: " + espectadorDTO);
 		return this.espectadorTranslator.translateToDTO(this.espectadorService.modificarContrasena(this.espectadorTranslator.translate(espectadorDTO)));
@@ -76,5 +83,14 @@ public class EspectadorController {
 		return espectadores;
 
 	}
+
+	//este metodo es de prueba para ver si funciona el wiremock , la invocacion de verificandoDatosTarjeta no iria aca
+	@RequestMapping(method=RequestMethod.POST,value="/verificartarjeta", consumes = "application/json")
+	public @ResponseBody String verificarTarjeta (@RequestBody TransaccionDTO transaccionDTO){
+		LOGGER.debug("Received DTO: " + transaccionDTO);
+		TransaccionDTO t=this.transaccionTranslator.translateToDTO(this.tarjetaService.verificandoDatosTarjeta(this.transaccionTranslator.translate(transaccionDTO)));
+        return t.getResultado();
+	}
+
 
 }
