@@ -1,13 +1,13 @@
 package ar.edu.uai.paradigms.service;
 
-import java.util.Collection;
-
+import ar.edu.uai.model.Espectaculo;
 import ar.edu.uai.model.Funcion;
+import ar.edu.uai.paradigms.dao.EspectaculoDAO;
 import org.springframework.beans.factory.annotation.Required;
 import org.springframework.transaction.annotation.Transactional;
 
-import ar.edu.uai.model.Espectaculo;
-import ar.edu.uai.paradigms.dao.EspectaculoDAO;
+import java.util.Collection;
+import java.util.Date;
 
 public class EspectaculoServiceImpl implements EspectaculoService {
 
@@ -80,5 +80,10 @@ public class EspectaculoServiceImpl implements EspectaculoService {
 	public Collection<Espectaculo> listarEspectaculosPorNombre(String nombre_espectaculo) {
 		return espectaculoDAO.listarEspectaculosPorNombre(nombre_espectaculo);
 
+	}
+
+	@Override
+	public Collection<Espectaculo> listarEspectaculosEntreFechas(Date fecha1, Date fecha2) {
+		return espectaculoDAO.listarEspectaculosEntreRangoDeFechas(fecha1, fecha2);
 	}
 }

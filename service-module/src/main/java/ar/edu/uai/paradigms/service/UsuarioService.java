@@ -62,6 +62,10 @@ public abstract class UsuarioService<T extends Usuario> {
 	}
 
 	public T modificarDatosPersonales(T u) {
+		T usuario = this.retrieveUsuario(u.getId());
+		usuario.setEmail(u.getEmail());
+		usuario.setNombre(u.getNombre());
+		usuario.setApellido(u.getApellido());
 		return this.usuarioDAO.update(u);
 
 	}
