@@ -3,9 +3,9 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/ParadigmsExample.iml" filepath="$PROJECT_DIR$/ParadigmsExample.iml" />
+      <module fileurl="file://$PROJECT_DIR$/customex-module/customex-module.iml" filepath="$PROJECT_DIR$/customex-module/customex-module.iml" />
       <module fileurl="file://$PROJECT_DIR$/dao-module/dao-module.iml" filepath="$PROJECT_DIR$/dao-module/dao-module.iml" />
       <module fileurl="file://$PROJECT_DIR$/domain-module/domain-module.iml" filepath="$PROJECT_DIR$/domain-module/domain-module.iml" />
-      <module fileurl="file://$PROJECT_DIR$/ex-validator-module/ex-validator-module.iml" filepath="$PROJECT_DIR$/ex-validator-module/ex-validator-module.iml" />
       <module fileurl="file://$PROJECT_DIR$/service-module/service-module.iml" filepath="$PROJECT_DIR$/service-module/service-module.iml" />
       <module fileurl="file://$PROJECT_DIR$/web-module/web-module.iml" filepath="$PROJECT_DIR$/web-module/web-module.iml" />
     </modules>

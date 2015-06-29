@@ -12,7 +12,7 @@
         <module>domain-module</module>
         <module>service-module</module>
         <module>dao-module</module>
-        <module>ex-validator-module</module>
+        <module>customex-module</module>
     </modules>
     <properties>
         <spring.version>4.1.1.RELEASE</spring.version>
