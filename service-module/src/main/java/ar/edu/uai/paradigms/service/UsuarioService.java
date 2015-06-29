@@ -13,26 +13,25 @@ import javax.validation.Valid;
 
 @Validated
 public abstract class UsuarioService<T extends Usuario> {
-    
+
 	private UsuarioDAO<T> usuarioDAO;
 
 
-    
-	public UsuarioService(){
-		
+	public UsuarioService() {
+
 	}
 
 	@InitBinder
 	public void initBinder(WebDataBinder binder) {
 		binder.setValidator(new UsuarioValidator());
-	
-	
+	}
+
 	public UsuarioService(UsuarioDAO<T> usuarioDAO) {
 
 		this.usuarioDAO = usuarioDAO;
 
 	}
-    
+
 	public void setUsuarioDAO(UsuarioDAO<T> usuarioDAO) {
 		this.usuarioDAO = usuarioDAO;
 	}
@@ -47,7 +46,7 @@ public abstract class UsuarioService<T extends Usuario> {
         else*/
 		return usuarioDAO.create(usuario);
 	}
-	
+
 	public T retrieveUsuario(Long identifier) {
 		T usuario;
         /*if (identifier != null)
@@ -62,22 +61,24 @@ public abstract class UsuarioService<T extends Usuario> {
 		return (this.usuarioDAO.retrieve((Class<T>) Usuario.class, identifier));
 	}
 
-    public T modificarDatosPersonales(T u){
+	public T modificarDatosPersonales(T u) {
 		return this.usuarioDAO.update(u);
-    	
-    }
-	
+
+	}
+
 	@Transactional
-    public T modificarContrasena(T u){
-		T usuario=this.retrieveUsuario(u.getId());
+	public T modificarContrasena(T u) {
+		T usuario = this.retrieveUsuario(u.getId());
 		usuario.setPassword(u.getPassword());
 		return usuarioDAO.update(usuario);
-    	
-    }
-	public Usuario existeUsuario(String email){
+
+	}
+
+	public Usuario existeUsuario(String email) {
 		return usuarioDAO.existeUsuario(email);
 	}
-	
-	public String getUserRole(String email,String password){
-		return usuarioDAO.getUserRole(email,password);
+
+	public String getUserRole(String email, String password) {
+		return usuarioDAO.getUserRole(email, password);
 	}
+}
