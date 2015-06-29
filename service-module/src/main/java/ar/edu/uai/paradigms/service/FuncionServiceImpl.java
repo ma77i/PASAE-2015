@@ -1,12 +1,11 @@
 package ar.edu.uai.paradigms.service;
 
-import java.util.Collection;
-import java.util.Date;
-
 import ar.edu.uai.model.Espectaculo;
 import ar.edu.uai.model.Funcion;
 import ar.edu.uai.paradigms.dao.FuncionDAO;
 import org.springframework.beans.factory.annotation.Required;
+
+import java.util.Collection;
 
 public class FuncionServiceImpl implements FuncionService{
 	
@@ -22,6 +21,10 @@ public class FuncionServiceImpl implements FuncionService{
 	@Required
 	public void setFuncionDAO(FuncionDAO funcionDAO) {
 		this.funcionDAO = funcionDAO;
+	}
+
+	public void setEspectaculoService(EspectaculoService espectaculoService) {
+		this.espectaculoService = espectaculoService;
 	}
 
 	@Override
@@ -49,19 +52,22 @@ public class FuncionServiceImpl implements FuncionService{
 
 	@Override
 	public Funcion modificarFuncion(Funcion funcion) {
+		Funcion f = this.retrieveFuncion(funcion.getId());
+		f.setFecha(funcion.getFecha());
+		f.setHora(funcion.getHora());
 		return funcionDAO.update(funcion);
-	}
-
-
-
-	@Override
-	public Collection<Funcion> listarFuncionesEntreFechas(Date fecha1, Date fecha2) {
-		return funcionDAO.listarFuncionesEntreFechas(fecha1,fecha2);
 	}
 
 	private void agregarFuncionParaEspectaculo(Funcion savedFuncion, Espectaculo espectaculo) {
 	   espectaculo.getFunciones().add(savedFuncion);
 	   espectaculoService.saveEspectaculo(espectaculo);
 	}
+
+	@Override
+	public Collection<Funcion> listarFuncionesDeEspectaculo(long id_espectaculo) {
+		return funcionDAO.listarFuncionesDeEspectaculo(id_espectaculo);
+	}
+
+
 
 }

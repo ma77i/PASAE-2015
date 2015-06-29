@@ -4,6 +4,7 @@ import ar.edu.uai.model.Espectaculo;
 import ar.edu.uai.model.Funcion;
 
 import java.util.Collection;
+import java.util.Date;
 
 public interface EspectaculoDAO extends GenericDAO<Espectaculo> {
 
@@ -12,4 +13,5 @@ public interface EspectaculoDAO extends GenericDAO<Espectaculo> {
     public String existeEspectaculo(String nombre_espectaculo);
     public Collection<Espectaculo> listarEspectaculosPorNombre(String nombre_espectaculo);
 
+    Collection<Espectaculo> listarEspectaculosEntreRangoDeFechas(Date startDate, Date endDate);
 }

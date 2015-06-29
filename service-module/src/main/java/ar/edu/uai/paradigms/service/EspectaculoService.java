@@ -1,10 +1,10 @@
 package ar.edu.uai.paradigms.service;
 
-import java.util.Collection;
-
 import ar.edu.uai.model.Espectaculo;
 import ar.edu.uai.model.Funcion;
-import ar.edu.uai.model.Sector;
+
+import java.util.Collection;
+import java.util.Date;
 
 
 public interface EspectaculoService {
@@ -25,5 +25,7 @@ public interface EspectaculoService {
 	public String existeEspectaculo(String nombre_espectaculo);
 
 	public Collection<Espectaculo>listarEspectaculosPorNombre(String nombre_espectaculo);
+
+	Collection<Espectaculo> listarEspectaculosEntreFechas(Date fecha1, Date fecha2);
 
 }
