@@ -45,12 +45,42 @@
         <processorPath useClasspath="true" />
         <module name="web-module" />
       </profile>
+      <profile default="false" name="Annotation profile for commons" enabled="true">
+        <sourceOutputDir name="target\generated-sources\annotations" />
+        <sourceTestOutputDir name="target\generated-test-sources\test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <processorPath useClasspath="true" />
+      </profile>
+      <profile default="false" name="Annotation profile for prueba" enabled="true">
+        <sourceOutputDir name="target/generated-sources/annotations" />
+        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <processorPath useClasspath="true" />
+      </profile>
+      <profile default="false" name="Annotation profile for validator-module" enabled="true">
+        <sourceOutputDir name="target/generated-sources/annotations" />
+        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <processorPath useClasspath="true" />
+        <module name="validator-module" />
+      </profile>
+      <profile default="false" name="Annotation profile for ex-validator-module" enabled="true">
+        <sourceOutputDir name="target\generated-sources\annotations" />
+        <sourceTestOutputDir name="target\generated-test-sources\test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <processorPath useClasspath="true" />
+        <module name="ex-validator-module" />
+      </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
+      <module name="commons" target="1.6" />
       <module name="dao-module" target="1.6" />
       <module name="domain-module" target="1.6" />
+      <module name="ex-validator-module" target="1.6" />
       <module name="ParadigmsExample" target="1.6" />
+      <module name="prueba" target="1.6" />
       <module name="service-module" target="1.6" />
+      <module name="validator-module" target="1.6" />
       <module name="web-module" target="1.6" />
     </bytecodeTargetLevel>
   </component>

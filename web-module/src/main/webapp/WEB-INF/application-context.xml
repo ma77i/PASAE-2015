@@ -3,7 +3,7 @@
              xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
              xmlns:context="http://www.springframework.org/schema/context"
              xmlns:mvc="http://www.springframework.org/schema/mvc"
-             xmlns:sec="http://www.springframework.org/schema/security"
+             xmlns:sec="http://www.springframework.org/schema/security" xmlns:p="http://www.springframework.org/schema/p"
              xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
         http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd
         http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc.xsd
@@ -21,7 +21,6 @@
 
     <sec:http entry-point-ref="restAuthenticationEntryPoint">
         <sec:intercept-url pattern="/sarlanga" access="ROLE_ADMIN"/>
-        <!--<sec:intercept-url pattern="/****" access="ROLE_ADMIN"/>-->
         <sec:custom-filter ref="customFilter" position="FORM_LOGIN_FILTER"/>
         <sec:logout/>
     </sec:http>
@@ -107,7 +106,7 @@
 		<constructor-arg name="espectaculoService" ref="espectaculoService"/>
 		<constructor-arg name="espectaculoTranslator" ref="espectaculoTranslator"/>
 	</bean>
-
+	
 	<bean id="espectaculoTranslator" class="ar.edu.uai.paradigms.translator.EspectaculoTranslator" />
 
     <bean id="sectorController" class="ar.edu.uai.paradigms.controller.SectorController" >
@@ -119,6 +118,41 @@
     <bean id="tarjetaController" class="ar.edu.uai.paradigms.controller.TarjetaController">
         <constructor-arg name="tarjetaService" ref="tarjetaService"/>
         <constructor-arg name="tarjetaTranslator" ref="tarjetaTranslator"/>
+    </bean>
+
+    <bean id="defaultController" class="ar.edu.uai.paradigms.controller.DefaultController" />
+
+
+    <bean id="httpErrorMessageSource"
+          class="org.springframework.context.support.ReloadableResourceBundleMessageSource"
+          p:basename="classpath:/ar/edu/uai/messages"
+          p:defaultEncoding="UTF-8" />
+
+    <bean id="restExceptionResolver"
+          class="cz.jirutka.spring.exhandler.RestHandlerExceptionResolverFactoryBean">
+        <property name="messageSource" ref="httpErrorMessageSource" />
+        <property name="defaultContentType" value="application/json" />
+        <property name="exceptionHandlers">
+            <map>
+                <entry key="ar.edu.uai.paradigms.customex.CustomResourceNotFoundEx" value="404" />
+                <entry key="ar.edu.uai.paradigms.customex.CustomUnauthorizedEx" value="401" />
+                <entry key="ar.edu.uai.paradigms.customex.CustomInvalidArgEx" value="408" />
+            </map>
+        </property>
+    </bean>
+
+    <bean id="exceptionHandlerExceptionResolver"
+          class="org.springframework.web.servlet.mvc.method.annotation.ExceptionHandlerExceptionResolver" />
+
+    <bean id="compositeExceptionResolver"
+          class="org.springframework.web.servlet.handler.HandlerExceptionResolverComposite">
+        <property name="order" value="0" />
+        <property name="exceptionResolvers">
+            <list>
+                <ref bean="exceptionHandlerExceptionResolver" />
+                <ref bean="restExceptionResolver" />
+            </list>
+        </property>
     </bean>
 
 
