@@ -5,15 +5,15 @@
 
     <import resource="classpath:dao-context.xml" />
 
-	<bean id="espectadorService" class="ar.edu.uai.paradigms.service.EspectadorService">
+    <bean id="espectadorService" class="ar.edu.uai.paradigms.service.EspectadorService" abstract="true">
           <property name="usuarioDAO" ref="usuarioDAO" />
     </bean>
     
-    <bean id="empleadoService" class="ar.edu.uai.paradigms.service.EmpleadoService">
+    <bean id="empleadoService" class="ar.edu.uai.paradigms.service.EmpleadoService" abstract="true">
           <property name="usuarioDAO" ref="usuarioDAO" />
     </bean>
     
-    <bean id="administradorService" class="ar.edu.uai.paradigms.service.AdministradorService">
+    <bean id="administradorService" class="ar.edu.uai.paradigms.service.AdministradorService" abstract="true">
          <property name="usuarioDAO" ref="usuarioDAO" />
     </bean>
     
@@ -29,15 +29,15 @@
         <property name="sectorDAO" ref="sectorDAO" />
     </bean> 
     
-    <bean id="espectadorServiceConcreta" class="ar.edu.uai.paradigms.service.EspectadorService" >
+    <bean id="espectadorServiceConcreta" class="ar.edu.uai.paradigms.service.EspectadorService" parent="espectadorService" >
       <property name="espectadorDAO" ref="espectadorDAO" />
     </bean>
      
-     <bean id="empleadoServiceConcreta" class="ar.edu.uai.paradigms.service.EmpleadoService">
+     <bean id="empleadoServiceConcreta" class="ar.edu.uai.paradigms.service.EmpleadoService" parent="empleadoService">
           <property name="empleadoDAO" ref="empleadoDAO" />
      </bean>
        
-     <bean id="administradorServiceConcreta" class="ar.edu.uai.paradigms.service.AdministradorService" >
+     <bean id="administradorServiceConcreta" class="ar.edu.uai.paradigms.service.AdministradorService" parent="administradorService" >
       <property name="administradorDAO" ref="administradorDAO" />
      </bean>  
      
@@ -47,6 +47,38 @@
      
      <bean id="loginService" class="ar.edu.uai.paradigms.service.LoginServiceImpl" >
       <property name="usuarioDAO" ref="usuarioDAO" />
-     </bean> 
-     
+     </bean>
+
+    <bean id="httpClientFactory" class="org.springframework.http.client.HttpComponentsClientHttpRequestFactory">
+        <constructor-arg ref="httpClient"/>
+    </bean>
+
+    <bean id="httpClient" class="org.apache.http.impl.client.DefaultHttpClient"/>
+
+
+    <!--     Configure bean de RestTemplate -->
+    <bean id="restTemplate" class="org.springframework.web.client.RestTemplate">
+        <constructor-arg ref="httpClientFactory"/>
+        <property name="messageConverters">
+
+            <list>
+                <bean class="org.springframework.http.converter.json.MappingJackson2HttpMessageConverter"/>
+                <bean class="org.springframework.http.converter.FormHttpMessageConverter"/>
+                <bean class="org.springframework.http.converter.StringHttpMessageConverter" />
+
+            </list>
+        </property>
+    </bean>
+
+
+    <bean id="tarjetaService" class="ar.edu.uai.paradigms.service.TarjetaServiceImpl">
+        <property name="serviceUrl" value="http://localhost/"/>
+        <property name="restTemplate" ref="restTemplate"/>
+        <property name="tarjetaDAO" ref="tarjetaDAO"/>
+     </bean>
+
+
+
+
+
 </beans>

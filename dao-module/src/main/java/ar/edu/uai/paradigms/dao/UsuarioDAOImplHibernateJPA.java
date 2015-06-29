@@ -1,5 +1,7 @@
 package ar.edu.uai.paradigms.dao;
 
+import ar.edu.uai.model.Administrador;
+import ar.edu.uai.model.Espectador;
 import ar.edu.uai.model.Usuario;
 
 import javax.persistence.NoResultException;
@@ -9,17 +11,23 @@ import javax.persistence.Query;
 public class UsuarioDAOImplHibernateJPA<T> extends GenericDaoHibernateJPA<T> implements UsuarioDAO<T> {
 
 
+    public UsuarioDAOImplHibernateJPA() {
+
+    }
+
+
+
     @Override
-    public Usuario existeUsuario(String nombre_usuario) {
+    public Usuario existeUsuario(String email) {
         try {
 
-            Query consulta = this.entityManager.createQuery("select u.usuario from Usuario as u where u.usuario=:usuario");
-            consulta.setParameter("usuario", nombre_usuario);
+            Query consulta = this.entityManager.createQuery("select u.email from Usuario as u where u.email=:email");
+            consulta.setParameter("email", email);
             return (Usuario) consulta.getSingleResult();
         }
         catch (NoResultException e) {
 
-            System.out.println(" NO HAY UN USUARIO CON ESE NOMBRE");
+            System.out.println(" NO HAY UN USUARIO CON ESE MAIL");
             return null;
         }
     }

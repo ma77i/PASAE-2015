@@ -1,5 +1,7 @@
 package ar.edu.uai.paradigms.dao;
 
+import org.springframework.transaction.annotation.Transactional;
+
 import java.lang.reflect.ParameterizedType;
 import java.util.Collection;
 import java.lang.reflect.Type;
@@ -13,19 +15,22 @@ public abstract class GenericDaoHibernateJPA<T> implements GenericDAO<T> {
 	public EntityManager entityManager;
 	public Class<T> persistentClass;
 
-	
-/*	public GenericDaoHibernateJPA() {
-		persistentClass = (Class<T>) ((ParameterizedType) getClass().getGenericSuperclass()).getActualTypeArguments()[0];  
-		//obtener el tipo por reflexion
+	public GenericDaoHibernateJPA(){
+
 	}
-*/
+
+	
+	public GenericDaoHibernateJPA(Class<T>persistentClass) {
+		this.persistentClass=persistentClass;
+	}
+
 	@Override
 	public T create(T entity) {
 		this.entityManager.persist(entity);
 		return entity;
 	}
 
-	@Override
+	@Transactional
 	public T update(T entity) {
 		return this.entityManager.merge(entity);
 	}
@@ -59,8 +64,7 @@ public abstract class GenericDaoHibernateJPA<T> implements GenericDAO<T> {
 
 	@Override
 	public Collection<T> list() {
-		Query consulta = this.entityManager.createQuery("from"
-				+ getPersistentClass().getSimpleName());
+		Query consulta = this.entityManager.createQuery(" from " + getPersistentClass().getSimpleName());
 		Collection<T> resultado = consulta.getResultList();
 		return resultado;
 	}

@@ -10,7 +10,8 @@ import ar.edu.uai.model.Venta;
 
 public class EspectadorDAOImplHibernateJPA extends UsuarioDAOImplHibernateJPA <Espectador> implements EspectadorDAO  {
 
-	
-	
 
+   public  EspectadorDAOImplHibernateJPA(){
+       this.setPersistentClass(Espectador.class);
+   }
 }
