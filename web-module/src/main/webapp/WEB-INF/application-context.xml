@@ -134,9 +134,9 @@
         <property name="defaultContentType" value="application/json" />
         <property name="exceptionHandlers">
             <map>
-                <entry key="ar.edu.uai.paradigms.customex.CustomResourceNotFoundEx" value="404" />
-                <entry key="ar.edu.uai.paradigms.customex.CustomUnauthorizedEx" value="401" />
-                <entry key="ar.edu.uai.paradigms.customex.CustomInvalidArgEx" value="408" />
+                <entry key="ar.edu.uai.paradigms.ex.CustomResourceNotFoundEx" value="404" />
+                <entry key="ar.edu.uai.paradigms.ex.CustomUnauthorizedEx" value="401" />
+                <entry key="ar.edu.uai.paradigms.ex.CustomInvalidArgEx" value="408" />
             </map>
         </property>
     </bean>

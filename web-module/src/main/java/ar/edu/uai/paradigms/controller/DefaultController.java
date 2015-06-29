@@ -1,6 +1,6 @@
 package ar.edu.uai.paradigms.controller;
 
-import ar.edu.uai.paradigms.customex.CustomResourceNotFoundEx;
+import ar.edu.uai.paradigms.ex.CustomResourceNotFoundEx;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
