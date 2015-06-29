@@ -7,13 +7,10 @@ import ar.edu.uai.paradigms.service.EspectadorService;
 import ar.edu.uai.paradigms.service.TarjetaService;
 import ar.edu.uai.paradigms.translator.EspectadorTranslator;
 import ar.edu.uai.paradigms.translator.TransaccionTranslator;
-import ar.edu.uai.paradigms.validators.UsuarioValidator;
+import ar.edu.uai.paradigms.validators.UsuarioDTOValidator;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
-import org.springframework.validation.Errors;
-import org.springframework.validation.ValidationUtils;
-import org.springframework.validation.Validator;
 import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.*;
 
@@ -47,12 +44,18 @@ public class EspectadorController {
 
 	private TransaccionTranslator transaccionTranslator;
 
-	@RequestMapping(method = RequestMethod.POST, consumes = "application/json")
-	public @ResponseBody EspectadorDTO createEspectador(@RequestBody EspectadorDTO espectadorDTO) {
+	@InitBinder
+	public void initBinder(WebDataBinder binder) {
+		binder.setValidator(new UsuarioDTOValidator());
+	}
 
-		LOGGER.debug("Received DTO: " + espectadorDTO);
-		//Usuario espectador = espectadorService.existeUsuario(espectadorDTO.getEmail());
-		return this.espectadorTranslator.translateToDTO(this.espectadorService.saveUsuario(this.espectadorTranslator.translate(espectadorDTO)));
+	@RequestMapping(method = RequestMethod.POST, consumes = "application/json")
+	public @ResponseBody EspectadorDTO createEspectador(@RequestBody @Valid EspectadorDTO espectadorDTO) {
+
+			LOGGER.debug("Received DTO: " + espectadorDTO);
+			//Usuario espectador = espectadorService.existeUsuario(espectadorDTO.getEmail());
+			return this.espectadorTranslator.translateToDTO(this.espectadorService.saveUsuario(this.espectadorTranslator.translate(espectadorDTO)));
+
 
 	}
 

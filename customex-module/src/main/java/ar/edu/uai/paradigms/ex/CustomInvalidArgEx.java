@@ -1,4 +1,4 @@
-package ar.edu.uai.paradigms.customex;
+package ar.edu.uai.paradigms.ex;
 
 /**
  * Created by Ezequiel on 27/06/2015.
