@@ -1,6 +1,6 @@
 package ar.edu.uai.paradigms.validators;
 
-import ar.edu.uai.paradigms.customex.CustomResourceNotFoundEx;
+import ar.edu.uai.paradigms.ex.CustomResourceNotFoundEx;
 
 /**
  * Created by EzequielPanoff on 24/6/15.
