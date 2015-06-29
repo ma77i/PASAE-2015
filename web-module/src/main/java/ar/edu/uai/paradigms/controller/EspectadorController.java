@@ -1,7 +1,6 @@
 package ar.edu.uai.paradigms.controller;
 
 import ar.edu.uai.model.Espectador;
-import ar.edu.uai.paradigms.customex.CustomInvalidArgEx;
 import ar.edu.uai.paradigms.dto.EspectadorDTO;
 import ar.edu.uai.paradigms.dto.TransaccionDTO;
 import ar.edu.uai.paradigms.service.EspectadorService;
@@ -12,7 +11,6 @@ import ar.edu.uai.paradigms.validators.UsuarioDTOValidator;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
-import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.*;
 
@@ -52,14 +50,13 @@ public class EspectadorController {
 	}
 
 	@RequestMapping(method = RequestMethod.POST, consumes = "application/json")
-	public @ResponseBody EspectadorDTO createEspectador(@RequestBody @Valid EspectadorDTO espectadorDTO, BindingResult result) {
-		if (!result.hasErrors()) {
+	public @ResponseBody EspectadorDTO createEspectador(@RequestBody @Valid EspectadorDTO espectadorDTO) {
+
 			LOGGER.debug("Received DTO: " + espectadorDTO);
 			//Usuario espectador = espectadorService.existeUsuario(espectadorDTO.getEmail());
 			return this.espectadorTranslator.translateToDTO(this.espectadorService.saveUsuario(this.espectadorTranslator.translate(espectadorDTO)));
-		}
-		else
-			throw new CustomInvalidArgEx("xxx");
+
+
 	}
 
 	@RequestMapping(method = RequestMethod.GET, value = "/{identifier}")
