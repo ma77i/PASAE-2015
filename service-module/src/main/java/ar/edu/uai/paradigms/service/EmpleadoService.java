@@ -11,8 +11,9 @@ import ar.edu.uai.model.Usuario;
 import ar.edu.uai.paradigms.dao.EmpleadoDAO;
 import ar.edu.uai.paradigms.dao.EspectadorDAO;
 import ar.edu.uai.paradigms.dao.UsuarioDAO;
+import org.springframework.beans.factory.annotation.Required;
 
-public class EmpleadoService extends  UsuarioService<Usuario>{
+public class EmpleadoService extends  UsuarioService<Empleado>{
 
 
 	private EmpleadoDAO empleadoDAO;
@@ -21,6 +22,7 @@ public class EmpleadoService extends  UsuarioService<Usuario>{
 		return empleadoDAO;
 	}
 
+	@Required
 	public void setEmpleadoDAO(EmpleadoDAO empleadoDAO) {
 		this.empleadoDAO = empleadoDAO;
 	} 

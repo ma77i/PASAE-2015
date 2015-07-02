@@ -1,5 +1,6 @@
 package ar.edu.uai.paradigms.service;
 
+import ar.edu.uai.model.Usuario;
 import ar.edu.uai.paradigms.dao.UsuarioDAO;
 
 public class LoginServiceImpl implements LoginService {
@@ -8,7 +9,7 @@ public class LoginServiceImpl implements LoginService {
 //		super();	
 //	}
 	
-	private UsuarioDAO usuarioDAO;
+	UsuarioDAO usuarioDAO;
 
 	public UsuarioDAO getUsuarioDAO() {
 		return usuarioDAO;

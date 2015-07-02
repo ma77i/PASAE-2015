@@ -35,8 +35,9 @@ public class Venta {
 	private float costoAdicional;
 	
 	private Date fechaVenta;
-	
-//	private Tarjeta tarjeta;
+
+    @ManyToOne
+	private Tarjeta tarjeta;
 	// posible interfaz, consultar.
 	
 	private int coutas;
@@ -92,13 +93,13 @@ public class Venta {
 		this.fechaVenta = fechaVenta;
 	}
 
-//	public Tarjeta getTarjeta() {
-//		return tarjeta;
-//	}
-//
-//	public void setTarjeta(Tarjeta tarjeta) {
-//		this.tarjeta = tarjeta;
-//	}
+	public Tarjeta getTarjeta() {
+		return tarjeta;
+	}
+
+	public void setTarjeta(Tarjeta tarjeta) {
+		this.tarjeta = tarjeta;
+	}
 
 	public int getCoutas() {
 		return coutas;

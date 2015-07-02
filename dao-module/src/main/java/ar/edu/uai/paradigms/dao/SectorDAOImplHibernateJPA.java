@@ -4,9 +4,15 @@ import ar.edu.uai.model.Asiento;
 import ar.edu.uai.model.Sector;
 
 import javax.persistence.Query;
+import javax.security.sasl.SaslException;
 import java.util.Collection;
 
 public class SectorDAOImplHibernateJPA extends GenericDaoHibernateJPA<Sector> implements SectorDAO {
+
+	public  SectorDAOImplHibernateJPA(){
+       this.setPersistentClass(Sector.class);
+	}
+
 
 	@Override
 	public Integer chequearDisponibilidad(long id_sector) {

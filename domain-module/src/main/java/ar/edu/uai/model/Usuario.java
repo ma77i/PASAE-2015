@@ -1,11 +1,6 @@
 package ar.edu.uai.model;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.Inheritance;
-import javax.persistence.InheritanceType;
+import javax.persistence.*;
 
 @Entity
 @Inheritance(strategy = InheritanceType.SINGLE_TABLE)
@@ -19,6 +14,8 @@ public abstract class Usuario {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	protected long id;
 
+
+	@Column(name = "EMAIL", unique = true)
 	private String email;
 
 	private String password;
@@ -27,20 +24,17 @@ public abstract class Usuario {
 
 	private String apellido;
 	
-	private String usuario;
-	
 	public Usuario(){
 		
 	}
 	
 	
 	public Usuario(String email, String password, String nombre,
-			String apellido,String usuario) {
+			String apellido) {
 		this.email = email;
 		this.password = password;
 		this.nombre = nombre;
 		this.apellido = apellido;
-		this.usuario=usuario;
 	}
 
 	public long getId() {
@@ -82,14 +76,5 @@ public abstract class Usuario {
 	public void setApellido(String apellido) {
 		this.apellido = apellido;
 	}
-    
-	@Deprecated
-	public String getUsuario() {
-		return usuario;
-	}
 
-	@Deprecated
-	public void setUsuario(String usuario) {
-		this.usuario = usuario;
-	}
 }

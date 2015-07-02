@@ -3,6 +3,7 @@ package ar.edu.uai.paradigms.service;
 import ar.edu.uai.model.Asiento;
 import ar.edu.uai.model.Sector;
 import ar.edu.uai.paradigms.dao.SectorDAO;
+import org.springframework.beans.factory.annotation.Required;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.Collection;
@@ -23,6 +24,7 @@ public class SectorServiceImpl implements SectorService {
 		return sectorDAO;
 	}
 
+	@Required
 	public void setSectorDAO(SectorDAO sectorDAO) {
 		this.sectorDAO = sectorDAO;
 	}
