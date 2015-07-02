@@ -31,11 +31,17 @@ public class SectorServiceImpl implements SectorService {
 
 	@Transactional
 	public Sector saveSector(Sector sector) {
+		for (int i=1; i <= (sector.getNro_asientos()); i++) {
+			for (int x=1; i<=((sector.getNro_asientos()) / (sector.getNro_filas())); i++) {
+				sector.getAsientos().add(new Asiento(x,i,false,sector));
+			}
+
+		}
 		return sectorDAO.create(sector);
 	}
 
 	@Override
-	public Sector retrieveSector(long id_sector) {
+	public Sector retrieveSector(Long id_sector) {
 		return sectorDAO.retrieve(Sector.class, id_sector);
 	}
 
@@ -44,29 +50,29 @@ public class SectorServiceImpl implements SectorService {
 		return sectorDAO.list();
 	}
 
-	public boolean hayDisponibilidad (long id_sector, Integer nro_asientos) {
+	public boolean hayDisponibilidad (Long id_sector, Integer nro_asientos) {
 		return (sectorDAO.chequearDisponibilidad(id_sector) > nro_asientos);
 	}
 
-	public Integer cantidadAsientosDisponibles (long id_sector) {
+	public Integer cantidadAsientosDisponibles (Long id_sector) {
 		return (sectorDAO.chequearDisponibilidad(id_sector));
 	}
 
 	@Override
-	public Collection<Asiento> asientosDeSector(long id_sector) {
+	public Collection<Asiento> asientosDeSector(Long id_sector) {
 		return (sectorDAO.asientosDeSector (id_sector));
 	}
 
 
 	@Override
-	public Collection<Asiento> asientosDisponiblesDeSector(long id_sector) {
+	public Collection<Asiento> asientosDisponiblesDeSector(Long id_sector) {
 		return (sectorDAO.asientosDisponiblesDeSector(id_sector));
 	}
+
 
 	@Override
-	public Collection<Asiento> asientosOcupadosDeSector(long id_sector) {
+	public Collection<Asiento> asientosOcupadosDeSector(Long id_sector) {
 		return (sectorDAO.asientosDisponiblesDeSector(id_sector));
 	}
-
 
 }

@@ -9,19 +9,19 @@ import java.util.Collection;
 public interface SectorService {
 	public Sector saveSector(Sector sector);
 
-	public Sector retrieveSector(long id_sector);
+	public Sector retrieveSector(Long id_sector);
 
 	public Collection<Sector> listarSectores();
 
-	public boolean hayDisponibilidad(long id_sector, Integer nro_asientos);
+	public boolean hayDisponibilidad(Long id_sector, Integer nro_asientos);
 
-	public Integer cantidadAsientosDisponibles (long id_sector );
+	public Integer cantidadAsientosDisponibles (Long id_sector );
 
-	public Collection<Asiento> asientosDeSector (long id_sector);
+	public Collection<Asiento> asientosDeSector (Long id_sector);
 
-	public Collection <Asiento> asientosDisponiblesDeSector (long id_sector);
+	public Collection <Asiento> asientosDisponiblesDeSector (Long id_sector);
 
-	public Collection <Asiento> asientosOcupadosDeSector (long id_sector);
+	public Collection <Asiento> asientosOcupadosDeSector (Long id_sector);
 
 
 }
