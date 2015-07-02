@@ -1,6 +1,5 @@
 package ar.edu.uai.paradigms.validators;
 
-import ar.edu.uai.model.Usuario;
 import ar.edu.uai.paradigms.dto.UsuarioDTO;
 import org.springframework.validation.Errors;
 import org.springframework.validation.ValidationUtils;
@@ -13,6 +12,7 @@ public class UsuarioDTOValidator implements Validator {
 
 
     public UsuarioDTOValidator() {
+
     }
 
     @Override
@@ -23,10 +23,10 @@ public class UsuarioDTOValidator implements Validator {
     @Override
     public void validate(Object target, Errors errors) {
         UsuarioDTO usuario= (UsuarioDTO) target;
-        ValidationUtils.rejectIfEmptyOrWhitespace(errors, "email", "email.required");
-        ValidationUtils.rejectIfEmptyOrWhitespace(errors, "password", "password.required");
-        ValidationUtils.rejectIfEmptyOrWhitespace(errors, "nombre", "nombre.required");
-        ValidationUtils.rejectIfEmptyOrWhitespace(errors, "apellido", "apellido.required");
+        ValidationUtils.rejectIfEmptyOrWhitespace(errors, "email", "email.required", "El campo 'email' es requerido");
+        ValidationUtils.rejectIfEmptyOrWhitespace(errors, "password", "password.required", "El campo 'password' es requerido");
+        ValidationUtils.rejectIfEmptyOrWhitespace(errors, "nombre", "nombre.required", "El campo 'nombre' es requerido");
+        ValidationUtils.rejectIfEmptyOrWhitespace(errors, "apellido", "apellido.required", "El campo 'apellido' es requerido");
 
     }
 }
