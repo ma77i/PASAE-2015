@@ -60,7 +60,7 @@
 
     <filter-mapping>
         <filter-name>springSecurityFilterChain</filter-name>
-        <url-pattern>/*</url-pattern>
+        <url-pattern>/asd/*</url-pattern>
     </filter-mapping>
     <context-param>
         <param-name>contextConfigLocation</param-name>
