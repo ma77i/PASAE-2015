@@ -7,6 +7,16 @@ import java.util.Collection;
 
 public class VentaDAOImplHibernateJPA  extends GenericDaoHibernateJPA<Venta> implements VentaDAO {
 
+
+	public VentaDAOImplHibernateJPA(){
+
+		this.setPersistentClass(Venta.class);
+	}
+
+	/**
+	 * Lista las compras de un espectador
+	 */
+
 	@Override
 	public Collection<Venta> listarComprasDeEspectador(long id_espectador) {
 

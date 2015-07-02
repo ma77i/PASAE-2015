@@ -3,6 +3,7 @@ package ar.edu.uai.paradigms.service;
 import ar.edu.uai.model.Espectador;
 import ar.edu.uai.model.Venta;
 import ar.edu.uai.paradigms.dao.VentaDAO;
+import org.springframework.beans.factory.annotation.Required;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.Collection;
@@ -25,6 +26,7 @@ public class VentaServiceImpl implements VentaService {
 		return ventaDAO;
 	}
 
+	@Required
 	public void setVentaDAO(VentaDAO ventaDAO) {
 		this.ventaDAO = ventaDAO;
 	}

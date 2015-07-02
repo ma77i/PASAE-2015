@@ -1,22 +1,17 @@
 package ar.edu.uai.model;
 
-import java.util.Collection;
-
 import javax.persistence.Entity;
 import javax.persistence.OneToMany;
+import java.util.Collection;
 
 @Entity
 public class Espectador extends Usuario {
 	
-	
-	public Espectador(){
-		
-	}
-	
+
 	
 	public Espectador(String email, String password, String nombre,
-			String apellido,String usuario) {
-		super(email, password, nombre, apellido,usuario);
+			String apellido) {
+		super(email, password, nombre, apellido);
 		// TODO Auto-generated constructor stub
 	}
 
@@ -34,8 +29,8 @@ public class Espectador extends Usuario {
 	}
 
 
-	
-//	private Collection<Tarjeta> tarjetas;
+	@OneToMany(mappedBy ="comprador")
+	private Collection<Tarjeta> tarjetas;
 	//posible interfaz,consultar.
 
 	

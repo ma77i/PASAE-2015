@@ -9,7 +9,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 public class FuncionDTO {
 
 	private Date fecha;
-	private Time hora;
+	private Date hora;
 	private long espectaculoId;
 
 	@JsonCreator
@@ -29,7 +29,7 @@ public class FuncionDTO {
 		this.fecha = fecha;
 	}
 
-	public Time getHora() {
+	public Date getHora() {
 		return hora;
 	}
 
