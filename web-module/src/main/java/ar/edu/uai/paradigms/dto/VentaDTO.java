@@ -1,7 +1,5 @@
 package ar.edu.uai.paradigms.dto;
 
-import ar.edu.uai.model.Espectador;
-import ar.edu.uai.model.Funcion;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
@@ -23,8 +21,8 @@ public class VentaDTO {
 
 	@JsonCreator
 	public VentaDTO(@JsonProperty("monto") float monto, @JsonProperty("costoAdicional") float costoAdicional, @JsonProperty("fechaVenta") Date fechaVenta,
-			@JsonProperty("cuotas") int cuotas, @JsonProperty("espectaculoId") long espectaculoId, @JsonProperty("funcionId") long funcionId,
-			@JsonProperty("espectadorId") long espectadorId, @JsonProperty("tarjetaId") long tarjetaId) {
+					@JsonProperty("cuotas") int cuotas, @JsonProperty("espectaculoId") long espectaculoId, @JsonProperty("funcionId") long funcionId,
+					@JsonProperty("espectadorId") long espectadorId, @JsonProperty("tarjetaId") long tarjetaId) {
 		super();
 		this.setMonto(monto);
 		this.setCostoAdicional(costoAdicional);
@@ -101,14 +99,7 @@ public class VentaDTO {
 
 
 	public String toString() {
-		return "VentaDTO [monto=" + monto + ", costoAdicional=" + costoAdicional + ", fechaVenta=" + fechaVenta + ",cuotas=" + cuotas + ",comprador=" + espectadorId + "]"; // ACA
-																																											// VA
-																																											// LA
-																																											// FUNCION
-																																											// Y
-																																											// ESPECTACULO
-																																											// ?
+		return "VentaDTO [monto=" + monto + ", costoAdicional=" + costoAdicional + ", fechaVenta=" + fechaVenta + ",cuotas=" + cuotas + ",comprador=" + espectadorId + ",espectaculoId=" + espectaculoId + ",tarjetaId=" + tarjetaId + "funcionId=" + funcionId + "]";
+
 	}
-
-
 }

@@ -6,6 +6,7 @@ import ar.edu.uai.model.Funcion;
 import javax.persistence.NoResultException;
 import javax.persistence.Query;
 import java.util.Collection;
+import java.util.Date;
 
 public class EspectaculoDAOImplHibernateJPA extends GenericDaoHibernateJPA<Espectaculo> implements EspectaculoDAO {
 
@@ -79,5 +80,30 @@ public class EspectaculoDAOImplHibernateJPA extends GenericDaoHibernateJPA<Espec
             Query consulta = this.entityManager.createQuery("select e from Espectaculo as e where e.nombre LIKE :nombre  ");
             consulta.setParameter(1, "%" + nombre_espectaculo + "%");
             return consulta.getResultList();
+    }
+
+
+    /**
+     * Lista los espectaculos entre un rango de fechas ingresadas por el usuario
+     */
+
+    @Override
+    public Collection<Espectaculo> listarEspectaculosEntreRangoDeFechas(Date startDate, Date endDate) {
+        Query consulta = this.entityManager.createQuery("select e from Espectaculo as e join e.funciones as f where f.fecha BETWEEN :startDate AND :endDate");
+        consulta.setParameter(1, startDate);
+        consulta.setParameter(2, endDate);
+        return consulta.getResultList();
+
+    }
+
+    /**
+     * Lista los espectaculos segun la categoria seleccionada
+     */
+
+    @Override
+    public Collection<Espectaculo> listarEspectaculosSegunCategoria(long id_categoria) {
+        Query consulta = this.entityManager.createQuery("select e from Espectaculo where e.categoria.id=?");
+        consulta.setParameter(1, id_categoria);
+        return consulta.getResultList();
     }
 }
