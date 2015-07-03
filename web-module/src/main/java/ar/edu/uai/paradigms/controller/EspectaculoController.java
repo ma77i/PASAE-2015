@@ -1,29 +1,32 @@
 package ar.edu.uai.paradigms.controller;
 
-import ar.edu.uai.model.Empleado;
 import ar.edu.uai.model.Espectaculo;
-import ar.edu.uai.paradigms.dto.EmpleadoDTO;
+import ar.edu.uai.model.Funcion;
 import ar.edu.uai.paradigms.dto.EspectaculoDTO;
-import ar.edu.uai.paradigms.dto.EspectadorDTO;
+import ar.edu.uai.paradigms.dto.FuncionDTO;
+import ar.edu.uai.paradigms.service.EspectaculoService;
+import ar.edu.uai.paradigms.service.FuncionService;
+import ar.edu.uai.paradigms.translator.EspectaculoTranslator;
+import ar.edu.uai.paradigms.translator.FuncionTranslator;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
-import ar.edu.uai.paradigms.service.EspectaculoService;
-import ar.edu.uai.paradigms.translator.EspectaculoTranslator;
-
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.Date;
 
 @Controller
 @RequestMapping("/espectaculo")
 public class EspectaculoController {
 
-	public EspectaculoController(EspectaculoService espectaculoService, EspectaculoTranslator espectaculoTranslator) {
+	public EspectaculoController(EspectaculoService espectaculoService, EspectaculoTranslator espectaculoTranslator, FuncionService funcionService, FuncionTranslator funcionTranslator) {
 		super();
 		this.espectaculoService = espectaculoService;
 		this.espectaculoTranslator = espectaculoTranslator;
+		this.funcionService = funcionService;
+		this.funcionTranslator = funcionTranslator;
 	}
 
 	private static final Logger LOGGER = LoggerFactory.getLogger(EspectaculoController.class);
@@ -32,11 +35,13 @@ public class EspectaculoController {
 
 	private EspectaculoTranslator espectaculoTranslator;
 
+	private FuncionService funcionService;
+
+	private FuncionTranslator funcionTranslator;
+
 	@RequestMapping(method = RequestMethod.POST, consumes = "application/json")
 	public @ResponseBody EspectaculoDTO createEspectaculo(@RequestBody EspectaculoDTO espectaculoDTO) {
 		LOGGER.debug("Received DTO: " + espectaculoDTO);
-		String espectaculo= espectaculoService.existeEspectaculo(espectaculoDTO.getNombre());
-		//si espectaculo da blanco entonces recien puedo crear el espectaculo ya que me aseguro que no hay otro igual
 		return this.espectaculoTranslator.translateToDTO(this.espectaculoService.saveEspectaculo(this.espectaculoTranslator.translate(espectaculoDTO)));
 	}
 
@@ -62,10 +67,34 @@ public class EspectaculoController {
 		return this.espectaculoTranslator.translateToDTO(this.espectaculoService.modificarEspectaculo(this.espectaculoTranslator.translate(espectaculoDTO)));
 	}
 
-	@RequestMapping(value = "/{nombre_espectaculo}/", method = RequestMethod.POST)
+	@RequestMapping(value = "/{nombre_espectaculo}/listado", method = RequestMethod.GET)
 	public @ResponseBody Collection<EspectaculoDTO> getEspectaculosPorNombre(@PathVariable String nombre_espectaculo) {
 		Collection<EspectaculoDTO> espectaculos = new ArrayList<EspectaculoDTO>();
 		Collection<Espectaculo> coleccion = this.espectaculoService.listarEspectaculosPorNombre(nombre_espectaculo);
+		for (Espectaculo e : coleccion) {
+			espectaculos.add(espectaculoTranslator.translateToDTO(e));
+		}
+		return espectaculos;
+	}
+
+	@RequestMapping(value = "/{id_espectaculo}/listado_funciones ", method = RequestMethod.GET)
+	public
+	@ResponseBody
+	Collection<FuncionDTO> getFuncionesDeEspectaculo(@PathVariable long id_espectaculo) {
+		Collection<FuncionDTO> funciones = new ArrayList<FuncionDTO>();
+		Collection<Funcion> coleccion = this.funcionService.listarFuncionesDeEspectaculo(id_espectaculo);
+		for (Funcion f : coleccion) {
+			funciones.add(funcionTranslator.translateToDTO(f));
+		}
+		return funciones;
+	}
+
+	@RequestMapping(method = RequestMethod.GET, value = "/{inicio}/{fin}/listado_espectaculos_entre_fechas")
+	public
+	@ResponseBody
+	Collection<EspectaculoDTO> getFuncionesEntreFechas(@PathVariable("inicio") Date inicio, @PathVariable("fin") Date fin) {
+		Collection<EspectaculoDTO> espectaculos = new ArrayList<EspectaculoDTO>();
+		Collection<Espectaculo> coleccion = this.espectaculoService.listarEspectaculosEntreFechas(inicio, fin);
 		for (Espectaculo e : coleccion) {
 			espectaculos.add(espectaculoTranslator.translateToDTO(e));
 		}

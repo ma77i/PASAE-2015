@@ -77,7 +77,13 @@
         <property name="tarjetaDAO" ref="tarjetaDAO"/>
      </bean>
 
+    <bean id="funcionService" class="ar.edu.uai.paradigms.service.FuncionServiceImpl">
+        <property name="funcionDAO" ref="funcionDAO"/>
+    </bean>
 
+    <bean id="categoriaService" class="ar.edu.uai.paradigms.service.CategoriaServiceImpl">
+        <property name="categoriaDAO" ref="categoriaDAO"/>
+    </bean>
 
 
 
