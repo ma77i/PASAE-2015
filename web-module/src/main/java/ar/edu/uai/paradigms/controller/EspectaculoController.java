@@ -42,8 +42,6 @@ public class EspectaculoController {
 	@RequestMapping(method = RequestMethod.POST, consumes = "application/json")
 	public @ResponseBody EspectaculoDTO createEspectaculo(@RequestBody EspectaculoDTO espectaculoDTO) {
 		LOGGER.debug("Received DTO: " + espectaculoDTO);
-		String espectaculo= espectaculoService.existeEspectaculo(espectaculoDTO.getNombre());
-		//si espectaculo da blanco entonces recien puedo crear el espectaculo ya que me aseguro que no hay otro igual
 		return this.espectaculoTranslator.translateToDTO(this.espectaculoService.saveEspectaculo(this.espectaculoTranslator.translate(espectaculoDTO)));
 	}
 

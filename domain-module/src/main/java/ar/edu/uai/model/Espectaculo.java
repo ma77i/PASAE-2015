@@ -1,13 +1,7 @@
 package ar.edu.uai.model;
 
+import javax.persistence.*;
 import java.util.Collection;
-
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
 
 @Entity
 public class Espectaculo {
@@ -16,15 +10,18 @@ public class Espectaculo {
 		
 	}
 
-	public Espectaculo(String nombre, String descripcion) {
+	public Espectaculo(String nombre, String descripcion, Categoria categoria, Teatro teatro) {
 		this.nombre = nombre;
 		this.descripcion = descripcion;
+		this.categoria = categoria;
+		this.teatro = teatro;
 	}
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private long id;
-	
+
+	@Column(name = "nombre", unique = true)
 	private String nombre;
 	
 	private String descripcion;
@@ -37,6 +34,9 @@ public class Espectaculo {
 	 
 	@ManyToOne
 	private Teatro teatro;
+
+	@ManyToOne
+	private Categoria categoria;
 
 	public long getId() {
 		return id;
@@ -74,4 +74,19 @@ public class Espectaculo {
 		this.descripcion = descripcion;
 	}
 
+	public Categoria getCategoria() {
+		return categoria;
+	}
+
+	public void setCategoria(Categoria categoria) {
+		this.categoria = categoria;
+	}
+
+	public Teatro getTeatro() {
+		return teatro;
+	}
+
+	public void setTeatro(Teatro teatro) {
+		this.teatro = teatro;
+	}
 }

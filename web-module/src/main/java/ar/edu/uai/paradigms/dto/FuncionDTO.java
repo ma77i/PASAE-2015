@@ -44,4 +44,9 @@ public class FuncionDTO {
 		this.espectaculoId = espectaculoId;
 	}
 
+	public String toString() {
+		return "FuncionDTO [fecha=" + fecha + ", hora=" + hora + ",espectaculoId=" + espectaculoId + "]";
+
+	}
+
 }
