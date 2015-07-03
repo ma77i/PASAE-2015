@@ -4,9 +4,11 @@ import ar.edu.uai.model.Administrador;
 import ar.edu.uai.paradigms.dto.AdministradorDTO;
 import ar.edu.uai.paradigms.service.AdministradorService;
 import ar.edu.uai.paradigms.translator.AdministradorTranslator;
+import ar.edu.uai.paradigms.validators.UsuarioDTOValidator;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.*;
 
 @Controller
@@ -24,6 +26,14 @@ public class AdministradorController {
 	private AdministradorService administradorService;
 
 	private AdministradorTranslator administradorTranslator;
+
+
+	@InitBinder
+	public void initBinder(WebDataBinder binder) {
+		binder.setValidator(new UsuarioDTOValidator());
+	}
+
+
 
 	@RequestMapping(method = RequestMethod.POST, consumes = "application/json")
 	public @ResponseBody AdministradorDTO createAdministrador(@RequestBody AdministradorDTO administradorDTO) {

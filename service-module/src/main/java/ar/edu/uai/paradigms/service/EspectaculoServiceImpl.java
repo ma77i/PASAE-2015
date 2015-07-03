@@ -30,11 +30,12 @@ public class EspectaculoServiceImpl implements EspectaculoService {
 		this.espectaculoDAO = espectaculoDAO;
 	}
 
+
 	@Transactional
 	public Espectaculo saveEspectaculo(Espectaculo espectaculo) {
-		// Quizá debería tener un create en caso de existir ( consultar )
-		this.espectaculoDAO.update(espectaculo);
-		return espectaculo;
+		this.agregarEspectaculoParaCategoria(espectaculo);
+		this.agregarEspectaculoParaTeatro(espectaculo);
+		return espectaculoDAO.create(espectaculo);
 	}
 
 	@Override
@@ -86,4 +87,21 @@ public class EspectaculoServiceImpl implements EspectaculoService {
 	public Collection<Espectaculo> listarEspectaculosEntreFechas(Date fecha1, Date fecha2) {
 		return espectaculoDAO.listarEspectaculosEntreRangoDeFechas(fecha1, fecha2);
 	}
+
+	@Override
+	public Collection<Espectaculo> listarEspectaculosSegunCategoria(long id_categoria) {
+		return espectaculoDAO.listarEspectaculosSegunCategoria(id_categoria);
+	}
+
+	@Override
+	public void agregarEspectaculoParaCategoria(Espectaculo e) {
+		e.getCategoria().getEspectaculos().add(e);
+	}
+
+	@Override
+	public void agregarEspectaculoParaTeatro(Espectaculo savedEspectaculo) {
+		savedEspectaculo.getTeatro().getEspectaculos().add(savedEspectaculo);
+	}
+
+
 }

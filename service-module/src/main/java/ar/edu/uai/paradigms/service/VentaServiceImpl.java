@@ -1,6 +1,5 @@
 package ar.edu.uai.paradigms.service;
 
-import ar.edu.uai.model.Espectador;
 import ar.edu.uai.model.Venta;
 import ar.edu.uai.paradigms.dao.VentaDAO;
 import org.springframework.beans.factory.annotation.Required;
@@ -11,8 +10,7 @@ import java.util.Collection;
 public class VentaServiceImpl implements VentaService {
 
 	private VentaDAO ventaDAO;
-	
-	private EspectadorService espectadorService;
+
 
 	public VentaServiceImpl(){
 		
@@ -33,9 +31,8 @@ public class VentaServiceImpl implements VentaService {
 
 	@Transactional
 	public Venta saveVenta(Venta venta) {
-		Venta savedVenta = ventaDAO.create(venta);
-		this.agregarVentaParaEspectador(this.espectadorService.retrieveUsuario(venta.getComprador().getId()), savedVenta);
-		return savedVenta;
+		this.agregarVentaParaEspectador(venta);
+		return ventaDAO.create(venta);
 	}
 
 	@Override
@@ -73,9 +70,8 @@ public class VentaServiceImpl implements VentaService {
 	}
 
 	@Override
-	public void agregarVentaParaEspectador(Espectador espectador,Venta venta) {
-          espectador.getCompras().add(venta);
-  		  this.espectadorService.saveUsuario(espectador);
+	public void agregarVentaParaEspectador(Venta venta) {
+		venta.getComprador().getCompras().add(venta);
 	}
 
 }

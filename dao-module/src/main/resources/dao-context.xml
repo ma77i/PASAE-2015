@@ -24,9 +24,7 @@
     <bean id="teatroDAO" class="ar.edu.uai.paradigms.dao.TeatroDAOImplHibernateJPA" />
     <bean id="tarjetaDAO" class="ar.edu.uai.paradigms.dao.TarjetaDAOImplHibernateJPA" />
     <bean id="funcionDAO" class="ar.edu.uai.paradigms.dao.FuncionDAOImplHibernateJPA"/>
-
-
-
+    <bean id="categoriaDAO" class="ar.edu.uai.paradigms.dao.CategoriaDAOImplHibernateJPA"/>
 
 
     <!-- DataSource -->

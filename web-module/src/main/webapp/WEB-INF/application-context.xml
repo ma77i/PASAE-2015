@@ -108,8 +108,11 @@
         <constructor-arg name="funcionService" ref="funcionService"/>
         <constructor-arg name="funcionTranslator" ref="funcionTranslator"/>
 	</bean>
-	
-	<bean id="espectaculoTranslator" class="ar.edu.uai.paradigms.translator.EspectaculoTranslator" />
+
+    <bean id="espectaculoTranslator" class="ar.edu.uai.paradigms.translator.EspectaculoTranslator">
+        <property name="categoriaService" ref="categoriaService"/>
+        <property name="teatroService" ref="teatroService"/>
+    </bean>
 
     <bean id="sectorController" class="ar.edu.uai.paradigms.controller.SectorController" >
         <constructor-arg name="sectorService" ref="sectorService"/>
@@ -125,6 +128,11 @@
     <bean id="funcionController" class="ar.edu.uai.paradigms.controller.FuncionController">
         <constructor-arg name="funcionService" ref="funcionService"/>
         <constructor-arg name="funcionTranslator" ref="funcionTranslator"/>
+    </bean>
+
+    <bean id="categoriaController" class="ar.edu.uai.paradigms.controller.CategoriaController">
+        <constructor-arg name="categoriaService" ref="categoriaService"/>
+        <constructor-arg name="categoriaTranslator" ref="categoriaTranslator"/>
     </bean>
 
     <bean id="defaultController" class="ar.edu.uai.paradigms.controller.DefaultController" />
@@ -169,7 +177,9 @@
 
     <bean id="tarjetaTranslator" class="ar.edu.uai.paradigms.translator.TarjetaTranslator"/>
 
-    <bean id="funcionTranslator" class="ar.edu.uai.paradigms.translator.FuncionTranslator"/>
-
+    <bean id="funcionTranslator" class="ar.edu.uai.paradigms.translator.FuncionTranslator">
+        <property name="espectaculoService" ref="espectaculoService"/>
+    </bean>
+    <bean id="categoriaTranslator" class="ar.edu.uai.paradigms.translator.CategoriaTranslator"/>
 
 </beans>

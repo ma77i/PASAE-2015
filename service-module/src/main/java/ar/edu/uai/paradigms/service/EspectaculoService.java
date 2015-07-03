@@ -28,4 +28,9 @@ public interface EspectaculoService {
 
 	Collection<Espectaculo> listarEspectaculosEntreFechas(Date fecha1, Date fecha2);
 
+	Collection<Espectaculo> listarEspectaculosSegunCategoria(long id_categoria);
+
+	void agregarEspectaculoParaCategoria(Espectaculo e);
+
+	void agregarEspectaculoParaTeatro(Espectaculo e);
 }
