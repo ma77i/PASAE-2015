@@ -154,6 +154,11 @@
             </list>
         </property>
     </bean>
+    
+    <bean id="simpleAuthenticationProvider" class="ar.edu.uai.paradigms.authentication.SimpleAuthenticationProvider">
+        <constructor-arg name="loginService" ref="loginService"/>
+        
+    </bean>
 
 
     <bean id="sectorTranslator" class="ar.edu.uai.paradigms.translator.SectorTranslator" />
