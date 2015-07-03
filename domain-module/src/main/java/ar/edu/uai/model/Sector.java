@@ -28,7 +28,7 @@ public class Sector {
 	@ManyToOne
 	private Espectaculo espectaculo;
 
-	private Collection<Sector> sectores_contiguos;
+	//private Collection<Sector> sectores_contiguos;
 
 	
 

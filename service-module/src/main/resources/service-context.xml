@@ -43,11 +43,14 @@
      
      <bean id="teatroService" class="ar.edu.uai.paradigms.service.TeatroServiceImpl" >
       <property name="teatroDAO" ref="teatroDAO" />
-     </bean> 
-     
-     <bean id="loginService" class="ar.edu.uai.paradigms.service.LoginServiceImpl" >
-      <property name="usuarioDAO" ref="usuarioDAO" />
      </bean>
+
+    <bean id="loginService" class="ar.edu.uai.paradigms.service.LoginServiceImpl" >
+        <constructor-arg name="usuarioDAO" ref="usuarioDAO"/>
+    </bean>
+
+
+
 
     <bean id="httpClientFactory" class="org.springframework.http.client.HttpComponentsClientHttpRequestFactory">
         <constructor-arg ref="httpClient"/>
