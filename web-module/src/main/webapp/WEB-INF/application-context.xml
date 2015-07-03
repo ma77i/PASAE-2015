@@ -20,7 +20,7 @@
     <context:annotation-config/>
 
     <sec:http entry-point-ref="restAuthenticationEntryPoint">
-        <sec:intercept-url pattern="/sarlanga" access="ROLE_ADMIN"/>
+        <sec:intercept-url pattern="/admin/*" access="ROLE_ADMIN"/>
         <sec:custom-filter ref="customFilter" position="FORM_LOGIN_FILTER"/>
         <sec:logout/>
     </sec:http>
@@ -47,7 +47,9 @@
     <bean id="successHandler"
         class="ar.edu.uai.paradigms.authentication.SavedRequestAwareAuthenticationSuccessHandler"/>
     <bean id="simpleAuthenticationProvider"
-        class="ar.edu.uai.paradigms.authentication.SimpleAuthenticationProvider"/>
+        class="ar.edu.uai.paradigms.authentication.SimpleAuthenticationProvider">
+        <constructor-arg name="loginService" ref="loginService"/>
+    </bean>
     <bean id="failureHandler"
         class="org.springframework.security.web.authentication.SimpleUrlAuthenticationFailureHandler"/>
 
@@ -161,5 +163,6 @@
     <bean id="asientoTranslator" class="ar.edu.uai.paradigms.translator.AsientoTranslator" />
 
     <bean id="tarjetaTranslator" class="ar.edu.uai.paradigms.translator.TarjetaTranslator"/>
+
 
 </beans>

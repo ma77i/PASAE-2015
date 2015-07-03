@@ -21,6 +21,6 @@ public class SectorTranslator {
 	}
 
 	public SectorDTO translateToDTO(Sector sector) {
-		return new SectorDTO(sector.getNombre(), sector.getMonto(), sector.getEspectaculo().getId(), sector.getAsientos_libres());
+		return new SectorDTO(sector.getNombre(), sector.getMonto(), sector.getEspectaculo().getId(), sector.getAsientos_libres(), sector.getNro_asientos(), sector.getNro_filas());
 	}
 }
