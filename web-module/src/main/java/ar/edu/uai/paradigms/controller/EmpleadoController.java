@@ -1,18 +1,15 @@
 package ar.edu.uai.paradigms.controller;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.ResponseBody;
-
 import ar.edu.uai.model.Empleado;
 import ar.edu.uai.paradigms.dto.EmpleadoDTO;
 import ar.edu.uai.paradigms.service.EmpleadoService;
 import ar.edu.uai.paradigms.translator.EmpleadoTranslator;
+import ar.edu.uai.paradigms.validators.UsuarioDTOValidator;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.WebDataBinder;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
 import java.util.Collection;
@@ -32,6 +29,13 @@ public class EmpleadoController  {
 	private EmpleadoService empleadoService;
 
 	private EmpleadoTranslator empleadoTranslator;
+
+	@InitBinder
+	public void initBinder(WebDataBinder binder) {
+		binder.setValidator(new UsuarioDTOValidator());
+	}
+
+
 
 	@RequestMapping(method = RequestMethod.POST, consumes = "application/json")
 	public @ResponseBody EmpleadoDTO createEmpleado(@RequestBody EmpleadoDTO empleadoDTO) {

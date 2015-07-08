@@ -1,13 +1,13 @@
 package ar.edu.uai.paradigms.service;
 
-import java.util.Collection;
-
+import ar.edu.uai.model.Espectaculo;
 import ar.edu.uai.model.Funcion;
+import ar.edu.uai.paradigms.dao.EspectaculoDAO;
 import org.springframework.beans.factory.annotation.Required;
 import org.springframework.transaction.annotation.Transactional;
 
-import ar.edu.uai.model.Espectaculo;
-import ar.edu.uai.paradigms.dao.EspectaculoDAO;
+import java.util.Collection;
+import java.util.Date;
 
 public class EspectaculoServiceImpl implements EspectaculoService {
 
@@ -30,11 +30,12 @@ public class EspectaculoServiceImpl implements EspectaculoService {
 		this.espectaculoDAO = espectaculoDAO;
 	}
 
+
 	@Transactional
 	public Espectaculo saveEspectaculo(Espectaculo espectaculo) {
-		// Quizá debería tener un create en caso de existir ( consultar )
-		this.espectaculoDAO.update(espectaculo);
-		return espectaculo;
+		this.agregarEspectaculoParaCategoria(espectaculo);
+		this.agregarEspectaculoParaTeatro(espectaculo);
+		return espectaculoDAO.create(espectaculo);
 	}
 
 	@Override
@@ -81,4 +82,26 @@ public class EspectaculoServiceImpl implements EspectaculoService {
 		return espectaculoDAO.listarEspectaculosPorNombre(nombre_espectaculo);
 
 	}
+
+	@Override
+	public Collection<Espectaculo> listarEspectaculosEntreFechas(Date fecha1, Date fecha2) {
+		return espectaculoDAO.listarEspectaculosEntreRangoDeFechas(fecha1, fecha2);
+	}
+
+	@Override
+	public Collection<Espectaculo> listarEspectaculosSegunCategoria(long id_categoria) {
+		return espectaculoDAO.listarEspectaculosSegunCategoria(id_categoria);
+	}
+
+	@Override
+	public void agregarEspectaculoParaCategoria(Espectaculo e) {
+		e.getCategoria().getEspectaculos().add(e);
+	}
+
+	@Override
+	public void agregarEspectaculoParaTeatro(Espectaculo savedEspectaculo) {
+		savedEspectaculo.getTeatro().getEspectaculos().add(savedEspectaculo);
+	}
+
+
 }
