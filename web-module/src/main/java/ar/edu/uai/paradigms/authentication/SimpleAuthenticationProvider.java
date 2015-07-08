@@ -16,12 +16,14 @@ import java.util.List;
  */
 public class SimpleAuthenticationProvider implements AuthenticationProvider {
 
-	public SimpleAuthenticationProvider(){
-		super();		
-	}
-	
-	LoginService loginService;
-	
+    public SimpleAuthenticationProvider(LoginService loginService){
+        super();
+        this.loginService=loginService;
+    }
+
+
+    private LoginService loginService ;
+
     @Override
     public Authentication authenticate(Authentication authentication) {
         String name = authentication.getName();
