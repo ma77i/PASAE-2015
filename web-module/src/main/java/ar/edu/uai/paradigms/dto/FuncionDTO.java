@@ -1,10 +1,9 @@
 package ar.edu.uai.paradigms.dto;
 
-import java.sql.Time;
-import java.util.Date;
-
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonProperty;
+
+import java.util.Date;
 
 public class FuncionDTO {
 
@@ -13,7 +12,7 @@ public class FuncionDTO {
 	private long espectaculoId;
 
 	@JsonCreator
-	public FuncionDTO(@JsonProperty("fecha") Date fecha, @JsonProperty("hora") Time hora, @JsonProperty("espectaculoId") long espectaculoId) {
+	public FuncionDTO(@JsonProperty("fecha") Date fecha, @JsonProperty("hora") Date hora, @JsonProperty("espectaculoId") long espectaculoId) {
 		super();
 		this.setFecha(fecha);
 		this.setHora(hora);
@@ -33,7 +32,7 @@ public class FuncionDTO {
 		return hora;
 	}
 
-	public void setHora(Time hora) {
+	public void setHora(Date hora) {
 		this.hora = hora;
 	}
 
@@ -43,6 +42,11 @@ public class FuncionDTO {
 
 	public void setEspectaculoId(long espectaculoId) {
 		this.espectaculoId = espectaculoId;
+	}
+
+	public String toString() {
+		return "FuncionDTO [fecha=" + fecha + ", hora=" + hora + ",espectaculoId=" + espectaculoId + "]";
+
 	}
 
 }

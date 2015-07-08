@@ -1,16 +1,13 @@
 package ar.edu.uai.paradigms.translator;
 
-import ar.edu.uai.model.*;
+import ar.edu.uai.model.Espectador;
+import ar.edu.uai.model.Funcion;
+import ar.edu.uai.model.Tarjeta;
+import ar.edu.uai.model.Venta;
 import ar.edu.uai.paradigms.dto.VentaDTO;
 import ar.edu.uai.paradigms.service.EspectaculoService;
 import ar.edu.uai.paradigms.service.EspectadorService;
 import ar.edu.uai.paradigms.service.TarjetaService;
-import org.springframework.http.converter.HttpMessageConverter;
-import org.springframework.http.converter.json.MappingJackson2HttpMessageConverter;
-import org.springframework.web.client.RestTemplate;
-
-import java.util.ArrayList;
-import java.util.List;
 
 public class VentaTranslator {
 
@@ -66,7 +63,7 @@ public class VentaTranslator {
 		//Add the message converters to the restTemplate
 		restTemplate.setMessageConverters(messageConverters);
 
-		Page result = restTemplate.getForObject(ServiceUrl, Page.class);
+
 
 		*/
 

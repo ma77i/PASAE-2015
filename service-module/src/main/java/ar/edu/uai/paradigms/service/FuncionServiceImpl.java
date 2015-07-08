@@ -1,19 +1,16 @@
 package ar.edu.uai.paradigms.service;
 
-import java.util.Collection;
-import java.util.Date;
-
-import ar.edu.uai.model.Espectaculo;
 import ar.edu.uai.model.Funcion;
 import ar.edu.uai.paradigms.dao.FuncionDAO;
 import org.springframework.beans.factory.annotation.Required;
+
+import java.util.Collection;
 
 public class FuncionServiceImpl implements FuncionService{
 	
 
 	private FuncionDAO funcionDAO;
 
-	private EspectaculoService espectaculoService;
 
 	public FuncionDAO getFuncionDAO() {
 		return funcionDAO;
@@ -24,11 +21,11 @@ public class FuncionServiceImpl implements FuncionService{
 		this.funcionDAO = funcionDAO;
 	}
 
+
 	@Override
 	public Funcion saveFuncion(Funcion funcion) {
-		Funcion savedFuncion=funcionDAO.create(funcion);
-		this.agregarFuncionParaEspectaculo(savedFuncion,espectaculoService.retrieveEspectaculo(funcion.getEspectaculo().getId()));
-		return savedFuncion;
+		this.agregarFuncionParaEspectaculo(funcion);
+		return funcionDAO.create(funcion);
 	}
 
 	@Override
@@ -39,7 +36,6 @@ public class FuncionServiceImpl implements FuncionService{
 	@Override
 	public void deleteFuncion(long id_funcion) {
 		this.funcionDAO.delete(id_funcion);
-		
 	}
 
 	@Override
@@ -49,19 +45,19 @@ public class FuncionServiceImpl implements FuncionService{
 
 	@Override
 	public Funcion modificarFuncion(Funcion funcion) {
+		Funcion f = this.retrieveFuncion(funcion.getId());
+		f.setFecha(funcion.getFecha());
+		f.setHora(funcion.getHora());
 		return funcionDAO.update(funcion);
 	}
 
-
+	@Override
+	public void agregarFuncionParaEspectaculo(Funcion savedFuncion) {
+		savedFuncion.getEspectaculo().getFunciones().add(savedFuncion);
+	}
 
 	@Override
-	public Collection<Funcion> listarFuncionesEntreFechas(Date fecha1, Date fecha2) {
-		return funcionDAO.listarFuncionesEntreFechas(fecha1,fecha2);
+	public Collection<Funcion> listarFuncionesDeEspectaculo(long id_espectaculo) {
+		return funcionDAO.listarFuncionesDeEspectaculo(id_espectaculo);
 	}
-
-	private void agregarFuncionParaEspectaculo(Funcion savedFuncion, Espectaculo espectaculo) {
-	   espectaculo.getFunciones().add(savedFuncion);
-	   espectaculoService.saveEspectaculo(espectaculo);
-	}
-
 }
