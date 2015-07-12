@@ -1,7 +1,9 @@
 package ar.edu.uai.paradigms.service;
 
+import ar.edu.uai.model.Categoria;
 import ar.edu.uai.model.Espectaculo;
 import ar.edu.uai.model.Funcion;
+import ar.edu.uai.model.Teatro;
 import ar.edu.uai.paradigms.dao.EspectaculoDAO;
 import org.springframework.beans.factory.annotation.Required;
 import org.springframework.transaction.annotation.Transactional;
@@ -12,6 +14,10 @@ import java.util.Date;
 public class EspectaculoServiceImpl implements EspectaculoService {
 
 	private EspectaculoDAO espectaculoDAO;
+
+	private CategoriaService categoriaService;
+
+	private TeatroService teatroService;
 
 	public EspectaculoServiceImpl() {
 
@@ -30,11 +36,28 @@ public class EspectaculoServiceImpl implements EspectaculoService {
 		this.espectaculoDAO = espectaculoDAO;
 	}
 
+	public CategoriaService getCategoriaService() {
+		return categoriaService;
+	}
+
+	public void setCategoriaService(CategoriaService categoriaService) {
+		this.categoriaService = categoriaService;
+	}
+
+	public TeatroService getTeatroService() {
+		return teatroService;
+	}
+
+	public void setTeatroService(TeatroService teatroService) {
+		this.teatroService = teatroService;
+	}
 
 	@Transactional
-	public Espectaculo saveEspectaculo(Espectaculo espectaculo) {
-		this.agregarEspectaculoParaCategoria(espectaculo);
-		this.agregarEspectaculoParaTeatro(espectaculo);
+	public Espectaculo saveEspectaculo(Espectaculo espectaculo,long categoriaId,long teatroId ) {
+		Categoria categoria = categoriaService.retrieveCategoria(categoriaId);
+		Teatro teatro = teatroService.retrieveTeatro(teatroId);
+		this.agregarEspectaculoParaCategoria(espectaculo,categoria);
+		this.agregarEspectaculoParaTeatro(espectaculo,teatro);
 		return espectaculoDAO.update(espectaculo);
 	}
 
@@ -94,13 +117,15 @@ public class EspectaculoServiceImpl implements EspectaculoService {
 	}
 
 	@Override
-	public void agregarEspectaculoParaCategoria(Espectaculo e) {
-		e.getCategoria().getEspectaculos().add(e);
+	public void agregarEspectaculoParaCategoria(Espectaculo e,Categoria c) {
+		e.setCategoria(c);
+		c.getEspectaculos().add(e);
 	}
 
 	@Override
-	public void agregarEspectaculoParaTeatro(Espectaculo savedEspectaculo) {
-		savedEspectaculo.getTeatro().getEspectaculos().add(savedEspectaculo);
+	public void agregarEspectaculoParaTeatro(Espectaculo e,Teatro t) {
+		e.setTeatro(t);
+		t.getEspectaculos().add(e);
 	}
 
 

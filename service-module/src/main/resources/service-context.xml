@@ -22,7 +22,9 @@
      </bean>
     
     <bean id="espectaculoService" class="ar.edu.uai.paradigms.service.EspectaculoServiceImpl">
-       <property name="espectaculoDAO" ref="espectaculoDAO" />
+        <property name="espectaculoDAO" ref="espectaculoDAO" />
+        <property name="categoriaService" ref="categoriaService"/>
+        <property name="teatroService" ref="teatroService"/>
     </bean>
         
      <bean id="sectorService" class="ar.edu.uai.paradigms.service.SectorServiceImpl">

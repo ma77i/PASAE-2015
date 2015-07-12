@@ -21,13 +21,13 @@ public abstract class GenericDaoHibernateJPA<T> implements GenericDAO<T> {
 		this.persistentClass=persistentClass;
 	}
 
-	@Transactional
+	@Override
 	public T create(T entity) {
 		this.entityManager.persist(entity);
 		return entity;
 	}
 
-	@Transactional
+	@Override
 	public T update(T entity) {
 		return this.entityManager.merge(entity);
 	}
