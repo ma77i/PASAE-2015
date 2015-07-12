@@ -35,7 +35,7 @@ public class EspectaculoServiceImpl implements EspectaculoService {
 	public Espectaculo saveEspectaculo(Espectaculo espectaculo) {
 		this.agregarEspectaculoParaCategoria(espectaculo);
 		this.agregarEspectaculoParaTeatro(espectaculo);
-		return espectaculoDAO.create(espectaculo);
+		return espectaculoDAO.update(espectaculo);
 	}
 
 	@Override

@@ -17,7 +17,7 @@ public class Sector {
 	private Boolean agotado;
 
 	private Integer nro_asientos;
-	
+
 	private Integer asientos_libres;
 
 	private Integer nro_filas;
@@ -43,8 +43,8 @@ public class Sector {
 		this.nombre = nombre;
 		this.espectaculo = espectaculo;
 		this.asientos_libres = asientos_libres;
-		this.nro_asientos=nro_asientos;
-		this.nro_filas=nro_filas;
+		this.nro_asientos = nro_asientos;
+		this.nro_filas = nro_filas;
 	}
 
 	public String getNombre() {

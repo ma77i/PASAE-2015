@@ -1,12 +1,11 @@
 package ar.edu.uai.paradigms.authentication;
 
+import ar.edu.uai.paradigms.service.LoginService;
 import org.springframework.security.authentication.AuthenticationProvider;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
-
-import ar.edu.uai.paradigms.service.LoginService;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -16,27 +15,27 @@ import java.util.List;
  */
 public class SimpleAuthenticationProvider implements AuthenticationProvider {
 
-    public SimpleAuthenticationProvider(LoginService loginService){
+    public SimpleAuthenticationProvider(LoginService loginService) {
         super();
-        this.loginService=loginService;
+        this.loginService = loginService;
     }
 
 
-    private LoginService loginService ;
+    private LoginService loginService;
 
     @Override
     public Authentication authenticate(Authentication authentication) {
         String name = authentication.getName();
         String password = authentication.getCredentials().toString();
-        String role = loginService.authenticate(name,password);
-        if(role != null){
-        	List<GrantedAuthority> grants = new ArrayList();
-        	grants.add(new SimpleGrantedAuthority(role));
-        	return new UsernamePasswordAuthenticationToken(authentication.getName(),  authentication.getCredentials().toString(), grants);
-        }else{
-        	return null;
+        String role = loginService.authenticate(name, password);
+        if (role != null) {
+            List<GrantedAuthority> grants = new ArrayList();
+            grants.add(new SimpleGrantedAuthority(role));
+            return new UsernamePasswordAuthenticationToken(authentication.getName(), authentication.getCredentials().toString(), grants);
+        } else {
+            return null;
         }
-        
+
 //        if (name.equals("admin") && password.equals("admin")) {
 //            List<GrantedAuthority> grants = new ArrayList();
 //            grants.add(new SimpleGrantedAuthority("ROLE_ADMIN"));
@@ -51,11 +50,11 @@ public class SimpleAuthenticationProvider implements AuthenticationProvider {
         return authentication.equals(UsernamePasswordAuthenticationToken.class);
     }
 
-	public LoginService getLoginService() {
-		return loginService;
-	}
+    public LoginService getLoginService() {
+        return loginService;
+    }
 
-	public void setLoginService(LoginService loginService) {
-		this.loginService = loginService;
-	}
+    public void setLoginService(LoginService loginService) {
+        this.loginService = loginService;
+    }
 }

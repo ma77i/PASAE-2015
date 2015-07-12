@@ -48,7 +48,7 @@ public class UsuarioDAOImplHibernateJPA<T> extends GenericDaoHibernateJPA<T> imp
         }        
         if(user!=null){
         	//ClassName
-        	role = "ROLE_" + user.getClass().getSimpleName();
+            role = "ROLE_" + user.getClass().getSimpleName();
         }
     	return role;
     	
