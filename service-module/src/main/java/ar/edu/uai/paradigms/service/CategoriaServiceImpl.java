@@ -3,6 +3,7 @@ package ar.edu.uai.paradigms.service;
 import ar.edu.uai.model.Categoria;
 import ar.edu.uai.paradigms.dao.CategoriaDAO;
 import org.springframework.beans.factory.annotation.Required;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.Collection;
 
@@ -22,7 +23,7 @@ public class CategoriaServiceImpl implements CategoriaService {
         this.categoriaDAO = categoriaDAO;
     }
 
-    @Override
+    @Transactional
     public Categoria saveCategoria(Categoria categoria) {
         return categoriaDAO.create(categoria);
     }

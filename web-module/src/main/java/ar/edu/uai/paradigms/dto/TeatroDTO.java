@@ -12,10 +12,13 @@ public class TeatroDTO {
 
     private String direccion;
 
+    private Long id;
+
     @JsonCreator
-    public TeatroDTO(@JsonProperty("nombre") String nombre, @JsonProperty("direccion") String direccion) {
+    public TeatroDTO(@JsonProperty("nombre") String nombre, @JsonProperty("direccion") String direccion, @JsonProperty("id") Long id) {
         this.setNombre(nombre);
         this.setDireccion(direccion);
+        this.setId(id);
     }
 
 
@@ -35,4 +38,11 @@ public class TeatroDTO {
         this.direccion = direccion;
     }
 
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
 }

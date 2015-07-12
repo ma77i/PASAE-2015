@@ -47,7 +47,7 @@
     <bean id="successHandler"
         class="ar.edu.uai.paradigms.authentication.SavedRequestAwareAuthenticationSuccessHandler"/>
     <bean id="simpleAuthenticationProvider"
-        class="ar.edu.uai.paradigms.authentication.SimpleAuthenticationProvider">
+          class="ar.edu.uai.paradigms.authentication.SimpleAuthenticationProvider">
         <constructor-arg name="loginService" ref="loginService"/>
     </bean>
     <bean id="failureHandler"
@@ -137,6 +137,13 @@
         <constructor-arg name="categoriaTranslator" ref="categoriaTranslator"/>
     </bean>
 
+    <bean id="teatroController" class="ar.edu.uai.paradigms.controller.TeatroController">
+        <constructor-arg name="teatroService" ref="teatroService"/>
+        <constructor-arg name="teatroTranslator" ref="teatroTranslator"/>
+
+    </bean>
+
+
     <bean id="defaultController" class="ar.edu.uai.paradigms.controller.DefaultController" />
 
 
@@ -184,5 +191,7 @@
         <property name="espectaculoService" ref="espectaculoService"/>
     </bean>
     <bean id="categoriaTranslator" class="ar.edu.uai.paradigms.translator.CategoriaTranslator"/>
+
+    <bean id="teatroTranslator" class="ar.edu.uai.paradigms.translator.TeatroTranslator"/>
 
 </beans>

@@ -3,10 +3,10 @@ package ar.edu.uai.paradigms.service;
 import ar.edu.uai.paradigms.dao.UsuarioDAO;
 
 public class LoginServiceImpl implements LoginService {
-	
-	public LoginServiceImpl (UsuarioDAO usuarioDAO){
+
+	public LoginServiceImpl(UsuarioDAO usuarioDAO) {
 		super();
-		this.usuarioDAO =usuarioDAO;
+		this.usuarioDAO = usuarioDAO;
 	}
 	
 	UsuarioDAO usuarioDAO;

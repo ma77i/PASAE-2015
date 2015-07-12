@@ -10,16 +10,17 @@ public class EspectaculoDTO {
 
 	private String nombre;
 	private String descripcion;
-	private Long categoriaId;
-	private Long teatroId;
+	private long categoriaId;
+	private long teatroId;
 
 	@JsonCreator
-	public EspectaculoDTO(@JsonProperty("nombre") String nombre, @JsonProperty("descripcion") String descripcion, @JsonProperty("categoriaId") Long categoriaId, @JsonProperty("teatroId") Long teatroId) {
-		this.nombre = nombre;
-		this.descripcion = descripcion;
-		this.categoriaId = categoriaId;
-		this.teatroId = teatroId;
+	public EspectaculoDTO(@JsonProperty("nombre") String nombre, @JsonProperty("descripcion") String descripcion, @JsonProperty("categoriaId") long categoriaId, @JsonProperty("teatroId") long teatroId) {
+		this.setNombre(nombre);
+		this.setDescripcion(descripcion);
+		this.setCategoriaId(categoriaId);
+		this.setTeatroId(teatroId);
 	}
+
 
 	public String getNombre() {
 		return nombre;
@@ -37,19 +38,19 @@ public class EspectaculoDTO {
 		this.descripcion = descripcion;
 	}
 
-	public Long getCategoriaId() {
+	public long getCategoriaId() {
 		return categoriaId;
 	}
 
-	public void setCategoriaId(Long categoriaId) {
+	public void setCategoriaId(long categoriaId) {
 		this.categoriaId = categoriaId;
 	}
 
-	public Long getTeatroId() {
+	public long getTeatroId() {
 		return teatroId;
 	}
 
-	public void setTeatroId(Long teatroId) {
+	public void setTeatroId(long teatroId) {
 		this.teatroId = teatroId;
 	}
 

@@ -9,12 +9,17 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 public class CategoriaDTO {
 
     private String nombre;
+    private Long id;
 
+    public Long getId() {
+        return id;
+    }
 
     @JsonCreator
-    public CategoriaDTO(@JsonProperty("nombre") String nombre) {
+    public CategoriaDTO(@JsonProperty("nombre") String nombre, @JsonProperty("id") Long id) {
         super();
         this.setNombre(nombre);
+        this.setId(id);
     }
 
 
@@ -24,5 +29,9 @@ public class CategoriaDTO {
 
     public void setNombre(String nombre) {
         this.nombre = nombre;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
     }
 }
