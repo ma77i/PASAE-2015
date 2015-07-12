@@ -10,16 +10,20 @@ public class SectorDTO {
 
 	private String nombre;
 	private Float monto;
-	private long id_espectaculo; // VA ACA????
 	private Integer asientosLibres;
+	private Integer nro_asientos;
+	private Integer nro_filas;
+	private Long id_espectaculo;
 
 	@JsonCreator
-	public SectorDTO(@JsonProperty("nombre") String nombre, @JsonProperty("monto") Float monto, @JsonProperty("id_espectaculo") long id_espectaculo,
-			@JsonProperty("asientosLibres") Integer asientosLibres) {
+	public SectorDTO(@JsonProperty("nombre") String nombre, @JsonProperty("monto") Float monto, @JsonProperty("id_espectaculo") Long id_espectaculo,
+			@JsonProperty("asientosLibres") Integer asientosLibres, @JsonProperty ("nro_asientos")Integer nro_asientos, @JsonProperty ("nro_filas") Integer nro_filas) {
 		this.nombre = nombre;
 		this.monto = monto;
-		this.id_espectaculo = id_espectaculo;
 		this.asientosLibres = asientosLibres;
+		this.nro_asientos = nro_asientos;
+		this.nro_filas = nro_filas;
+		this.id_espectaculo = id_espectaculo;
 	}
 
 	public String getNombre() {
@@ -42,7 +46,7 @@ public class SectorDTO {
 		return id_espectaculo;
 	}
 
-	public void setEspectaculo(long id_espectaculo) {
+	public void setEspectaculo(Long id_espectaculo) {
 		this.id_espectaculo = id_espectaculo;
 	}
 
@@ -52,6 +56,22 @@ public class SectorDTO {
 
 	public void setAsientosLibres(Integer asientosLibres) {
 		this.asientosLibres = asientosLibres;
+	}
+
+	public Integer getNro_asientos() {
+		return nro_asientos;
+	}
+
+	public void setNro_asientos(Integer nro_asientos) {
+		this.nro_asientos = nro_asientos;
+	}
+
+	public Integer getNro_filas() {
+		return nro_filas;
+	}
+
+	public void setNro_filas(Integer nro_filas) {
+		this.nro_filas = nro_filas;
 	}
 
 	public String toString() {

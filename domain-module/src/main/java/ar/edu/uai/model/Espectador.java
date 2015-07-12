@@ -6,6 +6,10 @@ import java.util.Collection;
 
 @Entity
 public class Espectador extends Usuario {
+
+	public Espectador(){
+		super();
+	};
 	
 
 	
