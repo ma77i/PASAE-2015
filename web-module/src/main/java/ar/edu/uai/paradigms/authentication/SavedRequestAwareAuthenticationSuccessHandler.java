@@ -1,5 +1,6 @@
 package ar.edu.uai.paradigms.authentication;
 
+import org.json.JSONObject;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.web.authentication.SimpleUrlAuthenticationSuccessHandler;
 import org.springframework.security.web.savedrequest.HttpSessionRequestCache;
@@ -23,6 +24,15 @@ public class SavedRequestAwareAuthenticationSuccessHandler extends SimpleUrlAuth
     public void onAuthenticationSuccess(HttpServletRequest request, HttpServletResponse response,
                                         Authentication authentication) throws ServletException, IOException {
         SavedRequest savedRequest = requestCache.getRequest(request, response);
+
+        if(authentication.isAuthenticated()){
+            JSONObject json = new JSONObject();
+            response.setContentType("application/json");
+            json.put("username", authentication.getPrincipal().toString());
+            json.put("roles", authentication.getAuthorities());
+            response.getWriter().write(json.toString());
+        }
+
 
         if (savedRequest == null) {
             clearAuthenticationAttributes(request);
