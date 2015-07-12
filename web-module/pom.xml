@@ -23,7 +23,7 @@
 			<groupId>com.thetransactioncompany</groupId>
 			<artifactId>cors-filter</artifactId>
 			<version>2.4</version>
-		</dependency>		
+		</dependency>
 		<dependency>
 			<groupId>ar.edu.uai.paradigms</groupId>
 			<artifactId>customex-module</artifactId>

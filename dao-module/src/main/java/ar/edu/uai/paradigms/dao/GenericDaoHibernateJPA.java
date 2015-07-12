@@ -2,13 +2,10 @@ package ar.edu.uai.paradigms.dao;
 
 import org.springframework.transaction.annotation.Transactional;
 
-import java.lang.reflect.ParameterizedType;
-import java.util.Collection;
-import java.lang.reflect.Type;
-
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
+import java.util.Collection;
 
 public abstract class GenericDaoHibernateJPA<T> implements GenericDAO<T> {
 	@PersistenceContext(unitName = "paradigms-persistence-unit")
