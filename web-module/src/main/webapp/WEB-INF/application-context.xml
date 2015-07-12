@@ -111,10 +111,7 @@
         <constructor-arg name="funcionTranslator" ref="funcionTranslator"/>
 	</bean>
 
-    <bean id="espectaculoTranslator" class="ar.edu.uai.paradigms.translator.EspectaculoTranslator">
-        <property name="categoriaService" ref="categoriaService"/>
-        <property name="teatroService" ref="teatroService"/>
-    </bean>
+    <bean id="espectaculoTranslator" class="ar.edu.uai.paradigms.translator.EspectaculoTranslator"/>
 
     <bean id="sectorController" class="ar.edu.uai.paradigms.controller.SectorController" >
         <constructor-arg name="sectorService" ref="sectorService"/>
@@ -193,5 +190,6 @@
     <bean id="categoriaTranslator" class="ar.edu.uai.paradigms.translator.CategoriaTranslator"/>
 
     <bean id="teatroTranslator" class="ar.edu.uai.paradigms.translator.TeatroTranslator"/>
+
 
 </beans>
