@@ -1,10 +1,9 @@
 package ar.edu.uai.paradigms.service;
 
-import org.springframework.beans.factory.annotation.Required;
-import org.springframework.transaction.annotation.Transactional;
-
 import ar.edu.uai.model.Teatro;
 import ar.edu.uai.paradigms.dao.TeatroDAO;
+import org.springframework.beans.factory.annotation.Required;
+import org.springframework.transaction.annotation.Transactional;
 
 public class TeatroServiceImpl implements TeatroService {
 	
