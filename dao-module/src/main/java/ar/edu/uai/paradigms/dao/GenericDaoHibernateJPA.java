@@ -21,7 +21,7 @@ public abstract class GenericDaoHibernateJPA<T> implements GenericDAO<T> {
 		this.persistentClass=persistentClass;
 	}
 
-	@Override
+	@Transactional
 	public T create(T entity) {
 		this.entityManager.persist(entity);
 		return entity;
