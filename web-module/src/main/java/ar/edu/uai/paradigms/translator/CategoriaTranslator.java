@@ -14,7 +14,7 @@ public class CategoriaTranslator {
     }
 
     public CategoriaDTO translateToDTO(Categoria categoria) {
-        return new CategoriaDTO(categoria.getNombre());
+        return new CategoriaDTO(categoria.getNombre(), categoria.getId());
     }
 
 

@@ -31,11 +31,11 @@ public class Espectaculo {
 	 
 	@OneToMany(mappedBy="espectaculo")
 	private Collection<Sector> sectores;
-	 
-	@ManyToOne
+
+	@ManyToOne(cascade = CascadeType.ALL)
 	private Teatro teatro;
 
-	@ManyToOne
+	@ManyToOne(cascade = CascadeType.ALL)
 	private Categoria categoria;
 
 	public long getId() {
