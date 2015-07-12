@@ -8,27 +8,27 @@ import com.fasterxml.jackson.annotation.JsonProperty;
  */
 public class AsientoDTO {
 
-	private String fila;
+	private Integer fila;
 
-	private int numero;
+	private Integer numero;
 
 	private boolean ocupado;
 
 	private long id_sector;
 
 	@JsonCreator
-	public AsientoDTO(@JsonProperty("fila") String fila, @JsonProperty("numero") int numero, @JsonProperty("ocupado") boolean ocupado, @JsonProperty("id_sector") long id_sector) {
+	public AsientoDTO(@JsonProperty("fila") Integer fila, @JsonProperty("numero") Integer numero, @JsonProperty("ocupado") boolean ocupado, @JsonProperty("id_sector") long id_sector) {
 		this.fila = fila;
 		this.numero = numero;
 		this.ocupado = ocupado;
 		this.id_sector = id_sector;
 	}
 
-	public String getFila() {
+	public Integer getFila() {
 		return fila;
 	}
 
-	public void setFila(String fila) {
+	public void setFila(Integer fila) {
 		this.fila = fila;
 	}
 

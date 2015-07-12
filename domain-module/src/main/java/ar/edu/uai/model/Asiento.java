@@ -1,6 +1,10 @@
 package ar.edu.uai.model;
 
-import javax.persistence.*;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 
 @Entity
 public class Asiento {
@@ -13,16 +17,16 @@ public class Asiento {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private long id;
 
-	private String fila;
+	private Integer fila;
 
-	private int numero;
+	private Integer numero;
 
 	private boolean ocupado;
 
 	@ManyToOne
 	private Sector sector;
 
-	public Asiento(String fila, int numero, boolean ocupado, Sector sector) {
+	public Asiento(Integer fila, int numero, boolean ocupado, Sector sector) {
 		this.fila = fila;
 		this.numero = numero;
 		this.ocupado = ocupado;
@@ -37,11 +41,11 @@ public class Asiento {
 		this.id = id;
 	}
 
-	public String getFila() {
+	public Integer getFila() {
 		return fila;
 	}
 
-	public void setFila(String fila) {
+	public void setFila(Integer fila) {
 		this.fila = fila;
 	}
 

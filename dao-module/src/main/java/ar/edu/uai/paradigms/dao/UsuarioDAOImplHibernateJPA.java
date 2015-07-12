@@ -1,7 +1,5 @@
 package ar.edu.uai.paradigms.dao;
 
-import ar.edu.uai.model.Administrador;
-import ar.edu.uai.model.Espectador;
 import ar.edu.uai.model.Usuario;
 
 import javax.persistence.NoResultException;
@@ -40,7 +38,7 @@ public class UsuarioDAOImplHibernateJPA<T> extends GenericDaoHibernateJPA<T> imp
     	String role = "ROLE_ANON";
         Usuario user = null;
         try {
-            Query consulta = this.entityManager.createQuery("select u from Usuario as u where u.mail=:email and u.password = :password");
+            Query consulta = this.entityManager.createQuery("select u from Usuario as u where u.email=:email and u.password = :password");
             consulta.setParameter("email", email );
             consulta.setParameter("password", password);
             user = (Usuario) consulta.getSingleResult();
@@ -50,7 +48,7 @@ public class UsuarioDAOImplHibernateJPA<T> extends GenericDaoHibernateJPA<T> imp
         }        
         if(user!=null){
         	//ClassName
-        	role = "ROLE_" + user.getClass();
+        	role = "ROLE_" + user.getClass().getSimpleName();
         }
     	return role;
     	
