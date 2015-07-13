@@ -184,9 +184,8 @@
 
     <bean id="tarjetaTranslator" class="ar.edu.uai.paradigms.translator.TarjetaTranslator"/>
 
-    <bean id="funcionTranslator" class="ar.edu.uai.paradigms.translator.FuncionTranslator">
-        <property name="espectaculoService" ref="espectaculoService"/>
-    </bean>
+    <bean id="funcionTranslator" class="ar.edu.uai.paradigms.translator.FuncionTranslator"/>
+
     <bean id="categoriaTranslator" class="ar.edu.uai.paradigms.translator.CategoriaTranslator"/>
 
     <bean id="teatroTranslator" class="ar.edu.uai.paradigms.translator.TeatroTranslator"/>
