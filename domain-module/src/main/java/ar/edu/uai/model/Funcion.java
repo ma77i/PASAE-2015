@@ -7,11 +7,10 @@ import java.util.Date;
 @Entity
 public class Funcion {
 
-	
-	public Funcion(Date fecha, Date hora, Espectaculo espectaculo){
+
+	public Funcion(Date fecha, Date hora) {
 		this.fecha = fecha;
 		this.hora = hora;
-		this.espectaculo = espectaculo;
 		
 	}
 

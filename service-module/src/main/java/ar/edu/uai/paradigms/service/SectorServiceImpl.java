@@ -31,9 +31,9 @@ public class SectorServiceImpl implements SectorService {
 
 	@Transactional
 	public Sector saveSector(Sector sector) {
-		for (int i=1; i <= (sector.getNro_asientos()); i++) {
-			for (int x=1; i<=((sector.getNro_asientos()) / (sector.getNro_filas())); i++) {
-				sector.getAsientos().add(new Asiento(x,i,false,sector));
+		for (int i = 1; i <= (sector.getNro_asientos()); i++) {
+			for (int x = 1; i <= ((sector.getNro_asientos()) / (sector.getNro_filas())); i++) {
+				sector.getAsientos().add(new Asiento(x, i, false, sector));
 			}
 
 		}
@@ -50,11 +50,11 @@ public class SectorServiceImpl implements SectorService {
 		return sectorDAO.list();
 	}
 
-	public boolean hayDisponibilidad (Long id_sector, Integer nro_asientos) {
+	public boolean hayDisponibilidad(Long id_sector, Integer nro_asientos) {
 		return (sectorDAO.chequearDisponibilidad(id_sector) > nro_asientos);
 	}
 
-	public Integer cantidadAsientosDisponibles (Long id_sector) {
+	public Integer cantidadAsientosDisponibles(Long id_sector) {
 		return (sectorDAO.chequearDisponibilidad(id_sector));
 	}
 

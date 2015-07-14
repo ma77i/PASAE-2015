@@ -1,14 +1,16 @@
 package ar.edu.uai.paradigms.service;
 
+import ar.edu.uai.model.Categoria;
 import ar.edu.uai.model.Espectaculo;
 import ar.edu.uai.model.Funcion;
+import ar.edu.uai.model.Teatro;
 
 import java.util.Collection;
 import java.util.Date;
 
 
 public interface EspectaculoService {
-	public Espectaculo saveEspectaculo(Espectaculo espectaculo);
+	public Espectaculo saveEspectaculo(Espectaculo espectaculo,long categoriaId,long teatroId);
 
 	public Espectaculo retrieveEspectaculo(long identifier);
 
@@ -30,7 +32,7 @@ public interface EspectaculoService {
 
 	Collection<Espectaculo> listarEspectaculosSegunCategoria(long id_categoria);
 
-	void agregarEspectaculoParaCategoria(Espectaculo e);
+	void agregarEspectaculoParaCategoria(Espectaculo e,Categoria categoria);
 
-	void agregarEspectaculoParaTeatro(Espectaculo e);
+	void agregarEspectaculoParaTeatro(Espectaculo e,Teatro teatro);
 }

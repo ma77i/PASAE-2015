@@ -15,13 +15,13 @@ public interface SectorService {
 
 	public boolean hayDisponibilidad(Long id_sector, Integer nro_asientos);
 
-	public Integer cantidadAsientosDisponibles (Long id_sector );
+	public Integer cantidadAsientosDisponibles(Long id_sector);
 
-	public Collection<Asiento> asientosDeSector (Long id_sector);
+	public Collection<Asiento> asientosDeSector(Long id_sector);
 
-	public Collection <Asiento> asientosDisponiblesDeSector (Long id_sector);
+	public Collection<Asiento> asientosDisponiblesDeSector(Long id_sector);
 
-	public Collection <Asiento> asientosOcupadosDeSector (Long id_sector);
+	public Collection<Asiento> asientosOcupadosDeSector(Long id_sector);
 
 
 }

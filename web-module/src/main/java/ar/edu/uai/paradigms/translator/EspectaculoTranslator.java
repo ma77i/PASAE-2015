@@ -7,21 +7,8 @@ import ar.edu.uai.paradigms.service.TeatroService;
 
 public class EspectaculoTranslator {
 
-	private CategoriaService categoriaService;
-	private TeatroService teatroService;
-
-
-	public void setCategoriaService(CategoriaService categoriaService) {
-		this.categoriaService = categoriaService;
-	}
-
-	public void setTeatroService(TeatroService teatroService) {
-		this.teatroService = teatroService;
-	}
-
-
 	public Espectaculo translate(EspectaculoDTO espectaculoDTO) {
-		return new Espectaculo(espectaculoDTO.getNombre(), espectaculoDTO.getDescripcion(), this.categoriaService.retrieveCategoria(espectaculoDTO.getCategoriaId()), this.teatroService.retrieveTeatro(espectaculoDTO.getTeatroId()));
+		return new Espectaculo(espectaculoDTO.getNombre(), espectaculoDTO.getDescripcion());
 	}
 
 	public EspectaculoDTO translateToDTO(Espectaculo espectaculo) {

@@ -17,7 +17,7 @@ public class SectorDTO {
 
 	@JsonCreator
 	public SectorDTO(@JsonProperty("nombre") String nombre, @JsonProperty("monto") Float monto, @JsonProperty("id_espectaculo") Long id_espectaculo,
-			@JsonProperty("asientosLibres") Integer asientosLibres, @JsonProperty ("nro_asientos")Integer nro_asientos, @JsonProperty ("nro_filas") Integer nro_filas) {
+					 @JsonProperty("asientosLibres") Integer asientosLibres, @JsonProperty("nro_asientos") Integer nro_asientos, @JsonProperty("nro_filas") Integer nro_filas) {
 		this.nombre = nombre;
 		this.monto = monto;
 		this.asientosLibres = asientosLibres;
