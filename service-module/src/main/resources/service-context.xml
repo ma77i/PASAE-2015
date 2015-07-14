@@ -22,7 +22,9 @@
      </bean>
     
     <bean id="espectaculoService" class="ar.edu.uai.paradigms.service.EspectaculoServiceImpl">
-       <property name="espectaculoDAO" ref="espectaculoDAO" />
+        <property name="espectaculoDAO" ref="espectaculoDAO" />
+        <property name="categoriaService" ref="categoriaService"/>
+        <property name="teatroService" ref="teatroService"/>
     </bean>
         
      <bean id="sectorService" class="ar.edu.uai.paradigms.service.SectorServiceImpl">
@@ -45,7 +47,7 @@
       <property name="teatroDAO" ref="teatroDAO" />
      </bean>
 
-    <bean id="loginService" class="ar.edu.uai.paradigms.service.LoginServiceImpl" >
+    <bean id="loginService" class="ar.edu.uai.paradigms.service.LoginServiceImpl">
         <constructor-arg name="usuarioDAO" ref="usuarioDAO"/>
     </bean>
 
@@ -79,6 +81,7 @@
 
     <bean id="funcionService" class="ar.edu.uai.paradigms.service.FuncionServiceImpl">
         <property name="funcionDAO" ref="funcionDAO"/>
+        <property name="espectaculoService" ref="espectaculoService"/>
     </bean>
 
     <bean id="categoriaService" class="ar.edu.uai.paradigms.service.CategoriaServiceImpl">

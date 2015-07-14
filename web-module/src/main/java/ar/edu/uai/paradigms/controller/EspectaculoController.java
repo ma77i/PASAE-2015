@@ -42,7 +42,7 @@ public class EspectaculoController {
 	@RequestMapping(method = RequestMethod.POST, consumes = "application/json")
 	public @ResponseBody EspectaculoDTO createEspectaculo(@RequestBody EspectaculoDTO espectaculoDTO) {
 		LOGGER.debug("Received DTO: " + espectaculoDTO);
-		return this.espectaculoTranslator.translateToDTO(this.espectaculoService.saveEspectaculo(this.espectaculoTranslator.translate(espectaculoDTO)));
+		return this.espectaculoTranslator.translateToDTO(this.espectaculoService.saveEspectaculo(this.espectaculoTranslator.translate(espectaculoDTO),espectaculoDTO.getCategoriaId(),espectaculoDTO.getTeatroId()));
 	}
 
 	@RequestMapping(method = RequestMethod.GET, value = "/{identifier}")

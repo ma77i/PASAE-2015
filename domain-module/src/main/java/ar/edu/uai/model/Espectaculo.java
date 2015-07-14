@@ -10,11 +10,9 @@ public class Espectaculo {
 		
 	}
 
-	public Espectaculo(String nombre, String descripcion, Categoria categoria, Teatro teatro) {
+	public Espectaculo(String nombre, String descripcion) {
 		this.nombre = nombre;
 		this.descripcion = descripcion;
-		this.categoria = categoria;
-		this.teatro = teatro;
 	}
 
 	@Id
@@ -31,11 +29,11 @@ public class Espectaculo {
 	 
 	@OneToMany(mappedBy="espectaculo")
 	private Collection<Sector> sectores;
-	 
-	@ManyToOne
+
+	@ManyToOne(cascade = CascadeType.MERGE)
 	private Teatro teatro;
 
-	@ManyToOne
+	@ManyToOne(cascade = CascadeType.MERGE)
 	private Categoria categoria;
 
 	public long getId() {

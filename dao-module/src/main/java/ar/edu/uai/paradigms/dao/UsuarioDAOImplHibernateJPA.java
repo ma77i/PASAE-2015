@@ -35,7 +35,7 @@ public class UsuarioDAOImplHibernateJPA<T> extends GenericDaoHibernateJPA<T> imp
      */
     @Override
     public String getUserRole(String email,String password){
-    	String role = "ROLE_ANON";
+    	String role = null;
         Usuario user = null;
         try {
             Query consulta = this.entityManager.createQuery("select u from Usuario as u where u.email=:email and u.password = :password");
@@ -48,7 +48,7 @@ public class UsuarioDAOImplHibernateJPA<T> extends GenericDaoHibernateJPA<T> imp
         }        
         if(user!=null){
         	//ClassName
-        	role = "ROLE_" + user.getClass().getSimpleName();
+        	role = "ROLE_" + user.getClass().getSimpleName().toUpperCase();
         }
     	return role;
     	

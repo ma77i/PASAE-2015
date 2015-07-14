@@ -27,7 +27,7 @@ public abstract class GenericDaoHibernateJPA<T> implements GenericDAO<T> {
 		return entity;
 	}
 
-	@Transactional
+	@Override
 	public T update(T entity) {
 		return this.entityManager.merge(entity);
 	}

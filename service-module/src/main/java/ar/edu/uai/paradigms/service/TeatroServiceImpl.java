@@ -5,6 +5,8 @@ import ar.edu.uai.paradigms.dao.TeatroDAO;
 import org.springframework.beans.factory.annotation.Required;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.Collection;
+
 public class TeatroServiceImpl implements TeatroService {
 	
 	private TeatroDAO teatroDAO;
@@ -29,6 +31,11 @@ public class TeatroServiceImpl implements TeatroService {
 	public Teatro retrieveTeatro(long identifier) {
 		// TODO Auto-generated method stub
 		return teatroDAO.retrieve(Teatro.class, identifier);
+	}
+
+	@Override
+	public Collection<Teatro> listarTeatros() {
+		return teatroDAO.list();
 	}
 
 }
