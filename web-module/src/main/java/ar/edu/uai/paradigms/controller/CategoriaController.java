@@ -6,6 +6,7 @@ import ar.edu.uai.paradigms.service.CategoriaService;
 import ar.edu.uai.paradigms.translator.CategoriaTranslator;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
@@ -72,10 +73,9 @@ public class CategoriaController {
     }
 
 
-    @RequestMapping(method = RequestMethod.PUT, value = "/eliminar/{identifier}")
-    public
-    @ResponseBody
-    void eliminarCategoria(@PathVariable long identifier) {
+    @RequestMapping(method = RequestMethod.POST, value = "/eliminar/{identifier}")
+    @ResponseStatus(value = HttpStatus.OK)
+    public void eliminarCategoria(@PathVariable long identifier) {
         this.categoriaService.deleteCategoria(identifier);
     }
 }

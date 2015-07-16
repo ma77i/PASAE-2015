@@ -10,7 +10,7 @@ public class EspectaculoTranslator {
 	}
 
 	public EspectaculoDTO translateToDTO(Espectaculo espectaculo) {
-		return new EspectaculoDTO(espectaculo.getId(),espectaculo.getNombre(), espectaculo.getDescripcion(), espectaculo.getCategoria().getId(), espectaculo.getTeatro().getId());
+		return new EspectaculoDTO(espectaculo.getId(), espectaculo.getNombre(), espectaculo.getDescripcion(), espectaculo.getCategoria().getId(), espectaculo.getTeatro().getId());
 	}
 
 }
