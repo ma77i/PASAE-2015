@@ -4,11 +4,14 @@ import ar.edu.uai.model.Categoria;
 import ar.edu.uai.paradigms.dto.CategoriaDTO;
 import ar.edu.uai.paradigms.service.CategoriaService;
 import ar.edu.uai.paradigms.translator.CategoriaTranslator;
+import ar.edu.uai.paradigms.validators.CategoriaDTOValidator;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.util.ArrayList;
 import java.util.Collection;
 
@@ -32,11 +35,15 @@ public class CategoriaController {
         this.categoriaTranslator = categoriaTranslator;
     }
 
+    @InitBinder
+    public void initBinder(WebDataBinder binder) {
+        binder.setValidator(new CategoriaDTOValidator());
+    }
 
     @RequestMapping(method = RequestMethod.POST, consumes = "application/json")
     public
     @ResponseBody
-    CategoriaDTO createCategoria(@RequestBody CategoriaDTO categoriaDTO) {
+    CategoriaDTO createCategoria(@RequestBody @Valid CategoriaDTO categoriaDTO) {
         LOGGER.debug("Received DTO: " + categoriaDTO);
         return this.categoriaTranslator.translateToDTO(this.categoriaService.saveCategoria(this.categoriaTranslator.translate(categoriaDTO)));
     }
@@ -50,7 +57,7 @@ public class CategoriaController {
     }
 
 
-    @RequestMapping(method = RequestMethod.GET, value = "/listadoCategorias")
+    @RequestMapping(method = RequestMethod.GET, value = "/listado_categorias")
     public
     @ResponseBody
     Collection<CategoriaDTO> listadoCategorias() {
@@ -66,7 +73,7 @@ public class CategoriaController {
     @RequestMapping(value = "/{identifier}/modificar_datos", method = RequestMethod.POST, consumes = "application/json")
     public
     @ResponseBody
-    CategoriaDTO modificarDatos(@RequestBody CategoriaDTO categoriaDTO) {
+    CategoriaDTO modificarDatos(@RequestBody @Valid CategoriaDTO categoriaDTO) {
         LOGGER.debug("Received DTO: " + categoriaDTO);
         return this.categoriaTranslator.translateToDTO(this.categoriaService.modificarCategoria(this.categoriaTranslator.translate(categoriaDTO)));
     }

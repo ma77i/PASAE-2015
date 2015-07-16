@@ -1,21 +1,19 @@
 package ar.edu.uai.paradigms.controller;
 
-import java.util.ArrayList;
-import java.util.Collection;
-
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.ResponseBody;
-
 import ar.edu.uai.model.Venta;
 import ar.edu.uai.paradigms.dto.VentaDTO;
 import ar.edu.uai.paradigms.service.VentaService;
 import ar.edu.uai.paradigms.translator.VentaTranslator;
+import ar.edu.uai.paradigms.validators.VentaDTOValidator;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.WebDataBinder;
+import org.springframework.web.bind.annotation.*;
+
+import javax.validation.Valid;
+import java.util.ArrayList;
+import java.util.Collection;
 
 @Controller
 @RequestMapping("/venta")
@@ -33,8 +31,13 @@ public class VentaController {
 		this.ventaTranslator = ventaTranslator;
 	}
 
+	@InitBinder
+	public void initBinder(WebDataBinder binder) {
+		binder.setValidator(new VentaDTOValidator());
+	}
+
 	@RequestMapping(method = RequestMethod.POST, consumes = "application/json")
-	public @ResponseBody VentaDTO createVenta(@RequestBody VentaDTO ventaDTO) {
+	public @ResponseBody VentaDTO createVenta(@RequestBody @Valid VentaDTO ventaDTO) {
 		LOGGER.debug("Received DTO: " + ventaDTO);
 
 		return this.ventaTranslator.translateToDTO(this.ventaService.saveVenta(this.ventaTranslator.translate(ventaDTO)));
