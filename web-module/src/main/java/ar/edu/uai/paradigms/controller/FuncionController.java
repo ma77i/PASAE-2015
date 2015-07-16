@@ -3,10 +3,14 @@ package ar.edu.uai.paradigms.controller;
 import ar.edu.uai.paradigms.dto.FuncionDTO;
 import ar.edu.uai.paradigms.service.FuncionService;
 import ar.edu.uai.paradigms.translator.FuncionTranslator;
+import ar.edu.uai.paradigms.validators.FuncionDTOValidator;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.*;
+
+import javax.validation.Valid;
 
 /**
  * Created by Matias on 29/06/2015.
@@ -24,10 +28,15 @@ public class FuncionController {
         this.funcionTranslator = funcionTranslator;
     }
 
+    @InitBinder
+    public void initBinder(WebDataBinder binder) {
+        binder.setValidator(new FuncionDTOValidator());
+    }
+
     @RequestMapping(method = RequestMethod.POST, consumes = "application/json")
     public
     @ResponseBody
-    FuncionDTO createFuncion(@RequestBody FuncionDTO funcionDTO) {
+    FuncionDTO createFuncion(@RequestBody @Valid FuncionDTO funcionDTO) {
 
         LOGGER.debug("Received DTO: " + funcionDTO);
         return this.funcionTranslator.translateToDTO(this.funcionService.saveFuncion(this.funcionTranslator.translate(funcionDTO), funcionDTO.getEspectaculoId()));
