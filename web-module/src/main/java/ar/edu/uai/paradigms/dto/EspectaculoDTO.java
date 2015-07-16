@@ -8,19 +8,28 @@ import com.fasterxml.jackson.annotation.JsonProperty;
  */
 public class EspectaculoDTO {
 
+	private Long id;
 	private String nombre;
 	private String descripcion;
 	private long categoriaId;
 	private long teatroId;
 
 	@JsonCreator
-	public EspectaculoDTO(@JsonProperty("nombre") String nombre, @JsonProperty("descripcion") String descripcion, @JsonProperty("categoriaId") long categoriaId, @JsonProperty("teatroId") long teatroId) {
+	public EspectaculoDTO(@JsonProperty("id") Long id, @JsonProperty("nombre") String nombre, @JsonProperty("descripcion") String descripcion, @JsonProperty("categoriaId") long categoriaId, @JsonProperty("teatroId") long teatroId) {
+		this.setId(id);
 		this.setNombre(nombre);
 		this.setDescripcion(descripcion);
 		this.setCategoriaId(categoriaId);
 		this.setTeatroId(teatroId);
 	}
 
+	public Long getId() {
+		return id;
+	}
+
+	public void setId(Long id) {
+		this.id = id;
+	}
 
 	public String getNombre() {
 		return nombre;
