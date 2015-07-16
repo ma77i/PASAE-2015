@@ -5,6 +5,7 @@ import ar.edu.uai.paradigms.service.FuncionService;
 import ar.edu.uai.paradigms.translator.FuncionTranslator;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
@@ -49,10 +50,9 @@ public class FuncionController {
         return this.funcionTranslator.translateToDTO(this.funcionService.modificarFuncion(this.funcionTranslator.translate(funcionDTO)));
     }
 
-    @RequestMapping(method = RequestMethod.PUT, value = "/eliminar/{identifier}")
-    public
-    @ResponseBody
-    void eliminarFuncion(@PathVariable long identifier) {
+    @RequestMapping(method = RequestMethod.POST, value = "/eliminar/{identifier}")
+    @ResponseStatus(value = HttpStatus.OK)
+    public void eliminarFuncion(@PathVariable long identifier) {
         this.funcionService.deleteFuncion(identifier);
     }
 

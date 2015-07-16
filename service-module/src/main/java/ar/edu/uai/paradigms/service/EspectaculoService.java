@@ -17,8 +17,8 @@ public interface EspectaculoService {
 	public void deleteEspectaculo(long identifier);
 	
 	public Collection<Espectaculo> listarEspectaculos();
-	
-	public Espectaculo modificarEspectaculo(Espectaculo espectaculo);
+
+	public Espectaculo modificarEspectaculo(Espectaculo espectaculo, long teatroId);
 
 	public Collection<Espectaculo> listarEspectaculosDeTeatro(long id_teatro);
 
