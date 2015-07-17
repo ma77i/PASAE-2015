@@ -4,11 +4,14 @@ import ar.edu.uai.model.Teatro;
 import ar.edu.uai.paradigms.dto.TeatroDTO;
 import ar.edu.uai.paradigms.service.TeatroService;
 import ar.edu.uai.paradigms.translator.TeatroTranslator;
+import ar.edu.uai.paradigms.validators.TeatroDTOValidator;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.util.ArrayList;
 import java.util.Collection;
 
@@ -33,10 +36,15 @@ public class TeatroController {
         this.teatroTranslator = teatroTranslator;
     }
 
+    @InitBinder
+    public void initBinder(WebDataBinder binder) {
+        binder.setValidator(new TeatroDTOValidator());
+    }
+
     @RequestMapping(method = RequestMethod.POST, consumes = "application/json")
     public
     @ResponseBody
-    TeatroDTO createTeatro(@RequestBody TeatroDTO teatroDTO) {
+    TeatroDTO createTeatro(@RequestBody @Valid TeatroDTO teatroDTO) {
         LOGGER.debug("Received DTO: " + teatroDTO);
         return this.teatroTranslator.translateToDTO(this.teatroService.saveTeatro(this.teatroTranslator.translate(teatroDTO)));
     }

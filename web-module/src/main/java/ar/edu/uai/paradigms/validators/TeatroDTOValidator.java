@@ -18,7 +18,7 @@ public class TeatroDTOValidator implements Validator {
 
     @Override
     public void validate(Object target, Errors errors) {
-        TeatroDTO teatro = (TeatroDTO) target;
+        TeatroDTO teatroDTO = (TeatroDTO) target;
         ValidationUtils.rejectIfEmptyOrWhitespace(errors, "nombre", "nombre.required", "El campo 'nombre' es requerido");
         ValidationUtils.rejectIfEmptyOrWhitespace(errors, "direccion", "direccion.required", "El campo 'direccion' es requerido");
     }
