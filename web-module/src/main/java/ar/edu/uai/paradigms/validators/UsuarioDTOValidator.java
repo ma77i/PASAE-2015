@@ -22,7 +22,7 @@ public class UsuarioDTOValidator implements Validator {
 
     @Override
     public void validate(Object target, Errors errors) {
-        UsuarioDTO usuario= (UsuarioDTO) target;
+        UsuarioDTO usuarioDTO= (UsuarioDTO) target;
         ValidationUtils.rejectIfEmptyOrWhitespace(errors, "email", "email.required", "El campo 'email' es requerido");
         ValidationUtils.rejectIfEmptyOrWhitespace(errors, "password", "password.required", "El campo 'password' es requerido");
         ValidationUtils.rejectIfEmptyOrWhitespace(errors, "nombre", "nombre.required", "El campo 'nombre' es requerido");
