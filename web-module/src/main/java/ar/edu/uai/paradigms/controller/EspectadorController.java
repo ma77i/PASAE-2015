@@ -76,7 +76,7 @@ public class EspectadorController {
 		return this.espectadorTranslator.translateToDTO(this.espectadorService.modificarContrasena(this.espectadorTranslator.translate(espectadorDTO)));
 	}
 
-	@RequestMapping(method = RequestMethod.GET, value = "/listadoEspectadores")
+	@RequestMapping(method = RequestMethod.GET, value = "/listadoespectadores")
 	public @ResponseBody Collection<EspectadorDTO> listadoEspectadores() {
 		Collection<Espectador> lista = this.espectadorService.listarEspectadores();
 		Collection<EspectadorDTO> espectadores = new ArrayList<EspectadorDTO>();
