@@ -67,7 +67,7 @@ public class EspectaculoServiceImpl implements EspectaculoService {
 		return this.espectaculoDAO.retrieve(Espectaculo.class, identifier);
 	}
 
-	@Override
+	@Transactional
 	public void deleteEspectaculo(long identifier) {
 		this.espectaculoDAO.delete(identifier);
 	}
@@ -78,10 +78,12 @@ public class EspectaculoServiceImpl implements EspectaculoService {
 	}
 
 	@Transactional
-	public Espectaculo modificarEspectaculo(Espectaculo espectaculo) {
+	public Espectaculo modificarEspectaculo(Espectaculo espectaculo, long teatroId) {
 		Espectaculo e = this.retrieveEspectaculo(espectaculo.getId());
+		Teatro teatro = this.teatroService.retrieveTeatro(teatroId);
 		e.setNombre(espectaculo.getNombre());
 		e.setDescripcion(espectaculo.getDescripcion());
+		e.setTeatro(teatro);
 		return espectaculoDAO.update(e);
 	}
 
