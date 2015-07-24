@@ -54,7 +54,7 @@ public class EmpleadoController  {
 		return this.empleadoTranslator.translateToDTO(this.empleadoService.modificarDatosPersonales(this.empleadoTranslator.translate(empleadoDTO)));
 	}
 
-	@RequestMapping(method = RequestMethod.GET, value = "/listadoEmpleados")
+	@RequestMapping(method = RequestMethod.GET, value = "/listadoempleados")
 	public @ResponseBody Collection<EmpleadoDTO> listadoEmpleados() {
 		Collection<Empleado> lista = this.empleadoService.listarEmpleados();
 		Collection<EmpleadoDTO> empleados = new ArrayList<EmpleadoDTO>();
