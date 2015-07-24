@@ -5,5 +5,6 @@
     <file url="file://$PROJECT_DIR$/../PASAE-AngularJS3/app/styles/funcion.css" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/../PASAE-AngularJS3/app/views/editarEspectaculo.html" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/../PASAE-AngularJS3/app/views/eliminarEspectaculo.html" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/../PASAE-AngularJS3/app/views/eliminarFuncion.html" charset="UTF-8" />
   </component>
 </project>

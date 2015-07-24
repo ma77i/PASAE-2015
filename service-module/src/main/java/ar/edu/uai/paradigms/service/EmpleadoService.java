@@ -24,8 +24,11 @@ public class EmpleadoService extends  UsuarioService<Empleado>{
 	public Collection<Empleado>listarEmpleados(){
 		return empleadoDAO.list();
 	}
-	
-	
+
+	public Collection<Empleado> listarEmpleadosPorCampoIngresado(String input) {
+		return empleadoDAO.listarEmpleadosPorCampoIngresado(input);
+
+	}
 
 	
 }

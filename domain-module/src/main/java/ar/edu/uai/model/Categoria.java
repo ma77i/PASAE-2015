@@ -13,8 +13,7 @@ public class Categoria {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private long id;
 
-
-    @Column(name = "nombre")
+    @Column(name = "nombre", unique = true)
     private String nombre;
 
     @OneToMany(mappedBy = "categoria")

@@ -73,7 +73,7 @@ public class EspectaculoController {
 	@RequestMapping(value = "/{identifier}/cambiardatos", method = RequestMethod.POST, consumes = "application/json")
 	public @ResponseBody EspectaculoDTO modificarDatos(@RequestBody EspectaculoDTO espectaculoDTO) {
 		LOGGER.debug("Received DTO: " + espectaculoDTO);
-		return this.espectaculoTranslator.translateToDTO(this.espectaculoService.modificarEspectaculo(this.espectaculoTranslator.translate(espectaculoDTO), espectaculoDTO.getTeatroId()));
+		return this.espectaculoTranslator.translateToDTO(this.espectaculoService.modificarEspectaculo(this.espectaculoService.retrieveEspectaculo(espectaculoDTO.getId()), espectaculoDTO.getNombre(), espectaculoDTO.getDescripcion(), espectaculoDTO.getTeatroId()));
 	}
 
 	@RequestMapping(value = "/{nombre_espectaculo}/listado", method = RequestMethod.GET)
@@ -116,6 +116,18 @@ public class EspectaculoController {
 		this.espectaculoService.deleteEspectaculo(identifier);
 	}
 
+
+	@RequestMapping(method = RequestMethod.GET, value = "/listadoespectaculosporcategoria/{nombrecategoria}")
+	public
+	@ResponseBody
+	Collection<EspectaculoDTO> getEspectaculosSegunCategoria(@PathVariable String nombrecategoria) {
+		Collection<EspectaculoDTO> espectaculos = new ArrayList<EspectaculoDTO>();
+		Collection<Espectaculo> coleccion = this.espectaculoService.listarEspectaculosSegunCategoria(nombrecategoria);
+		for (Espectaculo e : coleccion) {
+			espectaculos.add(espectaculoTranslator.translateToDTO(e));
+		}
+		return espectaculos;
+	}
 
 
 }

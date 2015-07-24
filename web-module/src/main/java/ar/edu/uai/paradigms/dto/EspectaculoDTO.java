@@ -15,11 +15,11 @@ public class EspectaculoDTO {
 	private long teatroId;
 
 	@JsonCreator
-	public EspectaculoDTO(@JsonProperty("id") Long id, @JsonProperty("nombre") String nombre, @JsonProperty("descripcion") String descripcion, @JsonProperty("categoriaId") long categoriaId, @JsonProperty("teatroId") long teatroId) {
+	public EspectaculoDTO(@JsonProperty("id") Long id, @JsonProperty("nombre") String nombre, @JsonProperty("descripcion") String descripcion, @JsonProperty("categoriaId") long categoria, @JsonProperty("teatroId") long teatroId) {
 		this.setId(id);
 		this.setNombre(nombre);
 		this.setDescripcion(descripcion);
-		this.setCategoriaId(categoriaId);
+		this.setCategoriaId(categoria);
 		this.setTeatroId(teatroId);
 	}
 

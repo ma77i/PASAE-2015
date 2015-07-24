@@ -10,7 +10,7 @@ public class EmpleadoTranslator {
 	}
 
 	public EmpleadoDTO translateToDTO(Empleado usuario) {
-		return new EmpleadoDTO(usuario.getEmail(), usuario.getPassword(), usuario.getNombre(), usuario.getApellido());
+		return new EmpleadoDTO(usuario.getEmail(), usuario.getPassword(), usuario.getNombre(), usuario.getApellido(), usuario.getEstado());
 	}
 
 }

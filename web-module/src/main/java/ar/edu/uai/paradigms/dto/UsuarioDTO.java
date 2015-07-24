@@ -12,14 +12,17 @@ public abstract class UsuarioDTO {
     private String password;
     private String nombre;
     private String apellido;
+    private Boolean estado;
+
 
     @JsonCreator
     public UsuarioDTO(@JsonProperty("email") String email, @JsonProperty("password") String password, @JsonProperty("nombre") String nombre,
-                            @JsonProperty("apellido") String apellido) {
+                      @JsonProperty("apellido") String apellido, @JsonProperty("estado") boolean estado) {
         this.email=email;
         this.password=password;
         this.nombre = nombre;
         this.apellido = apellido;
+        this.estado = estado;
 
     }
 
@@ -55,6 +58,15 @@ public abstract class UsuarioDTO {
     public void setPassword(String password) {
         this.password = password;
     }
+
+    public Boolean getEstado() {
+        return estado;
+    }
+
+    public void setEstado(Boolean estado) {
+        this.estado = estado;
+    }
+
 
     public abstract String toString();
 

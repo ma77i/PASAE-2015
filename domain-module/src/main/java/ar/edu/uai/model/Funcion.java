@@ -8,10 +8,10 @@ import java.util.Date;
 public class Funcion {
 
 
-	public Funcion(Date fecha, Date hora) {
+	public Funcion(Date fecha) {
 		this.fecha = fecha;
-		this.hora = hora;
-		
+
+		//this.hora = hora;
 	}
 
 	@Id
@@ -23,8 +23,8 @@ public class Funcion {
 	}
 
 	private Date fecha;
-	
-	private Date hora;
+
+	//private Date hora;
 	
 	@ManyToOne
 	private Espectaculo espectaculo;
@@ -56,13 +56,13 @@ public class Funcion {
 		this.fecha = fecha;
 	}
 
-	public Date getHora() {
+	/*public Date getHora() {
 		return hora;
 	}
 
 	public void setHora(Date hora) {
 		this.hora = hora;
-	}
+	}*/
 
 	public Espectaculo getEspectaculo() {
 		return espectaculo;

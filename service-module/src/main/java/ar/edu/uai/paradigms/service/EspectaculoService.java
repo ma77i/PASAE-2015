@@ -18,7 +18,7 @@ public interface EspectaculoService {
 	
 	public Collection<Espectaculo> listarEspectaculos();
 
-	public Espectaculo modificarEspectaculo(Espectaculo espectaculo, long teatroId);
+	public Espectaculo modificarEspectaculo(Espectaculo e, String nombre, String descripcion, long teatroId);
 
 	public Collection<Espectaculo> listarEspectaculosDeTeatro(long id_teatro);
 
@@ -30,7 +30,7 @@ public interface EspectaculoService {
 
 	Collection<Espectaculo> listarEspectaculosEntreFechas(Date fecha1, Date fecha2);
 
-	Collection<Espectaculo> listarEspectaculosSegunCategoria(long id_categoria);
+	Collection<Espectaculo> listarEspectaculosSegunCategoria(String nombre_categoria);
 
 	void agregarEspectaculoParaCategoria(Espectaculo e,Categoria categoria);
 

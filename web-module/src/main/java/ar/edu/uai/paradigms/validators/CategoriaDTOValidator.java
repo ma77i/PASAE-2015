@@ -19,6 +19,7 @@ public class CategoriaDTOValidator implements Validator {
     @Override
     public void validate(Object target, Errors errors) {
         CategoriaDTO categoriaDTO = (CategoriaDTO) target;
-        ValidationUtils.rejectIfEmptyOrWhitespace(errors, "nombre.required", "El campo 'nombre' es requerido");
+        ValidationUtils.rejectIfEmptyOrWhitespace(errors, "nombre", "nombre.required", "El campo 'nombre' es requerido");
+
     }
 }
