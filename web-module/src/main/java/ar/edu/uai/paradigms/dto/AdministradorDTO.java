@@ -8,8 +8,8 @@ public class AdministradorDTO extends UsuarioDTO {
 
 	@JsonCreator
 	public AdministradorDTO(@JsonProperty("email") String email, @JsonProperty("password") String password, @JsonProperty("nombre") String nombre,
-							@JsonProperty("apellido") String apellido, @JsonProperty("estado") boolean estado) {
-		super(email, password, nombre, apellido, estado);
+							@JsonProperty("apellido") String apellido) {
+		super(email, password, nombre, apellido);
 
 	}
 

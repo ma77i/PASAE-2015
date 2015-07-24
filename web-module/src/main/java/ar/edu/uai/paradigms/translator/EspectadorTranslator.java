@@ -10,6 +10,6 @@ public class EspectadorTranslator {
 	}
 
 	public EspectadorDTO translateToDTO(Espectador usuario) {
-		return new EspectadorDTO(usuario.getEmail(), usuario.getPassword(), usuario.getNombre(), usuario.getApellido(), usuario.getEstado());
+		return new EspectadorDTO(usuario.getEmail(), usuario.getPassword(), usuario.getNombre(), usuario.getApellido());
 	}
 }
