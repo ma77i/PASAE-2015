@@ -101,9 +101,16 @@ public class EspectaculoDAOImplHibernateJPA extends GenericDaoHibernateJPA<Espec
      */
 
     @Override
-    public Collection<Espectaculo> listarEspectaculosSegunCategoria(long id_categoria) {
-        Query consulta = this.entityManager.createQuery("select e from Espectaculo where e.categoria.id=?");
-        consulta.setParameter(1, id_categoria);
-        return consulta.getResultList();
+    public Collection<Espectaculo> listarEspectaculosSegunCategoria(String nombre_categoria) {
+
+        try {
+            Query consulta = this.entityManager.createQuery("select e from Espectaculo as e  where e.categoria.nombre=?");
+            consulta.setParameter(1, nombre_categoria);
+            return consulta.getResultList();
+        } catch (NoResultException e) {
+            System.out.println(" NO SE ENCONTRO LA BUSQUEDA SEGUN LA CATEGORIA");
+            return null;
+        }
     }
+
 }

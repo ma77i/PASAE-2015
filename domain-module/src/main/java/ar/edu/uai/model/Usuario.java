@@ -23,6 +23,8 @@ public abstract class Usuario {
 	private String nombre;
 
 	private String apellido;
+
+	private boolean estado;
 	
 	public Usuario(){
 		
@@ -35,6 +37,7 @@ public abstract class Usuario {
 		this.password = password;
 		this.nombre = nombre;
 		this.apellido = apellido;
+		this.estado = true;
 	}
 
 	public long getId() {
@@ -76,5 +79,14 @@ public abstract class Usuario {
 	public void setApellido(String apellido) {
 		this.apellido = apellido;
 	}
+
+	public boolean getEstado() {
+		return estado;
+	}
+
+	public void setEstado(boolean estado) {
+		this.estado = estado;
+	}
+
 
 }

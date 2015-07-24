@@ -24,6 +24,11 @@ public class EspectadorService extends UsuarioService<Espectador> {
     public Collection<Espectador>listarEspectadores(){
 		return espectadorDAO.list();
 	}
-    
-  
+
+	public Collection<Espectador> listarEspectadoresPorCampoIngresado(String input) {
+		return espectadorDAO.listarEspectadoresPorCampoIngresado(input);
+
+	}
+
+
 }

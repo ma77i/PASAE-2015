@@ -41,7 +41,7 @@ public class FuncionServiceImpl implements FuncionService{
 		return funcionDAO.retrieve(Funcion.class, id_funcion);
 	}
 
-	@Override
+	@Transactional
 	public void deleteFuncion(long id_funcion) {
 		this.funcionDAO.delete(id_funcion);
 	}
@@ -55,12 +55,13 @@ public class FuncionServiceImpl implements FuncionService{
 	public Funcion modificarFuncion(Funcion funcion) {
 		Funcion f = this.retrieveFuncion(funcion.getId());
 		f.setFecha(funcion.getFecha());
-		f.setHora(funcion.getHora());
+		//	f.setHora(funcion.getHora());
 		return funcionDAO.update(funcion);
 	}
 
 	@Override
 	public void agregarFuncionParaEspectaculo(Funcion savedFuncion, Espectaculo espectaculo) {
+		savedFuncion.setEspectaculo(espectaculo);
 		espectaculo.getFunciones().add(savedFuncion);
 	}
 

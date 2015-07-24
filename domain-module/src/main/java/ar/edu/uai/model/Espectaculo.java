@@ -23,8 +23,8 @@ public class Espectaculo {
 	private String nombre;
 	
 	private String descripcion;
-	
-	 @OneToMany(mappedBy="espectaculo")
+
+	@OneToMany(mappedBy = "espectaculo", cascade = CascadeType.ALL)
 	private Collection<Funcion> funciones;
 	 
 	@OneToMany(mappedBy="espectaculo")

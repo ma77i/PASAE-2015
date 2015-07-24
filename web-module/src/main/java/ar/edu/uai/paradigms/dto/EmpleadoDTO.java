@@ -8,8 +8,8 @@ public class EmpleadoDTO extends UsuarioDTO {
 
 	@JsonCreator
 	public EmpleadoDTO(@JsonProperty("email") String email, @JsonProperty("password") String password, @JsonProperty("nombre") String nombre,
-					   @JsonProperty("apellido") String apellido) {
-		super(email, password, nombre, apellido);
+					   @JsonProperty("apellido") String apellido, @JsonProperty("estado") boolean estado) {
+		super(email, password, nombre, apellido, estado);
 	}
 
 	@Override

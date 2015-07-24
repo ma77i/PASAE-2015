@@ -95,5 +95,20 @@ public class EspectadorController {
         return t.getResultado();
 	}
 
+	@RequestMapping(method = RequestMethod.GET, value = "/busquedaespectadores/{input}")
+	public
+	@ResponseBody
+	Collection<EspectadorDTO> busquedaEspectadores(@PathVariable String input) {
+		Collection<Espectador> lista = this.espectadorService.listarEspectadoresPorCampoIngresado(input);
+		Collection<EspectadorDTO> espectadores = new ArrayList<EspectadorDTO>();
+		for (Espectador espectador : lista) {
+			espectadores.add(espectadorTranslator.translateToDTO(espectador));
+		}
+		return espectadores;
+
+	}
+
+
+
 
 }

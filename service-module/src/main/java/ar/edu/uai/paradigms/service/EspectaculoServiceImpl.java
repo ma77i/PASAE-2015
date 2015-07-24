@@ -78,13 +78,13 @@ public class EspectaculoServiceImpl implements EspectaculoService {
 	}
 
 	@Transactional
-	public Espectaculo modificarEspectaculo(Espectaculo espectaculo, long teatroId) {
-		Espectaculo e = this.retrieveEspectaculo(espectaculo.getId());
-		Teatro teatro = this.teatroService.retrieveTeatro(teatroId);
-		e.setNombre(espectaculo.getNombre());
-		e.setDescripcion(espectaculo.getDescripcion());
-		e.setTeatro(teatro);
-		return espectaculoDAO.update(e);
+	public Espectaculo modificarEspectaculo(Espectaculo espectaculo, String nombre, String descripcion, long idTeatro) {
+
+		Teatro teatro = this.teatroService.retrieveTeatro(idTeatro);
+		espectaculo.setNombre(nombre);
+		espectaculo.setDescripcion(descripcion);
+		espectaculo.setTeatro(teatro);
+		return espectaculoDAO.update(espectaculo);
 	}
 
 	@Override
@@ -114,8 +114,8 @@ public class EspectaculoServiceImpl implements EspectaculoService {
 	}
 
 	@Override
-	public Collection<Espectaculo> listarEspectaculosSegunCategoria(long id_categoria) {
-		return espectaculoDAO.listarEspectaculosSegunCategoria(id_categoria);
+	public Collection<Espectaculo> listarEspectaculosSegunCategoria(String nombre_categoria) {
+		return espectaculoDAO.listarEspectaculosSegunCategoria(nombre_categoria);
 	}
 
 	@Override

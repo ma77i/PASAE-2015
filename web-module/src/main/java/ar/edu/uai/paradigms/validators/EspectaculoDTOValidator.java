@@ -24,7 +24,7 @@ public class EspectaculoDTOValidator implements Validator {
         ValidationUtils.rejectIfEmptyOrWhitespace(errors, "nombre", "nombre.required", "El campo 'nombre' es requerido");
         ValidationUtils.rejectIfEmptyOrWhitespace(errors, "descripcion", "descripcion.required", "El campo 'descripcion' es obligatorio");
         ValidationUtils.rejectIfEmptyOrWhitespace(errors, "categoriaId", "categoriaId.required", "El campo 'categoriaId' es obligatorio");
-        ValidationUtils.rejectIfEmptyOrWhitespace(errors, " teatroId", " teatroId.required", "El campo ' teatroId' es obligatorio");
+        ValidationUtils.rejectIfEmptyOrWhitespace(errors, "teatroId", " teatroId.required", "El campo ' teatroId' es obligatorio");
     }
 
 

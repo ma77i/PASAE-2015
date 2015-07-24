@@ -15,5 +15,5 @@ public interface EspectaculoDAO extends GenericDAO<Espectaculo> {
 
     Collection<Espectaculo> listarEspectaculosEntreRangoDeFechas(Date startDate, Date endDate);
 
-    Collection<Espectaculo> listarEspectaculosSegunCategoria(long id_categoria);
+    Collection<Espectaculo> listarEspectaculosSegunCategoria(String nombre_categoria);
 }

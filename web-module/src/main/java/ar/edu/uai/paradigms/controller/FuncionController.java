@@ -6,12 +6,15 @@ import ar.edu.uai.paradigms.translator.FuncionTranslator;
 import ar.edu.uai.paradigms.validators.FuncionDTOValidator;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.propertyeditors.CustomDateEditor;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 /**
  * Created by Matias on 29/06/2015.
@@ -32,6 +35,9 @@ public class FuncionController {
     @InitBinder
     public void initBinder(WebDataBinder binder) {
         binder.setValidator(new FuncionDTOValidator());
+        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+        dateFormat.setLenient(false);
+        binder.registerCustomEditor(Date.class, new CustomDateEditor(dateFormat, true));
     }
 
     @RequestMapping(method = RequestMethod.POST, consumes = "application/json")

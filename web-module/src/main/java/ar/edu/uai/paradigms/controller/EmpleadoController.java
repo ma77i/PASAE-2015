@@ -64,6 +64,19 @@ public class EmpleadoController  {
 		return empleados;
 	}
 
+	@RequestMapping(method = RequestMethod.GET, value = "/busquedaeempleados/{input}")
+	public
+	@ResponseBody
+	Collection<EmpleadoDTO> busquedaEmpleados(@PathVariable String input) {
+		Collection<Empleado> lista = this.empleadoService.listarEmpleadosPorCampoIngresado(input);
+		Collection<EmpleadoDTO> empleados = new ArrayList<EmpleadoDTO>();
+		for (Empleado empleado : lista) {
+			empleados.add(empleadoTranslator.translateToDTO(empleado));
+		}
+		return empleados;
+
+	}
+
 
 
 
