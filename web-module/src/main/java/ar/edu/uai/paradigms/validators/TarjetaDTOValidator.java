@@ -19,7 +19,7 @@ public class TarjetaDTOValidator implements Validator {
 
     @Override
     public void validate(Object target, Errors errors) {
-        TarjetaDTO tarjeta = (TarjetaDTO) target;
+        TarjetaDTO tarjetaDTO = (TarjetaDTO) target;
         ValidationUtils.rejectIfEmptyOrWhitespace(errors, "nro_tarjeta", "nro_tarjeta.required", "El campo 'nro_tarjeta' es requerido");
         ValidationUtils.rejectIfEmptyOrWhitespace(errors, "cvv", "cvv.required", "El campo 'cvv' es requerido");
         ValidationUtils.rejectIfEmptyOrWhitespace(errors, "fecha_vencimiento", "fecha_vencimiento.required", "El campo 'fecha_vencimiento' es requerido");

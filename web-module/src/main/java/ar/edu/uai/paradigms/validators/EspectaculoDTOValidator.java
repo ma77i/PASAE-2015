@@ -20,7 +20,7 @@ public class EspectaculoDTOValidator implements Validator {
 
     @Override
     public void validate(Object target, Errors errors) {
-        EspectaculoDTO espectaculo = (EspectaculoDTO) target;
+        EspectaculoDTO espectaculoDTO = (EspectaculoDTO) target;
         ValidationUtils.rejectIfEmptyOrWhitespace(errors, "nombre", "nombre.required", "El campo 'nombre' es requerido");
         ValidationUtils.rejectIfEmptyOrWhitespace(errors, "descripcion", "descripcion.required", "El campo 'descripcion' es obligatorio");
         ValidationUtils.rejectIfEmptyOrWhitespace(errors, "categoriaId", "categoriaId.required", "El campo 'categoriaId' es obligatorio");

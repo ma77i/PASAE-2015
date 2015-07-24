@@ -157,7 +157,9 @@
             <map>
                 <entry key="ar.edu.uai.paradigms.ex.CustomResourceNotFoundEx" value="404" />
                 <entry key="ar.edu.uai.paradigms.ex.CustomUnauthorizedEx" value="401" />
-                <entry key="ar.edu.uai.paradigms.ex.CustomInvalidArgEx" value="408" />
+                <entry key="ar.edu.uai.paradigms.ex.CustomLockingFailureEx" value="409"/>
+                <entry key="ar.edu.uai.paradigms.ex.CustomQueryEx" value="500"/>
+                <entry key="ar.edu.uai.paradigms.ex.CustomUnexpectedEx" value="500"/>
             </map>
         </property>
     </bean>
@@ -184,9 +186,8 @@
 
     <bean id="tarjetaTranslator" class="ar.edu.uai.paradigms.translator.TarjetaTranslator"/>
 
-    <bean id="funcionTranslator" class="ar.edu.uai.paradigms.translator.FuncionTranslator">
-        <property name="espectaculoService" ref="espectaculoService"/>
-    </bean>
+    <bean id="funcionTranslator" class="ar.edu.uai.paradigms.translator.FuncionTranslator"/>
+
     <bean id="categoriaTranslator" class="ar.edu.uai.paradigms.translator.CategoriaTranslator"/>
 
     <bean id="teatroTranslator" class="ar.edu.uai.paradigms.translator.TeatroTranslator"/>

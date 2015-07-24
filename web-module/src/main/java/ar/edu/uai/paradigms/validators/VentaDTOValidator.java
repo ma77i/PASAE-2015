@@ -19,7 +19,7 @@ public class VentaDTOValidator implements Validator {
 
     @Override
     public void validate(Object target, Errors errors) {
-        VentaDTO venta = (VentaDTO) target;
+        VentaDTO ventaDTO = (VentaDTO) target;
         ValidationUtils.rejectIfEmptyOrWhitespace(errors, "monto", "monto.required", "El campo 'monto' es requerido");
         ValidationUtils.rejectIfEmptyOrWhitespace(errors, "costoAdicional", "costoAdicional.required", "El campo 'costoAdicional' es requerido");
         ValidationUtils.rejectIfEmptyOrWhitespace(errors, "fechaVenta", "fechaVenta.required", "El campo 'fechaVenta' es requerido");

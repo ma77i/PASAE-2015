@@ -21,7 +21,7 @@ public class FuncionDTOValidator implements Validator {
 
     @Override
     public void validate(Object target, Errors errors) {
-        FuncionDTO funcion = (FuncionDTO) target;
+        FuncionDTO funcionDTO = (FuncionDTO) target;
         ValidationUtils.rejectIfEmptyOrWhitespace(errors, "fecha", "fecha.required", "El campo 'fecha' es requerido");
         ValidationUtils.rejectIfEmptyOrWhitespace(errors, "hora", "hora.required", "El campo 'hora' es requerido");
         ValidationUtils.rejectIfEmptyOrWhitespace(errors, "espectaculoId", "espectaculoId.required", "El campo 'espectaculoId' es requerido");

@@ -1,6 +1,12 @@
 package ar.edu.uai.paradigms.dao;
 
-import org.springframework.transaction.annotation.Transactional;
+import ar.edu.uai.paradigms.ex.CustomLockingFailureEx;
+import ar.edu.uai.paradigms.ex.CustomQueryEx;
+import ar.edu.uai.paradigms.ex.CustomResourceNotFoundEx;
+import ar.edu.uai.paradigms.ex.CustomUnexpectedEx;
+import org.hibernate.QueryException;
+import org.springframework.dao.EmptyResultDataAccessException;
+import org.springframework.dao.OptimisticLockingFailureException;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
@@ -21,16 +27,6 @@ public abstract class GenericDaoHibernateJPA<T> implements GenericDAO<T> {
 		this.persistentClass=persistentClass;
 	}
 
-	@Override
-	public T create(T entity) {
-		this.entityManager.persist(entity);
-		return entity;
-	}
-
-	@Override
-	public T update(T entity) {
-		return this.entityManager.merge(entity);
-	}
 
 	public EntityManager getEntityManager() {
 		return entityManager;
@@ -49,20 +45,84 @@ public abstract class GenericDaoHibernateJPA<T> implements GenericDAO<T> {
 	}
 
 	@Override
+	public T create(T entity) {
+
+		try {
+			this.entityManager.persist(entity);
+			return entity;
+		}
+		catch (OptimisticLockingFailureException e) {
+			throw new CustomLockingFailureEx("Failure to lock database. Try Later");
+		}
+
+		catch (Exception e) {
+			throw new CustomUnexpectedEx("Unexpected error: " + e.getLocalizedMessage());
+		}
+	}
+
+	@Override
+	public T update(T entity) {
+
+		try {
+			return this.entityManager.merge(entity);
+
+		}
+		catch (OptimisticLockingFailureException e) {
+			throw new CustomLockingFailureEx("Failure to lock database. Try Later");
+		}
+		catch (Exception e) {
+			throw new CustomUnexpectedEx("Unexpected error: " + e.getLocalizedMessage());
+		}
+
+	}
+
+	@Override
 	public T retrieve(Class<T>tipo,long identifier) {
-		return this.entityManager.find(tipo, identifier);
+		try {
+			T entity = this.entityManager.find(tipo, identifier);
+			if (entity != null)
+				return entity;
+			else
+				throw new CustomResourceNotFoundEx("There is no resource '" + tipo.getSimpleName() + "' with identifier '" + identifier + "'");
+		}
+		catch (Exception e) {
+			throw new CustomUnexpectedEx("Unexpected error: " + e.getLocalizedMessage());
+		}
+
 	}
 
 	@Override
 	public void delete(long identifier) {
-		this.entityManager.remove(this.retrieve(getPersistentClass(),identifier));
-
+		try {
+			this.entityManager.remove(this.retrieve(getPersistentClass(), identifier));
+		}
+		catch (OptimisticLockingFailureException e) {
+			throw new CustomLockingFailureEx("Failure to lock database. Try Later");
+		}
+		catch (Exception e) {
+			throw new CustomUnexpectedEx("Unexpected error: " + e.getLocalizedMessage());
+		}
 	}
 
 	@Override
 	public Collection<T> list() {
-		Query consulta = this.entityManager.createQuery(" from " + getPersistentClass().getSimpleName());
-		Collection<T> resultado = consulta.getResultList();
-		return resultado;
+
+		try {
+			Query consulta = this.entityManager.createQuery(" from " + getPersistentClass().getSimpleName());
+			Collection<T> resultado = consulta.getResultList();
+			return resultado;
+
+		}
+		catch (EmptyResultDataAccessException e) {
+			throw new CustomResourceNotFoundEx("Resource not found (empty set value)");
+		}
+
+		catch (QueryException e) {
+			throw new CustomQueryEx("DB error: couldn't execute query statement");
+		}
+
+		catch (Exception e) {
+			throw new CustomUnexpectedEx("Unexpected error: " + e.getLocalizedMessage());
+		}
 	}
 }

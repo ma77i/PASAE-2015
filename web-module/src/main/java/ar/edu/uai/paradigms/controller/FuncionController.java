@@ -3,10 +3,15 @@ package ar.edu.uai.paradigms.controller;
 import ar.edu.uai.paradigms.dto.FuncionDTO;
 import ar.edu.uai.paradigms.service.FuncionService;
 import ar.edu.uai.paradigms.translator.FuncionTranslator;
+import ar.edu.uai.paradigms.validators.FuncionDTOValidator;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.*;
+
+import javax.validation.Valid;
 
 /**
  * Created by Matias on 29/06/2015.
@@ -24,13 +29,18 @@ public class FuncionController {
         this.funcionTranslator = funcionTranslator;
     }
 
+    @InitBinder
+    public void initBinder(WebDataBinder binder) {
+        binder.setValidator(new FuncionDTOValidator());
+    }
+
     @RequestMapping(method = RequestMethod.POST, consumes = "application/json")
     public
     @ResponseBody
-    FuncionDTO createFuncion(@RequestBody FuncionDTO funcionDTO) {
+    FuncionDTO createFuncion(@RequestBody @Valid FuncionDTO funcionDTO) {
 
         LOGGER.debug("Received DTO: " + funcionDTO);
-        return this.funcionTranslator.translateToDTO(this.funcionService.saveFuncion(this.funcionTranslator.translate(funcionDTO)));
+        return this.funcionTranslator.translateToDTO(this.funcionService.saveFuncion(this.funcionTranslator.translate(funcionDTO), funcionDTO.getEspectaculoId()));
 
     }
 
@@ -49,10 +59,9 @@ public class FuncionController {
         return this.funcionTranslator.translateToDTO(this.funcionService.modificarFuncion(this.funcionTranslator.translate(funcionDTO)));
     }
 
-    @RequestMapping(method = RequestMethod.PUT, value = "/eliminar/{identifier}")
-    public
-    @ResponseBody
-    void eliminarFuncion(@PathVariable long identifier) {
+    @RequestMapping(method = RequestMethod.POST, value = "/eliminar/{identifier}")
+    @ResponseStatus(value = HttpStatus.OK)
+    public void eliminarFuncion(@PathVariable long identifier) {
         this.funcionService.deleteFuncion(identifier);
     }
 
