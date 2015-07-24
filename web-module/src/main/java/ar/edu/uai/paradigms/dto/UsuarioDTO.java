@@ -17,12 +17,12 @@ public abstract class UsuarioDTO {
 
     @JsonCreator
     public UsuarioDTO(@JsonProperty("email") String email, @JsonProperty("password") String password, @JsonProperty("nombre") String nombre,
-                      @JsonProperty("apellido") String apellido, @JsonProperty("estado") boolean estado) {
+                      @JsonProperty("apellido") String apellido) {
         this.email=email;
         this.password=password;
         this.nombre = nombre;
         this.apellido = apellido;
-        this.estado = estado;
+        //  this.estado = estado;
 
     }
 
