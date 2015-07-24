@@ -4,11 +4,15 @@ import ar.edu.uai.model.Tarjeta;
 import ar.edu.uai.paradigms.dto.TarjetaDTO;
 import ar.edu.uai.paradigms.service.TarjetaService;
 import ar.edu.uai.paradigms.translator.TarjetaTranslator;
+import ar.edu.uai.paradigms.validators.TarjetaDTOValidator;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.util.ArrayList;
 import java.util.Collection;
 
@@ -29,11 +33,16 @@ public class TarjetaController {
         this.tarjetaService = tarjetaService;
     }
 
+    @InitBinder
+    public void initBinder(WebDataBinder binder) {
+        binder.setValidator(new TarjetaDTOValidator());
+    }
+
 
     @RequestMapping(method = RequestMethod.POST, consumes = "application/json")
     public
     @ResponseBody
-    TarjetaDTO create(@RequestBody TarjetaDTO tarjetaDTO) {
+    TarjetaDTO create(@RequestBody @Valid TarjetaDTO tarjetaDTO) {
 
         LOGGER.debug("Received DTO: " + tarjetaDTO);
         return tarjetaTranslator.translateToDTO(this.tarjetaService.saveTarjeta(this.tarjetaTranslator.translate(tarjetaDTO)));
@@ -47,9 +56,9 @@ public class TarjetaController {
     }
 
 
-    @RequestMapping(method = RequestMethod.PUT, value = "/eliminar/{identifier}")
+    @RequestMapping(method = RequestMethod.POST, value = "/eliminar/{identifier}")
+    @ResponseStatus(value = HttpStatus.OK)
     public
-    @ResponseBody
     void eliminarTarjeta(@PathVariable long identifier) {
         this.tarjetaService.deleteTarjeta(identifier);
     }

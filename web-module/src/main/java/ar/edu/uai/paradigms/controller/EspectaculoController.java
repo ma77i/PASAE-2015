@@ -8,11 +8,15 @@ import ar.edu.uai.paradigms.service.EspectaculoService;
 import ar.edu.uai.paradigms.service.FuncionService;
 import ar.edu.uai.paradigms.translator.EspectaculoTranslator;
 import ar.edu.uai.paradigms.translator.FuncionTranslator;
+import ar.edu.uai.paradigms.validators.EspectaculoDTOValidator;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Date;
@@ -39,8 +43,13 @@ public class EspectaculoController {
 
 	private FuncionTranslator funcionTranslator;
 
+	@InitBinder
+	public void initBinder(WebDataBinder binder) {
+		binder.setValidator(new EspectaculoDTOValidator());
+	}
+
 	@RequestMapping(method = RequestMethod.POST, consumes = "application/json")
-	public @ResponseBody EspectaculoDTO createEspectaculo(@RequestBody EspectaculoDTO espectaculoDTO) {
+	public @ResponseBody EspectaculoDTO createEspectaculo(@RequestBody @Valid EspectaculoDTO espectaculoDTO) {
 		LOGGER.debug("Received DTO: " + espectaculoDTO);
 		return this.espectaculoTranslator.translateToDTO(this.espectaculoService.saveEspectaculo(this.espectaculoTranslator.translate(espectaculoDTO),espectaculoDTO.getCategoriaId(),espectaculoDTO.getTeatroId()));
 	}
@@ -64,7 +73,7 @@ public class EspectaculoController {
 	@RequestMapping(value = "/{identifier}/cambiardatos", method = RequestMethod.POST, consumes = "application/json")
 	public @ResponseBody EspectaculoDTO modificarDatos(@RequestBody EspectaculoDTO espectaculoDTO) {
 		LOGGER.debug("Received DTO: " + espectaculoDTO);
-		return this.espectaculoTranslator.translateToDTO(this.espectaculoService.modificarEspectaculo(this.espectaculoTranslator.translate(espectaculoDTO)));
+		return this.espectaculoTranslator.translateToDTO(this.espectaculoService.modificarEspectaculo(this.espectaculoTranslator.translate(espectaculoDTO), espectaculoDTO.getTeatroId()));
 	}
 
 	@RequestMapping(value = "/{nombre_espectaculo}/listado", method = RequestMethod.GET)
@@ -101,6 +110,11 @@ public class EspectaculoController {
 		return espectaculos;
 	}
 
+	@RequestMapping(method = RequestMethod.POST, value = "/eliminar/{identifier}")
+	@ResponseStatus(value = HttpStatus.OK)
+	public void eliminarEspectaculo(@PathVariable long identifier) {
+		this.espectaculoService.deleteEspectaculo(identifier);
+	}
 
 
 
