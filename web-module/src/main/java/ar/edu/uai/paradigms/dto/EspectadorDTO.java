@@ -11,9 +11,9 @@ public class EspectadorDTO extends UsuarioDTO {
 
 
 	@JsonCreator
-	public EspectadorDTO(@JsonProperty("email") String email, @JsonProperty("password") String password, @JsonProperty("nombre") String nombre,
-						 @JsonProperty("apellido") String apellido) {
-		super(email, password, nombre, apellido);
+	public EspectadorDTO(@JsonProperty("id") Long id, @JsonProperty("email") String email, @JsonProperty("password") String password, @JsonProperty("nombre") String nombre,
+						 @JsonProperty("apellido") String apellido, @JsonProperty("estado") Boolean estado) {
+		super(id, email, password, nombre, apellido, estado);
 
 	}
 

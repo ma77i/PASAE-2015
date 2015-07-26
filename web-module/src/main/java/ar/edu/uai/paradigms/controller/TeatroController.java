@@ -56,7 +56,7 @@ public class TeatroController {
         return this.teatroTranslator.translateToDTO(this.teatroService.retrieveTeatro(identifier));
     }
 
-    @RequestMapping(method = RequestMethod.GET, value = "/listadoTeatros")
+    @RequestMapping(method = RequestMethod.GET, value = "/listadoteatros")
     public
     @ResponseBody
     Collection<TeatroDTO> listadoTeatros() {

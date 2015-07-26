@@ -10,7 +10,7 @@ public class AdministradorTranslator {
 	}
 
 	public AdministradorDTO translateToDTO(Administrador usuario) {
-		return new AdministradorDTO(usuario.getEmail(), usuario.getPassword(), usuario.getNombre(), usuario.getApellido());
+		return new AdministradorDTO(usuario.getId(), usuario.getEmail(), usuario.getPassword(), usuario.getNombre(), usuario.getApellido(), usuario.getEstado());
 	}
 
 }

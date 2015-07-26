@@ -46,12 +46,12 @@ public class AdministradorController {
 		return this.administradorTranslator.translateToDTO((Administrador) this.administradorService.retrieveUsuario(identifier));
 	}
 
-	@RequestMapping(value = "/{identifier}/cambiardatos", method = RequestMethod.POST, consumes = "application/json")
+	@RequestMapping(value = "/{identifier}/cambiardatospersonales", method = RequestMethod.POST, consumes = "application/json")
 	public
 	@ResponseBody
 	AdministradorDTO cambiarDatosPersonales(@RequestBody AdministradorDTO administradorDTO) {
 		LOGGER.debug("Received DTO: " + administradorDTO);
-		return this.administradorTranslator.translateToDTO(this.administradorService.modificarDatosPersonales(this.administradorTranslator.translate(administradorDTO)));
+		return this.administradorTranslator.translateToDTO(this.administradorService.modificarDatosPersonales(this.administradorService.retrieveUsuario(administradorDTO.getId()), administradorDTO.getNombre(), administradorDTO.getApellido(), administradorDTO.getPassword()));
 	}
 
 }

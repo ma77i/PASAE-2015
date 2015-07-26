@@ -59,7 +59,7 @@ public class EspectaculoController {
 		return this.espectaculoTranslator.translateToDTO(this.espectaculoService.retrieveEspectaculo(identifier));
 	}
 
-	@RequestMapping(method = RequestMethod.GET, value = "/listadoEspectaculos")
+	@RequestMapping(method = RequestMethod.GET, value = "/listadoespectaculos")
 	public @ResponseBody Collection<EspectaculoDTO> listadoEspectaculos() {
 
 		Collection<EspectaculoDTO> espectaculos = new ArrayList<EspectaculoDTO>();
@@ -70,13 +70,13 @@ public class EspectaculoController {
 		return espectaculos;
 	}
 
-	@RequestMapping(value = "/{identifier}/cambiardatos", method = RequestMethod.POST, consumes = "application/json")
+	@RequestMapping(value = "/{identifier}/modificardatos", method = RequestMethod.POST, consumes = "application/json")
 	public @ResponseBody EspectaculoDTO modificarDatos(@RequestBody EspectaculoDTO espectaculoDTO) {
 		LOGGER.debug("Received DTO: " + espectaculoDTO);
 		return this.espectaculoTranslator.translateToDTO(this.espectaculoService.modificarEspectaculo(this.espectaculoService.retrieveEspectaculo(espectaculoDTO.getId()), espectaculoDTO.getNombre(), espectaculoDTO.getDescripcion(), espectaculoDTO.getTeatroId()));
 	}
 
-	@RequestMapping(value = "/{nombre_espectaculo}/listado", method = RequestMethod.GET)
+	@RequestMapping(value = "/listado/{nombreespectaculo}", method = RequestMethod.GET)
 	public @ResponseBody Collection<EspectaculoDTO> getEspectaculosPorNombre(@PathVariable String nombre_espectaculo) {
 		Collection<EspectaculoDTO> espectaculos = new ArrayList<EspectaculoDTO>();
 		Collection<Espectaculo> coleccion = this.espectaculoService.listarEspectaculosPorNombre(nombre_espectaculo);
@@ -86,19 +86,19 @@ public class EspectaculoController {
 		return espectaculos;
 	}
 
-	@RequestMapping(value = "/{id_espectaculo}/listado_funciones ", method = RequestMethod.GET)
+	@RequestMapping(value = "/{idespectaculo}/listadofunciones ", method = RequestMethod.GET)
 	public
 	@ResponseBody
-	Collection<FuncionDTO> getFuncionesDeEspectaculo(@PathVariable long id_espectaculo) {
+	Collection<FuncionDTO> getFuncionesDeEspectaculo(@PathVariable long idespectaculo) {
 		Collection<FuncionDTO> funciones = new ArrayList<FuncionDTO>();
-		Collection<Funcion> coleccion = this.funcionService.listarFuncionesDeEspectaculo(id_espectaculo);
+		Collection<Funcion> coleccion = this.funcionService.listarFuncionesDeEspectaculo(idespectaculo);
 		for (Funcion f : coleccion) {
 			funciones.add(funcionTranslator.translateToDTO(f));
 		}
 		return funciones;
 	}
 
-	@RequestMapping(method = RequestMethod.GET, value = "/{inicio}/{fin}/listado_espectaculos_entre_fechas")
+	@RequestMapping(method = RequestMethod.GET, value = "/listadoespectaculosentrefechas/{inicio}/{fin}")
 	public
 	@ResponseBody
 	Collection<EspectaculoDTO> getFuncionesEntreFechas(@PathVariable("inicio") Date inicio, @PathVariable("fin") Date fin) {

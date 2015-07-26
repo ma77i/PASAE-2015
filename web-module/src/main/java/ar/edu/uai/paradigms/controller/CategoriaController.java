@@ -58,7 +58,7 @@ public class CategoriaController {
     }
 
 
-    @RequestMapping(method = RequestMethod.GET, value = "/listado_categorias")
+    @RequestMapping(method = RequestMethod.GET, value = "/listadocategorias")
     public
     @ResponseBody
     Collection<CategoriaDTO> listadoCategorias() {
@@ -71,7 +71,7 @@ public class CategoriaController {
         return categorias;
     }
 
-    @RequestMapping(value = "/{identifier}/modificar_datos", method = RequestMethod.POST, consumes = "application/json")
+    @RequestMapping(value = "/{identifier}/modificardatos", method = RequestMethod.POST, consumes = "application/json")
     public
     @ResponseBody
     CategoriaDTO modificarDatos(@RequestBody @Valid CategoriaDTO categoriaDTO) {

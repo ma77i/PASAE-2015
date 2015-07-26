@@ -55,8 +55,6 @@ public class EspectadorController {
 			LOGGER.debug("Received DTO: " + espectadorDTO);
 			//Usuario espectador = espectadorService.existeUsuario(espectadorDTO.getEmail());
 			return this.espectadorTranslator.translateToDTO(this.espectadorService.saveUsuario(this.espectadorTranslator.translate(espectadorDTO)));
-
-
 	}
 
 	@RequestMapping(method = RequestMethod.GET, value = "/{identifier}")
@@ -64,16 +62,18 @@ public class EspectadorController {
 		return this.espectadorTranslator.translateToDTO(this.espectadorService.retrieveUsuario(identifier));
 	}
 
-	@RequestMapping(value = "/{identifier}/cambiar_datos_personales", method = RequestMethod.POST, consumes = "application/json")
+	@RequestMapping(value = "/{identifier}/cambiardatospersonales", method = RequestMethod.POST, consumes = "application/json")
 	public @ResponseBody EspectadorDTO cambiarDatosPersonales(@RequestBody EspectadorDTO espectadorDTO) {
 		LOGGER.debug("Received DTO: " + espectadorDTO);
-		return this.espectadorTranslator.translateToDTO(this.espectadorService.modificarDatosPersonales(this.espectadorTranslator.translate(espectadorDTO)));
+		return this.espectadorTranslator.translateToDTO(this.espectadorService.modificarDatosPersonales(this.espectadorService.retrieveUsuario(espectadorDTO.getId()), espectadorDTO.getNombre(), espectadorDTO.getApellido(), espectadorDTO.getPassword()));
 	}
 
-	@RequestMapping(value = "/{identifier}/cambiar_clave", method = RequestMethod.POST, consumes = "application/json")
-	public @ResponseBody EspectadorDTO cambiarContrasena(@RequestBody EspectadorDTO espectadorDTO) {
+	@RequestMapping(value = "/{identifier}/cambiarestado", method = RequestMethod.POST, consumes = "application/json")
+	public
+	@ResponseBody
+	EspectadorDTO cambiarEstado(@RequestBody EspectadorDTO espectadorDTO) {
 		LOGGER.debug("Received DTO: " + espectadorDTO);
-		return this.espectadorTranslator.translateToDTO(this.espectadorService.modificarContrasena(this.espectadorTranslator.translate(espectadorDTO)));
+		return this.espectadorTranslator.translateToDTO(this.espectadorService.modificarEstado(this.espectadorService.retrieveUsuario(espectadorDTO.getId()), espectadorDTO.getEstado()));
 	}
 
 	@RequestMapping(method = RequestMethod.GET, value = "/listadoespectadores")

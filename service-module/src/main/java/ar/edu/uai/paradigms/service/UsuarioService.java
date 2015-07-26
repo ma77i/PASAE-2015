@@ -51,21 +51,20 @@ public abstract class UsuarioService<T extends Usuario> {
 		return (this.usuarioDAO.retrieve((Class<T>) Usuario.class, identifier));
 	}
 
-	public T modificarDatosPersonales(T u) {
-		T usuario = this.retrieveUsuario(u.getId());
-		usuario.setEmail(u.getEmail());
-		usuario.setNombre(u.getNombre());
-		usuario.setApellido(u.getApellido());
+	@Transactional
+	public T modificarDatosPersonales(T u, String nombre, String apellido, String password) {
+		u.setNombre(nombre);
+		u.setApellido(apellido);
+		u.setPassword(password);
 		return this.usuarioDAO.update(u);
 
 	}
 
-	@Transactional
-	public T modificarContrasena(T u) {
-		T usuario = this.retrieveUsuario(u.getId());
-		usuario.setPassword(u.getPassword());
-		return usuarioDAO.update(usuario);
 
+	@Transactional
+	public T modificarEstado(T espectador, Boolean estado) {
+		espectador.setEstado(estado);
+		return this.usuarioDAO.update(espectador);
 	}
 
 	public Usuario existeUsuario(String email) {
@@ -75,4 +74,6 @@ public abstract class UsuarioService<T extends Usuario> {
 	public String getUserRole(String email, String password) {
 		return usuarioDAO.getUserRole(email, password);
 	}
+
+
 }

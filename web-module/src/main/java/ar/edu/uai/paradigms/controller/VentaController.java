@@ -48,7 +48,7 @@ public class VentaController {
 		return this.ventaTranslator.translateToDTO(this.ventaService.retrieveVenta(identifier));
 	}
 
-	@RequestMapping(method = RequestMethod.GET, value = "/{identifier}/MisCompras")
+	@RequestMapping(method = RequestMethod.GET, value = "/{identifier}/miscompras")
 	public @ResponseBody Collection<VentaDTO> misCompras(@PathVariable long identifier) {
 		Collection<VentaDTO> misCompras = new ArrayList<VentaDTO>();
 

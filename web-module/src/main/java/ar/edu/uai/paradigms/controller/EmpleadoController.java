@@ -48,12 +48,11 @@ public class EmpleadoController  {
 		return this.empleadoTranslator.translateToDTO(this.empleadoService.retrieveUsuario(identifier));
 	}
 
-	@RequestMapping(value = "/{identifier}/cambiardatos", method = RequestMethod.POST, consumes = "application/json")
+	@RequestMapping(value = "/{identifier}/cambiardatospersonales", method = RequestMethod.POST, consumes = "application/json")
 	public @ResponseBody EmpleadoDTO cambiarDatosPersonales(@RequestBody EmpleadoDTO empleadoDTO) {
 		LOGGER.debug("Received DTO: " + empleadoDTO);
-		return this.empleadoTranslator.translateToDTO(this.empleadoService.modificarDatosPersonales(this.empleadoTranslator.translate(empleadoDTO)));
+		return this.empleadoTranslator.translateToDTO(this.empleadoService.modificarDatosPersonales(this.empleadoService.retrieveUsuario(empleadoDTO.getId()), empleadoDTO.getNombre(), empleadoDTO.getApellido(), empleadoDTO.getPassword()));
 	}
-
 	@RequestMapping(method = RequestMethod.GET, value = "/listadoempleados")
 	public @ResponseBody Collection<EmpleadoDTO> listadoEmpleados() {
 		Collection<Empleado> lista = this.empleadoService.listarEmpleados();
