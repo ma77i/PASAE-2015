@@ -24,7 +24,7 @@ public abstract class Usuario {
 
 	private String apellido;
 
-//	private boolean estado;
+    private Boolean estado;
 	
 	public Usuario(){
 		
@@ -37,7 +37,7 @@ public abstract class Usuario {
 		this.password = password;
 		this.nombre = nombre;
 		this.apellido = apellido;
-		//	this.estado = true;
+		this.estado = Boolean.TRUE;
 	}
 
 	public long getId() {
@@ -80,13 +80,13 @@ public abstract class Usuario {
 		this.apellido = apellido;
 	}
 
-//	public boolean getEstado() {
-//		return estado;
-//	}
-//
-//	public void setEstado(boolean estado) {
-//		this.estado = estado;
-//	}
+	public Boolean getEstado() {
+		return estado;
+	}
+
+	public void setEstado(Boolean estado) {
+		this.estado = estado;
+	}
 
 
 }

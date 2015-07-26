@@ -7,7 +7,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
  * Created by EzequielPanoff on 29/6/15.
  */
 public abstract class UsuarioDTO {
-
+    private Long id;
     private String email;
     private String password;
     private String nombre;
@@ -16,13 +16,14 @@ public abstract class UsuarioDTO {
 
 
     @JsonCreator
-    public UsuarioDTO(@JsonProperty("email") String email, @JsonProperty("password") String password, @JsonProperty("nombre") String nombre,
-                      @JsonProperty("apellido") String apellido) {
+    public UsuarioDTO(@JsonProperty("id") Long id, @JsonProperty("email") String email, @JsonProperty("password") String password, @JsonProperty("nombre") String nombre,
+                      @JsonProperty("apellido") String apellido, @JsonProperty("estado") Boolean estado) {
+        this.id = id;
         this.email=email;
         this.password=password;
         this.nombre = nombre;
         this.apellido = apellido;
-        //  this.estado = estado;
+        this.estado = estado;
 
     }
 
@@ -67,7 +68,13 @@ public abstract class UsuarioDTO {
         this.estado = estado;
     }
 
+    public Long getId() {
+        return id;
+    }
 
+    public void setId(Long id) {
+        this.id = id;
+    }
     public abstract String toString();
 
 

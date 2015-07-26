@@ -64,7 +64,7 @@ public class TarjetaController {
     }
 
 
-    @RequestMapping(method = RequestMethod.GET, value = "/listadoTarjetas")
+    @RequestMapping(method = RequestMethod.GET, value = "/listadotarjetas")
     public
     @ResponseBody
     Collection<TarjetaDTO> listadoTarjetas() {
