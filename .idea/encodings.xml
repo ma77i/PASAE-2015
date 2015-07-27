@@ -3,9 +3,6 @@
   <component name="Encoding">
     <file url="file://$PROJECT_DIR$/../PASAE-AngularJS2/app/assets/styles/styles.css" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/../PASAE-AngularJS2/app/scripts/app.js" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/../PASAE-AngularJS2/app/scripts/controllers/usuario.js" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/../PASAE-AngularJS2/app/scripts/services/usuario.js" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/../PASAE-AngularJS2/app/views/agregarEmpleado.html" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/../PASAE-AngularJS2/bower.json" charset="UTF-8" />
   </component>
 </project>
