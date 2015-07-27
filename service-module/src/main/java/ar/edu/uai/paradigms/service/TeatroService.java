@@ -11,4 +11,7 @@ public interface TeatroService {
 
 	Collection<Teatro> listarTeatros();
 
+	Teatro modificarTeatro(Teatro teatro, String nombre, String direccion);
+
+	void deleteTeatro(long identifier);
 }

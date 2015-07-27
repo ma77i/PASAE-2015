@@ -38,4 +38,16 @@ public class TeatroServiceImpl implements TeatroService {
 		return teatroDAO.list();
 	}
 
+	@Transactional
+	public Teatro modificarTeatro(Teatro teatro, String nombre, String direccion) {
+		teatro.setNombre(nombre);
+		teatro.setDireccion(direccion);
+		return this.teatroDAO.update(teatro);
+	}
+
+	@Transactional
+	public void deleteTeatro(long identifier) {
+		this.teatroDAO.delete(identifier);
+	}
+
 }

@@ -24,7 +24,7 @@ public class Espectaculo {
 	
 	private String descripcion;
 
-	@OneToMany(mappedBy = "espectaculo", cascade = CascadeType.ALL)
+	@OneToMany(mappedBy = "espectaculo", cascade = CascadeType.REMOVE)
 	private Collection<Funcion> funciones;
 	 
 	@OneToMany(mappedBy="espectaculo")
