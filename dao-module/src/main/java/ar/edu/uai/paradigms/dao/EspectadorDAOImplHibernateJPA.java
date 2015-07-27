@@ -18,8 +18,8 @@ public class EspectadorDAOImplHibernateJPA extends UsuarioDAOImplHibernateJPA<Es
     public Collection<Espectador> listarEspectadoresPorCampoIngresado(String input) {
 
         try {
-            Query consulta = this.entityManager.createQuery("select e from Espectador as e where e.nombre LIKE :input or e.apellido LIKE :input or e.email LIKE :input");
-            consulta.setParameter("input", "%" + input + "%");
+            Query consulta = this.entityManager.createQuery("select e from Espectador as e where LOWER(e.nombre) LIKE LOWER(:input) or LOWER(e.apellido) LIKE LOWER(:input) or LOWER(e.email) LIKE LOWER(:input)");
+            consulta.setParameter("input", input + "%");
             return consulta.getResultList();
         } catch (NoResultException e) {
             System.out.println("NO SE ENCONTRO LA BUSQUEDA");
