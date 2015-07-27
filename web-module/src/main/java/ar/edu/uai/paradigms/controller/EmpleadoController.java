@@ -63,7 +63,7 @@ public class EmpleadoController  {
 		return empleados;
 	}
 
-	@RequestMapping(method = RequestMethod.GET, value = "/busquedaeempleados/{input}")
+	@RequestMapping(method = RequestMethod.GET, value = "/busquedaempleados/{input}")
 	public
 	@ResponseBody
 	Collection<EmpleadoDTO> busquedaEmpleados(@PathVariable String input) {
