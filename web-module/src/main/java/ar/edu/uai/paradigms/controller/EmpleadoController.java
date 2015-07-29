@@ -76,6 +76,17 @@ public class EmpleadoController  {
 
 	}
 
+	/*@RequestMapping(value = "/{identifier}/cambiarestado", method=RequestMethod.POST, consumes = "application/json")
+	public @ResponseBody
+	EstadoUsuarioDTO cambiarEstado (@RequestBody EstadoUsuarioDTO estadoUsuarioDTO) {
+
+		LOGGER.debug("Received DTO: " + estadoUsuarioDTO);
+		return this.empleadoTranslator.translateToDTO(this.empleadoService.modificarEstado(this.empleadoService.retrieveUsuario(estadoUsuarioDTO.getId()),estadoUsuarioDTO.getEstado()));
+
+		return null;
+
+	}*/
+
 
 
 

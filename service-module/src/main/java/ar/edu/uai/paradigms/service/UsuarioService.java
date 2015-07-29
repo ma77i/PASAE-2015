@@ -62,9 +62,9 @@ public abstract class UsuarioService<T extends Usuario> {
 
 
 	@Transactional
-	public T modificarEstado(T espectador, Boolean estado) {
-		espectador.setEstado(estado);
-		return this.usuarioDAO.update(espectador);
+	public T modificarEstado(T usuario, String estado) {
+		usuario.setEstado(estado);
+		return this.usuarioDAO.update(usuario);
 	}
 
 	public Usuario existeUsuario(String email) {
