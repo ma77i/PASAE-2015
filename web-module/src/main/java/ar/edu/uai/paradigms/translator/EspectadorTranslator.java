@@ -6,7 +6,7 @@ import ar.edu.uai.paradigms.dto.EspectadorDTO;
 public class EspectadorTranslator {
 
 	public Espectador translate(EspectadorDTO espectadorDTO) {
-		return new Espectador(espectadorDTO.getEmail(), espectadorDTO.getPassword(), espectadorDTO.getNombre(), espectadorDTO.getApellido());
+		return new Espectador(espectadorDTO.getEmail(), espectadorDTO.getPassword(), espectadorDTO.getNombre(), espectadorDTO.getApellido(),espectadorDTO.getEstado());
 	}
 
 	public EspectadorDTO translateToDTO(Espectador usuario) {
