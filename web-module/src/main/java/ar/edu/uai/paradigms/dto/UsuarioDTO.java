@@ -12,12 +12,12 @@ public abstract class UsuarioDTO {
     private String password;
     private String nombre;
     private String apellido;
-    private Boolean estado;
+    private String estado;
 
 
     @JsonCreator
     public UsuarioDTO(@JsonProperty("id") Long id, @JsonProperty("email") String email, @JsonProperty("password") String password, @JsonProperty("nombre") String nombre,
-                      @JsonProperty("apellido") String apellido, @JsonProperty("estado") Boolean estado) {
+                      @JsonProperty("apellido") String apellido, @JsonProperty("estado") String estado) {
         this.id = id;
         this.email=email;
         this.password=password;
@@ -60,11 +60,11 @@ public abstract class UsuarioDTO {
         this.password = password;
     }
 
-    public Boolean getEstado() {
+    public String getEstado() {
         return estado;
     }
 
-    public void setEstado(Boolean estado) {
+    public void setEstado(String estado) {
         this.estado = estado;
     }
 
