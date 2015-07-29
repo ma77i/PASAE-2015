@@ -1,9 +1,6 @@
 package ar.edu.uai.model;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.OneToMany;
+import javax.persistence.*;
 import java.util.Collection;
 
 
@@ -12,7 +9,9 @@ public class Teatro {
 
 	@Id @GeneratedValue
 	private long id;
-	
+
+
+	@Column(name = "nombre", unique = true)
 	private String nombre;
 	
 	private String direccion;
@@ -23,8 +22,8 @@ public class Teatro {
 
 	}
 
-	@OneToMany (mappedBy="teatro")
-    private Collection<Espectaculo> espectaculos;
+	@OneToMany(mappedBy = "teatro", cascade = {CascadeType.REMOVE, CascadeType.MERGE})
+	private Collection<Espectaculo> espectaculos;
 
 	public Teatro() {
 		
