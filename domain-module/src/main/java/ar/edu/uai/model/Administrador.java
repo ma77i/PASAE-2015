@@ -11,8 +11,8 @@ public class Administrador extends Usuario{
 	}
 
 	public Administrador(String email, String password, String nombre,
-						 String apellido) {
-		super(email, password, nombre, apellido);
+						 String apellido, String estado) {
+		super(email, password, nombre, apellido, estado);
 		// TODO Auto-generated constructor stub
 	}
 
