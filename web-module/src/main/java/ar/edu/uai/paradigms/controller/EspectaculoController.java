@@ -76,10 +76,10 @@ public class EspectaculoController {
 		return this.espectaculoTranslator.translateToDTO(this.espectaculoService.modificarEspectaculo(this.espectaculoService.retrieveEspectaculo(espectaculoDTO.getId()), espectaculoDTO.getNombre(), espectaculoDTO.getDescripcion(), espectaculoDTO.getTeatroId()));
 	}
 
-	@RequestMapping(value = "/listado/{nombreespectaculo}", method = RequestMethod.GET)
-	public @ResponseBody Collection<EspectaculoDTO> getEspectaculosPorNombre(@PathVariable String nombreespectaculo) {
+	@RequestMapping(value = "/filtrarespectaculospornombre/{nombre_espectaculo}", method = RequestMethod.GET)
+	public @ResponseBody Collection<EspectaculoDTO> getEspectaculosPorNombre(@PathVariable String nombre_espectaculo) {
 		Collection<EspectaculoDTO> espectaculos = new ArrayList<EspectaculoDTO>();
-		Collection<Espectaculo> coleccion = this.espectaculoService.listarEspectaculosPorNombre(nombreespectaculo);
+		Collection<Espectaculo> coleccion = this.espectaculoService.listarEspectaculosPorNombre(nombre_espectaculo);
 		for (Espectaculo e : coleccion) {
 			espectaculos.add(espectaculoTranslator.translateToDTO(e));
 		}
