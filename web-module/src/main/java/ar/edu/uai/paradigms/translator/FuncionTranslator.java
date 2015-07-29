@@ -6,12 +6,12 @@ import ar.edu.uai.paradigms.dto.FuncionDTO;
 public class FuncionTranslator {
 
     public Funcion translate(FuncionDTO funcionDTO) {
-        return new Funcion(funcionDTO.getFecha());
+        return new Funcion(funcionDTO.getFecha(), funcionDTO.getHora());
 
     }
 
     public FuncionDTO translateToDTO(Funcion funcion) {
-        return new FuncionDTO(funcion.getId(), funcion.getFecha(), funcion.getEspectaculo().getId());
+        return new FuncionDTO(funcion.getId(), funcion.getFecha(), funcion.getHora(), funcion.getEspectaculo().getId());
     }
 
 

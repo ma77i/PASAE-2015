@@ -7,6 +7,7 @@ import ar.edu.uai.paradigms.translator.TeatroTranslator;
 import ar.edu.uai.paradigms.validators.TeatroDTOValidator;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.*;
@@ -68,6 +69,22 @@ public class TeatroController {
         }
         return teatros;
     }
+
+    @RequestMapping(value = "/{identifier}/modificardatos", method = RequestMethod.POST, consumes = "application/json")
+    public
+    @ResponseBody
+    TeatroDTO modificarDatos(@RequestBody TeatroDTO teatroDTO) {
+        LOGGER.debug("Received DTO: " + teatroDTO);
+        return this.teatroTranslator.translateToDTO(this.teatroService.modificarTeatro(this.teatroService.retrieveTeatro(teatroDTO.getId()), teatroDTO.getNombre(), teatroDTO.getDireccion()));
+    }
+
+
+    @RequestMapping(method = RequestMethod.POST, value = "/eliminar/{identifier}")
+    @ResponseStatus(value = HttpStatus.OK)
+    public void eliminarEspectaculo(@PathVariable long identifier) {
+        this.teatroService.deleteTeatro(identifier);
+    }
+
 
 
 }

@@ -65,21 +65,21 @@
 <!--     Configure bean to convert JSON to POJO and vice versa -->
     <bean id="jsonMessageConverter" class="org.springframework.http.converter.json.MappingJackson2HttpMessageConverter"/>
 
-    <bean id="conversionService" class="org.springframework.format.support.FormattingConversionServiceFactoryBean">
-        <property name="registerDefaultFormatters" value="true"/>
-        <property name="formatterRegistrars">
-            <set>
-                <!-- Format DateTime as ISO format -->
-                <bean class="org.springframework.format.datetime.standard.DateTimeFormatterRegistrar">
-                    <property name="dateFormatter">
-                        <bean class="org.springframework.format.datetime.standard.DateTimeFormatterFactoryBean">
-                            <property name="iso" value="DATE"/>
-                        </bean>
-                    </property>
-                </bean>
-            </set>
-        </property>
-    </bean>
+    <!-- <bean id="conversionService" class="org.springframework.format.support.FormattingConversionServiceFactoryBean">
+         <property name="registerDefaultFormatters" value="true"/>
+         <property name="formatterRegistrars">
+             <set>
+                 &lt;!&ndash; Format DateTime as ISO format &ndash;&gt;
+                 <bean class="org.springframework.format.datetime.standard.DateTimeFormatterRegistrar">
+                     <property name="dateFormatter">
+                         <bean class="org.springframework.format.datetime.standard.DateTimeFormatterFactoryBean">
+                             <property name="iso" value="DATE"/>
+                         </bean>
+                     </property>
+                 </bean>
+             </set>
+         </property>
+     </bean>-->
 
     <bean class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
 		<property name="location">
