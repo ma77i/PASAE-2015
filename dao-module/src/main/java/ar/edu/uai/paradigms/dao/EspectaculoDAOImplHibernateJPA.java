@@ -77,8 +77,8 @@ public class EspectaculoDAOImplHibernateJPA extends GenericDaoHibernateJPA<Espec
     @Override
     public Collection<Espectaculo> listarEspectaculosPorNombre(String nombre_espectaculo) {
 
-            Query consulta = this.entityManager.createQuery("select e from Espectaculo as e where e.nombre LIKE :nombre  ");
-            consulta.setParameter(1, "%" + nombre_espectaculo + "%");
+            Query consulta = this.entityManager.createQuery("select e from Espectaculo as e where LOWER(e.nombre) LIKE LOWER (:nombre_espectaculo)");
+            consulta.setParameter("nombre_espectaculo", "%" + nombre_espectaculo + "%");
             return consulta.getResultList();
     }
 
