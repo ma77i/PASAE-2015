@@ -11,6 +11,7 @@ import ar.edu.uai.paradigms.translator.FuncionTranslator;
 import ar.edu.uai.paradigms.validators.EspectaculoDTOValidator;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.WebDataBinder;
@@ -101,7 +102,7 @@ public class EspectaculoController {
 	@RequestMapping(method = RequestMethod.GET, value = "/listadoespectaculosentrefechas/{inicio}/{fin}")
 	public
 	@ResponseBody
-	Collection<EspectaculoDTO> getFuncionesEntreFechas(@PathVariable("inicio") Date inicio, @PathVariable("fin") Date fin) {
+	Collection<EspectaculoDTO> getFuncionesEntreFechas(@PathVariable("inicio") @DateTimeFormat(pattern="yyyy-MM-dd") Date inicio, @PathVariable("fin") @DateTimeFormat(pattern="yyyy-MM-dd") Date fin) {
 		Collection<EspectaculoDTO> espectaculos = new ArrayList<EspectaculoDTO>();
 		Collection<Espectaculo> coleccion = this.espectaculoService.listarEspectaculosEntreFechas(inicio, fin);
 		for (Espectaculo e : coleccion) {

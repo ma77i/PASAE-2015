@@ -89,9 +89,9 @@ public class EspectaculoDAOImplHibernateJPA extends GenericDaoHibernateJPA<Espec
 
     @Override
     public Collection<Espectaculo> listarEspectaculosEntreRangoDeFechas(Date startDate, Date endDate) {
-        Query consulta = this.entityManager.createQuery("select e from Espectaculo as e join e.funciones as f where f.fecha BETWEEN :startDate AND :endDate");
-        consulta.setParameter(1, startDate);
-        consulta.setParameter(2, endDate);
+        Query consulta = this.entityManager.createQuery("select distinct e from Espectaculo as e join e.funciones as f where f.fecha BETWEEN :startDate AND :endDate");
+        consulta.setParameter("startDate", startDate);
+        consulta.setParameter("endDate", endDate);
         return consulta.getResultList();
 
     }
