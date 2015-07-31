@@ -10,8 +10,8 @@ public class Empleado extends Usuario {
 	}
 
 	public Empleado(String email, String password, String nombre,
-			String apellido, String estado) {
-		super(email, password, nombre, apellido, estado);
+			String apellido) {
+		super(email, password, nombre, apellido);
 		// TODO Auto-generated constructor stub
 	}
 
