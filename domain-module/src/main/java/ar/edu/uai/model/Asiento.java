@@ -13,20 +13,17 @@ public class Asiento {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private long id;
 
-	private Integer fila;
-
 	private Integer numero;
 
 	private boolean ocupado;
 
 	@ManyToOne
-	private Sector sector;
+	private Fila fila;
 
-	public Asiento(Integer fila, int numero, boolean ocupado, Sector sector) {
+	public Asiento(Fila fila, int numero, boolean ocupado) {
 		this.fila = fila;
 		this.numero = numero;
 		this.ocupado = ocupado;
-		this.sector = sector;
 	}
 
 	public long getId() {
@@ -37,11 +34,11 @@ public class Asiento {
 		this.id = id;
 	}
 
-	public Integer getFila() {
+	public Fila getFila() {
 		return fila;
 	}
 
-	public void setFila(Integer fila) {
+	public void setFila(Fila fila) {
 		this.fila = fila;
 	}
 
@@ -61,12 +58,5 @@ public class Asiento {
 		this.ocupado = ocupado;
 	}
 
-	public Sector getSector() {
-		return sector;
-	}
-
-	public void setSector(Sector sector) {
-		this.sector = sector;
-	}
 
 }
