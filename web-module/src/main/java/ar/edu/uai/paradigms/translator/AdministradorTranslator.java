@@ -6,7 +6,7 @@ import ar.edu.uai.paradigms.dto.AdministradorDTO;
 public class AdministradorTranslator {
 
 	public Administrador translate(AdministradorDTO administradorDTO) {
-		return new Administrador(administradorDTO.getEmail(), administradorDTO.getPassword(), administradorDTO.getNombre(), administradorDTO.getApellido(),administradorDTO.getEstado());
+		return new Administrador(administradorDTO.getEmail(), administradorDTO.getPassword(), administradorDTO.getNombre(), administradorDTO.getApellido());
 	}
 
 	public AdministradorDTO translateToDTO(Administrador usuario) {
