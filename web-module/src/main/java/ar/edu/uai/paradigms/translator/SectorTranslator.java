@@ -17,10 +17,12 @@ public class SectorTranslator {
 
 	public Sector translate(SectorDTO sectorDTO) {
 
-		return new Sector(sectorDTO.getNombre(), sectorDTO.getMonto(), espectaculoService.retrieveEspectaculo(sectorDTO.getEspectaculo()), sectorDTO.getAsientosLibres(), sectorDTO.getNro_asientos(), sectorDTO.getNro_filas());
+		return null;
+		//new Sector(sectorDTO.getNombre(), sectorDTO.getMonto(), espectaculoService.retrieveEspectaculo(sectorDTO.getEspectaculo()), sectorDTO.getAsientosLibres(), sectorDTO.getNro_asientos(), sectorDTO.getNro_filas());
 	}
 
 	public SectorDTO translateToDTO(Sector sector) {
-		return new SectorDTO(sector.getNombre(), sector.getMonto(), sector.getEspectaculo().getId(), sector.getAsientos_libres(), sector.getNro_asientos(), sector.getNro_filas());
+		return null;
+		//return new SectorDTO(sector.getNombre(), sector.getMonto(), sector.getEspectaculo().getId(), sector.getAsientos_libres(), sector.getNro_asientos(), sector.getNro_filas());
 	}
 }
