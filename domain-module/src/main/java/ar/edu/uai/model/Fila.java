@@ -1,29 +1,36 @@
 package ar.edu.uai.model;
 
-import javax.persistence.OneToMany;
+import javax.persistence.*;
 import java.util.Collection;
 
 /**
  * Created by EzequielPanoff on 31/7/15.
  */
+@Entity
 public class Fila {
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
     private Integer nro_fila;
 
-    private Integer asientos_libres;
+
+    private Integer cantidad_asientos;
 
     @OneToMany (mappedBy = "fila")
     private Collection<Asiento> asientos;
 
+    @ManyToOne
     private Sector sector;
 
     public Fila(){}
 
-    public Fila(Long id, Integer nro_fila) {
+
+    public Fila(Long id, Integer nro_fila, Integer cantidad_asientos) {
         this.id = id;
         this.nro_fila = nro_fila;
+        this.cantidad_asientos = cantidad_asientos;
 
     }
 
@@ -59,12 +66,13 @@ public class Fila {
         this.sector = sector;
     }
 
-    public Integer getAsientos_libres() {
-        return asientos_libres;
+    public Integer getCantidad_asientos() {
+        return cantidad_asientos;
     }
 
-    public void setAsientos_libres(Integer asientos_libres) {
-        this.asientos_libres = asientos_libres;
+    public void setCantidad_asientos(Integer cantidad_asientos) {
+        this.cantidad_asientos = cantidad_asientos;
     }
+
 
 }

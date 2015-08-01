@@ -1,8 +1,11 @@
 package ar.edu.uai.paradigms.service;
 
+import ar.edu.uai.model.Asiento;
 import ar.edu.uai.model.Fila;
 import ar.edu.uai.model.Sector;
 import ar.edu.uai.paradigms.dao.FilaDAO;
+import org.springframework.beans.factory.annotation.Required;
+import org.springframework.transaction.annotation.Transactional;
 
 /**
  * Created by EzequielPanoff on 31/7/15.
@@ -13,7 +16,17 @@ public class FilaServiceImpl implements FilaService {
 
     private SectorService sectorService;
 
-    @Override
+    @Required
+    public void setFilaDAO(FilaDAO filaDAO) {
+        this.filaDAO = filaDAO;
+    }
+
+    public void setSectorService(SectorService sectorService) {
+        this.sectorService = sectorService;
+    }
+
+
+    @Transactional
     public Fila saveFila(Fila fila, Long sectorId) {
         this.agregarFilaParaSector(fila, this.sectorService.retrieveSector(sectorId));
         return this.filaDAO.create(fila);
@@ -25,9 +38,16 @@ public class FilaServiceImpl implements FilaService {
     }
 
     public void agregarFilaParaSector (Fila fila, Sector sector) {
-
         fila.setSector(sector);
         sector.getFilas().add(fila);
-
     }
+
+    public void generarAsientosParaFila(Fila fila, Integer cantidad_asientos) {
+        for (int i = 0; i < cantidad_asientos; i++) {
+            fila.getAsientos().add(new Asiento());
+
+        }
+    }
+
+
 }

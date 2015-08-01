@@ -26,7 +26,7 @@ public class Espectaculo {
 
 	@OneToMany(mappedBy = "espectaculo", cascade = CascadeType.REMOVE)
 	private Collection<Funcion> funciones;
-	 
+
 	@OneToMany(mappedBy="espectaculo")
 	private Collection<Sector> sectores;
 
@@ -86,5 +86,13 @@ public class Espectaculo {
 
 	public void setTeatro(Teatro teatro) {
 		this.teatro = teatro;
+	}
+
+	public Collection<Sector> getSectores() {
+		return sectores;
+	}
+
+	public void setSectores(Collection<Sector> sectores) {
+		this.sectores = sectores;
 	}
 }
