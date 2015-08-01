@@ -27,6 +27,11 @@ public class FilaController {
 
     private FilaTranslator filaTranslator;
 
+    public FilaController(FilaService filaService, FilaTranslator filaTranslator) {
+        this.filaService = filaService;
+        this.filaTranslator = filaTranslator;
+    }
+
 
     @InitBinder
     public void initBinder(WebDataBinder binder) {

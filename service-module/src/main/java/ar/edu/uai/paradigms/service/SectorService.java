@@ -1,13 +1,14 @@
 package ar.edu.uai.paradigms.service;
 
 import ar.edu.uai.model.Asiento;
+import ar.edu.uai.model.Espectaculo;
 import ar.edu.uai.model.Sector;
 
 import java.util.Collection;
 
 
 public interface SectorService {
-	public Sector saveSector(Sector sector);
+	public Sector saveSector(Sector sector, Long espectaculoId);
 
 	public Sector retrieveSector(Long id_sector);
 
@@ -23,5 +24,5 @@ public interface SectorService {
 
 	public Collection<Asiento> asientosOcupadosDeSector(Long id_sector);
 
-
+	void agregarSectorParaEspectaculo(Sector sector, Espectaculo espectaculo);
 }
