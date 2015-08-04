@@ -15,15 +15,14 @@ public class Asiento {
 
 	private Integer numero;
 
-	private boolean ocupado;
+	private Boolean ocupado;
 
 	@ManyToOne
 	private Fila fila;
 
-	public Asiento(Fila fila, int numero, boolean ocupado) {
-		this.fila = fila;
+	public Asiento(Integer numero) {
 		this.numero = numero;
-		this.ocupado = ocupado;
+		this.ocupado = false;
 	}
 
 	public long getId() {
@@ -50,11 +49,11 @@ public class Asiento {
 		this.numero = numero;
 	}
 
-	public boolean isOcupado() {
+	public Boolean isOcupado() {
 		return ocupado;
 	}
 
-	public void setOcupado(boolean ocupado) {
+	public void setOcupado(Boolean ocupado) {
 		this.ocupado = ocupado;
 	}
 
