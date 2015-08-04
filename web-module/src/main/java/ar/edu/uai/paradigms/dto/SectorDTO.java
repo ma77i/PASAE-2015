@@ -16,6 +16,7 @@ public class SectorDTO {
 	private String nombre;
 	private Float monto;
 	private Boolean agotado;
+	@com.fasterxml.jackson.annotation.JsonIgnore
 	private Collection<HashMap<Integer, Collection<Asiento>>> filas;
 	//private Integer asientosLibres;
 	//private Integer nro_asientos;
