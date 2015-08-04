@@ -4,14 +4,10 @@ import ar.edu.uai.paradigms.dto.SectorDTO;
 import ar.edu.uai.paradigms.service.SectorService;
 import ar.edu.uai.paradigms.translator.AsientoTranslator;
 import ar.edu.uai.paradigms.translator.SectorTranslator;
-import ar.edu.uai.paradigms.validators.SectorDTOValidator;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.*;
-
-import javax.validation.Valid;
 
 /**
  * Created by EzequielPanoff on 9/6/15.
@@ -36,13 +32,15 @@ public class SectorController {
 	}
 
 
-	@InitBinder
-	public void initBinder(WebDataBinder binder) {
-		binder.setValidator(new SectorDTOValidator());
-	}
+//	@InitBinder
+//	public void initBinder(WebDataBinder binder) {
+//		binder.setValidator(new SectorDTOValidator());
+//	}
 
 	@RequestMapping(method = RequestMethod.POST, consumes = "application/json")
-	public @ResponseBody SectorDTO createSector(@RequestBody @Valid SectorDTO sectorDTO) {
+	public
+	@ResponseBody
+	SectorDTO createSector(@RequestBody SectorDTO sectorDTO) {
 		LOGGER.debug("Received DTO: " + sectorDTO);
 		return this.sectorTranslator.translateToDTO(this.sectorService.saveSector(this.sectorTranslator.translate(sectorDTO), sectorDTO.getEspectaculoId()));
 	}

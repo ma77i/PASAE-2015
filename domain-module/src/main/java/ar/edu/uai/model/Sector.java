@@ -34,10 +34,11 @@ public class Sector {
 		
 	}
 
-	public Sector(String nombre, Float monto) {
+	public Sector(String nombre, Float monto, Collection<Fila> filas) {
 		this.nombre = nombre;
 		this.monto = monto;
 		this.agotado = false;
+		this.filas = filas;
 		//this.asientos_libres = asientos_libres;
 
 	}

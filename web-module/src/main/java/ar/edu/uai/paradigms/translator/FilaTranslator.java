@@ -9,8 +9,8 @@ import ar.edu.uai.paradigms.dto.FilaDTO;
 public class FilaTranslator {
 
     public Fila translate(FilaDTO filaDTO) {
-
-        return new Fila(filaDTO.getId(), filaDTO.getNro_fila(), filaDTO.getCantidad_asientos());
+        return new Fila();
+        //return new Fila(filaDTO.getId(), filaDTO.getNro_fila(), filaDTO.getCantidad_asientos());
     }
 
     public FilaDTO translateToDTO(Fila fila) {

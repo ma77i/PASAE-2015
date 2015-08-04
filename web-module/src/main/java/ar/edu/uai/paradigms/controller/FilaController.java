@@ -42,7 +42,7 @@ public class FilaController {
     public @ResponseBody
     FilaDTO createFila(@RequestBody @Valid FilaDTO filaDTO) {
         LOGGER.debug("Received DTO: " + filaDTO);
-        return this.filaTranslator.translateToDTO(this.filaService.saveFila(this.filaTranslator.translate(filaDTO), filaDTO.getSectorId()));
+        return this.filaTranslator.translateToDTO(this.filaService.saveFila(this.filaTranslator.translate(filaDTO), filaDTO.getSectorId(), filaDTO.getCantidad_asientos()));
     }
 
     @RequestMapping(method = RequestMethod.GET, value = "/{identifier}")
