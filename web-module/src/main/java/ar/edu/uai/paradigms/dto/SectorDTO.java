@@ -1,7 +1,11 @@
 package ar.edu.uai.paradigms.dto;
 
+import ar.edu.uai.model.Asiento;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonProperty;
+
+import java.util.Collection;
+import java.util.HashMap;
 
 /**
  * Created by EzequielPanoff on 9/6/15.
@@ -12,6 +16,7 @@ public class SectorDTO {
 	private String nombre;
 	private Float monto;
 	private Boolean agotado;
+	private Collection<HashMap<Integer, Collection<Asiento>>> filas;
 	//private Integer asientosLibres;
 	//private Integer nro_asientos;
 	//private Integer nro_filas;
@@ -19,18 +24,21 @@ public class SectorDTO {
 	;
 
 	@JsonCreator
-	public SectorDTO(@JsonProperty("id") Long id, @JsonProperty("nombre") String nombre, @JsonProperty("monto") Float monto, @JsonProperty("agotado") Boolean agotado, @JsonProperty("espectaculoId") Long espectaculoId) {
-
+	public SectorDTO(@JsonProperty("id") Long id, @JsonProperty("nombre") String nombre, @JsonProperty("monto") Float monto, @JsonProperty("agotado") Boolean agotado, @JsonProperty("espectaculoId") Long espectaculoId, @JsonProperty("filas") Collection<HashMap<Integer, Collection<Asiento>>> filas) {
+		super();
 		this.setId(id);
 		this.setNombre(nombre);
 		this.setMonto(monto);
 		this.setAgotado(agotado);
 		this.setEspectaculoId(espectaculoId);
-
-		/*this.asientosLibres = asientosLibres;
-		this.nro_asientos = nro_asientos;
-		this.nro_filas = nro_filas;*/
+		this.setFilas(filas);
 	}
+
+	@JsonCreator
+	public SectorDTO() {
+
+	}
+
 
 
 
@@ -72,6 +80,14 @@ public class SectorDTO {
 
 	public void setNombre(String nombre) {
 		this.nombre = nombre;
+	}
+
+	public Collection<HashMap<Integer, Collection<Asiento>>> getFilas() {
+		return filas;
+	}
+
+	public void setFilas(Collection<HashMap<Integer, Collection<Asiento>>> filas) {
+		this.filas = filas;
 	}
 
 	/*public Integer getAsientosLibres() {

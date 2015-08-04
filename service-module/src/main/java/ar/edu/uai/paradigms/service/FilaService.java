@@ -7,7 +7,7 @@ import ar.edu.uai.model.Fila;
  */
 public interface FilaService {
 
-    public Fila saveFila(Fila fila, Long sectorId);
+    public Fila saveFila(Fila fila, Long sectorId, Integer cantidadAsientos);
 
     public Fila retrieveFila(Long id_fila);
 

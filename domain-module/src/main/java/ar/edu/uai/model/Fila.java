@@ -27,10 +27,9 @@ public class Fila {
     public Fila(){}
 
 
-    public Fila(Long id, Integer nro_fila, Integer cantidad_asientos) {
-        this.id = id;
+    public Fila(Integer nro_fila, Collection<Asiento> asientos) {
         this.nro_fila = nro_fila;
-        this.cantidad_asientos = cantidad_asientos;
+        this.setAsientos(asientos);
 
     }
 
