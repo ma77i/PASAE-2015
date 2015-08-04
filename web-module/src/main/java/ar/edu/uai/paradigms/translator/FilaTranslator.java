@@ -14,6 +14,7 @@ public class FilaTranslator {
     }
 
     public FilaDTO translateToDTO(Fila fila) {
-        return new FilaDTO(fila.getId(), fila.getSector().getId(), fila.getNro_fila(), fila.getCantidad_asientos());
+        //return new FilaDTO(fila.getId(), fila.getSector().getId(), fila.getNro_fila(), fila.getCantidad_asientos());
+        return null;
     }
 }
