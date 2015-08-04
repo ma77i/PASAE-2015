@@ -156,6 +156,15 @@
 
     </bean>
 
+    <bean id="FilaController" class="ar.edu.uai.paradigms.controller.FilaController">
+        <constructor-arg name="filaService" ref="filaService"/>
+        <constructor-arg name="filaTranslator" ref="filaTranslator"/>
+    </bean>
+
+    <bean id="AsientoController" class="ar.edu.uai.paradigms.controller.AsientoController">
+        <constructor-arg name="asientoService" ref="asientoService"/>
+        <constructor-arg name="asientoTranslator" ref="asientoTranslator"/>
+    </bean>
 
     <bean id="defaultController" class="ar.edu.uai.paradigms.controller.DefaultController" />
 
@@ -207,6 +216,8 @@
     <bean id="categoriaTranslator" class="ar.edu.uai.paradigms.translator.CategoriaTranslator"/>
 
     <bean id="teatroTranslator" class="ar.edu.uai.paradigms.translator.TeatroTranslator"/>
+
+    <bean id="filaTranslator" class="ar.edu.uai.paradigms.translator.FilaTranslator"/>
 
 
 </beans>

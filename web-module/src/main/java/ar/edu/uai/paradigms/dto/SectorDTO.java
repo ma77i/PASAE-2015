@@ -12,23 +12,66 @@ import java.util.HashMap;
  */
 public class SectorDTO {
 
+	private Long id;
 	private String nombre;
 	private Float monto;
-	private Integer asientosLibres;
-	private Integer nro_asientos;
-	private Integer nro_filas;
-	private Long id_espectaculo;
-	private Collection<HashMap<Integer,Collection<Asiento>>> asientos;
+	private Boolean agotado;
+	private Collection<HashMap<Integer, Collection<Asiento>>> filas;
+	//private Integer asientosLibres;
+	//private Integer nro_asientos;
+	//private Integer nro_filas;
+	private Long espectaculoId;
+	;
 
 	@JsonCreator
-	public SectorDTO(@JsonProperty("nombre") String nombre, @JsonProperty("monto") Float monto, @JsonProperty("id_espectaculo") Long id_espectaculo,
-					 @JsonProperty("asientosLibres") Integer asientosLibres, @JsonProperty("nro_asientos") Integer nro_asientos, @JsonProperty("nro_filas") Integer nro_filas) {
-		this.nombre = nombre;
+	public SectorDTO(@JsonProperty("id") Long id, @JsonProperty("nombre") String nombre, @JsonProperty("monto") Float monto, @JsonProperty("agotado") Boolean agotado, @JsonProperty("espectaculoId") Long espectaculoId, @JsonProperty("filas") Collection<HashMap<Integer, Collection<Asiento>>> filas) {
+		super();
+		this.setId(id);
+		this.setNombre(nombre);
+		this.setMonto(monto);
+		this.setAgotado(agotado);
+		this.setEspectaculoId(espectaculoId);
+		this.setFilas(filas);
+	}
+
+	@JsonCreator
+	public SectorDTO() {
+
+	}
+
+
+
+
+	public Float getMonto() {
+		return monto;
+	}
+
+	public void setMonto(Float monto) {
 		this.monto = monto;
-		this.asientosLibres = asientosLibres;
-		this.nro_asientos = nro_asientos;
-		this.nro_filas = nro_filas;
-		this.id_espectaculo = id_espectaculo;
+	}
+
+	public Boolean getAgotado() {
+		return agotado;
+	}
+
+	public void setAgotado(Boolean agotado) {
+		this.agotado = agotado;
+	}
+
+	public Long getEspectaculoId() {
+		return espectaculoId;
+	}
+
+	public void setEspectaculoId(Long espectaculoId) {
+		this.espectaculoId = espectaculoId;
+	}
+
+	public Long getId() {
+		return id;
+	}
+
+	public void setId(Long id) {
+		this.id = id;
 	}
 
 	public String getNombre() {
@@ -39,23 +82,15 @@ public class SectorDTO {
 		this.nombre = nombre;
 	}
 
-	public Float getMonto() {
-		return monto;
+	public Collection<HashMap<Integer, Collection<Asiento>>> getFilas() {
+		return filas;
 	}
 
-	public void setMonto(Float monto) {
-		this.monto = monto;
+	public void setFilas(Collection<HashMap<Integer, Collection<Asiento>>> filas) {
+		this.filas = filas;
 	}
 
-	public long getEspectaculo() {
-		return id_espectaculo;
-	}
-
-	public void setEspectaculo(Long id_espectaculo) {
-		this.id_espectaculo = id_espectaculo;
-	}
-
-	public Integer getAsientosLibres() {
+	/*public Integer getAsientosLibres() {
 		return asientosLibres;
 	}
 
@@ -81,5 +116,5 @@ public class SectorDTO {
 
 	public String toString() {
 		return "EspectaculoDTO [nombre=" + nombre + ", monto=" + monto + ", asientos_libres=" + asientosLibres + "]";
-	}
+	}*/
 }
