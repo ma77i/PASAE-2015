@@ -1,7 +1,11 @@
 package ar.edu.uai.paradigms.dto;
 
+import ar.edu.uai.model.Asiento;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonProperty;
+
+import java.util.Collection;
+import java.util.HashMap;
 
 /**
  * Created by EzequielPanoff on 9/6/15.
@@ -14,6 +18,7 @@ public class SectorDTO {
 	private Integer nro_asientos;
 	private Integer nro_filas;
 	private Long id_espectaculo;
+	private Collection<HashMap<Integer,Collection<Asiento>>> asientos;
 
 	@JsonCreator
 	public SectorDTO(@JsonProperty("nombre") String nombre, @JsonProperty("monto") Float monto, @JsonProperty("id_espectaculo") Long id_espectaculo,
