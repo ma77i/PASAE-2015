@@ -37,7 +37,7 @@ public class SectorController {
 //		binder.setValidator(new SectorDTOValidator());
 //	}
 
-	@RequestMapping(method = RequestMethod.POST)
+	@RequestMapping(method = RequestMethod.POST, consumes = "application/json")
 	public
 	@ResponseBody
 	SectorDTO createSector(@RequestBody SectorDTO sectorDTO) {
