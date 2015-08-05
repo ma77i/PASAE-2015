@@ -1,6 +1,5 @@
 package ar.edu.uai.paradigms.service;
 
-import ar.edu.uai.model.Asiento;
 import ar.edu.uai.model.Fila;
 import ar.edu.uai.model.Sector;
 import ar.edu.uai.paradigms.dao.FilaDAO;
@@ -29,7 +28,7 @@ public class FilaServiceImpl implements FilaService {
     @Transactional
     public Fila saveFila(Fila fila, Long sectorId, Integer cantidadAsientos) {
         this.agregarFilaParaSector(fila, this.sectorService.retrieveSector(sectorId));
-        this.generarAsientosParaFila(fila, cantidadAsientos);
+       // this.generarAsientosParaFila(fila, cantidadAsientos);
         return this.filaDAO.create(fila);
     }
 
@@ -43,11 +42,11 @@ public class FilaServiceImpl implements FilaService {
         sector.getFilas().add(fila);
     }
 
-    public void generarAsientosParaFila(Fila fila, Integer cantidad_asientos) {
+   /* public void generarAsientosParaFila(Fila fila, Integer cantidad_asientos) {
         for (int i = 0; i < cantidad_asientos; i++) {
             fila.getAsientos().add(new Asiento(i));
         }
-    }
+    }*/
 
 
 }

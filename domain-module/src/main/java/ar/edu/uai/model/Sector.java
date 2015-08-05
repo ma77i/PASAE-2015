@@ -18,7 +18,7 @@ public class Sector {
 
 	private Integer asientos_libres;
 
-	@OneToMany(mappedBy="sector")
+	@OneToMany(mappedBy="sector", cascade={CascadeType.PERSIST,CascadeType.REMOVE})
 	private Collection<Fila> filas;
 
 	@ManyToOne
@@ -26,10 +26,7 @@ public class Sector {
 
 	//private Collection<Sector> sectores_contiguos;
 
-	
 
-	
-	
 	public Sector() {
 		
 	}

@@ -18,7 +18,7 @@ public class Fila {
 
     private Integer cantidad_asientos;
 
-    @OneToMany (mappedBy = "fila")
+    @OneToMany(mappedBy="fila", cascade={CascadeType.PERSIST,CascadeType.REMOVE})
     private Collection<Asiento> asientos;
 
     @ManyToOne
@@ -27,9 +27,8 @@ public class Fila {
     public Fila(){}
 
 
-    public Fila(Integer nro_fila, Collection<Asiento> asientos) {
+    public Fila(Integer nro_fila) {
         this.nro_fila = nro_fila;
-        this.setAsientos(asientos);
 
     }
 

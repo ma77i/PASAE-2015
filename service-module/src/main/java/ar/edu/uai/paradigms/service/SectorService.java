@@ -24,5 +24,8 @@ public interface SectorService {
 
 	public Collection<Asiento> asientosOcupadosDeSector(Long id_sector);
 
-	void agregarSectorParaEspectaculo(Sector sector, Espectaculo espectaculo);
+	public void agregarSectorParaEspectaculo(Sector sector, Espectaculo espectaculo);
+
+	public void agregarSectorParaFilas(Sector sector);
+
 }

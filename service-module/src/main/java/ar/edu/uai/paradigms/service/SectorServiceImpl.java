@@ -2,6 +2,7 @@ package ar.edu.uai.paradigms.service;
 
 import ar.edu.uai.model.Asiento;
 import ar.edu.uai.model.Espectaculo;
+import ar.edu.uai.model.Fila;
 import ar.edu.uai.model.Sector;
 import ar.edu.uai.paradigms.dao.SectorDAO;
 import org.springframework.beans.factory.annotation.Required;
@@ -38,9 +39,11 @@ public class SectorServiceImpl implements SectorService {
 
 	@Transactional
 	public Sector saveSector(Sector sector, Long espectaculoId) {
+		this.agregarSectorParaFilas(sector);
 		this.agregarSectorParaEspectaculo(sector, this.espectaculoService.retrieveEspectaculo(espectaculoId));
 		return sectorDAO.create(sector);
 	}
+
 
 	@Override
 	public Sector retrieveSector(Long id_sector) {
@@ -81,6 +84,13 @@ public class SectorServiceImpl implements SectorService {
 	public void agregarSectorParaEspectaculo(Sector sector, Espectaculo espectaculo) {
 		sector.setEspectaculo(espectaculo);
 		espectaculo.getSectores().add(sector);
+	}
+
+	@Override
+	public void agregarSectorParaFilas(Sector sector) {
+		for (Fila f: sector.getFilas()) {
+			f.setSector(sector);
+		}
 	}
 
 

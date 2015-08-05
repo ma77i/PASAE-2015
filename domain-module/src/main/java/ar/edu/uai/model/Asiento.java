@@ -10,7 +10,7 @@ public class Asiento {
 	}
 
 	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
+	@GeneratedValue(strategy = GenerationType.SEQUENCE)
 	private long id;
 
 	private Integer numero;
@@ -20,8 +20,9 @@ public class Asiento {
 	@ManyToOne
 	private Fila fila;
 
-	public Asiento(Integer numero) {
+	public Asiento(Integer numero, Fila fila) {
 		this.numero = numero;
+		this.fila=fila;
 		this.ocupado = false;
 	}
 
