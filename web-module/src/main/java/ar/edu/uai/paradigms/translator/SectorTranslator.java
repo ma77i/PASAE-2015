@@ -15,8 +15,10 @@ import java.util.Collection;
  */
 public class SectorTranslator {
 
+
 	public Sector translate(SectorDTO sectorDTO) {
 		Collection<Fila> filas = new ArrayList<Fila>();
+		Sector sector=new Sector(sectorDTO.getNombre(),sectorDTO.getMonto());
 		for (FilaDTO f : sectorDTO.getFilas()) {
 			Collection<Asiento> asientos = new ArrayList<Asiento>();
 			Fila fila=new Fila(f.getNro_fila());
@@ -24,10 +26,11 @@ public class SectorTranslator {
 				asientos.add(new Asiento(a.getNumero(),fila));
 			}
 			fila.setAsientos(asientos);
+			fila.setSector(sector);
 			filas.add(fila);
 		}
-
-		return new Sector(sectorDTO.getNombre(), sectorDTO.getMonto(), filas);
+		sector.setFilas(filas);
+		return sector;
 
 	}
 

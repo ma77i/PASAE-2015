@@ -2,7 +2,6 @@ package ar.edu.uai.paradigms.service;
 
 import ar.edu.uai.model.Asiento;
 import ar.edu.uai.model.Espectaculo;
-import ar.edu.uai.model.Fila;
 import ar.edu.uai.model.Sector;
 import ar.edu.uai.paradigms.dao.SectorDAO;
 import org.springframework.beans.factory.annotation.Required;
@@ -39,7 +38,6 @@ public class SectorServiceImpl implements SectorService {
 
 	@Transactional
 	public Sector saveSector(Sector sector, Long espectaculoId) {
-		this.agregarSectorParaFilas(sector);
 		this.agregarSectorParaEspectaculo(sector, this.espectaculoService.retrieveEspectaculo(espectaculoId));
 		return sectorDAO.create(sector);
 	}
@@ -55,11 +53,11 @@ public class SectorServiceImpl implements SectorService {
 		return sectorDAO.list();
 	}
 
-	public boolean hayDisponibilidad(Long id_sector, Integer nro_asientos) {
-		return (sectorDAO.chequearDisponibilidad(id_sector) > nro_asientos);
+	public Boolean hayDisponibilidad(Long id_sector, Integer nro_asientos) {
+		return (this.cantidadAsientosDisponibles(id_sector) > nro_asientos);
 	}
 
-	public Integer cantidadAsientosDisponibles(Long id_sector) {
+	public Long cantidadAsientosDisponibles(Long id_sector) {
 		return (sectorDAO.chequearDisponibilidad(id_sector));
 	}
 
@@ -77,7 +75,7 @@ public class SectorServiceImpl implements SectorService {
 
 	@Override
 	public Collection<Asiento> asientosOcupadosDeSector(Long id_sector) {
-		return (sectorDAO.asientosDisponiblesDeSector(id_sector));
+		return (sectorDAO.asientosOcupadosDeSector(id_sector));
 	}
 
 	@Override
@@ -86,12 +84,6 @@ public class SectorServiceImpl implements SectorService {
 		espectaculo.getSectores().add(sector);
 	}
 
-	@Override
-	public void agregarSectorParaFilas(Sector sector) {
-		for (Fila f: sector.getFilas()) {
-			f.setSector(sector);
-		}
-	}
 
 
 }
