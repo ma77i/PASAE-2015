@@ -15,9 +15,6 @@ public class Fila {
 
     private Integer nro_fila;
 
-
-    private Integer cantidad_asientos;
-
     @OneToMany(mappedBy="fila", cascade={CascadeType.PERSIST,CascadeType.REMOVE})
     private Collection<Asiento> asientos;
 
@@ -62,14 +59,6 @@ public class Fila {
 
     public void setSector(Sector sector) {
         this.sector = sector;
-    }
-
-    public Integer getCantidad_asientos() {
-        return cantidad_asientos;
-    }
-
-    public void setCantidad_asientos(Integer cantidad_asientos) {
-        this.cantidad_asientos = cantidad_asientos;
     }
 
 

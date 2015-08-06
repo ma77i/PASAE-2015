@@ -16,27 +16,21 @@ public class Sector {
 	
 	private Boolean agotado;
 
-	private Integer asientos_libres;
-
 	@OneToMany(mappedBy="sector", cascade={CascadeType.PERSIST,CascadeType.REMOVE})
 	private Collection<Fila> filas;
 
 	@ManyToOne
 	private Espectaculo espectaculo;
 
-	//private Collection<Sector> sectores_contiguos;
-
 
 	public Sector() {
 		
 	}
 
-	public Sector(String nombre, Float monto, Collection<Fila> filas) {
+	public Sector(String nombre, Float monto) {
 		this.nombre = nombre;
 		this.monto = monto;
 		this.agotado = false;
-		this.filas = filas;
-		//this.asientos_libres = asientos_libres;
 
 	}
 
@@ -78,18 +72,6 @@ public class Sector {
 
 	public void setAgotado(boolean agotado) {
 		this.agotado = agotado;
-	}
-
-	public int getAsientos_libres() {
-		return asientos_libres;
-	}
-
-	public void setAsientos_libres(int asientos_libres) {
-		this.asientos_libres = asientos_libres;
-	}
-
-	public void setAsientos_libres(Integer asientos_libres) {
-		this.asientos_libres = asientos_libres;
 	}
 
 	public void setMonto(Float monto) {
