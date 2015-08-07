@@ -2,13 +2,16 @@ package ar.edu.uai.paradigms.controller;
 
 import ar.edu.uai.model.Espectaculo;
 import ar.edu.uai.model.Funcion;
+import ar.edu.uai.model.Imagen;
 import ar.edu.uai.paradigms.dto.EspectaculoDTO;
 import ar.edu.uai.paradigms.dto.FuncionDTO;
 import ar.edu.uai.paradigms.service.EspectaculoService;
 import ar.edu.uai.paradigms.service.FuncionService;
 import ar.edu.uai.paradigms.translator.EspectaculoTranslator;
 import ar.edu.uai.paradigms.translator.FuncionTranslator;
+import ar.edu.uai.paradigms.translator.ImagenTranslator;
 import ar.edu.uai.paradigms.validators.EspectaculoDTOValidator;
+import org.apache.commons.codec.binary.Base64;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.format.annotation.DateTimeFormat;
@@ -16,6 +19,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 
 import javax.validation.Valid;
 import java.util.ArrayList;
@@ -26,12 +30,13 @@ import java.util.Date;
 @RequestMapping("/espectaculo")
 public class EspectaculoController {
 
-	public EspectaculoController(EspectaculoService espectaculoService, EspectaculoTranslator espectaculoTranslator, FuncionService funcionService, FuncionTranslator funcionTranslator) {
+	public EspectaculoController(EspectaculoService espectaculoService, EspectaculoTranslator espectaculoTranslator, FuncionService funcionService, FuncionTranslator funcionTranslator, ImagenTranslator imagenTranslator) {
 		super();
 		this.espectaculoService = espectaculoService;
 		this.espectaculoTranslator = espectaculoTranslator;
 		this.funcionService = funcionService;
 		this.funcionTranslator = funcionTranslator;
+		this.imagenTranslator=imagenTranslator;
 	}
 
 	private static final Logger LOGGER = LoggerFactory.getLogger(EspectaculoController.class);
@@ -44,12 +49,14 @@ public class EspectaculoController {
 
 	private FuncionTranslator funcionTranslator;
 
+	private ImagenTranslator imagenTranslator;
+
 	@InitBinder
 	public void initBinder(WebDataBinder binder) {
 		binder.setValidator(new EspectaculoDTOValidator());
 	}
 
-	@RequestMapping(method = RequestMethod.POST, consumes = "application/json")
+	@RequestMapping(method = RequestMethod.POST)
 	public @ResponseBody EspectaculoDTO createEspectaculo(@RequestBody @Valid EspectaculoDTO espectaculoDTO) {
 		LOGGER.debug("Received DTO: " + espectaculoDTO);
 		return this.espectaculoTranslator.translateToDTO(this.espectaculoService.saveEspectaculo(this.espectaculoTranslator.translate(espectaculoDTO),espectaculoDTO.getCategoriaId(),espectaculoDTO.getTeatroId()));
@@ -129,6 +136,38 @@ public class EspectaculoController {
 		}
 		return espectaculos;
 	}
+
+	@RequestMapping(value = "/saveimage", method = RequestMethod.POST)
+	@ResponseStatus(value = HttpStatus.OK)
+	public void uploadLogo(@RequestPart("imagen") MultipartFile file) {
+		try {
+			//Iterator<String> itr = request.getFileNames();
+			//MultipartFile file = request.getFile(itr.next());
+
+			if (file.getBytes().length > 0) {
+				this.imagenTranslator.translateToDTO(new Imagen(new String(Base64.encodeBase64(file.getBytes()))));
+
+			}
+
+		} catch (Exception e) {
+			//Handle exception if any
+		}
+
+	}
+
+/*
+	@RequestMapping(value = "/imageDisplay", method = RequestMethod.GET)
+	public void showImage(@RequestParam("id") Integer itemId, HttpServletResponse response,HttpServletRequest request)
+			throws ServletException, IOException{
+
+
+		Item item = itemService.get(itemId);
+		response.setContentType("image/jpeg, image/jpg, image/png, image/gif");
+		response.getOutputStream().write(item.getItemImage());
+
+
+		response.getOutputStream().close();
+*/
 
 
 }
