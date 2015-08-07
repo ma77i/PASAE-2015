@@ -87,7 +87,7 @@ public class EspectadorController {
 
 	}
 
-	//este metodo es de prueba para ver si funciona el wiremock , la invocacion de verificandoDatosTarjeta no iria aca
+	//este metodo es de prueba para ver si funciona el wiremock , la invocacion de verif icandoDatosTarjeta no iria aca
 	@RequestMapping(method=RequestMethod.POST,value="/verificartarjeta", consumes = "application/json")
 	public @ResponseBody String verificarTarjeta (@RequestBody TransaccionDTO transaccionDTO){
 		LOGGER.debug("Received DTO: " + transaccionDTO);

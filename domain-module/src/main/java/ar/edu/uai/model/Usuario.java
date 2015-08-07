@@ -32,12 +32,12 @@ public abstract class Usuario {
 	
 	
 	public Usuario(String email, String password, String nombre,
-			String apellido,String estado) {
+			String apellido) {
 		this.email = email;
 		this.password = password;
 		this.nombre = nombre;
 		this.apellido = apellido;
-		this.estado = estado;
+		this.estado = "activo";
 	}
 
 	public long getId() {

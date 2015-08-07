@@ -125,6 +125,7 @@
 		<constructor-arg name="espectaculoTranslator" ref="espectaculoTranslator"/>
         <constructor-arg name="funcionService" ref="funcionService"/>
         <constructor-arg name="funcionTranslator" ref="funcionTranslator"/>
+        <constructor-arg name="imagenTranslator" ref="imagenTranslator"/>
 	</bean>
 
     <bean id="espectaculoTranslator" class="ar.edu.uai.paradigms.translator.EspectaculoTranslator"/>
@@ -156,6 +157,15 @@
 
     </bean>
 
+    <bean id="FilaController" class="ar.edu.uai.paradigms.controller.FilaController">
+        <constructor-arg name="filaService" ref="filaService"/>
+        <constructor-arg name="filaTranslator" ref="filaTranslator"/>
+    </bean>
+
+    <bean id="AsientoController" class="ar.edu.uai.paradigms.controller.AsientoController">
+        <constructor-arg name="asientoService" ref="asientoService"/>
+        <constructor-arg name="asientoTranslator" ref="asientoTranslator"/>
+    </bean>
 
     <bean id="defaultController" class="ar.edu.uai.paradigms.controller.DefaultController" />
 
@@ -195,6 +205,14 @@
 
     </bean>
 
+    <bean id="multipartResolver"
+          class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
+
+        <!-- one of the properties available; the maximum file size in bytes -->
+        <property name="maxUploadSize" value="100000"/>
+
+    </bean>
+
 
     <bean id="sectorTranslator" class="ar.edu.uai.paradigms.translator.SectorTranslator" />
 
@@ -207,6 +225,10 @@
     <bean id="categoriaTranslator" class="ar.edu.uai.paradigms.translator.CategoriaTranslator"/>
 
     <bean id="teatroTranslator" class="ar.edu.uai.paradigms.translator.TeatroTranslator"/>
+
+    <bean id="filaTranslator" class="ar.edu.uai.paradigms.translator.FilaTranslator"/>
+
+    <bean id="imagenTranslator" class="ar.edu.uai.paradigms.translator.ImagenTranslator"/>
 
 
 </beans>

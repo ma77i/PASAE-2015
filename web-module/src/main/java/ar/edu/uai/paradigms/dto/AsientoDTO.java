@@ -8,55 +8,53 @@ import com.fasterxml.jackson.annotation.JsonProperty;
  */
 public class AsientoDTO {
 
-	private Integer fila;
+	private Long id;
+
+	private Long filaId;
 
 	private Integer numero;
 
-	private boolean ocupado;
+	private Boolean ocupado;
 
-	private long id_sector;
 
 	@JsonCreator
-	public AsientoDTO(@JsonProperty("fila") Integer fila, @JsonProperty("numero") Integer numero, @JsonProperty("ocupado") boolean ocupado, @JsonProperty("id_sector") long id_sector) {
-		this.fila = fila;
-		this.numero = numero;
-		this.ocupado = ocupado;
-		this.id_sector = id_sector;
+	public AsientoDTO(@JsonProperty("id") Long id, @JsonProperty("filaId") Long filaId, @JsonProperty("numero") Integer numero, @JsonProperty("ocupado") Boolean ocupado) {
+		this.setId(id);
+		this.setFilaId(filaId);
+		this.setNumero(numero);
+		this.setOcupado(ocupado);
 	}
 
-	public Integer getFila() {
-		return fila;
+
+	public Long getFilaId() {
+		return filaId;
 	}
 
-	public void setFila(Integer fila) {
-		this.fila = fila;
+	public void setFilaId(Long filaId) {
+		this.filaId = filaId;
 	}
 
-	public int getNumero() {
-		return numero;
+	public Long getId() {
+		return id;
 	}
 
-	public void setNumero(int numero) {
-		this.numero = numero;
+	public void setId(Long id) {
+		this.id = id;
 	}
 
-	public boolean isOcupado() {
+	public Boolean isOcupado() {
 		return ocupado;
 	}
 
-	public void setOcupado(boolean ocupado) {
+	public void setOcupado(Boolean ocupado) {
 		this.ocupado = ocupado;
 	}
 
-	public long getSector() {
-		return id_sector;
+	public Integer getNumero() {
+		return numero;
 	}
 
-	public void setSector(long id_sector) {
-		this.id_sector = id_sector;
-	}
-
-	public String toString() {
-		return "AsientoDTO [fila=" + fila + ", numero=" + numero + ", ocupado=" + ocupado + "]";
+	public void setNumero(Integer numero) {
+		this.numero = numero;
 	}
 }

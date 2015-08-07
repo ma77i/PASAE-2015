@@ -6,14 +6,11 @@ import ar.edu.uai.paradigms.dto.SectorDTO;
 import ar.edu.uai.paradigms.service.SectorService;
 import ar.edu.uai.paradigms.translator.AsientoTranslator;
 import ar.edu.uai.paradigms.translator.SectorTranslator;
-import ar.edu.uai.paradigms.validators.SectorDTOValidator;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.*;
 
-import javax.validation.Valid;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Iterator;
@@ -41,15 +38,17 @@ public class SectorController {
 	}
 
 
-	@InitBinder
-	public void initBinder(WebDataBinder binder) {
-		binder.setValidator(new SectorDTOValidator());
-	}
+//	@InitBinder
+//	public void initBinder(WebDataBinder binder) {
+//		binder.setValidator(new SectorDTOValidator());
+//	}
 
 	@RequestMapping(method = RequestMethod.POST, consumes = "application/json")
-	public @ResponseBody SectorDTO createSector(@RequestBody @Valid SectorDTO sectorDTO) {
+	public
+	@ResponseBody
+	SectorDTO createSector(@RequestBody SectorDTO sectorDTO) {
 		LOGGER.debug("Received DTO: " + sectorDTO);
-		return this.sectorTranslator.translateToDTO(this.sectorService.saveSector(this.sectorTranslator.translate(sectorDTO)));
+		return this.sectorTranslator.translateToDTO(this.sectorService.saveSector(this.sectorTranslator.translate(sectorDTO), sectorDTO.getEspectaculoId()));
 	}
 
 	@RequestMapping(method = RequestMethod.GET, value = "/{identifier}")
@@ -69,7 +68,12 @@ public class SectorController {
 
 	}
 
-	@RequestMapping(method = RequestMethod.GET, value = "/{identifier}/asientos_disponibles")
+	@RequestMapping(method = RequestMethod.GET, value = "/{identifier}/cantidadasientos/{cantidad_asientos}")
+	public  @ResponseBody Boolean verificarDisponibildad (@PathVariable Long identifier, @PathVariable Integer cantidad_asientos) {
+		return this.sectorService.hayDisponibilidad(identifier,cantidad_asientos);
+	}
+
+	@RequestMapping(method = RequestMethod.GET, value = "/{identifier}/asientosdisponibles")
 	public @ResponseBody Collection<AsientoDTO> getAsientosDisponibles(@PathVariable long identifier) {
 		Collection<AsientoDTO> asientos_disponibles = new ArrayList<AsientoDTO>();
 		for (Iterator iterator = this.sectorService.asientosDisponiblesDeSector(identifier).iterator(); iterator.hasNext();) {
@@ -81,7 +85,7 @@ public class SectorController {
 
 	}
 
-	@RequestMapping(method = RequestMethod.GET, value = "/{identifier}/asientos_ocupados")
+	@RequestMapping(method = RequestMethod.GET, value = "/{identifier}/asientosocupados")
 	public @ResponseBody Collection<AsientoDTO> getAsientosOcupados(@PathVariable long identifier) {
 		Collection<AsientoDTO> asientos_ocupados = new ArrayList<AsientoDTO>();
 		for (Iterator iterator = this.sectorService.asientosOcupadosDeSector(identifier).iterator(); iterator.hasNext();) {
