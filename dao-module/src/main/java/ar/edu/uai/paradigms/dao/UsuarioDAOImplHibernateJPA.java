@@ -38,7 +38,8 @@ public class UsuarioDAOImplHibernateJPA<T> extends GenericDaoHibernateJPA<T> imp
     	String role = null;
         Usuario user = null;
         try {
-            Query consulta = this.entityManager.createQuery("select u from Usuario as u where u.email=:email and u.password = :password");
+            Query consulta =
+                    this.entityManager.createQuery("select u from Usuario as u where u.email=:email and u.password = :password");
             consulta.setParameter("email", email );
             consulta.setParameter("password", password);
             user = (Usuario) consulta.getSingleResult();
