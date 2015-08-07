@@ -6,15 +6,6 @@ import java.util.Collection;
 @Entity
 public class Espectaculo {
 
-	public Espectaculo() {
-		
-	}
-
-	public Espectaculo(String nombre, String descripcion) {
-		this.nombre = nombre;
-		this.descripcion = descripcion;
-	}
-
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private long id;
@@ -35,6 +26,23 @@ public class Espectaculo {
 
 	@ManyToOne(cascade = CascadeType.MERGE)
 	private Categoria categoria;
+
+	private String imagen;
+
+
+
+	public Espectaculo() {
+
+	}
+
+	public Espectaculo(String nombre, String descripcion, String imagen) {
+		this.nombre = nombre;
+		this.descripcion = descripcion;
+		this.imagen=imagen;
+	}
+
+
+
 
 	public long getId() {
 		return id;
@@ -94,5 +102,13 @@ public class Espectaculo {
 
 	public void setSectores(Collection<Sector> sectores) {
 		this.sectores = sectores;
+	}
+
+	public String getImagen() {
+		return imagen;
+	}
+
+	public void setImagen(String imagen) {
+		this.imagen = imagen;
 	}
 }

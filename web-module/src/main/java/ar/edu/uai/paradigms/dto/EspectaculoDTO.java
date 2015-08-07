@@ -13,14 +13,17 @@ public class EspectaculoDTO {
 	private String descripcion;
 	private long categoriaId;
 	private long teatroId;
+	private String imagen;
 
 	@JsonCreator
-	public EspectaculoDTO(@JsonProperty("id") Long id, @JsonProperty("nombre") String nombre, @JsonProperty("descripcion") String descripcion, @JsonProperty("categoriaId") long categoria, @JsonProperty("teatroId") long teatroId) {
+	public EspectaculoDTO(@JsonProperty("id") Long id, @JsonProperty("nombre") String nombre, @JsonProperty("descripcion") String descripcion, @JsonProperty("categoriaId") long categoria, @JsonProperty("teatroId") long teatroId, @JsonProperty String imagen) {
 		this.setId(id);
 		this.setNombre(nombre);
 		this.setDescripcion(descripcion);
 		this.setCategoriaId(categoria);
 		this.setTeatroId(teatroId);
+		this.setImagen(imagen);
+
 	}
 
 	public Long getId() {
@@ -62,6 +65,15 @@ public class EspectaculoDTO {
 	public void setTeatroId(long teatroId) {
 		this.teatroId = teatroId;
 	}
+
+	public String getImagen() {
+		return imagen;
+	}
+
+	public void setImagen(String imagen) {
+		this.imagen = imagen;
+	}
+
 
 	public String toString() {
 		return "EspectaculoDTO [nombre=" + nombre + ", descripcion=" + descripcion + ", categoriaId=" + categoriaId + ",teatroId=" + teatroId + "]";
