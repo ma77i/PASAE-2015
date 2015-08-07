@@ -1,6 +1,7 @@
 package ar.edu.uai.paradigms.service;
 
 import ar.edu.uai.model.Asiento;
+import ar.edu.uai.model.Espectaculo;
 import ar.edu.uai.model.Sector;
 import ar.edu.uai.paradigms.dao.SectorDAO;
 import org.springframework.beans.factory.annotation.Required;
@@ -11,6 +12,8 @@ import java.util.Collection;
 public class SectorServiceImpl implements SectorService {
 
 	private SectorDAO sectorDAO;
+
+	private EspectaculoService espectaculoService;
 	
 	public SectorServiceImpl (){
 		
@@ -29,16 +32,16 @@ public class SectorServiceImpl implements SectorService {
 		this.sectorDAO = sectorDAO;
 	}
 
-	@Transactional
-	public Sector saveSector(Sector sector) {
-		for (int i = 1; i <= (sector.getNro_asientos()); i++) {
-			for (int x = 1; i <= ((sector.getNro_asientos()) / (sector.getNro_filas())); i++) {
-				sector.getAsientos().add(new Asiento(x, i, false, sector));
-			}
+	public void setEspectaculoService(EspectaculoService espectaculoService) {
+		this.espectaculoService = espectaculoService;
+	}
 
-		}
+	@Transactional
+	public Sector saveSector(Sector sector, Long espectaculoId) {
+		this.agregarSectorParaEspectaculo(sector, this.espectaculoService.retrieveEspectaculo(espectaculoId));
 		return sectorDAO.create(sector);
 	}
+
 
 	@Override
 	public Sector retrieveSector(Long id_sector) {
@@ -50,11 +53,11 @@ public class SectorServiceImpl implements SectorService {
 		return sectorDAO.list();
 	}
 
-	public boolean hayDisponibilidad(Long id_sector, Integer nro_asientos) {
-		return (sectorDAO.chequearDisponibilidad(id_sector) > nro_asientos);
+	public Boolean hayDisponibilidad(Long id_sector, Integer nro_asientos) {
+		return (this.cantidadAsientosDisponibles(id_sector) > nro_asientos);
 	}
 
-	public Integer cantidadAsientosDisponibles(Long id_sector) {
+	public Long cantidadAsientosDisponibles(Long id_sector) {
 		return (sectorDAO.chequearDisponibilidad(id_sector));
 	}
 
@@ -72,7 +75,15 @@ public class SectorServiceImpl implements SectorService {
 
 	@Override
 	public Collection<Asiento> asientosOcupadosDeSector(Long id_sector) {
-		return (sectorDAO.asientosDisponiblesDeSector(id_sector));
+		return (sectorDAO.asientosOcupadosDeSector(id_sector));
 	}
+
+	@Override
+	public void agregarSectorParaEspectaculo(Sector sector, Espectaculo espectaculo) {
+		sector.setEspectaculo(espectaculo);
+		espectaculo.getSectores().add(sector);
+	}
+
+
 
 }

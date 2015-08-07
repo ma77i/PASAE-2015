@@ -7,7 +7,7 @@ import java.util.Collection;
 
 public interface SectorDAO extends GenericDAO<Sector> {
 	
-	public Integer chequearDisponibilidad (long id_sector);
+	public Long chequearDisponibilidad(long id_sector);
 
 	public Collection<Asiento> asientosDeSector (long id_sector);
 

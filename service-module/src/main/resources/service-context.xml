@@ -28,8 +28,9 @@
     </bean>
         
      <bean id="sectorService" class="ar.edu.uai.paradigms.service.SectorServiceImpl">
-        <property name="sectorDAO" ref="sectorDAO" />
-    </bean> 
+         <property name="sectorDAO" ref="sectorDAO"/>
+         <property name="espectaculoService" ref="espectaculoService"/>
+     </bean>
     
     <bean id="espectadorServiceConcreta" class="ar.edu.uai.paradigms.service.EspectadorService" parent="espectadorService" >
       <property name="espectadorDAO" ref="espectadorDAO" />
@@ -86,6 +87,16 @@
 
     <bean id="categoriaService" class="ar.edu.uai.paradigms.service.CategoriaServiceImpl">
         <property name="categoriaDAO" ref="categoriaDAO"/>
+    </bean>
+
+    <bean id="filaService" class="ar.edu.uai.paradigms.service.FilaServiceImpl">
+        <property name="filaDAO" ref="filaDAO"/>
+        <property name="sectorService" ref="sectorService"/>
+    </bean>
+
+    <bean id="asientoService" class="ar.edu.uai.paradigms.service.AsientoServiceImpl">
+        <property name="asientoDAO" ref="asientoDAO"/>
+        <property name="filaService" ref="filaService"/>
     </bean>
 
 

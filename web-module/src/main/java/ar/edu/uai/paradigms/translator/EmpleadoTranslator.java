@@ -6,7 +6,7 @@ import ar.edu.uai.paradigms.dto.EmpleadoDTO;
 public class EmpleadoTranslator {
 
 	public Empleado translate(EmpleadoDTO empleadoDTO) {
-		return new Empleado(empleadoDTO.getEmail(), empleadoDTO.getPassword(), empleadoDTO.getNombre(), empleadoDTO.getApellido(),empleadoDTO.getEstado());
+		return new Empleado(empleadoDTO.getEmail(), empleadoDTO.getPassword(), empleadoDTO.getNombre(), empleadoDTO.getApellido());
 	}
 
 	public EmpleadoDTO translateToDTO(Empleado usuario) {
