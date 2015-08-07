@@ -107,7 +107,7 @@ INSERT INTO USUARIO VALUES('Espectador',5,'Barrera','nestor@hotmail.com','Nesti'
 INSERT INTO USUARIO VALUES('Espectador',6,'farfan coaguila','farfan@hotmail.com','george','1234','activo')
 INSERT INTO USUARIO VALUES('Espectador',7,'farfan coaguila','joba23@hotmail.com','george','1234','activo')
 INSERT INTO USUARIO VALUES('Espectador',8,'villa','seaaaa@hotmail.com','sea','1234','activo')
-INSERT INTO USUARIO VALUES('Empleado',9,'Brea','sebasb@myapp.com','Sebastian','empleado','inactivo')
+INSERT INTO USUARIO VALUES('Empleado',9,'Brea','sebasb@myapp.com','Sebastian','empleado','activo')
 INSERT INTO USUARIO VALUES('Empleado',10,'Lopez','jlopez@myapp.com','Jorge','empleado2','activo')
 INSERT INTO USUARIO VALUES('Empleado',11,'Tracy','ctracy@myapp.com','Christian','empleado3','activo')
 INSERT INTO USUARIO VALUES('Empleado',12,'Cordal','mcordal@myapp.com','Mariel','empleado3','activo')
