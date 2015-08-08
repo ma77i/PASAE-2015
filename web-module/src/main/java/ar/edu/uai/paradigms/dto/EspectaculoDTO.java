@@ -15,13 +15,16 @@ public class EspectaculoDTO {
 	private long categoriaId;
 	private long teatroId;
 	private MultipartFile imagen;
+
 	@JsonCreator
-	public EspectaculoDTO(@JsonProperty("id") Long id, @JsonProperty("nombre") String nombre, @JsonProperty("descripcion") String descripcion, @JsonProperty("categoriaId") long categoria, @JsonProperty("teatroId") long teatroId) {
+	public EspectaculoDTO(@JsonProperty("id") Long id, @JsonProperty("nombre") String nombre, @JsonProperty("descripcion") String descripcion, @JsonProperty("categoriaId") long categoria, @JsonProperty("teatroId") long teatroId, @JsonProperty("imagen") MultipartFile imagen) {
 		this.setId(id);
 		this.setNombre(nombre);
 		this.setDescripcion(descripcion);
 		this.setCategoriaId(categoria);
 		this.setTeatroId(teatroId);
+		this.setImagen(imagen);
+
 	}
 
 	public Long getId() {
@@ -64,8 +67,17 @@ public class EspectaculoDTO {
 		this.teatroId = teatroId;
 	}
 
+	public MultipartFile getImagen() {
+		return imagen;
+	}
+
+	public void setImagen(MultipartFile imagen) {
+		this.imagen = imagen;
+	}
+
+
 	public String toString() {
-		return "EspectaculoDTO [nombre=" + nombre + ", descripcion=" + descripcion + ", categoriaId=" + categoriaId + ",teatroId=" + teatroId + "]";
+		return "EspectaculoDTO [nombre=" + nombre + ", descripcion=" + descripcion + ", categoriaId=" + categoriaId + ",teatroId=" + teatroId + ",imagen="+imagen+ "]";
 
 	}
 }

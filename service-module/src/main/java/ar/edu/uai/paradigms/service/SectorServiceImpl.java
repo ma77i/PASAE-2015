@@ -42,6 +42,7 @@ public class SectorServiceImpl implements SectorService {
 		return sectorDAO.create(sector);
 	}
 
+
 	@Override
 	public Sector retrieveSector(Long id_sector) {
 		return sectorDAO.retrieve(Sector.class, id_sector);
@@ -52,11 +53,11 @@ public class SectorServiceImpl implements SectorService {
 		return sectorDAO.list();
 	}
 
-	public boolean hayDisponibilidad(Long id_sector, Integer nro_asientos) {
-		return (sectorDAO.chequearDisponibilidad(id_sector) > nro_asientos);
+	public Boolean hayDisponibilidad(Long id_sector, Integer nro_asientos) {
+		return (this.cantidadAsientosDisponibles(id_sector) > nro_asientos);
 	}
 
-	public Integer cantidadAsientosDisponibles(Long id_sector) {
+	public Long cantidadAsientosDisponibles(Long id_sector) {
 		return (sectorDAO.chequearDisponibilidad(id_sector));
 	}
 
@@ -74,7 +75,7 @@ public class SectorServiceImpl implements SectorService {
 
 	@Override
 	public Collection<Asiento> asientosOcupadosDeSector(Long id_sector) {
-		return (sectorDAO.asientosDisponiblesDeSector(id_sector));
+		return (sectorDAO.asientosOcupadosDeSector(id_sector));
 	}
 
 	@Override
@@ -82,6 +83,7 @@ public class SectorServiceImpl implements SectorService {
 		sector.setEspectaculo(espectaculo);
 		espectaculo.getSectores().add(sector);
 	}
+
 
 
 }

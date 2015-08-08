@@ -20,11 +20,9 @@ public class Asiento {
 	@ManyToOne
 	private Fila fila;
 
-	//@ManyToMany
-	//private Collection<Venta> ventas;
-
-	public Asiento(Integer numero) {
+	public Asiento(Integer numero, Fila fila) {
 		this.numero = numero;
+		this.fila=fila;
 		this.ocupado = false;
 	}
 

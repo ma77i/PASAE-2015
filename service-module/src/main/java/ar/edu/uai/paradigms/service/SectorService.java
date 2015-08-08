@@ -14,9 +14,9 @@ public interface SectorService {
 
 	public Collection<Sector> listarSectores();
 
-	public boolean hayDisponibilidad(Long id_sector, Integer nro_asientos);
+	public Boolean hayDisponibilidad(Long id_sector, Integer nro_asientos);
 
-	public Integer cantidadAsientosDisponibles(Long id_sector);
+	public Long cantidadAsientosDisponibles(Long id_sector);
 
 	public Collection<Asiento> asientosDeSector(Long id_sector);
 
@@ -24,5 +24,6 @@ public interface SectorService {
 
 	public Collection<Asiento> asientosOcupadosDeSector(Long id_sector);
 
-	void agregarSectorParaEspectaculo(Sector sector, Espectaculo espectaculo);
+	public void agregarSectorParaEspectaculo(Sector sector, Espectaculo espectaculo);
+
 }
