@@ -1,6 +1,7 @@
 package ar.edu.uai.model;
 
 import javax.persistence.*;
+import java.sql.Blob;
 import java.util.Collection;
 
 @Entity
@@ -27,7 +28,8 @@ public class Espectaculo {
 	@ManyToOne(cascade = CascadeType.MERGE)
 	private Categoria categoria;
 
-	private String imagen;
+	@Lob
+	private Blob imagen;
 
 
 
@@ -35,10 +37,10 @@ public class Espectaculo {
 
 	}
 
-	public Espectaculo(String nombre, String descripcion, String imagen) {
+	public Espectaculo(String nombre, String descripcion) {
 		this.nombre = nombre;
 		this.descripcion = descripcion;
-		this.imagen=imagen;
+
 	}
 
 
@@ -104,11 +106,11 @@ public class Espectaculo {
 		this.sectores = sectores;
 	}
 
-	public String getImagen() {
+	public Blob getImagen() {
 		return imagen;
 	}
 
-	public void setImagen(String imagen) {
+	public void setImagen(Blob imagen) {
 		this.imagen = imagen;
 	}
 }

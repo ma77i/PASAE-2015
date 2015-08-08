@@ -7,7 +7,12 @@ import ar.edu.uai.model.Teatro;
 import ar.edu.uai.paradigms.dao.EspectaculoDAO;
 import org.springframework.beans.factory.annotation.Required;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.web.multipart.MultipartFile;
 
+import javax.sql.rowset.serial.SerialBlob;
+import java.io.IOException;
+import java.sql.Blob;
+import java.sql.SQLException;
 import java.util.Collection;
 import java.util.Date;
 
@@ -53,11 +58,18 @@ public class EspectaculoServiceImpl implements EspectaculoService {
 	}
 
 	@Transactional
-	public Espectaculo saveEspectaculo(Espectaculo espectaculo,long categoriaId,long teatroId ) {
+	public Espectaculo saveEspectaculo(Espectaculo espectaculo,long categoriaId,long teatroId,MultipartFile imagen) {
 		Categoria categoria = categoriaService.retrieveCategoria(categoriaId);
 		Teatro teatro = teatroService.retrieveTeatro(teatroId);
-		this.agregarEspectaculoParaCategoria(espectaculo,categoria);
+		this.agregarEspectaculoParaCategoria(espectaculo, categoria);
 		this.agregarEspectaculoParaTeatro(espectaculo,teatro);
+		try {
+			this.agregarImagenAlEspectaculo(espectaculo,imagen);
+		} catch (IOException e) {
+			e.printStackTrace();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
 		return espectaculoDAO.update(espectaculo);
 	}
 
@@ -128,6 +140,12 @@ public class EspectaculoServiceImpl implements EspectaculoService {
 	public void agregarEspectaculoParaTeatro(Espectaculo e,Teatro t) {
 		e.setTeatro(t);
 		t.getEspectaculos().add(e);
+	}
+
+	@Override
+	public void agregarImagenAlEspectaculo(Espectaculo espectaculo, MultipartFile imagen) throws IOException, SQLException {
+		Blob imagenBlob= new SerialBlob(imagen.getBytes());
+		espectaculo.setImagen(imagenBlob);
 	}
 
 
