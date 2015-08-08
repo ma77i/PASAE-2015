@@ -78,6 +78,12 @@
         <processorPath useClasspath="true" />
         <module name="customex-module" />
       </profile>
+      <profile default="false" name="Annotation profile for log-module" enabled="true">
+        <sourceOutputDir name="target\generated-sources\annotations" />
+        <sourceTestOutputDir name="target\generated-test-sources\test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <processorPath useClasspath="true" />
+      </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
       <module name="commons" target="1.6" />
@@ -85,6 +91,7 @@
       <module name="dao-module" target="1.6" />
       <module name="domain-module" target="1.6" />
       <module name="ex-validator-module" target="1.6" />
+      <module name="log-module" target="1.6" />
       <module name="ParadigmsExample" target="1.6" />
       <module name="prueba" target="1.6" />
       <module name="service-module" target="1.6" />

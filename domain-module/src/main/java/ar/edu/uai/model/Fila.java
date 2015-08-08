@@ -18,7 +18,7 @@ public class Fila {
 
     private Integer cantidad_asientos;
 
-    @OneToMany (mappedBy = "fila")
+    @OneToMany(mappedBy = "fila")
     private Collection<Asiento> asientos;
 
     @ManyToOne
@@ -29,7 +29,7 @@ public class Fila {
 
     public Fila(Integer nro_fila, Collection<Asiento> asientos) {
         this.nro_fila = nro_fila;
-        this.setAsientos(asientos);
+        //  this.setAsientos(asientos);
 
     }
 

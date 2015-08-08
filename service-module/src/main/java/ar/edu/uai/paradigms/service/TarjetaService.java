@@ -1,7 +1,7 @@
 package ar.edu.uai.paradigms.service;
 
 import ar.edu.uai.model.Tarjeta;
-import ar.edu.uai.model.Transaccion;
+import ar.edu.uai.model.Venta;
 
 import java.util.Collection;
 
@@ -15,7 +15,7 @@ public interface TarjetaService {
 
     Collection<Tarjeta> listarTarjetas();
 
-    Transaccion verificandoDatosTarjeta(Transaccion transaccion);
+    Venta verificandoDatosTarjeta(Venta transaccion);
 
     void deleteTarjeta(long id_tarjeta);
 

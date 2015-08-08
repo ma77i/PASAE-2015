@@ -37,8 +37,13 @@ public class Espectador extends Usuario {
 
 	@OneToMany(mappedBy ="comprador")
 	private Collection<Tarjeta> tarjetas;
-	//posible interfaz,consultar.
 
-	
 
+	public Collection<Tarjeta> getTarjetas() {
+		return tarjetas;
+	}
+
+	public void setTarjetas(Collection<Tarjeta> tarjetas) {
+		this.tarjetas = tarjetas;
+	}
 }

@@ -1,13 +1,15 @@
 package ar.edu.uai.paradigms.translator;
 
-import ar.edu.uai.model.Espectador;
-import ar.edu.uai.model.Funcion;
-import ar.edu.uai.model.Tarjeta;
+import ar.edu.uai.model.Asiento;
 import ar.edu.uai.model.Venta;
+import ar.edu.uai.paradigms.dto.AsientoDTO;
 import ar.edu.uai.paradigms.dto.VentaDTO;
 import ar.edu.uai.paradigms.service.EspectaculoService;
 import ar.edu.uai.paradigms.service.EspectadorService;
 import ar.edu.uai.paradigms.service.TarjetaService;
+
+import java.util.ArrayList;
+import java.util.Collection;
 
 public class VentaTranslator {
 
@@ -39,17 +41,17 @@ public class VentaTranslator {
 
 
 	public Venta translate(VentaDTO ventaDTO) {
-		Espectador espectador = espectadorService.retrieveUsuario(ventaDTO.getEspectadorId());
-		// Espectaculo espectaculo =
-		// espectaculoService.retrieveEspectaculo(ventaDTO.getEspectaculoId());
 
-		Funcion funcion = espectaculoService.getFuncionDeEspectaculo(ventaDTO.getFuncionId());
+		Collection<Asiento> asientos = new ArrayList<Asiento>();
+		for (AsientoDTO e : ventaDTO.getAsientos()) {
+			asientos.add(new Asiento(e.getNumero()));
+		}
+		return null;
+		//	return new Venta(ventaDTO.getMonto(),ventaDTO.getCostoAdicional(),ventaDTO.getFechaVenta(),ventaDTO.getCuotas(),ventaDTO.getCvv(),asientos);
 
+		//habria que validar que esa compra se pueda realizar mediante wiremock , ya que esto simularia la validacion de la tarjeta
 
-
-     //habria que validar que esa compra se pueda realizar mediante wiremock , ya que esto simularia la validacion de la tarjeta
-
-		Tarjeta tarjeta=tarjetaService.retrieveTarjeta(ventaDTO.getTarjetaId());
+		//Tarjeta tarjeta=tarjetaService.retrieveTarjeta(ventaDTO.getTarjetaId());
 
 		//tarjetaService.verificandoDatosTarjeta();
 
@@ -67,12 +69,12 @@ public class VentaTranslator {
 
 		*/
 
-		return new Venta(ventaDTO.getMonto(), ventaDTO.getCostoAdicional(), ventaDTO.getFechaVenta(), ventaDTO.getCuotas(), funcion, espectador);
 	}
 
 	public VentaDTO translateToDTO(Venta venta) {
-		return new VentaDTO(venta.getMonto(), venta.getCostoAdicional(), venta.getFechaVenta(), venta.getCoutas(), venta.getFuncion().getEspectaculo().getId(), venta.getFuncion()
-				.getId(), venta.getComprador().getId(),venta.getTarjeta().getId());
+		/*return new VentaDTO(venta.getMonto(), venta.getCostoAdicional(), venta.getFechaVenta(), venta.getCoutas(), venta.getFuncion().getEspectaculo().getId(), venta.getFuncion()
+				.getId(), venta.getComprador().getId(),venta.getTarjeta().getId());*/
+		return null;
 	}
 
 }

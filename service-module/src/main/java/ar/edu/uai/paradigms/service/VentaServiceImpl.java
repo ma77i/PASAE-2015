@@ -1,5 +1,8 @@
 package ar.edu.uai.paradigms.service;
 
+import ar.edu.uai.model.Espectador;
+import ar.edu.uai.model.Funcion;
+import ar.edu.uai.model.Tarjeta;
 import ar.edu.uai.model.Venta;
 import ar.edu.uai.paradigms.dao.VentaDAO;
 import org.springframework.beans.factory.annotation.Required;
@@ -10,6 +13,14 @@ import java.util.Collection;
 public class VentaServiceImpl implements VentaService {
 
 	private VentaDAO ventaDAO;
+
+	private TarjetaService tarjetaService;
+
+	private EspectaculoService espectaculoService;
+
+	private FuncionService funcionService;
+
+	private EspectadorService espectadorService;
 
 
 	public VentaServiceImpl(){
@@ -30,7 +41,11 @@ public class VentaServiceImpl implements VentaService {
 	}
 
 	@Transactional
-	public Venta saveVenta(Venta venta) {
+	public Venta saveVenta(Venta venta, Long espectaculoId, Long funcionId, Long espectadorId, Long tarjetaId) {
+		Espectador e = this.espectadorService.retrieveUsuario(espectaculoId);
+		this.agregarTarjetaParaVenta(venta, this.tarjetaService.retrieveTarjeta(tarjetaId));
+		this.agregarFuncionParaVenta(venta, this.funcionService.retrieveFuncion(funcionId));
+		this.agregarEspectadorParaVenta(venta, e);
 		this.agregarVentaParaEspectador(venta);
 		return ventaDAO.create(venta);
 	}
@@ -72,6 +87,25 @@ public class VentaServiceImpl implements VentaService {
 	@Override
 	public void agregarVentaParaEspectador(Venta venta) {
 		venta.getComprador().getCompras().add(venta);
+	}
+
+	@Override
+	public void agregarFuncionParaVenta(Venta venta, Funcion funcion) {
+		venta.setFuncion(funcion);
+		funcion.getVentas().add(venta);
+
+	}
+
+	@Override
+	public void agregarEspectadorParaVenta(Venta venta, Espectador espectador) {
+		venta.setComprador(espectador);
+		espectador.getCompras().add(venta);
+	}
+
+	@Override
+	public void agregarTarjetaParaVenta(Venta venta, Tarjeta tarjeta) {
+		venta.setTarjeta(tarjeta);
+		tarjeta.getVentas().add(venta);
 	}
 
 }

@@ -13,5 +13,6 @@ public class AsientoTranslator {
 	}
 	public AsientoDTO translateToDTO(Asiento asiento) {
 		return new AsientoDTO(asiento.getId(), asiento.getFila().getId(), asiento.getNumero(), asiento.isOcupado());
+
 	}
 }

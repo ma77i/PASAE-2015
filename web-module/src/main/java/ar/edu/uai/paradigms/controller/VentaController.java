@@ -40,7 +40,7 @@ public class VentaController {
 	public @ResponseBody VentaDTO createVenta(@RequestBody @Valid VentaDTO ventaDTO) {
 		LOGGER.debug("Received DTO: " + ventaDTO);
 
-		return this.ventaTranslator.translateToDTO(this.ventaService.saveVenta(this.ventaTranslator.translate(ventaDTO)));
+		return this.ventaTranslator.translateToDTO(this.ventaService.saveVenta(this.ventaTranslator.translate(ventaDTO), ventaDTO.getEspectaculoId(), ventaDTO.getFuncionId(), ventaDTO.getEspectaculoId(), ventaDTO.getTarjetaId()));
 	}
 
 	@RequestMapping(method = RequestMethod.GET, value = "/{identifier}")

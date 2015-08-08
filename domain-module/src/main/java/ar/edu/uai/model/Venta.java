@@ -10,13 +10,13 @@ public class Venta {
 
 	}
 
-	public Venta(float monto, float costoAdicional, Date fechaVenta, int coutas, Funcion funcion,Espectador comprador) {
+	public Venta(Float monto, Float costoAdicional, Date fechaVenta, Integer coutas, String cvv) {
 		this.monto = monto;
 		this.costoAdicional = costoAdicional;
 		this.fechaVenta = fechaVenta;
 		this.coutas = coutas;
-		this.funcion = funcion;
-		this.comprador = comprador;
+		this.CVV = cvv;
+		//this.asientos=asientos;
 	}
 
 
@@ -24,18 +24,19 @@ public class Venta {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private long id;
-	
-	private float monto;
-	
-	private float costoAdicional;
+
+	private Float monto;
+
+	private Float costoAdicional;
 	
 	private Date fechaVenta;
 
+	private String CVV;
+
     @ManyToOne
 	private Tarjeta tarjeta;
-	// posible interfaz, consultar.
-	
-	private int coutas;
+
+	private Integer coutas;
 	
 	@ManyToOne
 	private Funcion funcion;
@@ -48,6 +49,8 @@ public class Venta {
     @ManyToOne
 	private Espectador comprador;
 
+	/*@OneToMany
+	private Collection<Asiento> asientos;*/
 
 
 	/**
@@ -120,7 +123,7 @@ public class Venta {
 		this.comprador = comprador;
 	}
 
-/*	public Collection<Asiento> getAsientos() {
+   /* public Collection<Asiento> getAsientos() {
 		return asientos;
 	}
 
@@ -128,4 +131,12 @@ public class Venta {
 		this.asientos = asientos;
 	}*/
 
+
+	public String getCVV() {
+		return CVV;
+	}
+
+	public void setCVV(String CVV) {
+		this.CVV = CVV;
+	}
 }
