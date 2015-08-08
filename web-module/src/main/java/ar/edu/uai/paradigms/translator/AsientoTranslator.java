@@ -9,7 +9,8 @@ import ar.edu.uai.paradigms.dto.AsientoDTO;
 public class AsientoTranslator {
 
 	public Asiento translate(AsientoDTO asientoDTO) {
-		return new Asiento(asientoDTO.getNumero());
+	//	return new Asiento(asientoDTO.getNumero());
+		return null;
 	}
 	public AsientoDTO translateToDTO(Asiento asiento) {
 		return new AsientoDTO(asiento.getId(), asiento.getFila().getId(), asiento.getNumero(), asiento.isOcupado());

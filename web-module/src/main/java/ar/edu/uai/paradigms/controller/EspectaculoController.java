@@ -8,7 +8,9 @@ import ar.edu.uai.paradigms.service.EspectaculoService;
 import ar.edu.uai.paradigms.service.FuncionService;
 import ar.edu.uai.paradigms.translator.EspectaculoTranslator;
 import ar.edu.uai.paradigms.translator.FuncionTranslator;
+import ar.edu.uai.paradigms.translator.ImagenTranslator;
 import ar.edu.uai.paradigms.validators.EspectaculoDTOValidator;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.format.annotation.DateTimeFormat;
@@ -16,8 +18,9 @@ import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 
-import javax.validation.Valid;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Date;
@@ -26,12 +29,13 @@ import java.util.Date;
 @RequestMapping("/espectaculo")
 public class EspectaculoController {
 
-	public EspectaculoController(EspectaculoService espectaculoService, EspectaculoTranslator espectaculoTranslator, FuncionService funcionService, FuncionTranslator funcionTranslator) {
+	public EspectaculoController(EspectaculoService espectaculoService, EspectaculoTranslator espectaculoTranslator, FuncionService funcionService, FuncionTranslator funcionTranslator, ImagenTranslator imagenTranslator) {
 		super();
 		this.espectaculoService = espectaculoService;
 		this.espectaculoTranslator = espectaculoTranslator;
 		this.funcionService = funcionService;
 		this.funcionTranslator = funcionTranslator;
+		this.imagenTranslator=imagenTranslator;
 	}
 
 	private static final Logger LOGGER = LoggerFactory.getLogger(EspectaculoController.class);
@@ -44,15 +48,19 @@ public class EspectaculoController {
 
 	private FuncionTranslator funcionTranslator;
 
+	private ImagenTranslator imagenTranslator;
+
 	@InitBinder
 	public void initBinder(WebDataBinder binder) {
 		binder.setValidator(new EspectaculoDTOValidator());
 	}
 
-	@RequestMapping(method = RequestMethod.POST, consumes = "application/json")
-	public @ResponseBody EspectaculoDTO createEspectaculo(@RequestBody @Valid EspectaculoDTO espectaculoDTO) {
+	@RequestMapping(method = RequestMethod.POST, headers="content-type=application/json,multipart/form-data")
+	@ResponseStatus(value = HttpStatus.OK)
+	public void createEspectaculo(@RequestPart("imagen") MultipartFile imagen, @RequestParam ("data") String data ) throws IOException {
+		EspectaculoDTO espectaculoDTO = new ObjectMapper().readValue(data, EspectaculoDTO.class);
 		LOGGER.debug("Received DTO: " + espectaculoDTO);
-		return this.espectaculoTranslator.translateToDTO(this.espectaculoService.saveEspectaculo(this.espectaculoTranslator.translate(espectaculoDTO),espectaculoDTO.getCategoriaId(),espectaculoDTO.getTeatroId()));
+		 this.espectaculoService.saveEspectaculo(this.espectaculoTranslator.translate(espectaculoDTO), espectaculoDTO.getCategoriaId(), espectaculoDTO.getTeatroId(), imagen);
 	}
 
 	@RequestMapping(method = RequestMethod.GET, value = "/{identifier}")
@@ -130,15 +138,40 @@ public class EspectaculoController {
 		return espectaculos;
 	}
 
-	@RequestMapping(method = RequestMethod.GET, value = "/espectaculosdeteatro/{nombreteatro}")
-	public
-	@ResponseBody
-	Long getEspectaculosSegunTeatro(@PathVariable String nombreteatro) {
-		return this.espectaculoService.listarEspectaculosDeTeatro(nombreteatro);
+/*	@RequestMapping(value = "/saveimage", method = RequestMethod.POST)
+	public @ResponseBody
+	ImagenDTO uploadLogo(@RequestPart("imagen") MultipartFile file) {
+		try {
+			//Iterator<String> itr = request.getFileNames();
+			//MultipartFile file = request.getFile(itr.next());
 
-	}
+			if (file.getBytes().length > 0) {
+				LOGGER.debug("Received DTO: " + espectaculoDTO);
+				return this.espectaculoTranslator.translateToDTO(this.espectaculoService.saveEspectaculo(this.espectaculoTranslator.translate(espectaculoDTO),espectaculoDTO.getCategoriaId(),espectaculoDTO.getTeatroId()));
+
+				new Imagen(new String(Base64.encodeBase64(file.getBytes())));
+
+			}
+
+		} catch (Exception e) {
+			//Handle exception if any
+		}
+		return null;
+	}*/
+
+/*
+	@RequestMapping(value = "/imageDisplay", method = RequestMethod.GET)
+	public void showImage(@RequestParam("id") Integer itemId, HttpServletResponse response,HttpServletRequest request)
+			throws ServletException, IOException{
 
 
+		Item item = itemService.get(itemId);
+		response.setContentType("image/jpeg, image/jpg, image/png, image/gif");
+		response.getOutputStream().write(item.getItemImage());
+
+
+		response.getOutputStream().close();
+*/
 
 
 }
