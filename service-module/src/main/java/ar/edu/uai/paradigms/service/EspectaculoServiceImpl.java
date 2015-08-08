@@ -88,8 +88,8 @@ public class EspectaculoServiceImpl implements EspectaculoService {
 	}
 
 	@Override
-	public Collection<Espectaculo> listarEspectaculosDeTeatro(long id_teatro) {
-		return espectaculoDAO.listarEspectaculosDeTeatro(id_teatro);
+	public Long listarEspectaculosDeTeatro(String nombre) {
+		return espectaculoDAO.listarEspectaculosDeTeatro(nombre);
 	}
 
 	@Override

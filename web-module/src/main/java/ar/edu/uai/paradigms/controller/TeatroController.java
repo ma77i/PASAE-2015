@@ -29,6 +29,7 @@ public class TeatroController {
 
     private TeatroService teatroService;
 
+
     private TeatroTranslator teatroTranslator;
 
 
@@ -81,7 +82,7 @@ public class TeatroController {
 
     @RequestMapping(method = RequestMethod.POST, value = "/eliminar/{identifier}")
     @ResponseStatus(value = HttpStatus.OK)
-    public void eliminarEspectaculo(@PathVariable long identifier) {
+    public void eliminarTeatro(@PathVariable long identifier) {
         this.teatroService.deleteTeatro(identifier);
     }
 

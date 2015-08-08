@@ -21,15 +21,17 @@ public class EspectaculoDAOImplHibernateJPA extends GenericDaoHibernateJPA<Espec
      */
 
     @Override
-    public Collection<Espectaculo> listarEspectaculosDeTeatro(long id_teatro){
+    public Long listarEspectaculosDeTeatro(String nombre_teatro) {
+        long countryCount = 0;
         try {
-            Query consulta = this.entityManager.createQuery("from Espectaculo as e where e.teatro.id=?");
-            consulta.setParameter(1, id_teatro);
-            return consulta.getResultList();
+            Query consulta = this.entityManager.createQuery("select count(e) from Espectaculo as e where e.teatro.nombre=?");
+            consulta.setParameter(1, nombre_teatro);
+            countryCount = (Long) consulta.getSingleResult();
+            return countryCount;
         }
         catch (NoResultException e) {
             System.out.println(" NO EXISTES ESPECTACULOS PARA EL TEATRO");
-            return null;
+            return countryCount;
         }
 
     }

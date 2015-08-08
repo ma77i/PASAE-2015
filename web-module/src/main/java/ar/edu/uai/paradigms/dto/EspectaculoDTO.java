@@ -2,6 +2,7 @@ package ar.edu.uai.paradigms.dto;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonProperty;
+import org.springframework.web.multipart.MultipartFile;
 
 /**
  * Created by EzequielPanoff on 9/6/15.
@@ -13,7 +14,7 @@ public class EspectaculoDTO {
 	private String descripcion;
 	private long categoriaId;
 	private long teatroId;
-
+	private MultipartFile imagen;
 	@JsonCreator
 	public EspectaculoDTO(@JsonProperty("id") Long id, @JsonProperty("nombre") String nombre, @JsonProperty("descripcion") String descripcion, @JsonProperty("categoriaId") long categoria, @JsonProperty("teatroId") long teatroId) {
 		this.setId(id);

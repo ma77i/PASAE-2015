@@ -20,7 +20,7 @@ public interface EspectaculoService {
 
 	public Espectaculo modificarEspectaculo(Espectaculo e, String nombre, String descripcion, long teatroId);
 
-	public Collection<Espectaculo> listarEspectaculosDeTeatro(long id_teatro);
+	public Long listarEspectaculosDeTeatro(String nombre_teatro);
 
 	public Funcion getFuncionDeEspectaculo(long id_funcion);
 

@@ -2,7 +2,7 @@ package ar.edu.uai.paradigms.service;
 
 
 import ar.edu.uai.model.Tarjeta;
-import ar.edu.uai.model.Transaccion;
+import ar.edu.uai.model.Venta;
 import ar.edu.uai.paradigms.dao.TarjetaDAO;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -56,7 +56,7 @@ public class TarjetaServiceImpl implements TarjetaService {
     }
 
     @Override
-    public Transaccion verificandoDatosTarjeta(Transaccion transaccion) {
+    public Venta verificandoDatosTarjeta(Venta transaccion) {
 
         Logger LOGGER = LoggerFactory.getLogger(String.class);
 
@@ -74,12 +74,12 @@ public class TarjetaServiceImpl implements TarjetaService {
         restTemplate.setMessageConverters(messageConverters);
 
         Map<String, String> map = new HashMap<String, String>();
-        map.put("0", transaccion.getNro_tarjeta());
+        //map.put("0", venta.getNro_tarjeta());
         map.put("1", transaccion.getCVV());
         System.out.println("EL MAP :" + map.get("0") + map.get("1"));
         String mensaje = restTemplate.postForObject(serviceUrl + "concretarCompra", map, String.class);
         LOGGER.debug("El mensaje es !: " + mensaje);
-        transaccion.setResultado(mensaje);
+        //transaccion.setResultado(mensaje);
         return transaccion;
     }
 

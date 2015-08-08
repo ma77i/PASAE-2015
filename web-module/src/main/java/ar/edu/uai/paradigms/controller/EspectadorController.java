@@ -2,7 +2,6 @@ package ar.edu.uai.paradigms.controller;
 
 import ar.edu.uai.model.Espectador;
 import ar.edu.uai.paradigms.dto.EspectadorDTO;
-import ar.edu.uai.paradigms.dto.TransaccionDTO;
 import ar.edu.uai.paradigms.service.EspectadorService;
 import ar.edu.uai.paradigms.service.TarjetaService;
 import ar.edu.uai.paradigms.translator.EspectadorTranslator;
@@ -88,12 +87,12 @@ public class EspectadorController {
 	}
 
 	//este metodo es de prueba para ver si funciona el wiremock , la invocacion de verif icandoDatosTarjeta no iria aca
-	@RequestMapping(method=RequestMethod.POST,value="/verificartarjeta", consumes = "application/json")
+	/*@RequestMapping(method=RequestMethod.POST,value="/verificartarjeta", consumes = "application/json")
 	public @ResponseBody String verificarTarjeta (@RequestBody TransaccionDTO transaccionDTO){
 		LOGGER.debug("Received DTO: " + transaccionDTO);
-		TransaccionDTO t=this.transaccionTranslator.translateToDTO(this.tarjetaService.verificandoDatosTarjeta(this.transaccionTranslator.translate(transaccionDTO)));
+		//TransaccionDTO t=this.transaccionTranslator.translateToDTO(this.tarjetaService.verificandoDatosTarjeta(this.transaccionTranslator.translate(transaccionDTO)));
         return t.getResultado();
-	}
+	}*/
 
 	@RequestMapping(method = RequestMethod.GET, value = "/busquedaespectadores/{input}")
 	public

@@ -5,7 +5,6 @@
         </encoder>
     </appender>
 
-
     <appender name="FILE" class="ch.qos.logback.core.FileAppender">
         <file>MyLog.log</file>
         <encoder class="ch.qos.logback.classic.encoder.PatternLayoutEncoder">
@@ -15,7 +14,7 @@
         </encoder>
     </appender>
 
-    <logger name="ar.edu.uai.paradigms.controllers" level="DEBUG" additivity="false">
+    <logger name="ar.edu.uai.paradigms.dao" level="DEBUG" additivity="false">
         <appender-ref ref="FILE"/>
     </logger>
 
@@ -24,6 +23,6 @@
     </root>
 
     <root level="TRACE">
-        <appender-ref ref="STDOUT" />
+        <appender-ref ref="STDOUT"/>
     </root>
 </configuration>
