@@ -15,28 +15,38 @@ import java.util.Collection;
  */
 public class SectorTranslator {
 
+
 	public Sector translate(SectorDTO sectorDTO) {
 		Collection<Fila> filas = new ArrayList<Fila>();
-		for (FilaDTO e : sectorDTO.getFilas()) {
-			Collection<AsientoDTO> asientosDTO = e.getAsientos();
+		Sector sector=new Sector(sectorDTO.getNombre(),sectorDTO.getMonto());
+		for (FilaDTO f : sectorDTO.getFilas()) {
 			Collection<Asiento> asientos = new ArrayList<Asiento>();
-			for (AsientoDTO a : e.getAsientos()) {
-				asientos.add(new Asiento(a.getNumero()));
+			Fila fila=new Fila(f.getNro_fila());
+			for (AsientoDTO a : f.getAsientos()) {
+				asientos.add(new Asiento(a.getNumero(),fila));
 			}
-			filas.add(new Fila(e.getNro_fila(), asientos));
+			fila.setAsientos(asientos);
+			fila.setSector(sector);
+			filas.add(fila);
 		}
-
-		return new Sector(sectorDTO.getNombre(), sectorDTO.getMonto(), filas);
+		sector.setFilas(filas);
+		return sector;
 
 	}
 
 	public SectorDTO translateToDTO(Sector sector) {
 
+		Collection<FilaDTO> filasDTO = new ArrayList<FilaDTO>();
+		for (Fila f : sector.getFilas()) {
+			Collection<AsientoDTO> asientosDTO = new ArrayList<AsientoDTO>();
+			for (Asiento a : f.getAsientos()) {
+				asientosDTO.add(new AsientoDTO(a.getId(),a.getFila().getId(),a.getNumero(),a.isOcupado()));
+			}
+			filasDTO.add(new FilaDTO(f.getId(), f.getSector().getId(),f.getNro_fila(),asientosDTO));
+		}
 
-		return null;
 
-
-		//return new SectorDTO(sector.getId(), sector.getNombre(), sector.getMonto(), sector.isAgotado(), sector.getEspectaculo().getId(),sector.getFilas());
+		return new SectorDTO(sector.getId(), sector.getNombre(), sector.getMonto(), sector.isAgotado(), sector.getEspectaculo().getId(),filasDTO);
 
 	}
 }
