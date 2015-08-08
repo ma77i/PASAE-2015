@@ -11,6 +11,8 @@ public class ImagenDTO {
 
     private String imagen;
 
+
+
     @JsonCreator
     public ImagenDTO(@JsonProperty("imagen") String imagen) {
         this.imagen = imagen;

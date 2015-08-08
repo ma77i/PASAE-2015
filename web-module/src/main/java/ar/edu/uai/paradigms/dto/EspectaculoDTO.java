@@ -2,6 +2,7 @@ package ar.edu.uai.paradigms.dto;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonProperty;
+import org.springframework.web.multipart.MultipartFile;
 
 /**
  * Created by EzequielPanoff on 9/6/15.
@@ -13,10 +14,10 @@ public class EspectaculoDTO {
 	private String descripcion;
 	private long categoriaId;
 	private long teatroId;
-	private String imagen;
+	private MultipartFile imagen;
 
 	@JsonCreator
-	public EspectaculoDTO(@JsonProperty("id") Long id, @JsonProperty("nombre") String nombre, @JsonProperty("descripcion") String descripcion, @JsonProperty("categoriaId") long categoria, @JsonProperty("teatroId") long teatroId, @JsonProperty String imagen) {
+	public EspectaculoDTO(@JsonProperty("id") Long id, @JsonProperty("nombre") String nombre, @JsonProperty("descripcion") String descripcion, @JsonProperty("categoriaId") long categoria, @JsonProperty("teatroId") long teatroId, @JsonProperty("imagen") MultipartFile imagen) {
 		this.setId(id);
 		this.setNombre(nombre);
 		this.setDescripcion(descripcion);
@@ -66,17 +67,17 @@ public class EspectaculoDTO {
 		this.teatroId = teatroId;
 	}
 
-	public String getImagen() {
+	public MultipartFile getImagen() {
 		return imagen;
 	}
 
-	public void setImagen(String imagen) {
+	public void setImagen(MultipartFile imagen) {
 		this.imagen = imagen;
 	}
 
 
 	public String toString() {
-		return "EspectaculoDTO [nombre=" + nombre + ", descripcion=" + descripcion + ", categoriaId=" + categoriaId + ",teatroId=" + teatroId + "]";
+		return "EspectaculoDTO [nombre=" + nombre + ", descripcion=" + descripcion + ", categoriaId=" + categoriaId + ",teatroId=" + teatroId + ",imagen="+imagen+ "]";
 
 	}
 }
