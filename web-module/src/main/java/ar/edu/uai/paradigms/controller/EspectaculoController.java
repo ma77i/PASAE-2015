@@ -55,9 +55,9 @@ public class EspectaculoController {
 		binder.setValidator(new EspectaculoDTOValidator());
 	}
 
-	@RequestMapping(method = RequestMethod.POST, headers="content-type=application/json,multipart/form-data")
+	@RequestMapping(method = RequestMethod.POST)
 	@ResponseStatus(value = HttpStatus.OK)
-	public void createEspectaculo(@RequestPart("imagen") MultipartFile imagen, @RequestParam ("data") String data ) throws IOException {
+	public void createEspectaculo(@RequestPart("imagen") MultipartFile imagen, @RequestParam("datos") String datos) throws IOException {
 		EspectaculoDTO espectaculoDTO = new ObjectMapper().readValue(data, EspectaculoDTO.class);
 		LOGGER.debug("Received DTO: " + espectaculoDTO);
 		 this.espectaculoService.saveEspectaculo(this.espectaculoTranslator.translate(espectaculoDTO), espectaculoDTO.getCategoriaId(), espectaculoDTO.getTeatroId(), imagen);
@@ -137,6 +137,12 @@ public class EspectaculoController {
 		}
 		return espectaculos;
 	}
+
+
+
+
+
+
 
 /*	@RequestMapping(value = "/saveimage", method = RequestMethod.POST)
 	public @ResponseBody
