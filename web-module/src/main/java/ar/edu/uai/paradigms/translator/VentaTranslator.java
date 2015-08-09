@@ -44,7 +44,7 @@ public class VentaTranslator {
 
 		Collection<Asiento> asientos = new ArrayList<Asiento>();
 		for (AsientoDTO e : ventaDTO.getAsientos()) {
-			asientos.add(new Asiento(e.getNumero()));
+			//asientos.add(new Asiento(e.getNumero()));
 		}
 		return null;
 		//	return new Venta(ventaDTO.getMonto(),ventaDTO.getCostoAdicional(),ventaDTO.getFechaVenta(),ventaDTO.getCuotas(),ventaDTO.getCvv(),asientos);

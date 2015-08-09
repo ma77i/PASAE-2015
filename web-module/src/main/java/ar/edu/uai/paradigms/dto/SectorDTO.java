@@ -16,6 +16,7 @@ public class SectorDTO {
 	private Boolean agotado;
 	private Collection<FilaDTO> filas;
 
+
 	//private Integer asientosLibres;
 	//private Integer nro_asientos;
 	//private Integer nro_filas;

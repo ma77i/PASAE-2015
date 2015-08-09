@@ -17,6 +17,7 @@ public class SectorTranslator {
 
 
 	public Sector translate(SectorDTO sectorDTO) {
+
 		Collection<Fila> filas = new ArrayList<Fila>();
 		Sector sector=new Sector(sectorDTO.getNombre(),sectorDTO.getMonto());
 		for (FilaDTO f : sectorDTO.getFilas()) {

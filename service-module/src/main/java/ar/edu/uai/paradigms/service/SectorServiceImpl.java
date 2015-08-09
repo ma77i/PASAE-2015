@@ -42,7 +42,6 @@ public class SectorServiceImpl implements SectorService {
 		return sectorDAO.create(sector);
 	}
 
-
 	@Override
 	public Sector retrieveSector(Long id_sector) {
 		return sectorDAO.retrieve(Sector.class, id_sector);
@@ -84,6 +83,14 @@ public class SectorServiceImpl implements SectorService {
 		espectaculo.getSectores().add(sector);
 	}
 
+	@Override
+	public Collection<Sector> saveSectoresParaEspectaculo(Collection<Sector> sectores, Long idEspectaculo) {
+
+		for (Sector sector : sectores) {
+			this.saveSector(sector, idEspectaculo);
+		}
+		return sectores;
+	}
 
 
 }

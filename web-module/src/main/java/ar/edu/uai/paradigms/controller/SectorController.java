@@ -3,11 +3,14 @@ package ar.edu.uai.paradigms.controller;
 import ar.edu.uai.model.Asiento;
 import ar.edu.uai.paradigms.dto.AsientoDTO;
 import ar.edu.uai.paradigms.dto.SectorDTO;
+import ar.edu.uai.paradigms.dto.SectoresDTO;
 import ar.edu.uai.paradigms.service.SectorService;
 import ar.edu.uai.paradigms.translator.AsientoTranslator;
 import ar.edu.uai.paradigms.translator.SectorTranslator;
+import ar.edu.uai.paradigms.translator.SectoresTranslator;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
@@ -30,6 +33,8 @@ public class SectorController {
 	private SectorTranslator sectorTranslator;
 
 	private AsientoTranslator asientoTranslator;
+
+	private SectoresTranslator sectoresTranslator;
 
 	public SectorController(SectorService sectorService, SectorTranslator sectorTranslator, AsientoTranslator asientoTranslator) {
 		this.sectorService = sectorService;
@@ -96,5 +101,14 @@ public class SectorController {
 		return asientos_ocupados;
 
 	}
+
+
+	@RequestMapping(method = RequestMethod.POST, value = "/agregarsectoresparaespectaculo")
+	@ResponseStatus(value = HttpStatus.OK)
+	public void agregarSectoresParaEspectaculo(@RequestBody SectoresDTO sectoresDTO) {
+		this.sectorService.saveSectoresParaEspectaculo(this.sectoresTranslator.translate(sectoresDTO), sectoresDTO.getIdEspectaculo());
+
+	}
+
 
 }
