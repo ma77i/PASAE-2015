@@ -57,7 +57,7 @@ public class EspectaculoController {
 		binder.setValidator(new EspectaculoDTOValidator());
 	}
 
-	@RequestMapping(method = RequestMethod.POST, headers="content-type=application/json,multipart/form-data")
+	@RequestMapping(method = RequestMethod.POST)
 	@ResponseStatus(value = HttpStatus.OK)
 	public void createEspectaculo(@RequestPart("imagen") MultipartFile imagen, @RequestParam ("datos") String datos ) throws IOException {
 		EspectaculoDTO espectaculoDTO = new ObjectMapper().readValue(datos, EspectaculoDTO.class);
