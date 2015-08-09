@@ -15,17 +15,20 @@ public class EspectaculoDTO {
 	private long categoriaId;
 	private long teatroId;
 	private MultipartFile imagen;
+	private byte[] bytesImagen;
 
 	@JsonCreator
-	public EspectaculoDTO(@JsonProperty("id") Long id, @JsonProperty("nombre") String nombre, @JsonProperty("descripcion") String descripcion, @JsonProperty("categoriaId") long categoria, @JsonProperty("teatroId") long teatroId, @JsonProperty("imagen") MultipartFile imagen) {
+	public EspectaculoDTO(@JsonProperty("id") Long id, @JsonProperty("nombre") String nombre, @JsonProperty("descripcion") String descripcion, @JsonProperty("categoriaId") long categoria, @JsonProperty("teatroId") long teatroId, @JsonProperty("imagen") MultipartFile imagen, @JsonProperty("bytesimagen") byte[] bytesImagen) {
 		this.setId(id);
 		this.setNombre(nombre);
 		this.setDescripcion(descripcion);
 		this.setCategoriaId(categoria);
 		this.setTeatroId(teatroId);
 		this.setImagen(imagen);
+		this.setBytesImagen(bytesImagen);
 
 	}
+
 
 	public Long getId() {
 		return id;
@@ -73,6 +76,14 @@ public class EspectaculoDTO {
 
 	public void setImagen(MultipartFile imagen) {
 		this.imagen = imagen;
+	}
+
+	public byte[] getBytesImagen() {
+		return bytesImagen;
+	}
+
+	public void setBytesImagen(byte[] bytesImagen) {
+		this.bytesImagen = bytesImagen;
 	}
 
 

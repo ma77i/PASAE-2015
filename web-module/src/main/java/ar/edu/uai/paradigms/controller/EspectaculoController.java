@@ -20,7 +20,9 @@ import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
+import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Date;
@@ -57,19 +59,19 @@ public class EspectaculoController {
 
 	@RequestMapping(method = RequestMethod.POST, headers="content-type=application/json,multipart/form-data")
 	@ResponseStatus(value = HttpStatus.OK)
-	public void createEspectaculo(@RequestPart("imagen") MultipartFile imagen, @RequestParam ("data") String data ) throws IOException {
-		EspectaculoDTO espectaculoDTO = new ObjectMapper().readValue(data, EspectaculoDTO.class);
+	public void createEspectaculo(@RequestPart("imagen") MultipartFile imagen, @RequestParam ("datos") String datos ) throws IOException {
+		EspectaculoDTO espectaculoDTO = new ObjectMapper().readValue(datos, EspectaculoDTO.class);
 		LOGGER.debug("Received DTO: " + espectaculoDTO);
-		 this.espectaculoService.saveEspectaculo(this.espectaculoTranslator.translate(espectaculoDTO), espectaculoDTO.getCategoriaId(), espectaculoDTO.getTeatroId(), imagen);
+		this.espectaculoService.saveEspectaculo(this.espectaculoTranslator.translate(espectaculoDTO), espectaculoDTO.getCategoriaId(), espectaculoDTO.getTeatroId(), imagen);
 	}
 
 	@RequestMapping(method = RequestMethod.GET, value = "/{identifier}")
-	public @ResponseBody EspectaculoDTO getEspectaculo(@PathVariable long identifier) {
+	public @ResponseBody EspectaculoDTO getEspectaculo(@PathVariable long identifier) throws FileNotFoundException, SQLException {
 		return this.espectaculoTranslator.translateToDTO(this.espectaculoService.retrieveEspectaculo(identifier));
 	}
 
 	@RequestMapping(method = RequestMethod.GET, value = "/listadoespectaculos")
-	public @ResponseBody Collection<EspectaculoDTO> listadoEspectaculos() {
+	public @ResponseBody Collection<EspectaculoDTO> listadoEspectaculos() throws FileNotFoundException, SQLException {
 
 		Collection<EspectaculoDTO> espectaculos = new ArrayList<EspectaculoDTO>();
 		Collection<Espectaculo> coleccion = this.espectaculoService.listarEspectaculos();
@@ -80,13 +82,13 @@ public class EspectaculoController {
 	}
 
 	@RequestMapping(value = "/{identifier}/modificardatos", method = RequestMethod.POST, consumes = "application/json")
-	public @ResponseBody EspectaculoDTO modificarDatos(@RequestBody EspectaculoDTO espectaculoDTO) {
+	public @ResponseBody EspectaculoDTO modificarDatos(@RequestBody EspectaculoDTO espectaculoDTO) throws FileNotFoundException, SQLException {
 		LOGGER.debug("Received DTO: " + espectaculoDTO);
 		return this.espectaculoTranslator.translateToDTO(this.espectaculoService.modificarEspectaculo(this.espectaculoService.retrieveEspectaculo(espectaculoDTO.getId()), espectaculoDTO.getNombre(), espectaculoDTO.getDescripcion(), espectaculoDTO.getTeatroId()));
 	}
 
 	@RequestMapping(value = "/filtrarespectaculospornombre/{nombre_espectaculo}", method = RequestMethod.GET)
-	public @ResponseBody Collection<EspectaculoDTO> getEspectaculosPorNombre(@PathVariable String nombre_espectaculo) {
+	public @ResponseBody Collection<EspectaculoDTO> getEspectaculosPorNombre(@PathVariable String nombre_espectaculo) throws FileNotFoundException, SQLException {
 		Collection<EspectaculoDTO> espectaculos = new ArrayList<EspectaculoDTO>();
 		Collection<Espectaculo> coleccion = this.espectaculoService.listarEspectaculosPorNombre(nombre_espectaculo);
 		for (Espectaculo e : coleccion) {
@@ -110,7 +112,7 @@ public class EspectaculoController {
 	@RequestMapping(method = RequestMethod.GET, value = "/listadoespectaculosentrefechas/{inicio}/{fin}")
 	public
 	@ResponseBody
-	Collection<EspectaculoDTO> getFuncionesEntreFechas(@PathVariable("inicio") @DateTimeFormat(pattern = "yyyy-MM-dd") Date inicio, @PathVariable("fin") @DateTimeFormat(pattern = "yyyy-MM-dd") Date fin) {
+	Collection<EspectaculoDTO> getFuncionesEntreFechas(@PathVariable("inicio") @DateTimeFormat(pattern = "yyyy-MM-dd") Date inicio, @PathVariable("fin") @DateTimeFormat(pattern = "yyyy-MM-dd") Date fin) throws FileNotFoundException, SQLException {
 		Collection<EspectaculoDTO> espectaculos = new ArrayList<EspectaculoDTO>();
 		Collection<Espectaculo> coleccion = this.espectaculoService.listarEspectaculosEntreFechas(inicio, fin);
 		for (Espectaculo e : coleccion) {
@@ -129,7 +131,7 @@ public class EspectaculoController {
 	@RequestMapping(method = RequestMethod.GET, value = "/listadoespectaculosporcategoria/{nombrecategoria}")
 	public
 	@ResponseBody
-	Collection<EspectaculoDTO> getEspectaculosSegunCategoria(@PathVariable String nombrecategoria) {
+	Collection<EspectaculoDTO> getEspectaculosSegunCategoria(@PathVariable String nombrecategoria) throws FileNotFoundException, SQLException {
 		Collection<EspectaculoDTO> espectaculos = new ArrayList<EspectaculoDTO>();
 		Collection<Espectaculo> coleccion = this.espectaculoService.listarEspectaculosSegunCategoria(nombrecategoria);
 		for (Espectaculo e : coleccion) {
