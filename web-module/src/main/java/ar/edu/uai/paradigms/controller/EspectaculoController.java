@@ -58,7 +58,7 @@ public class EspectaculoController {
 	@RequestMapping(method = RequestMethod.POST)
 	@ResponseStatus(value = HttpStatus.OK)
 	public void createEspectaculo(@RequestPart("imagen") MultipartFile imagen, @RequestParam("datos") String datos) throws IOException {
-		EspectaculoDTO espectaculoDTO = new ObjectMapper().readValue(data, EspectaculoDTO.class);
+		EspectaculoDTO espectaculoDTO = new ObjectMapper().readValue(datos, EspectaculoDTO.class);
 		LOGGER.debug("Received DTO: " + espectaculoDTO);
 		 this.espectaculoService.saveEspectaculo(this.espectaculoTranslator.translate(espectaculoDTO), espectaculoDTO.getCategoriaId(), espectaculoDTO.getTeatroId(), imagen);
 	}
