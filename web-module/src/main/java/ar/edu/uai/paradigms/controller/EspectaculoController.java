@@ -37,7 +37,7 @@ public class EspectaculoController {
 		this.espectaculoTranslator = espectaculoTranslator;
 		this.funcionService = funcionService;
 		this.funcionTranslator = funcionTranslator;
-		this.imagenTranslator=imagenTranslator;
+		this.imagenTranslator = imagenTranslator;
 	}
 
 	private static final Logger LOGGER = LoggerFactory.getLogger(EspectaculoController.class);
@@ -59,19 +59,23 @@ public class EspectaculoController {
 
 	@RequestMapping(method = RequestMethod.POST)
 	@ResponseStatus(value = HttpStatus.OK)
-	public void createEspectaculo(@RequestPart("imagen") MultipartFile imagen, @RequestParam ("datos") String datos ) throws IOException {
+	public void createEspectaculo(@RequestPart("imagen") MultipartFile imagen, @RequestParam("datos") String datos) throws IOException {
 		EspectaculoDTO espectaculoDTO = new ObjectMapper().readValue(datos, EspectaculoDTO.class);
 		LOGGER.debug("Received DTO: " + espectaculoDTO);
 		this.espectaculoService.saveEspectaculo(this.espectaculoTranslator.translate(espectaculoDTO), espectaculoDTO.getCategoriaId(), espectaculoDTO.getTeatroId(), imagen);
 	}
 
 	@RequestMapping(method = RequestMethod.GET, value = "/{identifier}")
-	public @ResponseBody EspectaculoDTO getEspectaculo(@PathVariable long identifier) throws FileNotFoundException, SQLException {
+	public
+	@ResponseBody
+	EspectaculoDTO getEspectaculo(@PathVariable long identifier) throws FileNotFoundException, SQLException {
 		return this.espectaculoTranslator.translateToDTO(this.espectaculoService.retrieveEspectaculo(identifier));
 	}
 
 	@RequestMapping(method = RequestMethod.GET, value = "/listadoespectaculos")
-	public @ResponseBody Collection<EspectaculoDTO> listadoEspectaculos() throws FileNotFoundException, SQLException {
+	public
+	@ResponseBody
+	Collection<EspectaculoDTO> listadoEspectaculos() throws FileNotFoundException, SQLException {
 
 		Collection<EspectaculoDTO> espectaculos = new ArrayList<EspectaculoDTO>();
 		Collection<Espectaculo> coleccion = this.espectaculoService.listarEspectaculos();
@@ -82,13 +86,17 @@ public class EspectaculoController {
 	}
 
 	@RequestMapping(value = "/{identifier}/modificardatos", method = RequestMethod.POST, consumes = "application/json")
-	public @ResponseBody EspectaculoDTO modificarDatos(@RequestBody EspectaculoDTO espectaculoDTO) throws FileNotFoundException, SQLException {
+	public
+	@ResponseBody
+	EspectaculoDTO modificarDatos(@RequestBody EspectaculoDTO espectaculoDTO) throws FileNotFoundException, SQLException {
 		LOGGER.debug("Received DTO: " + espectaculoDTO);
 		return this.espectaculoTranslator.translateToDTO(this.espectaculoService.modificarEspectaculo(this.espectaculoService.retrieveEspectaculo(espectaculoDTO.getId()), espectaculoDTO.getNombre(), espectaculoDTO.getDescripcion(), espectaculoDTO.getTeatroId()));
 	}
 
 	@RequestMapping(value = "/filtrarespectaculospornombre/{nombre_espectaculo}", method = RequestMethod.GET)
-	public @ResponseBody Collection<EspectaculoDTO> getEspectaculosPorNombre(@PathVariable String nombre_espectaculo) throws FileNotFoundException, SQLException {
+	public
+	@ResponseBody
+	Collection<EspectaculoDTO> getEspectaculosPorNombre(@PathVariable String nombre_espectaculo) throws FileNotFoundException, SQLException {
 		Collection<EspectaculoDTO> espectaculos = new ArrayList<EspectaculoDTO>();
 		Collection<Espectaculo> coleccion = this.espectaculoService.listarEspectaculosPorNombre(nombre_espectaculo);
 		for (Espectaculo e : coleccion) {
@@ -140,15 +148,12 @@ public class EspectaculoController {
 		return espectaculos;
 	}
 
+
 	@RequestMapping(method = RequestMethod.GET, value = "/espectaculosdeteatro/{nombreteatro}")
 	public
 	@ResponseBody
 	Long getEspectaculosSegunTeatro(@PathVariable String nombreteatro) {
-		return this.espectaculoService.listarEspectaculosDeTeatro(nombreteatro);
-
+		return this.espectaculoService.cantidadEspectaculosDeTeatro(nombreteatro);
 	}
-
-
-
 
 }
