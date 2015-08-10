@@ -11,6 +11,7 @@
         <encoder class="ch.qos.logback.classic.encoder.PatternLayoutEncoder">
             <Pattern>%d{HH:mm:ss.SSS} [%thread] %-5level %logger{5} - %msg%n</Pattern>
             <maxHistory>3</maxHistory>
+            <maxFileSize>10MB</maxFileSize>
 
         </encoder>
     </appender>
