@@ -149,40 +149,6 @@ public class EspectaculoController {
 
 
 
-/*	@RequestMapping(value = "/saveimage", method = RequestMethod.POST)
-	public @ResponseBody
-	ImagenDTO uploadLogo(@RequestPart("imagen") MultipartFile file) {
-		try {
-			//Iterator<String> itr = request.getFileNames();
-			//MultipartFile file = request.getFile(itr.next());
-
-			if (file.getBytes().length > 0) {
-				LOGGER.debug("Received DTO: " + espectaculoDTO);
-				return this.espectaculoTranslator.translateToDTO(this.espectaculoService.saveEspectaculo(this.espectaculoTranslator.translate(espectaculoDTO),espectaculoDTO.getCategoriaId(),espectaculoDTO.getTeatroId()));
-
-				new Imagen(new String(Base64.encodeBase64(file.getBytes())));
-
-			}
-
-		} catch (Exception e) {
-			//Handle exception if any
-		}
-		return null;
-	}*/
-
-/*
-	@RequestMapping(value = "/imageDisplay", method = RequestMethod.GET)
-	public void showImage(@RequestParam("id") Integer itemId, HttpServletResponse response,HttpServletRequest request)
-			throws ServletException, IOException{
-
-
-		Item item = itemService.get(itemId);
-		response.setContentType("image/jpeg, image/jpg, image/png, image/gif");
-		response.getOutputStream().write(item.getItemImage());
-
-
-		response.getOutputStream().close();
-*/
-
+/
 
 }
