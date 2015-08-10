@@ -19,11 +19,7 @@ public class Espectaculo {
 	@OneToMany(mappedBy = "espectaculo", cascade = CascadeType.REMOVE)
 	private Collection<Funcion> funciones;
 
-<<<<<<< HEAD
 	@OneToMany(mappedBy="espectaculo",cascade = CascadeType.REMOVE)
-=======
-	@OneToMany(mappedBy="espectaculo")
->>>>>>> 98cbbbbdaa467fec5fa8e3afe65f2d4ff5c24918
 	private Collection<Sector> sectores;
 
 	@ManyToOne(cascade = CascadeType.MERGE)
