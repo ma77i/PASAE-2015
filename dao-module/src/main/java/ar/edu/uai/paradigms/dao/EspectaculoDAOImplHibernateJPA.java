@@ -2,6 +2,7 @@ package ar.edu.uai.paradigms.dao;
 
 import ar.edu.uai.model.Espectaculo;
 import ar.edu.uai.model.Funcion;
+import ar.edu.uai.paradigms.ex.CustomUnexpectedEx;
 
 import javax.persistence.NoResultException;
 import javax.persistence.Query;
@@ -21,17 +22,16 @@ public class EspectaculoDAOImplHibernateJPA extends GenericDaoHibernateJPA<Espec
      */
 
     @Override
-    public Long listarEspectaculosDeTeatro(String nombre_teatro) {
-        long countryCount = 0;
+    public Long cantidadEspectaculosDeTeatro(String nombre_teatro) {
+
         try {
             Query consulta = this.entityManager.createQuery("select count(e) from Espectaculo as e where e.teatro.nombre=?");
             consulta.setParameter(1, nombre_teatro);
-            countryCount = (Long) consulta.getSingleResult();
-            return countryCount;
-        }
-        catch (NoResultException e) {
-            System.out.println(" NO EXISTES ESPECTACULOS PARA EL TEATRO");
-            return countryCount;
+            return (Long) consulta.getSingleResult();
+
+        } catch (Exception e) {
+            throw new CustomUnexpectedEx("Unexpected error: " + e.getLocalizedMessage());
+
         }
 
     }

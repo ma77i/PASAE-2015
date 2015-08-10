@@ -140,6 +140,15 @@ public class EspectaculoController {
 		return espectaculos;
 	}
 
+	@RequestMapping(method = RequestMethod.GET, value = "/espectaculosdeteatro/{nombreteatro}")
+	public
+	@ResponseBody
+	Long getEspectaculosSegunTeatro(@PathVariable String nombreteatro) {
+		return this.espectaculoService.cantidadEspectaculosDeTeatro(nombreteatro);
+	}
+
+
+
 /*	@RequestMapping(value = "/saveimage", method = RequestMethod.POST)
 	public @ResponseBody
 	ImagenDTO uploadLogo(@RequestPart("imagen") MultipartFile file) {
