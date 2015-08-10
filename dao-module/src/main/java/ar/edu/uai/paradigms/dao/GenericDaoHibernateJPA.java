@@ -55,6 +55,8 @@ public abstract class GenericDaoHibernateJPA<T> implements GenericDAO<T> {
 			throw new CustomLockingFailureEx("Failure to lock database. Try Later");
 		}
 
+
+
 		catch (Exception e) {
 			throw new CustomUnexpectedEx("Unexpected error: " + e.getLocalizedMessage());
 		}
@@ -78,12 +80,16 @@ public abstract class GenericDaoHibernateJPA<T> implements GenericDAO<T> {
 
 	@Override
 	public T retrieve(Class<T>tipo,long identifier) {
+		T entity;
 		try {
-			T entity = this.entityManager.find(tipo, identifier);
+			entity = this.entityManager.find(tipo, identifier);
 			if (entity != null)
 				return entity;
 			else
-				throw new CustomResourceNotFoundEx("There is no resource '" + tipo.getSimpleName() + "' with identifier '" + identifier + "'");
+				throw new CustomResourceNotFoundEx("");
+		}
+		catch (CustomResourceNotFoundEx ex){
+			throw new CustomResourceNotFoundEx("There is no resource '" + tipo.getSimpleName() + "' with identifier '" + identifier + "'");
 		}
 		catch (Exception e) {
 			throw new CustomUnexpectedEx("Unexpected error: " + e.getLocalizedMessage());
