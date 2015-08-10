@@ -145,7 +145,6 @@ public class EspectaculoController {
 	@ResponseBody
 	Long getEspectaculosSegunTeatro(@PathVariable String nombreteatro) {
 		return this.espectaculoService.listarEspectaculosDeTeatro(nombreteatro);
-
 	}
 
 
