@@ -22,6 +22,8 @@ public class VentaServiceImpl implements VentaService {
 
 	private EspectadorService espectadorService;
 
+	private SectorService sectorService;
+
 
 	public VentaServiceImpl(){
 		
@@ -39,6 +41,27 @@ public class VentaServiceImpl implements VentaService {
 	public void setVentaDAO(VentaDAO ventaDAO) {
 		this.ventaDAO = ventaDAO;
 	}
+
+	public void setSectorService(SectorService sectorService) {
+		this.sectorService = sectorService;
+	}
+
+	public void setEspectaculoService(EspectaculoService espectaculoService) {
+		this.espectaculoService = espectaculoService;
+	}
+
+	public void setEspectadorService(EspectadorService espectadorService) {
+		this.espectadorService = espectadorService;
+	}
+
+	public void setFuncionService(FuncionService funcionService) {
+		this.funcionService = funcionService;
+	}
+
+	public void setTarjetaService(TarjetaService tarjetaService) {
+		this.tarjetaService = tarjetaService;
+	}
+
 
 	@Transactional
 	public Venta saveVenta(Venta venta, Long espectaculoId, Long funcionId, Long espectadorId, Long tarjetaId) {
@@ -68,8 +91,9 @@ public class VentaServiceImpl implements VentaService {
 	}
 
 	@Override
-	public Float calcularMontoFinal(long id_sector, long id_espectaculo) {
-		return (this.calcularMontoNeto(id_sector, id_espectaculo) - this.aplicarDescuento(id_espectaculo));
+	public Float calcularMontoFinal(Long id_sector, Integer cantidad_asientos) {
+		//return (this.calcularMontoNeto(id_sector, id_espectaculo) - this.aplicarDescuento(id_espectaculo));
+		return this.sectorService.retrieveSector(id_sector).getMonto() * cantidad_asientos;
 	}
 
 	@Override
@@ -107,5 +131,6 @@ public class VentaServiceImpl implements VentaService {
 		venta.setTarjeta(tarjeta);
 		tarjeta.getVentas().add(venta);
 	}
+
 
 }

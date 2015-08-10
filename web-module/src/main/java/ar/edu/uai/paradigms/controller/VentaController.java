@@ -59,4 +59,8 @@ public class VentaController {
 		return misCompras;
 	}
 
+	@RequestMapping(method = RequestMethod.POST, value = "/{idsector}/{cantidadasientos}")
+	public Float calcularCostoVenta(@PathVariable Long idsector, @PathVariable Integer cantidadasientos) {
+		return this.ventaService.calcularMontoFinal(idsector, cantidadasientos);
+	}
 }

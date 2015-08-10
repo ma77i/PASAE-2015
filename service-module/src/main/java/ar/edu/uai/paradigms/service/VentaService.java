@@ -12,7 +12,8 @@ public interface VentaService {
 	public Venta retrieveVenta(long identifier);
 	public Collection<Venta> listarVentas();
 	public Collection<Venta> listarComprasDeEspectador(long id_espectador);
-	public Float calcularMontoFinal(long id_sector, long id_espectaculo);
+
+	public Float calcularMontoFinal(Long id_sector, Integer cantidad_asientos);
 	public Float calcularMontoNeto(long id_sector, long id_espectaculo);
 	public Float aplicarDescuento(long id_espectaculo);
 

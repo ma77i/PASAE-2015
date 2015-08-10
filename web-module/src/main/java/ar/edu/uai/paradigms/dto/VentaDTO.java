@@ -4,7 +4,6 @@ import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 import java.util.Collection;
-import java.util.Date;
 
 /**
  * Created by Matias on 10/06/2015.
@@ -12,8 +11,6 @@ import java.util.Date;
 public class VentaDTO {
 	private Long id;
 	private Float monto;
-	private Float costoAdicional;
-	private Date fechaVenta;
 	private Integer cuotas;
 	private Long espectaculoId;
 	private Long funcionId;
@@ -23,14 +20,12 @@ public class VentaDTO {
 	private Collection<AsientoDTO> asientos;
 
 	@JsonCreator
-	public VentaDTO(@JsonProperty("id") Long id, @JsonProperty("monto") Float monto, @JsonProperty("costoAdicional") Float costoAdicional, @JsonProperty("fechaVenta") Date fechaVenta,
+	public VentaDTO(@JsonProperty("id") Long id, @JsonProperty("monto") Float monto,
 					@JsonProperty("cuotas") Integer cuotas, @JsonProperty("espectaculoId") Long espectaculoId, @JsonProperty("funcionId") Long funcionId,
 					@JsonProperty("espectadorId") Long espectadorId, @JsonProperty("tarjetaId") Long tarjetaId, @JsonProperty("cvv") String cvv, @JsonProperty("asientos") Collection<AsientoDTO> asientos) {
 		super();
 		this.setId(id);
 		this.setMonto(monto);
-		this.setCostoAdicional(costoAdicional);
-		this.setFechaVenta(fechaVenta);
 		this.setCuotas(cuotas);
 		this.setFuncionId(funcionId);
 		this.setEspectadorId(espectadorId);
@@ -45,14 +40,6 @@ public class VentaDTO {
 
 	public void setId(Long id) {
 		this.id = id;
-	}
-
-	public Float getCostoAdicional() {
-		return costoAdicional;
-	}
-
-	public void setCostoAdicional(Float costoAdicional) {
-		this.costoAdicional = costoAdicional;
 	}
 
 	public Integer getCuotas() {
@@ -77,14 +64,6 @@ public class VentaDTO {
 
 	public void setEspectadorId(Long espectadorId) {
 		this.espectadorId = espectadorId;
-	}
-
-	public Date getFechaVenta() {
-		return fechaVenta;
-	}
-
-	public void setFechaVenta(Date fechaVenta) {
-		this.fechaVenta = fechaVenta;
 	}
 
 	public Long getTarjetaId() {
@@ -128,7 +107,7 @@ public class VentaDTO {
 	}
 
 	public String toString() {
-		return "VentaDTO [monto=" + monto + ", costoAdicional=" + costoAdicional + ", fechaVenta=" + fechaVenta + ",cuotas=" + cuotas + ",comprador=" + espectadorId + ",espectaculoId=" + espectaculoId + ",tarjetaId=" + tarjetaId + "funcionId=" + funcionId + "]";
+		return "VentaDTO [monto=" + monto + ",cuotas=" + cuotas + ",comprador=" + espectadorId + ",espectaculoId=" + espectaculoId + ",tarjetaId=" + tarjetaId + "funcionId=" + funcionId + "]";
 
 	}
 
