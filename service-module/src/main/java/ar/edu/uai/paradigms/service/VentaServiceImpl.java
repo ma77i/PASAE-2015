@@ -8,6 +8,7 @@ import ar.edu.uai.paradigms.dao.VentaDAO;
 import org.springframework.beans.factory.annotation.Required;
 import org.springframework.transaction.annotation.Transactional;
 
+
 import java.util.Collection;
 
 public class VentaServiceImpl implements VentaService {
@@ -64,11 +65,12 @@ public class VentaServiceImpl implements VentaService {
 
 
 	@Transactional
-	public Venta saveVenta(Venta venta, Long espectaculoId, Long funcionId, Long espectadorId, Long tarjetaId) {
-		Espectador e = this.espectadorService.retrieveUsuario(espectaculoId);
-		this.agregarTarjetaParaVenta(venta, this.tarjetaService.retrieveTarjeta(tarjetaId));
+	public Venta saveVenta(Venta venta, Long espectaculoId, Long funcionId, Long espectadorId, String numeroTarjeta) {
+//		Espectador e = this.espectadorService.retrieveUsuario(espectaculoId);
+		
+//		this.agregarTarjetaParaVenta(venta, this.tarjetaService.);
 		this.agregarFuncionParaVenta(venta, this.funcionService.retrieveFuncion(funcionId));
-		this.agregarEspectadorParaVenta(venta, e);
+//		this.agregarEspectadorParaVenta(venta, e);
 		this.agregarVentaParaEspectador(venta);
 		return ventaDAO.create(venta);
 	}
