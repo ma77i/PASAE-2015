@@ -27,4 +27,6 @@ public interface SectorService {
 	public void agregarSectorParaEspectaculo(Sector sector, Espectaculo espectaculo);
 
 	public Collection<Sector> saveSectoresParaEspectaculo(Collection<Sector> sectores, Long idEspectaculo);
+
+	Collection<Sector> listarSectoresDeEspectaculo(Long idespectaculo);
 }

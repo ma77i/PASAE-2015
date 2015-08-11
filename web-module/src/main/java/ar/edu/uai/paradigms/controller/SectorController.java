@@ -1,6 +1,7 @@
 package ar.edu.uai.paradigms.controller;
 
 import ar.edu.uai.model.Asiento;
+import ar.edu.uai.model.Sector;
 import ar.edu.uai.paradigms.dto.AsientoDTO;
 import ar.edu.uai.paradigms.dto.SectorDTO;
 import ar.edu.uai.paradigms.dto.SectoresDTO;
@@ -110,6 +111,20 @@ public class SectorController {
 		this.sectorService.saveSectoresParaEspectaculo(this.sectoresTranslator.translate(sectoresDTO), sectoresDTO.getIdEspectaculo());
 
 	}
+
+	@RequestMapping(method = RequestMethod.GET, value = "/getsectores/{idespectaculo}")
+	public
+	@ResponseBody
+	Collection<SectorDTO> getSectores(@PathVariable Long idespectaculo) {
+
+		Collection<SectorDTO> sectores = new ArrayList<SectorDTO>();
+		Collection<Sector> coleccion = this.sectorService.listarSectoresDeEspectaculo(idespectaculo);
+		for (Sector sector : coleccion) {
+			sectores.add(sectorTranslator.translateToDTO(sector));
+		}
+		return sectores;
+	}
+
 
 
 }

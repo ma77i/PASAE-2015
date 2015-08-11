@@ -41,8 +41,8 @@ public class VentaTranslator {
 
 
 	public Venta translate(VentaDTO ventaDTO) {
-
-		Collection<Asiento> asientos = new ArrayList<Asiento>();
+		Collection<Asiento> colleccion = new ArrayList<Asiento>();
+		Collection<AsientoDTO> asientos = new ArrayList<AsientoDTO>();
 		for (AsientoDTO e : ventaDTO.getAsientos()) {
 			//asientos.add(new Asiento(e.getNumero()));
 		}
