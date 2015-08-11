@@ -13,6 +13,11 @@ import java.util.Collection;
 public class SectoresTranslator {
     private SectorTranslator sectorTranslator;
 
+    public SectoresTranslator(SectorTranslator sectorTranslator) {
+        this.sectorTranslator = sectorTranslator;
+    }
+
+
     public Collection<Sector> translate(SectoresDTO sectoresDTO) {
         Collection<Sector> coleccion = new ArrayList<Sector>();
         Collection<SectorDTO> sectores = sectoresDTO.getSectores();

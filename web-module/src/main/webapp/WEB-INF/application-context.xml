@@ -122,7 +122,6 @@
 		<constructor-arg name="espectaculoTranslator" ref="espectaculoTranslator"/>
         <constructor-arg name="funcionService" ref="funcionService"/>
         <constructor-arg name="funcionTranslator" ref="funcionTranslator"/>
-        <constructor-arg name="imagenTranslator" ref="imagenTranslator"/>
 	</bean>
 
     <bean id="espectaculoTranslator" class="ar.edu.uai.paradigms.translator.EspectaculoTranslator"/>
@@ -226,11 +225,11 @@
 
     <bean id="filaTranslator" class="ar.edu.uai.paradigms.translator.FilaTranslator"/>
 
-    <bean id="imagenTranslator" class="ar.edu.uai.paradigms.translator.ImagenTranslator"/>
-
     <bean id="transaccionTranslator" class="ar.edu.uai.paradigms.translator.TransaccionTranslator"/>
 
     <bean id="espectadorTranslator" class="ar.edu.uai.paradigms.translator.EspectadorTranslator" />
 
-    <bean id="sectoresTranslator" class="ar.edu.uai.paradigms.translator.SectoresTranslator" />
+    <bean id="sectoresTranslator" class="ar.edu.uai.paradigms.translator.SectoresTranslator">
+        <constructor-arg name="sectorTranslator" ref="sectorTranslator"/>
+    </bean>
 </beans>

@@ -84,6 +84,7 @@ public class SectorServiceImpl implements SectorService {
 	}
 
 	@Override
+	@Transactional
 	public Collection<Sector> saveSectoresParaEspectaculo(Collection<Sector> sectores, Long idEspectaculo) {
 
 		for (Sector sector : sectores) {
