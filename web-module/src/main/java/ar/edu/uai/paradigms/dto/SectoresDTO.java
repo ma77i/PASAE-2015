@@ -15,7 +15,7 @@ public class SectoresDTO {
     private Long idEspectaculo;
 
     @JsonCreator
-    public SectoresDTO(@JsonProperty("sectores") Collection<SectorDTO> sectores, @JsonProperty("idEspectaculo") Long idEspectaculo) {
+    public SectoresDTO(@JsonProperty("sectores") Collection<SectorDTO> sectores, @JsonProperty("espectaculoId") Long idEspectaculo) {
         this.setSectores(sectores);
         this.setIdEspectaculo(idEspectaculo);
     }

@@ -92,9 +92,6 @@
         <constructor-arg name="tarjetaService" ref="tarjetaService"/>
        <constructor-arg name="transaccionTranslator" ref="transaccionTranslator"/>
 	</bean>
-
-    <bean id="transaccionTranslator" class="ar.edu.uai.paradigms.translator.TransaccionTranslator"/>
-	<bean id="espectadorTranslator" class="ar.edu.uai.paradigms.translator.EspectadorTranslator" />
 	
 	<bean id="empleadoController" class="ar.edu.uai.paradigms.controller.EmpleadoController">
 		<constructor-arg name="empleadoService" ref="empleadoServiceConcreta"/>
@@ -134,6 +131,7 @@
         <constructor-arg name="sectorService" ref="sectorService"/>
         <constructor-arg name="sectorTranslator" ref="sectorTranslator"/>
         <constructor-arg name="asientoTranslator" ref="asientoTranslator" />
+        <constructor-arg name="sectoresTranslator" ref="sectoresTranslator" />
     </bean>
 
     <bean id="tarjetaController" class="ar.edu.uai.paradigms.controller.TarjetaController">
@@ -230,5 +228,9 @@
 
     <bean id="imagenTranslator" class="ar.edu.uai.paradigms.translator.ImagenTranslator"/>
 
+    <bean id="transaccionTranslator" class="ar.edu.uai.paradigms.translator.TransaccionTranslator"/>
 
+    <bean id="espectadorTranslator" class="ar.edu.uai.paradigms.translator.EspectadorTranslator" />
+
+    <bean id="sectoresTranslator" class="ar.edu.uai.paradigms.translator.SectoresTranslator" />
 </beans>
