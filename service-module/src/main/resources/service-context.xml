@@ -19,7 +19,12 @@
     
     <bean id="ventaService" class="ar.edu.uai.paradigms.service.VentaServiceImpl">
           <property name="ventaDAO" ref="ventaDAO" />
-     </bean>
+        <property name="tarjetaService" ref="tarjetaService"/>
+        <property name="espectaculoService" ref="espectaculoService"/>
+        <property name="funcionService" ref="funcionService"/>
+        <property name="espectadorService" ref="espectadorServiceConcreta"/>
+        <property name="sectorService" ref="sectorService"/>
+    </bean>
     
     <bean id="espectaculoService" class="ar.edu.uai.paradigms.service.EspectaculoServiceImpl">
         <property name="espectaculoDAO" ref="espectaculoDAO" />

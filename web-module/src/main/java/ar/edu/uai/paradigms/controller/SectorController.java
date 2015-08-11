@@ -36,10 +36,11 @@ public class SectorController {
 
 	private SectoresTranslator sectoresTranslator;
 
-	public SectorController(SectorService sectorService, SectorTranslator sectorTranslator, AsientoTranslator asientoTranslator) {
+	public SectorController(SectorService sectorService, SectorTranslator sectorTranslator, AsientoTranslator asientoTranslator,SectoresTranslator sectoresTranslator) {
 		this.sectorService = sectorService;
 		this.sectorTranslator = sectorTranslator;
 		this.asientoTranslator = asientoTranslator;
+		this.sectoresTranslator=sectoresTranslator;
 	}
 
 
