@@ -123,6 +123,7 @@ public abstract class GenericDaoHibernateJPA<T> implements GenericDAO<T> {
 			throw new CustomResourceNotFoundEx("Resource not found (empty set value)");
 		}
 
+
 		catch (QueryException e) {
 			throw new CustomQueryEx("DB error: couldn't execute query statement");
 		}

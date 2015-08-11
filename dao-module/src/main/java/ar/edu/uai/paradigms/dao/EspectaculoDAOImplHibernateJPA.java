@@ -3,6 +3,7 @@ package ar.edu.uai.paradigms.dao;
 import ar.edu.uai.model.Espectaculo;
 import ar.edu.uai.model.Funcion;
 import ar.edu.uai.paradigms.ex.CustomUnexpectedEx;
+import org.hibernate.HibernateException;
 
 import javax.persistence.NoResultException;
 import javax.persistence.Query;
@@ -29,8 +30,12 @@ public class EspectaculoDAOImplHibernateJPA extends GenericDaoHibernateJPA<Espec
             consulta.setParameter(1, nombre_teatro);
             return (Long) consulta.getSingleResult();
 
-        } catch (Exception e) {
-            throw new CustomUnexpectedEx("Unexpected error: " + e.getLocalizedMessage());
+        }catch (HibernateException ex) {
+
+            throw new CustomUnexpectedEx("Unexpected error " + ex.getLocalizedMessage());
+
+        } catch (Exception ex) {
+            throw new CustomUnexpectedEx("Unexpected error: " + ex.getLocalizedMessage());
 
         }
 

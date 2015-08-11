@@ -8,7 +8,6 @@ import ar.edu.uai.paradigms.service.EspectaculoService;
 import ar.edu.uai.paradigms.service.FuncionService;
 import ar.edu.uai.paradigms.translator.EspectaculoTranslator;
 import ar.edu.uai.paradigms.translator.FuncionTranslator;
-import ar.edu.uai.paradigms.translator.ImagenTranslator;
 import ar.edu.uai.paradigms.validators.EspectaculoDTOValidator;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.slf4j.Logger;
@@ -31,13 +30,12 @@ import java.util.Date;
 @RequestMapping("/espectaculo")
 public class EspectaculoController {
 
-	public EspectaculoController(EspectaculoService espectaculoService, EspectaculoTranslator espectaculoTranslator, FuncionService funcionService, FuncionTranslator funcionTranslator, ImagenTranslator imagenTranslator) {
+	public EspectaculoController(EspectaculoService espectaculoService, EspectaculoTranslator espectaculoTranslator, FuncionService funcionService, FuncionTranslator funcionTranslator) {
 		super();
 		this.espectaculoService = espectaculoService;
 		this.espectaculoTranslator = espectaculoTranslator;
 		this.funcionService = funcionService;
 		this.funcionTranslator = funcionTranslator;
-		this.imagenTranslator = imagenTranslator;
 	}
 
 	private static final Logger LOGGER = LoggerFactory.getLogger(EspectaculoController.class);
@@ -50,7 +48,6 @@ public class EspectaculoController {
 
 	private FuncionTranslator funcionTranslator;
 
-	private ImagenTranslator imagenTranslator;
 
 	@InitBinder
 	public void initBinder(WebDataBinder binder) {
