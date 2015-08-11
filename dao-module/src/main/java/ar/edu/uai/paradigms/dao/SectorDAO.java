@@ -15,4 +15,5 @@ public interface SectorDAO extends GenericDAO<Sector> {
 
 	public Collection<Asiento> asientosOcupadosDeSector (long id_sector);
 
+	Collection<Sector> listarSectoresDeEspectaculo(Long idespectaculo);
 }

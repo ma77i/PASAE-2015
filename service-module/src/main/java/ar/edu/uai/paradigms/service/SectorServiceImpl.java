@@ -92,5 +92,10 @@ public class SectorServiceImpl implements SectorService {
 		return sectores;
 	}
 
+	@Override
+	public Collection<Sector> listarSectoresDeEspectaculo(Long idespectaculo) {
+		return sectorDAO.listarSectoresDeEspectaculo(idespectaculo);
+	}
+
 
 }
