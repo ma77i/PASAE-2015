@@ -67,7 +67,7 @@ public abstract class UsuarioService<T extends Usuario> {
 		return this.usuarioDAO.update(usuario);
 	}
 
-	public Usuario existeUsuario(String email) {
+	public Boolean existeUsuario(String email) {
 		return usuarioDAO.existeUsuario(email);
 	}
 

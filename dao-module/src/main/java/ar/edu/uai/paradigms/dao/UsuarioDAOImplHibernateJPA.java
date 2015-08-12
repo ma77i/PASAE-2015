@@ -16,18 +16,12 @@ public class UsuarioDAOImplHibernateJPA<T> extends GenericDaoHibernateJPA<T> imp
 
 
     @Override
-    public Usuario existeUsuario(String email) {
-        try {
+    public Boolean existeUsuario(String email) {
+
 
             Query consulta = this.entityManager.createQuery("select u.email from Usuario as u where u.email=:email");
-            consulta.setParameter("email", email);
-            return (Usuario) consulta.getSingleResult();
-        }
-        catch (NoResultException e) {
-
-            System.out.println(" NO HAY UN USUARIO CON ESE MAIL");
-            return null;
-        }
+        consulta.setParameter(1, email);
+        return (Boolean) consulta.getSingleResult();
     }
     
     /**
