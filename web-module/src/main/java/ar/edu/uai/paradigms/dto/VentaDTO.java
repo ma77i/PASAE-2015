@@ -37,6 +37,7 @@ public class VentaDTO {
 		this.setAsientos(asientos);
 	}
 
+
 	public VentaDTO(@JsonProperty("monto") Float monto) {
 		// TODO Auto-generated constructor stub
 		super();
