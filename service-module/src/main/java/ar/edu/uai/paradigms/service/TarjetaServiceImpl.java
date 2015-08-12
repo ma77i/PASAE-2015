@@ -94,5 +94,11 @@ public class TarjetaServiceImpl implements TarjetaService {
         this.tarjetaDAO.delete(id_tarjeta);
     }
 
+	@Override
+	public Tarjeta retrieveTarjetaByNumero(String numeroTarjeta, Integer cvv, Date date) {
+		// TODO Auto-generated method stub
+		return this.tarjetaDAO.retrieveTarjetaByNumero(numeroTarjeta,  cvv,  date);		
+	}
+
 
 }

@@ -34,7 +34,7 @@ public class Venta {
 
 	private String CVV;
 
-    @ManyToOne (cascade=CascadeType.PERSIST)
+    @ManyToOne (cascade=CascadeType.MERGE)
 	private Tarjeta tarjeta;
 
 	private Integer coutas;
