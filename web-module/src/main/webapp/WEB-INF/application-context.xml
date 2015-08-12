@@ -183,6 +183,7 @@
                 <entry key="ar.edu.uai.paradigms.ex.CustomLockingFailureEx" value="409"/>
                 <entry key="ar.edu.uai.paradigms.ex.CustomQueryEx" value="500"/>
                 <entry key="ar.edu.uai.paradigms.ex.CustomUnexpectedEx" value="500"/>
+                <entry key="ar.edu.uai.paradigms.ex.CustomValidationEx" value="500"/>
             </map>
         </property>
     </bean>
