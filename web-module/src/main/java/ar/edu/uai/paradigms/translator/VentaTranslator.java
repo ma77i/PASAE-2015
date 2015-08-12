@@ -1,6 +1,7 @@
 package ar.edu.uai.paradigms.translator;
 
 import ar.edu.uai.model.Asiento;
+import ar.edu.uai.model.Fila;
 import ar.edu.uai.model.Venta;
 import ar.edu.uai.paradigms.dto.AsientoDTO;
 import ar.edu.uai.paradigms.dto.VentaDTO;
@@ -10,8 +11,6 @@ import ar.edu.uai.paradigms.service.TarjetaService;
 
 import java.util.ArrayList;
 import java.util.Collection;
-
-import com.fasterxml.jackson.annotation.JsonProperty;
 
 public class VentaTranslator {
 
@@ -43,33 +42,12 @@ public class VentaTranslator {
 
 
 	public Venta translate(VentaDTO ventaDTO) {
-		Collection<Asiento> colleccion = new ArrayList<Asiento>();
-		Collection<AsientoDTO> asientos = new ArrayList<AsientoDTO>();
-		for (AsientoDTO e : ventaDTO.getAsientos()) {
-			//asientos.add(new Asiento(e.getNumero()));
+		Collection<Asiento> asientos = new ArrayList<Asiento>();
+		for (AsientoDTO asiento : ventaDTO.getAsientos()) {
+			Fila f = new Fila(asiento.getNumero());
+			asientos.add(new Asiento(asiento.getNumero(), f));
 		}
-		return null;
-		//	return new Venta(ventaDTO.getMonto(),ventaDTO.getCostoAdicional(),ventaDTO.getFechaVenta(),ventaDTO.getCuotas(),ventaDTO.getCvv(),asientos);
-
-		//habria que validar que esa compra se pueda realizar mediante wiremock , ya que esto simularia la validacion de la tarjeta
-
-		//Tarjeta tarjeta=tarjetaService.retrieveTarjeta(ventaDTO.getTarjetaId());
-
-		//tarjetaService.verificandoDatosTarjeta();
-
-		/*RestTemplate restTemplate = new RestTemplate();
-
-		List<HttpMessageConverter<?>> messageConverters = new ArrayList<HttpMessageConverter<?>>();
-
-		//Add the Jackson Message converter
-		messageConverters.add(new MappingJackson2HttpMessageConverter());
-
-		//Add the message converters to the restTemplate
-		restTemplate.setMessageConverters(messageConverters);
-
-
-
-		*/
+		return new Venta(ventaDTO.getMonto(), ventaDTO.getCuotas(), ventaDTO.getCvv(), asientos);
 
 	}
 

@@ -2,6 +2,7 @@ package ar.edu.uai.paradigms.authentication;
 
 import ar.edu.uai.paradigms.service.LoginService;
 
+import org.springframework.security.authentication.AnonymousAuthenticationToken;
 import org.springframework.security.authentication.AuthenticationProvider;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
@@ -48,8 +49,8 @@ public class SimpleAuthenticationProvider implements AuthenticationProvider {
     }
     
     public static String getUserLogged(){
-    	Authentication auth = SecurityContextHolder.getContext().getAuthentication();    	
-    	return auth.isAuthenticated() ? auth.getPrincipal().toString() : null;
+    	Authentication auth = SecurityContextHolder.getContext().getAuthentication();  
+    	return !(auth instanceof AnonymousAuthenticationToken) ? auth.getPrincipal().toString() : null;
     }
 
     @Override

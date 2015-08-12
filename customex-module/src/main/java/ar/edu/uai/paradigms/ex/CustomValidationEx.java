@@ -5,7 +5,12 @@ package ar.edu.uai.paradigms.ex;
  */
 public class CustomValidationEx extends RuntimeException {
 
-    public CustomValidationEx(String msg) {
+    /**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
+	public CustomValidationEx(String msg) {
         super(msg);
     }
 }

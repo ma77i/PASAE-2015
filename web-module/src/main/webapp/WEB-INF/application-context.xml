@@ -20,7 +20,9 @@
     <context:annotation-config/>
 
     <sec:http entry-point-ref="restAuthenticationEntryPoint">
-        <sec:intercept-url pattern="/admin/*" access="ROLE_ADMIN"/>
+        <sec:intercept-url pattern="/administrador/*" access="ROLE_ADMINISTRADOR"/>
+        <sec:intercept-url pattern="/venta/*" access="ROLE_ESPECTADOR,ROLE_ADMINISTRADOR,ROLE_EMPLEADO"/>
+        <sec:intercept-url pattern="/empleado/*" access="ROLE_ADMINISTRADOR"/>
         <sec:custom-filter ref="customFilter" position="FORM_LOGIN_FILTER"/>
         <sec:logout/>
     </sec:http>
@@ -183,7 +185,7 @@
                 <entry key="ar.edu.uai.paradigms.ex.CustomLockingFailureEx" value="409"/>
                 <entry key="ar.edu.uai.paradigms.ex.CustomQueryEx" value="500"/>
                 <entry key="ar.edu.uai.paradigms.ex.CustomUnexpectedEx" value="500"/>
-                <entry key="ar.edu.uai.paradigms.ex.CustomValidationEx" value="500"/>
+                <entry key="ar.edu.uai.paradigms.ex.CustomValidationEx" value="200"/>
             </map>
         </property>
     </bean>

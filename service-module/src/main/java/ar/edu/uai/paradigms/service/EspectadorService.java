@@ -14,8 +14,6 @@ public class EspectadorService extends UsuarioService<Espectador> {
 	private EspectadorDAO espectadorDAO;  
 
 	
-	
-
 	@Required
     public void setEspectadorDAO(EspectadorDAO espectadorDAO) {
 		this.espectadorDAO = espectadorDAO;
@@ -30,5 +28,8 @@ public class EspectadorService extends UsuarioService<Espectador> {
 
 	}
 
+	public Espectador retrieveEspectadorPorNombre(String username){
+		return this.espectadorDAO.retrieveEspectadorPorNombre(username);
+	}
 
 }
