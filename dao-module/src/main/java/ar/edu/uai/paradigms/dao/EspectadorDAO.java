@@ -16,5 +16,6 @@ public interface EspectadorDAO extends UsuarioDAO<Espectador> {
     
     Espectador retrieveEspectadorPorNombre(String username);	
 
-	
+    String existeUsuario(String email);
+
 }

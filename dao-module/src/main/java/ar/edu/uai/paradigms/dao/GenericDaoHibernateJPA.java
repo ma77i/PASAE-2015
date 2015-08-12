@@ -1,15 +1,14 @@
 package ar.edu.uai.paradigms.dao;
 
-import ar.edu.uai.paradigms.ex.CustomLockingFailureEx;
-import ar.edu.uai.paradigms.ex.CustomQueryEx;
-import ar.edu.uai.paradigms.ex.CustomResourceNotFoundEx;
-import ar.edu.uai.paradigms.ex.CustomUnexpectedEx;
+import ar.edu.uai.paradigms.ex.*;
 import org.hibernate.QueryException;
+import org.hibernate.exception.ConstraintViolationException;
 import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.dao.OptimisticLockingFailureException;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.persistence.PersistenceException;
 import javax.persistence.Query;
 import java.util.Collection;
 
@@ -22,7 +21,7 @@ public abstract class GenericDaoHibernateJPA<T> implements GenericDAO<T> {
 
 	}
 
-	
+
 	public GenericDaoHibernateJPA(Class<T>persistentClass) {
 		this.persistentClass=persistentClass;
 	}
@@ -46,21 +45,29 @@ public abstract class GenericDaoHibernateJPA<T> implements GenericDAO<T> {
 
 	@Override
 	public T create(T entity) {
-
 		try {
 			this.entityManager.persist(entity);
 			return entity;
 		}
 		catch (OptimisticLockingFailureException e) {
 			throw new CustomLockingFailureEx("Failure to lock database. Try Later");
+		} catch (PersistenceException e) {
+			Throwable t = e.getCause();
+			while ((t != null) && !(t instanceof ConstraintViolationException)) {
+				t = t.getCause();
+			}
+			if (t instanceof ConstraintViolationException) {
+				// Here you're sure you have a ConstraintViolationException, you can handle it
+				throw new CustomValidationEx("El " + entity.getClass().getSimpleName().toLowerCase() + " ya existe");
+			}
+
 		}
-
-
-
 		catch (Exception e) {
 			throw new CustomUnexpectedEx("Unexpected error: " + e.getLocalizedMessage());
 		}
+		return entity;
 	}
+
 
 	@Override
 	public T update(T entity) {
@@ -71,10 +78,22 @@ public abstract class GenericDaoHibernateJPA<T> implements GenericDAO<T> {
 		}
 		catch (OptimisticLockingFailureException e) {
 			throw new CustomLockingFailureEx("Failure to lock database. Try Later");
+		} catch (PersistenceException e) {
+			Throwable t = e.getCause();
+			while ((t != null) && !(t instanceof ConstraintViolationException)) {
+				t = t.getCause();
+			}
+			if (t instanceof ConstraintViolationException) {
+				// Here you're sure you have a ConstraintViolationException, you can handle it
+				throw new CustomValidationEx("El " + entity.getClass().getSimpleName().toLowerCase() + " ya existe");
+			}
+
 		}
+
 		catch (Exception e) {
 			throw new CustomUnexpectedEx("Unexpected error: " + e.getLocalizedMessage());
 		}
+		return entity;
 
 	}
 
@@ -132,4 +151,6 @@ public abstract class GenericDaoHibernateJPA<T> implements GenericDAO<T> {
 			throw new CustomUnexpectedEx("Unexpected error: " + e.getLocalizedMessage());
 		}
 	}
+
+
 }

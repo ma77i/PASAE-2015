@@ -46,4 +46,21 @@ public class EspectadorDAOImplHibernateJPA extends UsuarioDAOImplHibernateJPA<Es
         }
 	}
 
+    @Override
+    public String existeUsuario(String email) {
+        Usuario usuario;
+        String correo = null;
+        try {
+            Query consulta = this.entityManager.createQuery("select u from Usuario as u where u.email=:email");
+            consulta.setParameter("email", email);
+            usuario = (Usuario) consulta.getSingleResult();
+        } catch (NoResultException e) {
+            usuario = null;
+        }
+        if (usuario != null) {
+            correo = usuario.getEmail();
+        }
+        return correo;
+    }
+
 }

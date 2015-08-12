@@ -51,7 +51,9 @@ public abstract class UsuarioService<T extends Usuario> {
 		return (this.usuarioDAO.retrieve((Class<T>) Usuario.class, identifier));
 	}
 	
-	
+	public T retrieveUsuarioPorNombre(String username){
+		return (T) (this.usuarioDAO.retrieveByUserName( username));
+	}
 
 	@Transactional
 	public T modificarDatosPersonales(T u, String nombre, String apellido, String password) {
@@ -67,10 +69,6 @@ public abstract class UsuarioService<T extends Usuario> {
 	public T modificarEstado(T usuario, String estado) {
 		usuario.setEstado(estado);
 		return this.usuarioDAO.update(usuario);
-	}
-
-	public String existeUsuario(String email) {
-		return usuarioDAO.existeUsuario(email);
 	}
 
 	public String getUserRole(String email, String password) {
