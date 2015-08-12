@@ -29,11 +29,7 @@ public abstract class UsuarioService<T extends Usuario> {
 
 	@Transactional
 	public T saveUsuario(T usuario) {
-       /* BeanPropertyBindingResult result = new BeanPropertyBindingResult(usuario, "usuario");
-        ValidationUtils.invokeValidator(usuarioValidator, usuario, result);
-        if (result.hasErrors())
-            throw new CustomInvalidArgEx("xxx");
-        else*/
+
 		return usuarioDAO.create(usuario);
 	}
 
@@ -69,10 +65,6 @@ public abstract class UsuarioService<T extends Usuario> {
 	public T modificarEstado(T usuario, String estado) {
 		usuario.setEstado(estado);
 		return this.usuarioDAO.update(usuario);
-	}
-
-	public String existeUsuario(String email) {
-		return usuarioDAO.existeUsuario(email);
 	}
 
 	public String getUserRole(String email, String password) {

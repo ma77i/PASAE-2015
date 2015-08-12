@@ -13,5 +13,6 @@ public interface EspectadorDAO extends UsuarioDAO<Espectador> {
 
     Collection<Espectador> listarEspectadoresPorCampoIngresado(String input);
 
-	
+    String existeUsuario(String email);
+
 }

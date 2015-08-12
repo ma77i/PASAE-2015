@@ -184,6 +184,8 @@
                 <entry key="ar.edu.uai.paradigms.ex.CustomQueryEx" value="500"/>
                 <entry key="ar.edu.uai.paradigms.ex.CustomUnexpectedEx" value="500"/>
                 <entry key="ar.edu.uai.paradigms.ex.CustomValidationEx" value="500"/>
+                <entry key="ar.edu.uai.paradigms.ex.CustomAlreadyExistsEx" value="200"/>
+
             </map>
         </property>
     </bean>

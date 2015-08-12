@@ -13,20 +13,6 @@ public class UsuarioDAOImplHibernateJPA<T> extends GenericDaoHibernateJPA<T> imp
 
     }
 
-
-
-    @Override
-    public String existeUsuario(String email) {
-
-        try {
-            Query consulta = this.entityManager.createQuery("select u.email from Usuario as u where u.email=:email");
-            consulta.setParameter("email", email);
-            return (String) consulta.getSingleResult();
-        } catch (NoResultException e) {
-            return "";
-        }
-    }
-    
     /**
      * Segun el tipo de usuario retorno el nivel de acceso (definido en string) que le concedo,basado en el class name.
      */

@@ -106,17 +106,4 @@ public class EspectadorController {
 		return espectadores;
 
 	}
-
-	@RequestMapping(method = RequestMethod.GET, value = "/verificarexistencia/{email}")
-	public String existeEmail(@PathVariable String email) {
-
-		return this.espectadorService.existeUsuario(email);
-
-
-	}
-
-
-
-
-
 }
