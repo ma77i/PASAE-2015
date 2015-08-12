@@ -25,6 +25,8 @@
         <sec:intercept-url pattern="/administrador/*" access="ROLE_ADMINISTRADOR"/>
         <sec:intercept-url pattern="/venta/*" access="ROLE_ESPECTADOR,ROLE_ADMINISTRADOR,ROLE_EMPLEADO"/>
         <sec:intercept-url pattern="/empleado/*" access="ROLE_ADMINISTRADOR"/>
+        <sec:intercept-url pattern="/teatro/*" access="ROLE_ADMINISTRADOR"/>
+
         <sec:custom-filter ref="customFilter" position="FORM_LOGIN_FILTER"/>
         <sec:logout  invalidate-session="true" logout-url="/logout" success-handler-ref="logoutSuccessHandler" />
     </sec:http>
