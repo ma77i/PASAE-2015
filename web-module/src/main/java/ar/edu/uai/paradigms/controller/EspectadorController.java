@@ -85,6 +85,7 @@ public class EspectadorController {
 		return espectadores;
 
 	}
+
 	@RequestMapping(method = RequestMethod.GET, value = "/busquedaespectadores/{input}")
 	public
 	@ResponseBody
@@ -97,4 +98,5 @@ public class EspectadorController {
 		return espectadores;
 
 	}
+
 }
