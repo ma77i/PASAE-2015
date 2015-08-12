@@ -41,6 +41,7 @@ public class CategoriaServiceImpl implements CategoriaService {
     }
 
     @Override
+    @Transactional
     public void deleteCategoria(long id_categoria) {
         categoriaDAO.delete(id_categoria);
     }
