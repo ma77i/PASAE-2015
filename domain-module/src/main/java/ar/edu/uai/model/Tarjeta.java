@@ -15,7 +15,7 @@ public class Tarjeta {
 
 	private String nro_tarjeta;
 
-	private int cvv;
+	private Integer cvv;
 
 	private Date fecha_vencimiento;
 

@@ -4,6 +4,7 @@ import ar.edu.uai.model.Tarjeta;
 import ar.edu.uai.model.Venta;
 
 import java.util.Collection;
+import java.util.Date;
 
 /**
  * Created by Matias on 20/06/2015.
@@ -18,6 +19,8 @@ public interface TarjetaService {
     Boolean verificandoDatosTarjeta(String numeroTarjeta , String cvv);
 
     void deleteTarjeta(long id_tarjeta);
+
+	Tarjeta retrieveTarjetaByNumero(String numeroTarjeta, Integer cvv, Date date);
 
 
 }
