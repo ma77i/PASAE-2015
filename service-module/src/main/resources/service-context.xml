@@ -80,7 +80,7 @@
 
 
     <bean id="tarjetaService" class="ar.edu.uai.paradigms.service.TarjetaServiceImpl">
-        <property name="serviceUrl" value="http://localhost/"/>
+        <property name="serviceUrl" value="http://localhost:5000/"/>
         <property name="restTemplate" ref="restTemplate"/>
         <property name="tarjetaDAO" ref="tarjetaDAO"/>
      </bean>

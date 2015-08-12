@@ -1,9 +1,12 @@
+
 package ar.edu.uai.paradigms.dao;
 
 import ar.edu.uai.model.Espectador;
+import ar.edu.uai.model.Usuario;
 
 import javax.persistence.NoResultException;
 import javax.persistence.Query;
+
 import java.util.Collection;
 
 
@@ -26,5 +29,21 @@ public class EspectadorDAOImplHibernateJPA extends UsuarioDAOImplHibernateJPA<Es
             return null;
         }
     }
+    
+    
+
+
+	@Override
+	public Espectador retrieveEspectadorPorNombre(String username) {
+        try {
+            Query consulta = this.entityManager.createQuery("select u from Espectador as u where u.email=:email");
+            consulta.setParameter("email", username);
+            return (Espectador) consulta.getSingleResult();
+        }
+        catch (NoResultException e) {
+            System.out.println(" NO HAY UN USUARIO CON ESE MAIL");
+            return null;
+        }
+	}
 
 }

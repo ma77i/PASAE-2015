@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <projectDescription>
-	<name>service-module</name>
+	<name>customex-module</name>
 	<comment></comment>
 	<projects>
-		<project>customex-module</project>
+		<project>service-module</project>
 	</projects>
 	<buildSpec>
 		<buildCommand>

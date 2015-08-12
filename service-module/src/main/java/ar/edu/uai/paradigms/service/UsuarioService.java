@@ -50,6 +50,8 @@ public abstract class UsuarioService<T extends Usuario> {
 		}*/
 		return (this.usuarioDAO.retrieve((Class<T>) Usuario.class, identifier));
 	}
+	
+	
 
 	@Transactional
 	public T modificarDatosPersonales(T u, String nombre, String apellido, String password) {
@@ -67,7 +69,7 @@ public abstract class UsuarioService<T extends Usuario> {
 		return this.usuarioDAO.update(usuario);
 	}
 
-	public Usuario existeUsuario(String email) {
+	public String existeUsuario(String email) {
 		return usuarioDAO.existeUsuario(email);
 	}
 

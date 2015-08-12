@@ -1,6 +1,8 @@
 package ar.edu.uai.model;
 
 import javax.persistence.*;
+
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Date;
 
@@ -11,7 +13,7 @@ public class Tarjeta {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private long id;
 
-	private int nro_tarjeta;
+	private String nro_tarjeta;
 
 	private int cvv;
 
@@ -28,10 +30,11 @@ public class Tarjeta {
 		
 	}
 
-	public Tarjeta (int nro_tarjeta, int cvv, Date fecha_vencimiento){
+	public Tarjeta (String nro_tarjeta, int cvv, Date fecha_vencimiento){
 		this.nro_tarjeta=nro_tarjeta;
 		this.cvv=cvv;
 		this.fecha_vencimiento=fecha_vencimiento;
+		this.ventas = new ArrayList<Venta>();
 	}
 
 
@@ -43,11 +46,11 @@ public class Tarjeta {
 		this.id = id;
 	}
 
-	public int getNro_tarjeta() {
+	public String getNro_tarjeta() {
 		return nro_tarjeta;
 	}
 
-	public void setNro_tarjeta(int nro_tarjeta) {
+	public void setNro_tarjeta(String nro_tarjeta) {
 		this.nro_tarjeta = nro_tarjeta;
 	}
 

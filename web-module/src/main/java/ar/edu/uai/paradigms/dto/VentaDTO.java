@@ -12,7 +12,6 @@ public class VentaDTO {
 	private Long id;
 	private Float monto;
 	private Integer cuotas;
-	private Long espectaculoId;
 	private Long funcionId;
 	private Long espectadorId;
 	private String numeroTarjeta;
@@ -38,11 +37,6 @@ public class VentaDTO {
 	}
 
 
-	public VentaDTO(@JsonProperty("monto") Float monto) {
-		// TODO Auto-generated constructor stub
-		super();
-		this.setMonto(monto);
-	}
 
 	public Long getId() {
 		return id;
@@ -58,14 +52,6 @@ public class VentaDTO {
 
 	public void setCuotas(Integer cuotas) {
 		this.cuotas = cuotas;
-	}
-
-	public Long getEspectaculoId() {
-		return espectaculoId;
-	}
-
-	public void setEspectaculoId(Long espectaculoId) {
-		this.espectaculoId = espectaculoId;
 	}
 
 	public Long getEspectadorId() {
@@ -118,7 +104,7 @@ public class VentaDTO {
 	}
 
 	public String toString() {
-		return "VentaDTO [monto=" + monto + ",cuotas=" + cuotas + ",comprador=" + espectadorId + ",espectaculoId=" + espectaculoId + ",tarjetaId=" + numeroTarjeta + "funcionId=" + funcionId + "]";
+		return "VentaDTO [monto=" + monto + ",cuotas=" + cuotas + ",comprador=" + espectadorId + ",tarjetaId=" + numeroTarjeta + "funcionId=" + funcionId + "]";
 
 	}
 
