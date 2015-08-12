@@ -5,9 +5,9 @@ import ar.edu.uai.model.Funcion;
 import ar.edu.uai.model.Tarjeta;
 import ar.edu.uai.model.Venta;
 import ar.edu.uai.paradigms.dao.VentaDAO;
+import ar.edu.uai.paradigms.ex.CustomValidationEx;
 import org.springframework.beans.factory.annotation.Required;
 import org.springframework.transaction.annotation.Transactional;
-
 
 import java.util.Collection;
 
@@ -69,7 +69,7 @@ public class VentaServiceImpl implements VentaService {
 		Espectador e = this.espectadorService.retrieveUsuarioPorNombre(username);		
 //		this.agregarTarjetaParaVenta(venta, this.tarjetaService.);
 		if(!tarjetaService.verificandoDatosTarjeta(numeroTarjeta, cvv)){
-			throw new CustomValidationEx ("datos de tarjeta invalidos");			
+			throw new CustomValidationEx("datos de tarjeta invalidos");
 		}
 		this.agregarFuncionParaVenta(venta, this.funcionService.retrieveFuncion(funcionId));
 		this.agregarEspectadorParaVenta(venta, e);
