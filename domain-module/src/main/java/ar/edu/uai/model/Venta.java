@@ -13,7 +13,7 @@ public class Venta {
 
 	public Venta(Float monto, Integer coutas, String cvv, Collection<Asiento> asientos) {
 		this.monto = monto;
-		//this.costoAdicional = costoAdicional;
+		this.costoAdicional = (float) 0;
 		//this.fechaVenta = fechaVenta;
 		this.coutas = coutas;
 		this.CVV = cvv;
@@ -34,7 +34,7 @@ public class Venta {
 
 	private String CVV;
 
-    @ManyToOne
+    @ManyToOne (cascade=CascadeType.PERSIST)
 	private Tarjeta tarjeta;
 
 	private Integer coutas;

@@ -3,6 +3,7 @@
 	<name>customex-module</name>
 	<comment></comment>
 	<projects>
+		<project>service-module</project>
 	</projects>
 	<buildSpec>
 		<buildCommand>

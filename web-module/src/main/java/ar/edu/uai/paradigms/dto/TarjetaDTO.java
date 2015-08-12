@@ -9,24 +9,24 @@ import java.util.Date;
  * Created by Matias on 22/06/2015.
  */
 public class TarjetaDTO {
-    private int nro_tarjeta;
+    private String nro_tarjeta;
     private int cvv;
     private Date fecha_vencimiento;
 
 
     @JsonCreator
-    public TarjetaDTO(@JsonProperty("nro") int nro_tarjeta, @JsonProperty("cvv") int cvv, @JsonProperty("fecha_vencimiento") Date fecha_vencimiento) {
+    public TarjetaDTO(@JsonProperty("nro") String nro_tarjeta, @JsonProperty("cvv") int cvv, @JsonProperty("fecha_vencimiento") Date fecha_vencimiento) {
         this.setNro(nro_tarjeta);
         this.setCvv(cvv);
         this.setFecha_vencimiento(fecha_vencimiento);
 
     }
 
-    public int getNro() {
+    public String getNro() {
         return nro_tarjeta;
     }
 
-    public void setNro(int nro) {
+    public void setNro(String nro) {
         this.nro_tarjeta = nro;
     }
 

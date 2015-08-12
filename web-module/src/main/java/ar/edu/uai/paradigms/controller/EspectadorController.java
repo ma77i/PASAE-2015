@@ -85,15 +85,6 @@ public class EspectadorController {
 		return espectadores;
 
 	}
-
-	//este metodo es de prueba para ver si funciona el wiremock , la invocacion de verif icandoDatosTarjeta no iria aca
-	/*@RequestMapping(method=RequestMethod.POST,value="/verificartarjeta", consumes = "application/json")
-	public @ResponseBody String verificarTarjeta (@RequestBody TransaccionDTO transaccionDTO){
-		LOGGER.debug("Received DTO: " + transaccionDTO);
-		//TransaccionDTO t=this.transaccionTranslator.translateToDTO(this.tarjetaService.verificandoDatosTarjeta(this.transaccionTranslator.translate(transaccionDTO)));
-        return t.getResultado();
-	}*/
-
 	@RequestMapping(method = RequestMethod.GET, value = "/busquedaespectadores/{input}")
 	public
 	@ResponseBody

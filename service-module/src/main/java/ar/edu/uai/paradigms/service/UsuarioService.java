@@ -29,7 +29,11 @@ public abstract class UsuarioService<T extends Usuario> {
 
 	@Transactional
 	public T saveUsuario(T usuario) {
-
+       /* BeanPropertyBindingResult result = new BeanPropertyBindingResult(usuario, "usuario");
+        ValidationUtils.invokeValidator(usuarioValidator, usuario, result);
+        if (result.hasErrors())
+            throw new CustomInvalidArgEx("xxx");
+        else*/
 		return usuarioDAO.create(usuario);
 	}
 

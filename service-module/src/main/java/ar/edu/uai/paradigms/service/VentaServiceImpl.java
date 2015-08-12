@@ -1,15 +1,20 @@
 package ar.edu.uai.paradigms.service;
 
+import java.util.Collection;
+import java.util.Date;
+
+import org.springframework.beans.factory.annotation.Required;
+import org.springframework.transaction.annotation.Transactional;
+
+
+
+
 import ar.edu.uai.model.Espectador;
 import ar.edu.uai.model.Funcion;
 import ar.edu.uai.model.Tarjeta;
 import ar.edu.uai.model.Venta;
 import ar.edu.uai.paradigms.dao.VentaDAO;
 import ar.edu.uai.paradigms.ex.CustomValidationEx;
-import org.springframework.beans.factory.annotation.Required;
-import org.springframework.transaction.annotation.Transactional;
-
-import java.util.Collection;
 
 public class VentaServiceImpl implements VentaService {
 
@@ -66,11 +71,12 @@ public class VentaServiceImpl implements VentaService {
 
 	@Transactional
 	public Venta saveVenta(Venta venta,long funcionId, String numeroTarjeta, String cvv, String username) {
-		Espectador e = this.espectadorService.retrieveUsuarioPorNombre(username);		
-//		this.agregarTarjetaParaVenta(venta, this.tarjetaService.);
+		Espectador e = this.espectadorService.retrieveEspectadorPorNombre(username);		
+
 		if(!tarjetaService.verificandoDatosTarjeta(numeroTarjeta, cvv)){
-			throw new CustomValidationEx("datos de tarjeta invalidos");
+			throw new CustomValidationEx("Datos de tarjeta invalidos");			
 		}
+		this.agregarTarjetaParaVenta(venta, new Tarjeta(numeroTarjeta,Integer.valueOf(cvv),new Date()));
 		this.agregarFuncionParaVenta(venta, this.funcionService.retrieveFuncion(funcionId));
 		this.agregarEspectadorParaVenta(venta, e);
 		this.agregarVentaParaEspectador(venta);
