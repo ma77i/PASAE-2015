@@ -4,6 +4,8 @@ package ar.edu.uai.paradigms.service;
 import ar.edu.uai.model.Tarjeta;
 import ar.edu.uai.model.Venta;
 import ar.edu.uai.paradigms.dao.TarjetaDAO;
+
+import org.json.JSONObject;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Required;
@@ -56,7 +58,7 @@ public class TarjetaServiceImpl implements TarjetaService {
     }
 
     @Override
-    public Venta verificandoDatosTarjeta(Venta transaccion) {
+    public Boolean verificandoDatosTarjeta(String numeroTarjeta, String cvv) {
 
         Logger LOGGER = LoggerFactory.getLogger(String.class);
 
@@ -74,13 +76,15 @@ public class TarjetaServiceImpl implements TarjetaService {
         restTemplate.setMessageConverters(messageConverters);
 
         Map<String, String> map = new HashMap<String, String>();
-        //map.put("0", venta.getNro_tarjeta());
-        map.put("1", transaccion.getCVV());
-        System.out.println("EL MAP :" + map.get("0") + map.get("1"));
+        map.put("0", "44444-44422-2222");
+        map.put("1", "4444");
+        
+        
+//        System.out.println("EL MAP :" + map.get("0") + map.get("1"));
         String mensaje = restTemplate.postForObject(serviceUrl + "concretarCompra", map, String.class);
         LOGGER.debug("El mensaje es !: " + mensaje);
         //transaccion.setResultado(mensaje);
-        return transaccion;
+        return true;
     }
 
     @Override

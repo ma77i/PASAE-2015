@@ -65,12 +65,12 @@ public class VentaServiceImpl implements VentaService {
 
 
 	@Transactional
-	public Venta saveVenta(Venta venta, Long espectaculoId, Long funcionId, Long espectadorId, String numeroTarjeta) {
-//		Espectador e = this.espectadorService.retrieveUsuario(espectaculoId);
-		
+	public Venta saveVenta(Venta venta,long funcionId, String numeroTarjeta, String cvv, String username) {
+		Espectador e = this.espectadorService.retrieveUsuarioPorNombre(username);		
 //		this.agregarTarjetaParaVenta(venta, this.tarjetaService.);
+		tarjetaService.verificandoDatosTarjeta(numeroTarjeta, cvv);		
 		this.agregarFuncionParaVenta(venta, this.funcionService.retrieveFuncion(funcionId));
-//		this.agregarEspectadorParaVenta(venta, e);
+		this.agregarEspectadorParaVenta(venta, e);
 		this.agregarVentaParaEspectador(venta);
 		return ventaDAO.create(venta);
 	}

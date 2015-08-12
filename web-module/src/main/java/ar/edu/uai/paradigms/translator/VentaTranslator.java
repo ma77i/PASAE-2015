@@ -80,7 +80,7 @@ public class VentaTranslator {
 	}
 	
 	public VentaDTO translateMontoToDTO(Venta venta){
-		return new VentaDTO(venta.getMonto());
+		return new VentaDTO(venta.getMonto(), null, null, null, null, null);
 	}
 	
 	

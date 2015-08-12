@@ -1,10 +1,13 @@
 package ar.edu.uai.paradigms.controller;
 
 import ar.edu.uai.model.Venta;
+import ar.edu.uai.paradigms.authentication.SimpleAuthenticationProvider;
+import ar.edu.uai.paradigms.dto.SectorDTO;
 import ar.edu.uai.paradigms.dto.VentaDTO;
 import ar.edu.uai.paradigms.service.VentaService;
 import ar.edu.uai.paradigms.translator.VentaTranslator;
 import ar.edu.uai.paradigms.validators.VentaDTOValidator;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
@@ -14,6 +17,7 @@ import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 
 import javax.validation.Valid;
+
 import java.util.ArrayList;
 import java.util.Collection;
 
@@ -39,11 +43,11 @@ public class VentaController {
 		binder.setValidator(new VentaDTOValidator());
 	}
 
-	@RequestMapping(method = RequestMethod.POST, consumes = "application/json")
+	@RequestMapping(method = RequestMethod.POST)
 	public @ResponseBody VentaDTO createVenta(@RequestBody  VentaDTO ventaDTO) {
 		LOGGER.debug("Received DTO: " + ventaDTO);
 		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
-		return this.ventaTranslator.translateToDTO(this.ventaService.saveVenta(this.ventaTranslator.translate(ventaDTO), ventaDTO.getEspectaculoId(), ventaDTO.getFuncionId(), ventaDTO.getEspectaculoId(), ventaDTO.getNumeroTarjeta()));
+		return this.ventaTranslator.translateToDTO(this.ventaService.saveVenta(this.ventaTranslator.translate(ventaDTO),ventaDTO.getFuncionId(),ventaDTO.getNumeroTarjeta(),ventaDTO.getCvv(),SimpleAuthenticationProvider.getUserLogged()));
 	}
 
 	@RequestMapping(method = RequestMethod.GET, value = "/{identifier}")

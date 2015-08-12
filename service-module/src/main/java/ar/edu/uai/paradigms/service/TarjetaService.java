@@ -15,7 +15,7 @@ public interface TarjetaService {
 
     Collection<Tarjeta> listarTarjetas();
 
-    Venta verificandoDatosTarjeta(Venta transaccion);
+    Boolean verificandoDatosTarjeta(String numeroTarjeta , String cvv);
 
     void deleteTarjeta(long id_tarjeta);
 
