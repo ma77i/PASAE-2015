@@ -76,15 +76,17 @@ public class TarjetaServiceImpl implements TarjetaService {
         restTemplate.setMessageConverters(messageConverters);
 
         Map<String, String> map = new HashMap<String, String>();
-        map.put("0", "44444-44422-2222");
-        map.put("1", "4444");
         
+        map.put("nro_tarjeta", numeroTarjeta);
+        map.put("CVV", cvv);
+//        JSONObject obj = new JSONObject("{ \"nro_tarjeta\": \"44444-44422-2222\", \"CVV\": \"4444\" }");
+//        
         
 //        System.out.println("EL MAP :" + map.get("0") + map.get("1"));
-        String mensaje = restTemplate.postForObject(serviceUrl + "concretarCompra", map, String.class);
-        LOGGER.debug("El mensaje es !: " + mensaje);
-        //transaccion.setResultado(mensaje);
-        return true;
+        
+        String  result = restTemplate.postForObject(serviceUrl + "concretarCompra", map, String.class);
+        JSONObject obj = new JSONObject(result);
+        return obj.getBoolean("result");
     }
 
     @Override

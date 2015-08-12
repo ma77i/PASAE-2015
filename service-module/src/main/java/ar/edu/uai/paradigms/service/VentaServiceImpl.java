@@ -68,7 +68,9 @@ public class VentaServiceImpl implements VentaService {
 	public Venta saveVenta(Venta venta,long funcionId, String numeroTarjeta, String cvv, String username) {
 		Espectador e = this.espectadorService.retrieveUsuarioPorNombre(username);		
 //		this.agregarTarjetaParaVenta(venta, this.tarjetaService.);
-		tarjetaService.verificandoDatosTarjeta(numeroTarjeta, cvv);		
+		if(!tarjetaService.verificandoDatosTarjeta(numeroTarjeta, cvv)){
+			throw new CustomValidationEx ("datos de tarjeta invalidos");			
+		}
 		this.agregarFuncionParaVenta(venta, this.funcionService.retrieveFuncion(funcionId));
 		this.agregarEspectadorParaVenta(venta, e);
 		this.agregarVentaParaEspectador(venta);
