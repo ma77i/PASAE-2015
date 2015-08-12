@@ -1,11 +1,13 @@
 package ar.edu.uai.paradigms.authentication;
 
 import ar.edu.uai.paradigms.service.LoginService;
+
 import org.springframework.security.authentication.AuthenticationProvider;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
+import org.springframework.security.core.context.SecurityContextHolder;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -43,6 +45,11 @@ public class SimpleAuthenticationProvider implements AuthenticationProvider {
 //        } else {
 //            return null;
 //        }
+    }
+    
+    public static String getUserLogged(){
+    	Authentication auth = SecurityContextHolder.getContext().getAuthentication();    	
+    	return auth.isAuthenticated() ? auth.getPrincipal().toString() : null;
     }
 
     @Override

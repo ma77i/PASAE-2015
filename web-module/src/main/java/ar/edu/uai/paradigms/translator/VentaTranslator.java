@@ -11,6 +11,8 @@ import ar.edu.uai.paradigms.service.TarjetaService;
 import java.util.ArrayList;
 import java.util.Collection;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 public class VentaTranslator {
 
 	//private final static String serviceUrl = "http://localhost:8080/api/example";
@@ -72,9 +74,15 @@ public class VentaTranslator {
 	}
 
 	public VentaDTO translateToDTO(Venta venta) {
-		/*return new VentaDTO(venta.getMonto(), venta.getCostoAdicional(), venta.getFechaVenta(), venta.getCoutas(), venta.getFuncion().getEspectaculo().getId(), venta.getFuncion()
-				.getId(), venta.getComprador().getId(),venta.getTarjeta().getId());*/
+//		return new VentaDTO(venta.getId(),venta.getMonto(),venta.getCoutas(),venta.getFuncion(),null,venta.getTarjeta().getId(),venta.getTarjeta().getCvv(),null);
 		return null;
+		
 	}
+	
+	public VentaDTO translateMontoToDTO(Venta venta){
+		return new VentaDTO(venta.getMonto(), null, null, null, null, null);
+	}
+	
+	
 
 }

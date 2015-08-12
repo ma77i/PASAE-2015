@@ -8,7 +8,8 @@ import ar.edu.uai.model.Venta;
 import java.util.Collection;
 
 public interface VentaService {
-	public Venta saveVenta(Venta venta, Long espectaculoId, Long funcionId, Long espectadorId, Long tarjetaId);
+	
+	public Venta saveVenta(Venta venta,long funcionId, String numeroTarjeta, String cvv, String username);
 	public Venta retrieveVenta(long identifier);
 	public Collection<Venta> listarVentas();
 	public Collection<Venta> listarComprasDeEspectador(long id_espectador);

@@ -50,4 +50,19 @@ public class UsuarioDAOImplHibernateJPA<T> extends GenericDaoHibernateJPA<T> imp
     }
 
 
+
+	@Override
+	public Usuario retrieveByUserName(String username) {
+        try {
+            Query consulta = this.entityManager.createQuery("select u.email from Usuario as u where u.email=:email");
+            consulta.setParameter("email", username);
+            return (Usuario) consulta.getSingleResult();
+        }
+        catch (NoResultException e) {
+            System.out.println(" NO HAY UN USUARIO CON ESE MAIL");
+            return null;
+        }
+	}
+
+
 }

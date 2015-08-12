@@ -15,23 +15,29 @@ public class VentaDTO {
 	private Long espectaculoId;
 	private Long funcionId;
 	private Long espectadorId;
-	private Long tarjetaId;
+	private String numeroTarjeta;
 	private String cvv;
 	private Collection<AsientoDTO> asientos;
 
 	@JsonCreator
-	public VentaDTO(@JsonProperty("id") Long id, @JsonProperty("monto") Float monto,@JsonProperty("cuotas") Integer cuotas, @JsonProperty("funcionId") Long funcionId,
-					@JsonProperty("espectadorId") Long espectadorId, @JsonProperty("tarjetaId") Long tarjetaId, @JsonProperty("cvv") String cvv, @JsonProperty("asientos") Collection<AsientoDTO> asientos) {
+	public VentaDTO(@JsonProperty("monto") Float monto,
+					@JsonProperty("cuotas") Integer cuotas, 
+					@JsonProperty("funcionId") Long funcionId,
+					@JsonProperty("numeroTarjeta") String numeroTarjeta,
+					@JsonProperty("cvv") String cvv,
+					@JsonProperty("asientos") Collection<AsientoDTO> asientos) {
 		super();
-		this.setId(id);
+//		this.setId(id);
 		this.setMonto(monto);
 		this.setCuotas(cuotas);
 		this.setFuncionId(funcionId);
-		this.setEspectadorId(espectadorId);
-		this.setTarjetaId(tarjetaId);
+//		this.setEspectadorId(espectadorId);
+		this.setNumeroTarjeta(numeroTarjeta);
 		this.setCvv(cvv);
 		this.setAsientos(asientos);
 	}
+
+
 
 	public Long getId() {
 		return id;
@@ -65,13 +71,6 @@ public class VentaDTO {
 		this.espectadorId = espectadorId;
 	}
 
-	public Long getTarjetaId() {
-		return tarjetaId;
-	}
-
-	public void setTarjetaId(Long tarjetaId) {
-		this.tarjetaId = tarjetaId;
-	}
 
 	public Float getMonto() {
 		return monto;
@@ -105,8 +104,16 @@ public class VentaDTO {
 		this.asientos = asientos;
 	}
 
+	public String getNumeroTarjeta() {
+		return numeroTarjeta;
+	}
+
+	public void setNumeroTarjeta(String numeroTarjeta) {
+		this.numeroTarjeta = numeroTarjeta;
+	}
+
 	public String toString() {
-		return "VentaDTO [monto=" + monto + ",cuotas=" + cuotas + ",comprador=" + espectadorId + ",espectaculoId=" + espectaculoId + ",tarjetaId=" + tarjetaId + "funcionId=" + funcionId + "]";
+		return "VentaDTO [monto=" + monto + ",cuotas=" + cuotas + ",comprador=" + espectadorId + ",espectaculoId=" + espectaculoId + ",tarjetaId=" + numeroTarjeta + "funcionId=" + funcionId + "]";
 
 	}
 

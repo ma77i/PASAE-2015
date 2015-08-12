@@ -1,17 +1,23 @@
 package ar.edu.uai.paradigms.controller;
 
 import ar.edu.uai.model.Venta;
+import ar.edu.uai.paradigms.authentication.SimpleAuthenticationProvider;
+import ar.edu.uai.paradigms.dto.SectorDTO;
 import ar.edu.uai.paradigms.dto.VentaDTO;
 import ar.edu.uai.paradigms.service.VentaService;
 import ar.edu.uai.paradigms.translator.VentaTranslator;
 import ar.edu.uai.paradigms.validators.VentaDTOValidator;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 
 import javax.validation.Valid;
+
 import java.util.ArrayList;
 import java.util.Collection;
 
@@ -24,6 +30,7 @@ public class VentaController {
 	private VentaService ventaService;
 
 	private VentaTranslator ventaTranslator;
+	
 
 	public VentaController(VentaService ventaService, VentaTranslator ventaTranslator) {
 		super();
@@ -36,11 +43,11 @@ public class VentaController {
 		binder.setValidator(new VentaDTOValidator());
 	}
 
-	@RequestMapping(method = RequestMethod.POST, consumes = "application/json")
-	public @ResponseBody VentaDTO createVenta(@RequestBody @Valid VentaDTO ventaDTO) {
+	@RequestMapping(method = RequestMethod.POST)
+	public @ResponseBody VentaDTO createVenta(@RequestBody  VentaDTO ventaDTO) {
 		LOGGER.debug("Received DTO: " + ventaDTO);
-
-		return this.ventaTranslator.translateToDTO(this.ventaService.saveVenta(this.ventaTranslator.translate(ventaDTO), ventaDTO.getEspectaculoId(), ventaDTO.getFuncionId(), ventaDTO.getEspectaculoId(), ventaDTO.getTarjetaId()));
+		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+		return this.ventaTranslator.translateToDTO(this.ventaService.saveVenta(this.ventaTranslator.translate(ventaDTO),ventaDTO.getFuncionId(),ventaDTO.getNumeroTarjeta(),ventaDTO.getCvv(),SimpleAuthenticationProvider.getUserLogged()));
 	}
 
 	@RequestMapping(method = RequestMethod.GET, value = "/{identifier}")
@@ -59,8 +66,10 @@ public class VentaController {
 		return misCompras;
 	}
 
-	@RequestMapping(method = RequestMethod.POST, value = "/{idsector}/{cantidadasientos}")
-	public Float calcularCostoVenta(@PathVariable Long idsector, @PathVariable Integer cantidadasientos) {
-		return this.ventaService.calcularMontoFinal(idsector, cantidadasientos);
+	@RequestMapping(method = RequestMethod.GET, value = "/{idsector}/{cantidadasientos}")
+	public @ResponseBody VentaDTO calcularCostoVenta(@PathVariable Long idsector, @PathVariable Integer cantidadasientos) {
+		Venta venta = new Venta();
+		venta.setMonto(ventaService.calcularMontoFinal(idsector, cantidadasientos));
+		return this.ventaTranslator.translateMontoToDTO(venta);
 	}
 }
