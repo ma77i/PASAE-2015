@@ -1,6 +1,7 @@
 package ar.edu.uai.model;
 
 import javax.persistence.*;
+import java.util.Collection;
 import java.util.Date;
 
 @Entity
@@ -10,13 +11,13 @@ public class Venta {
 
 	}
 
-	public Venta(Float monto, Float costoAdicional, Date fechaVenta, Integer coutas, String cvv) {
+	public Venta(Float monto, Integer coutas, String cvv, Collection<Asiento> asientos) {
 		this.monto = monto;
-		this.costoAdicional = costoAdicional;
-		this.fechaVenta = fechaVenta;
+		//this.costoAdicional = costoAdicional;
+		//this.fechaVenta = fechaVenta;
 		this.coutas = coutas;
 		this.CVV = cvv;
-		//this.asientos=asientos;
+		this.asientos = asientos;
 	}
 
 
@@ -49,8 +50,8 @@ public class Venta {
     @ManyToOne
 	private Espectador comprador;
 
-	/*@OneToMany
-	private Collection<Asiento> asientos;*/
+	@OneToMany
+	private Collection<Asiento> asientos;
 
 
 	/**

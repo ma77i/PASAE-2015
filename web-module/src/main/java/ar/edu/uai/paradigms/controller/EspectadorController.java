@@ -107,8 +107,8 @@ public class EspectadorController {
 
 	}
 
-	@RequestMapping(method = RequestMethod.GET, value = "/{email}")
-	public Boolean existeEmail(@PathVariable String email) {
+	@RequestMapping(method = RequestMethod.GET, value = "/verificarexistencia/{email}")
+	public String existeEmail(@PathVariable String email) {
 
 		return this.espectadorService.existeUsuario(email);
 
