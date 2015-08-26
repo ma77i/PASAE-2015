@@ -2,9 +2,7 @@ package ar.edu.uai.paradigms.service;
 
 
 import ar.edu.uai.model.Tarjeta;
-import ar.edu.uai.model.Venta;
 import ar.edu.uai.paradigms.dao.TarjetaDAO;
-
 import org.json.JSONObject;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -13,6 +11,7 @@ import org.springframework.http.converter.FormHttpMessageConverter;
 import org.springframework.http.converter.HttpMessageConverter;
 import org.springframework.http.converter.StringHttpMessageConverter;
 import org.springframework.http.converter.json.MappingJackson2HttpMessageConverter;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.client.RestTemplate;
 
 import java.util.*;
@@ -94,7 +93,7 @@ public class TarjetaServiceImpl implements TarjetaService {
         this.tarjetaDAO.delete(id_tarjeta);
     }
 
-	@Override
+	@Transactional
 	public Tarjeta retrieveTarjetaByNumero(String numeroTarjeta, Integer cvv, Date date) {
 		// TODO Auto-generated method stub
 		return this.tarjetaDAO.retrieveTarjetaByNumero(numeroTarjeta,  cvv,  date);		
