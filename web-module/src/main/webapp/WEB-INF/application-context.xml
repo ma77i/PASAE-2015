@@ -119,6 +119,7 @@
 	<bean id="ventaController" class="ar.edu.uai.paradigms.controller.VentaController">
 		<constructor-arg name="ventaService" ref="ventaService"/>
 		<constructor-arg name="ventaTranslator" ref="ventaTranslator"/>
+        <constructor-arg name="compraTranslator" ref="compraTranslator"/>
 	</bean>
 	
 	<bean id="ventaTranslator" class="ar.edu.uai.paradigms.translator.VentaTranslator">
@@ -243,4 +244,6 @@
     <bean id="sectoresTranslator" class="ar.edu.uai.paradigms.translator.SectoresTranslator">
         <constructor-arg name="sectorTranslator" ref="sectorTranslator"/>
     </bean>
+
+    <bean id="compraTranslator" class="ar.edu.uai.paradigms.translator.CompraTranslator"/>
 </beans>

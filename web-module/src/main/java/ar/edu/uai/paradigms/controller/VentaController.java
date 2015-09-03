@@ -2,8 +2,10 @@ package ar.edu.uai.paradigms.controller;
 
 import ar.edu.uai.model.Venta;
 import ar.edu.uai.paradigms.authentication.SimpleAuthenticationProvider;
+import ar.edu.uai.paradigms.dto.CompraDTO;
 import ar.edu.uai.paradigms.dto.VentaDTO;
 import ar.edu.uai.paradigms.service.VentaService;
+import ar.edu.uai.paradigms.translator.CompraTranslator;
 import ar.edu.uai.paradigms.translator.VentaTranslator;
 import ar.edu.uai.paradigms.validators.VentaDTOValidator;
 import org.slf4j.Logger;
@@ -26,12 +28,15 @@ public class VentaController {
 	private VentaService ventaService;
 
 	private VentaTranslator ventaTranslator;
+
+	private CompraTranslator compraTranslator;
 	
 
-	public VentaController(VentaService ventaService, VentaTranslator ventaTranslator) {
+	public VentaController(VentaService ventaService, VentaTranslator ventaTranslator, CompraTranslator compraTranslator) {
 		super();
 		this.ventaService = ventaService;
 		this.ventaTranslator = ventaTranslator;
+		this.compraTranslator=compraTranslator;
 	}
 
 	@InitBinder
@@ -54,12 +59,12 @@ public class VentaController {
 	@RequestMapping(method = RequestMethod.GET, value = "/miscompras/{username:.+}")
 	public
 	@ResponseBody
-	Collection<VentaDTO> misCompras(@PathVariable String username) {
-		Collection<VentaDTO> misCompras = new ArrayList<VentaDTO>();
+	Collection<CompraDTO> misCompras(@PathVariable String username) {
+		Collection<CompraDTO> misCompras = new ArrayList<CompraDTO>();
 
 		Collection<Venta> compras = (this.ventaService.listarComprasDeEspectador(username));
 		for (Venta v : compras) {
-			misCompras.add(ventaTranslator.translateToDTO(v));
+			misCompras.add(this.compraTranslator.translateToDTO(v));
 		}
 		return misCompras;
 	}
