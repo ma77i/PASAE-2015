@@ -61,13 +61,13 @@ public class EspectadorController {
 		return this.espectadorTranslator.translateToDTO(this.espectadorService.retrieveUsuario(identifier));
 	}
 
-	@RequestMapping(value = "/{identifier}/cambiardatospersonales", method = RequestMethod.POST, consumes = "application/json")
+	@RequestMapping(value = "/cambiardatospersonales/{identifier}", method = RequestMethod.POST, consumes = "application/json")
 	public @ResponseBody EspectadorDTO cambiarDatosPersonales(@RequestBody EspectadorDTO espectadorDTO) {
 		LOGGER.debug("Received DTO: " + espectadorDTO);
 		return this.espectadorTranslator.translateToDTO(this.espectadorService.modificarDatosPersonales(this.espectadorService.retrieveUsuario(espectadorDTO.getId()), espectadorDTO.getNombre(), espectadorDTO.getApellido(), espectadorDTO.getPassword()));
 	}
 
-	@RequestMapping(value = "/{identifier}/cambiarestado", method = RequestMethod.POST, consumes = "application/json")
+	@RequestMapping(value = "/cambiarestado/{identifier}", method = RequestMethod.POST, consumes = "application/json")
 	public
 	@ResponseBody
 	EspectadorDTO cambiarEstado(@RequestBody EspectadorDTO espectadorDTO) {

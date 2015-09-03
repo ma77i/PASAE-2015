@@ -12,7 +12,8 @@ public interface VentaService {
 	public Venta saveVenta(Venta venta,long funcionId, String numeroTarjeta, String cvv, String username);
 	public Venta retrieveVenta(long identifier);
 	public Collection<Venta> listarVentas();
-	public Collection<Venta> listarComprasDeEspectador(long id_espectador);
+
+	public Collection<Venta> listarComprasDeEspectador(String username);
 
 	public Float calcularMontoFinal(Long id_sector, Integer cantidad_asientos);
 	public Float calcularMontoNeto(long id_sector, long id_espectaculo);

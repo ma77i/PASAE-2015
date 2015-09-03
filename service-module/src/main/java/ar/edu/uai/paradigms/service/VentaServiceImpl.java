@@ -10,7 +10,6 @@ import org.springframework.beans.factory.annotation.Required;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.Collection;
-import java.util.Date;
 
 public class VentaServiceImpl implements VentaService {
 
@@ -74,8 +73,9 @@ public class VentaServiceImpl implements VentaService {
 		if(!tarjetaService.verificandoDatosTarjeta(numeroTarjeta, cvv)){
 			throw new CustomValidationEx("Datos de tarjeta invalidos");			
 		}
-		this.agregarTarjetaParaVenta(venta,new Tarjeta(numeroTarjeta,Integer.valueOf(cvv),new Date()));
+		//this.agregarTarjetaParaVenta(venta,new Tarjeta(numeroTarjeta,Integer.valueOf(cvv),new Date()));
 		this.agregarFuncionParaVenta(venta, this.funcionService.retrieveFuncion(funcionId));
+
 		this.agregarEspectadorParaVenta(venta, e);
 		this.agregarVentaParaEspectador(venta);
 		return ventaDAO.create(venta);
@@ -94,8 +94,8 @@ public class VentaServiceImpl implements VentaService {
 	}
 
 	@Override
-	public Collection<Venta> listarComprasDeEspectador(long id_espectador) {
-		return ventaDAO.listarComprasDeEspectador(id_espectador);
+	public Collection<Venta> listarComprasDeEspectador(String username) {
+		return ventaDAO.listarComprasDeEspectador(username);
 	}
 
 	@Override
@@ -136,8 +136,8 @@ public class VentaServiceImpl implements VentaService {
 
 	@Override
 	public void agregarTarjetaParaVenta(Venta venta, Tarjeta tarjeta) {
-		venta.setTarjeta(tarjeta);
-		tarjeta.getVentas().add(venta);
+		//venta.setTarjeta(tarjeta);
+		//tarjeta.getVentas().add(venta);
 	}
 
 

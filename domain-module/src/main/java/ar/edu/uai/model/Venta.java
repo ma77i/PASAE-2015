@@ -34,23 +34,24 @@ public class Venta {
 
 	private String CVV;
 
-    @ManyToOne (cascade=CascadeType.MERGE)
-	private Tarjeta tarjeta;
+	// @ManyToOne (cascade=CascadeType.PERSIST)
+//	private Tarjeta tarjeta;
 
 	private Integer coutas;
 	
 	@ManyToOne
 	private Funcion funcion;
-	
-/*	@OneToMany
-	@JoinTable(name = "VENT_ASI", joinColumns = @JoinColumn(name = "VENT_ID"), inverseJoinColumns = @JoinColumn(name = "ASI_ID"))
-	private Collection<Asiento> asientos;
-	//One to many unidireccional,la venta conoce los asientos unicamente.
-*/	
-    @ManyToOne
+
+
+	/*	@OneToMany
+        @JoinTable(name = "VENT_ASI", joinColumns = @JoinColumn(name = "VENT_ID"), inverseJoinColumns = @JoinColumn(name = "ASI_ID"))
+        private Collection<Asiento> asientos;
+        //One to many unidireccional,la venta conoce los asientos unicamente.
+    */
+	@ManyToOne(cascade = CascadeType.MERGE)
 	private Espectador comprador;
 
-	@OneToMany
+	@OneToMany(cascade = CascadeType.PERSIST)
 	private Collection<Asiento> asientos;
 
 
@@ -92,13 +93,13 @@ public class Venta {
 		this.fechaVenta = fechaVenta;
 	}
 
-	public Tarjeta getTarjeta() {
+	/*public Tarjeta getTarjeta() {
 		return tarjeta;
 	}
 
 	public void setTarjeta(Tarjeta tarjeta) {
 		this.tarjeta = tarjeta;
-	}
+	}*/
 
 	public int getCoutas() {
 		return coutas;
@@ -124,13 +125,13 @@ public class Venta {
 		this.comprador = comprador;
 	}
 
-   /* public Collection<Asiento> getAsientos() {
+	public Collection<Asiento> getAsientos() {
 		return asientos;
 	}
 
 	public void setAsientos(Collection<Asiento> asientos) {
 		this.asientos = asientos;
-	}*/
+	}
 
 
 	public String getCVV() {

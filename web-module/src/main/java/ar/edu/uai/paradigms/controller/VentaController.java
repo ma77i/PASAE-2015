@@ -2,21 +2,17 @@ package ar.edu.uai.paradigms.controller;
 
 import ar.edu.uai.model.Venta;
 import ar.edu.uai.paradigms.authentication.SimpleAuthenticationProvider;
-import ar.edu.uai.paradigms.dto.SectorDTO;
 import ar.edu.uai.paradigms.dto.VentaDTO;
 import ar.edu.uai.paradigms.service.VentaService;
 import ar.edu.uai.paradigms.translator.VentaTranslator;
 import ar.edu.uai.paradigms.validators.VentaDTOValidator;
-
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.security.core.Authentication;
-import org.springframework.security.core.context.SecurityContextHolder;
-
-import javax.validation.Valid;
 
 import java.util.ArrayList;
 import java.util.Collection;
@@ -55,11 +51,13 @@ public class VentaController {
 		return this.ventaTranslator.translateToDTO(this.ventaService.retrieveVenta(identifier));
 	}
 
-	@RequestMapping(method = RequestMethod.GET, value = "/{identifier}/miscompras")
-	public @ResponseBody Collection<VentaDTO> misCompras(@PathVariable long identifier) {
+	@RequestMapping(method = RequestMethod.GET, value = "/miscompras/{username:.+}")
+	public
+	@ResponseBody
+	Collection<VentaDTO> misCompras(@PathVariable String username) {
 		Collection<VentaDTO> misCompras = new ArrayList<VentaDTO>();
 
-		Collection<Venta> compras = (this.ventaService.listarComprasDeEspectador(identifier));
+		Collection<Venta> compras = (this.ventaService.listarComprasDeEspectador(username));
 		for (Venta v : compras) {
 			misCompras.add(ventaTranslator.translateToDTO(v));
 		}

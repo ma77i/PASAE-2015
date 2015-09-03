@@ -18,11 +18,11 @@
     </mvc:annotation-driven>
 
     <context:annotation-config/>
-    
-    
+
 
     <sec:http entry-point-ref="restAuthenticationEntryPoint">
         <sec:intercept-url pattern="/administrador/*" access="ROLE_ADMINISTRADOR"/>
+
         <sec:intercept-url pattern="/venta/*" access="ROLE_ESPECTADOR,ROLE_ADMINISTRADOR,ROLE_EMPLEADO"/>
         <sec:intercept-url pattern="/empleado/*" access="ROLE_ADMINISTRADOR"/>
         <sec:intercept-url pattern="/teatro/*" access="ROLE_ADMINISTRADOR"/>
@@ -34,6 +34,7 @@
     <bean id="logoutSuccessHandler" class="ar.edu.uai.paradigms.authentication.LogoutSuccessHandler" >
 	    <constructor-arg value="/logout" />
 	</bean>
+
 
     <sec:authentication-manager alias="authenticationManager">
         <sec:authentication-provider ref="simpleAuthenticationProvider"/>

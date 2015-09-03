@@ -48,7 +48,7 @@ public class EmpleadoController  {
 		return this.empleadoTranslator.translateToDTO(this.empleadoService.retrieveUsuario(identifier));
 	}
 
-	@RequestMapping(value = "/{identifier}/cambiardatospersonales", method = RequestMethod.POST, consumes = "application/json")
+	@RequestMapping(value = "/cambiardatospersonales/{identifier}", method = RequestMethod.POST, consumes = "application/json")
 	public @ResponseBody EmpleadoDTO cambiarDatosPersonales(@RequestBody EmpleadoDTO empleadoDTO) {
 		LOGGER.debug("Received DTO: " + empleadoDTO);
 		return this.empleadoTranslator.translateToDTO(this.empleadoService.modificarDatosPersonales(this.empleadoService.retrieveUsuario(empleadoDTO.getId()), empleadoDTO.getNombre(), empleadoDTO.getApellido(), empleadoDTO.getPassword()));
@@ -76,7 +76,7 @@ public class EmpleadoController  {
 
 	}
 
-	@RequestMapping(value = "/{identifier}/cambiarestado", method=RequestMethod.POST, consumes = "application/json")
+	@RequestMapping(value = "/cambiarestado/{identifier}", method = RequestMethod.POST, consumes = "application/json")
 	public @ResponseBody
 	EmpleadoDTO cambiarEstado (@RequestBody EmpleadoDTO empleadoDTO) {
 

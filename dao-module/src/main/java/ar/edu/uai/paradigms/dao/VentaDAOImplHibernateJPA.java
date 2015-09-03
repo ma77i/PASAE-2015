@@ -25,10 +25,10 @@ public class VentaDAOImplHibernateJPA  extends GenericDaoHibernateJPA<Venta> imp
 	 */
 
 	@Override
-	public Collection<Venta> listarComprasDeEspectador(long id_espectador) {
+	public Collection<Venta> listarComprasDeEspectador(String username) {
 		try {
-			Query consulta = this.entityManager.createQuery("from Venta as v where v.comprador.id=?");
-			consulta.setParameter(1, id_espectador);
+			Query consulta = this.entityManager.createQuery("from Venta as v where v.comprador.email=?");
+			consulta.setParameter(1, username);
 			return consulta.getResultList();
 		}
 		catch (EmptyResultDataAccessException e) {

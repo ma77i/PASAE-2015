@@ -17,7 +17,7 @@ public class Asiento {
 
 	private Boolean ocupado;
 
-	@ManyToOne
+	@ManyToOne(cascade = CascadeType.PERSIST)
 	private Fila fila;
 
 	public Asiento(Integer numero, Fila fila) {

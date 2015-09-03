@@ -46,7 +46,7 @@ public class AdministradorController {
 		return this.administradorTranslator.translateToDTO((Administrador) this.administradorService.retrieveUsuario(identifier));
 	}
 
-	@RequestMapping(value = "/{identifier}/cambiardatospersonales", method = RequestMethod.POST, consumes = "application/json")
+	@RequestMapping(value = "/cambiardatospersonales/{identifier}", method = RequestMethod.POST, consumes = "application/json")
 	public
 	@ResponseBody
 	AdministradorDTO cambiarDatosPersonales(@RequestBody AdministradorDTO administradorDTO) {
