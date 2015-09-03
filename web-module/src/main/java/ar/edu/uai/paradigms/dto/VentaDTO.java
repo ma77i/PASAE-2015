@@ -19,14 +19,16 @@ public class VentaDTO {
 	private Collection<AsientoDTO> asientos;
 
 	@JsonCreator
-	public VentaDTO(@JsonProperty("monto") Float monto,
+	public VentaDTO(
+			@JsonProperty("id") Long id,
+			@JsonProperty("monto") Float monto,
 					@JsonProperty("cuotas") Integer cuotas, 
 					@JsonProperty("funcionId") Long funcionId,
 					@JsonProperty("numeroTarjeta") String numeroTarjeta,
 					@JsonProperty("cvv") String cvv,
 					@JsonProperty("asientos") Collection<AsientoDTO> asientos) {
 		super();
-//		this.setId(id);
+		this.setId(id);
 		this.setMonto(monto);
 		this.setCuotas(cuotas);
 		this.setFuncionId(funcionId);
@@ -104,7 +106,7 @@ public class VentaDTO {
 	}
 
 	public String toString() {
-		return "VentaDTO [monto=" + monto + ",cuotas=" + cuotas + ",comprador=" + espectadorId + ",tarjetaId=" + numeroTarjeta + "funcionId=" + funcionId + "]";
+		return "VentaDTO [monto=" + monto + ",cuotas=" + cuotas + ",comprador=" + espectadorId + "funcionId=" + funcionId + "]";
 
 	}
 

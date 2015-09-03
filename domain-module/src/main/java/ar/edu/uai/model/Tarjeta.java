@@ -1,9 +1,9 @@
 package ar.edu.uai.model;
 
-import javax.persistence.*;
-
-import java.util.ArrayList;
-import java.util.Collection;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 import java.util.Date;
 
 @Entity
@@ -19,11 +19,11 @@ public class Tarjeta {
 
 	private Date fecha_vencimiento;
 
-	@OneToMany(mappedBy="tarjeta")
-	private Collection<Venta> ventas;
+	/*@OneToMany(mappedBy="tarjeta")
+	private Collection<Venta> ventas;*/
 
-	@ManyToOne
-	private Espectador comprador;
+//	@ManyToOne
+//	private Espectador comprador;
 
 
 	public Tarjeta() {
@@ -34,7 +34,7 @@ public class Tarjeta {
 		this.nro_tarjeta=nro_tarjeta;
 		this.cvv=cvv;
 		this.fecha_vencimiento=fecha_vencimiento;
-		this.ventas = new ArrayList<Venta>();
+		//this.ventas = new ArrayList<Venta>();
 	}
 
 
@@ -70,11 +70,11 @@ public class Tarjeta {
 		this.fecha_vencimiento = fecha_vencimiento;
 	}
 
-	public Collection<Venta> getVentas() {
+	/*public Collection<Venta> getVentas() {
 		return ventas;
 	}
 
 	public void setVentas(Collection<Venta> ventas) {
 		this.ventas = ventas;
-	}
+	}*/
 }

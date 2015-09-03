@@ -52,15 +52,18 @@ public class VentaTranslator {
 	}
 
 	public VentaDTO translateToDTO(Venta venta) {
-//		return new VentaDTO(venta.getId(),venta.getMonto(),venta.getCoutas(),venta.getFuncion(),null,venta.getTarjeta().getId(),venta.getTarjeta().getCvv(),null);
-		return null;
+		Collection<AsientoDTO> asientosDTO = new ArrayList<AsientoDTO>();
+		for (Asiento asiento : venta.getAsientos()) {
+			asientosDTO.add(new AsientoDTO(asiento.getId(), asiento.getFila().getId(), asiento.getNumero(), asiento.isOcupado()));
+		}
+		return new VentaDTO(venta.getId(), venta.getMonto(), venta.getCoutas(), venta.getFuncion().getId(), null, null, asientosDTO);
+
 		
 	}
 	
 	public VentaDTO translateMontoToDTO(Venta venta){
-		return new VentaDTO(venta.getMonto(), null, null, null, null, null);
+		return new VentaDTO(venta.getId(), venta.getMonto(), null, null, null, null, null);
 	}
-	
-	
+
 
 }
