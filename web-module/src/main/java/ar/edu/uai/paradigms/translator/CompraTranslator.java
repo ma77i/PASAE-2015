@@ -21,7 +21,7 @@ public class CompraTranslator {
             asientosDTO.add(new AsientoDTO(asiento.getId(), asiento.getFila().getId(), asiento.getNumero(), asiento.isOcupado()));
         }
         FuncionDTO funcionDTO= new FuncionDTO(venta.getFuncion().getId(),venta.getFuncion().getFecha(),venta.getFuncion().getHora(),venta.getFuncion().getEspectaculo().getId());
-        return new CompraDTO(venta.getId(), venta.getMonto(), funcionDTO, venta.getFuncion().getEspectaculo().getNombre(),asientosDTO);
+        return new CompraDTO(venta.getId(), venta.getMonto(), funcionDTO, venta.getFuncion().getEspectaculo().getNombre(),asientosDTO,venta.getFechaVenta(),venta.getFechaVenta());
 
 
     }

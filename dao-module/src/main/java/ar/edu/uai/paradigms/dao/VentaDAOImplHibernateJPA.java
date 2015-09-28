@@ -70,6 +70,11 @@ public class VentaDAOImplHibernateJPA  extends GenericDaoHibernateJPA<Venta> imp
 		}
 	}
 
+	@Override
+	public Collection<Venta> listarCantidadVentasPorMes() {
+		Query consulta = this.entityManager.createQuery("from Venta v order by month(v.fechaVenta)");
+		return consulta.getResultList();
+	}
 
 
 	//AGREGO COMENTARIO
