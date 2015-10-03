@@ -89,7 +89,7 @@ public class VentaServiceImpl implements VentaService {
 
 	@Override
 	public Collection<Venta> listarVentas() {
-		return ventaDAO.list();
+		return ventaDAO.listarCantidadVentasPorMes();
 
 	}
 

@@ -14,7 +14,7 @@ public class Venta {
 	public Venta(Float monto, Integer coutas, String cvv, Collection<Asiento> asientos) {
 		this.monto = monto;
 		this.costoAdicional = (float) 0;
-		//this.fechaVenta = fechaVenta;
+		this.fechaVenta =new Date();
 		this.coutas = coutas;
 		this.CVV = cvv;
 		this.asientos = asientos;

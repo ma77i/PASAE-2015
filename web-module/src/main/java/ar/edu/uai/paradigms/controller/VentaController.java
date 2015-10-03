@@ -75,4 +75,21 @@ public class VentaController {
 		venta.setMonto(ventaService.calcularMontoFinal(idsector, cantidadasientos));
 		return this.ventaTranslator.translateMontoToDTO(venta);
 	}
+
+	@RequestMapping(method = RequestMethod.GET, value = "/listado")
+	public @ResponseBody
+	Collection<VentaDTO> ventasRealizadas() {
+		Collection<VentaDTO> misCompras = new ArrayList<VentaDTO>();
+
+		Collection<Venta> compras = (this.ventaService.listarVentas());
+		for (Venta v : compras) {
+			misCompras.add(this.ventaTranslator.translateToDTO(v));
+		}
+		return misCompras;
+	}
+
+
+
+
+
 }
