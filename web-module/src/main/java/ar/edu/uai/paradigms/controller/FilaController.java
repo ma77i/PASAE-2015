@@ -18,7 +18,8 @@ import javax.validation.Valid;
 
 @Controller
 @RequestMapping("/fila")
-public class FilaController {
+public class
+        FilaController {
 
 
     private static final Logger LOGGER = LoggerFactory.getLogger(FilaController.class);
