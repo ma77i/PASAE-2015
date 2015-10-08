@@ -104,6 +104,11 @@
         <property name="filaService" ref="filaService"/>
     </bean>
 
+    <bean id="estadisticaService" class="ar.edu.uai.paradigms.service.EstadisticaServiceImpl">
+        <property name="ventaDAO" ref="ventaDAO"/>
+    </bean>
+
+
 
 
 </beans>

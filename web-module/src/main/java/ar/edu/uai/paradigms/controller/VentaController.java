@@ -3,7 +3,10 @@ package ar.edu.uai.paradigms.controller;
 import ar.edu.uai.model.Venta;
 import ar.edu.uai.paradigms.authentication.SimpleAuthenticationProvider;
 import ar.edu.uai.paradigms.dto.CompraDTO;
+import ar.edu.uai.paradigms.dto.EstEspectaculoDTO;
+import ar.edu.uai.paradigms.dto.EstadisticaDTO;
 import ar.edu.uai.paradigms.dto.VentaDTO;
+import ar.edu.uai.paradigms.service.EstadisticaService;
 import ar.edu.uai.paradigms.service.VentaService;
 import ar.edu.uai.paradigms.translator.CompraTranslator;
 import ar.edu.uai.paradigms.translator.VentaTranslator;
@@ -16,8 +19,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.ArrayList;
-import java.util.Collection;
+import java.util.*;
 
 @Controller
 @RequestMapping("/venta")
@@ -27,14 +29,18 @@ public class VentaController {
 
 	private VentaService ventaService;
 
+	private EstadisticaService estadisticaService;
+
 	private VentaTranslator ventaTranslator;
 
 	private CompraTranslator compraTranslator;
+
 	
 
-	public VentaController(VentaService ventaService, VentaTranslator ventaTranslator, CompraTranslator compraTranslator) {
+	public VentaController(VentaService ventaService, EstadisticaService estadisticaService,VentaTranslator ventaTranslator, CompraTranslator compraTranslator) {
 		super();
 		this.ventaService = ventaService;
+		this.estadisticaService=estadisticaService;
 		this.ventaTranslator = ventaTranslator;
 		this.compraTranslator=compraTranslator;
 	}
@@ -78,15 +84,29 @@ public class VentaController {
 
 	@RequestMapping(method = RequestMethod.GET, value = "/listado")
 	public @ResponseBody
-	Collection<VentaDTO> ventasRealizadas() {
-		Collection<VentaDTO> misCompras = new ArrayList<VentaDTO>();
+	List<EstadisticaDTO> ventasRealizadas() {
+		List<EstadisticaDTO> misCompras = new ArrayList<EstadisticaDTO>();
 
-		Collection<Venta> compras = (this.ventaService.listarVentas());
-		for (Venta v : compras) {
-			misCompras.add(this.ventaTranslator.translateToDTO(v));
+		List<Object[]> compras = (this.estadisticaService.listarVentas());
+		for ( Object[] v : compras ) {
+			misCompras.add(this.ventaTranslator.translateVentaEstadistica((Integer)v[0],(Long)v[1]));
 		}
 		return misCompras;
 	}
+
+	@RequestMapping(method = RequestMethod.GET, value = "/listadoespectaculosvendidos")
+	public @ResponseBody List<EstEspectaculoDTO> ventasRealizadasDeEspectaculos(){
+		List<EstEspectaculoDTO> espectaculos = new ArrayList<EstEspectaculoDTO>();
+
+		List<Object[]> espectaculosVendidos=(this.estadisticaService.ventasRealizadasDeEspectaculos());
+		for (Object[] v: espectaculosVendidos){
+			espectaculos.add(this.ventaTranslator.translateEspectaculoVendido((String)v[0],(Long)v[1]));
+		}
+		return  espectaculos;
+	}
+
+
+
 
 
 

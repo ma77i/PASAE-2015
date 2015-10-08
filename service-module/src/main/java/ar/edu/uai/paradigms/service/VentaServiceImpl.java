@@ -10,6 +10,7 @@ import org.springframework.beans.factory.annotation.Required;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.Collection;
+import java.util.List;
 
 public class VentaServiceImpl implements VentaService {
 
@@ -85,12 +86,6 @@ public class VentaServiceImpl implements VentaService {
 	public Venta retrieveVenta(long identifier) {
 
 		return ventaDAO.retrieve(Venta.class, identifier);
-	}
-
-	@Override
-	public Collection<Venta> listarVentas() {
-		return ventaDAO.listarCantidadVentasPorMes();
-
 	}
 
 	@Override

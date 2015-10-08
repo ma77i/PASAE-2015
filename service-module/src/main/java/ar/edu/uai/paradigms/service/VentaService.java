@@ -6,12 +6,13 @@ import ar.edu.uai.model.Tarjeta;
 import ar.edu.uai.model.Venta;
 
 import java.util.Collection;
+import java.util.List;
 
 public interface VentaService {
 	
 	public Venta saveVenta(Venta venta,long funcionId, String numeroTarjeta, String cvv, String username);
 	public Venta retrieveVenta(long identifier);
-	public Collection<Venta> listarVentas();
+
 
 	public Collection<Venta> listarComprasDeEspectador(String username);
 
