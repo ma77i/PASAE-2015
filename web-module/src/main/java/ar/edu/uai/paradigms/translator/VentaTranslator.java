@@ -13,7 +13,6 @@ import ar.edu.uai.paradigms.service.TarjetaService;
 
 import java.util.ArrayList;
 import java.util.Collection;
-import java.util.Date;
 
 public class VentaTranslator {
 
