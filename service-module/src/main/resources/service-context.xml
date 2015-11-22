@@ -18,7 +18,7 @@
     </bean>
     
     <bean id="ventaService" class="ar.edu.uai.paradigms.service.VentaServiceImpl">
-          <property name="ventaDAO" ref="ventaDAO" />
+        <property name="ventaDAO" ref="ventaDAO" />
         <property name="tarjetaService" ref="tarjetaService"/>
         <property name="espectaculoService" ref="espectaculoService"/>
         <property name="funcionService" ref="funcionService"/>
