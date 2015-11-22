@@ -51,7 +51,7 @@ public class Venta {
 	@ManyToOne(cascade = CascadeType.MERGE)
 	private Espectador comprador;
 
-	@OneToMany(cascade = CascadeType.PERSIST)
+	@OneToMany(cascade = CascadeType.REFRESH)
 	private Collection<Asiento> asientos;
 
 
