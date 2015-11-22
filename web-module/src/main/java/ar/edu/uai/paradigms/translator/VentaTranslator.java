@@ -4,6 +4,8 @@ import ar.edu.uai.model.Asiento;
 import ar.edu.uai.model.Fila;
 import ar.edu.uai.model.Venta;
 import ar.edu.uai.paradigms.dto.AsientoDTO;
+import ar.edu.uai.paradigms.dto.EstEspectaculoDTO;
+import ar.edu.uai.paradigms.dto.EstadisticaDTO;
 import ar.edu.uai.paradigms.dto.VentaDTO;
 import ar.edu.uai.paradigms.service.EspectaculoService;
 import ar.edu.uai.paradigms.service.EspectadorService;
@@ -11,6 +13,7 @@ import ar.edu.uai.paradigms.service.TarjetaService;
 
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.Date;
 
 public class VentaTranslator {
 
@@ -63,6 +66,72 @@ public class VentaTranslator {
 	
 	public VentaDTO translateMontoToDTO(Venta venta){
 		return new VentaDTO(venta.getId(), venta.getMonto(), null, null, null, null, null);
+	}
+
+	public EstadisticaDTO translateVentaEstadistica(Integer mes, Long cantidad){
+		return new EstadisticaDTO(this.getStringMonth(mes),cantidad);
+	}
+
+    public EstEspectaculoDTO translateEspectaculoVendido(String nombreEspectaculo,Long cantidad){
+		return new EstEspectaculoDTO(nombreEspectaculo,cantidad);
+	}
+
+	public String getStringMonth(Integer mes) {
+		String result="";
+		switch (mes) {
+			case 1: {
+				result = "Enero";
+				break;
+			}
+			case 2: {
+				result = "Febrero";
+				break;
+			}
+			case 3: {
+				result = "Marzo";
+				break;
+			}
+			case 4: {
+				result = "Abril";
+				break;
+			}
+			case 5: {
+				result = "Mayo";
+				break;
+			}
+			case 6: {
+				result = "Junio";
+				break;
+			}
+			case 7: {
+				result = "Julio";
+				break;
+			}
+			case 8: {
+				result = "Agosto";
+				break;
+			}
+			case 9: {
+				result = "Septiembre";
+				break;
+			}
+			case 10: {
+				result = "Octubre";
+				break;
+			}
+			case 11: {
+				result = "Diciembre";
+				break;
+			}
+			case 12: {
+				result = "Diciembre";
+				break;
+			}
+
+
+
+		}
+		return result;
 	}
 
 

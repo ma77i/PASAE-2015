@@ -11,6 +11,7 @@ import javax.persistence.NoResultException;
 import javax.persistence.NonUniqueResultException;
 import javax.persistence.Query;
 import java.util.Collection;
+import java.util.List;
 
 public class VentaDAOImplHibernateJPA  extends GenericDaoHibernateJPA<Venta> implements VentaDAO {
 
@@ -71,12 +72,16 @@ public class VentaDAOImplHibernateJPA  extends GenericDaoHibernateJPA<Venta> imp
 	}
 
 	@Override
-	public Collection<Venta> listarCantidadVentasPorMes() {
-		Query consulta = this.entityManager.createQuery("from Venta v order by month(v.fechaVenta)");
+	public List<Object[]> listarCantidadVentasPorMes() {
+		Query consulta = this.entityManager.createQuery("SELECT month(v.fechaVenta),count (v) from Venta v group by month(v.fechaVenta)");
 		return consulta.getResultList();
 	}
 
+	@Override
+	public List<Object[]> listasdEspectaculosVendidos() {
+		Query consulta = this.entityManager.createQuery("SELECT v.funcion.espectaculo.nombre,count (v) from Venta v group by v.funcion.espectaculo.nombre ");
+		return consulta.getResultList();
+	}
 
-	//AGREGO COMENTARIO
 
 }

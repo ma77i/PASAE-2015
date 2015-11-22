@@ -42,6 +42,8 @@ public class Venta {
 	@ManyToOne
 	private Funcion funcion;
 
+	private Long cantidad;
+
 
 	/*	@OneToMany
         @JoinTable(name = "VENT_ASI", joinColumns = @JoinColumn(name = "VENT_ID"), inverseJoinColumns = @JoinColumn(name = "ASI_ID"))
@@ -140,5 +142,13 @@ public class Venta {
 
 	public void setCVV(String CVV) {
 		this.CVV = CVV;
+	}
+
+	public Long getCantidad() {
+		return cantidad;
+	}
+
+	public void setCantidad(Long cantidad) {
+		this.cantidad = cantidad;
 	}
 }
