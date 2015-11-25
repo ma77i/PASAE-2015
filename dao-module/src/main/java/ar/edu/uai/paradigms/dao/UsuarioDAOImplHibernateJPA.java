@@ -29,10 +29,11 @@ public class UsuarioDAOImplHibernateJPA<T> extends GenericDaoHibernateJPA<T> imp
         }
         catch (NoResultException e) {
             user = null;
-        }   
-        
-        role = user!=null ? "ROLE_" + user.getClass().getSimpleName().toUpperCase() : "ROLE_ANNON";
-
+        }
+        if(user!=null){
+        	//ClassName
+        	role = "ROLE_" + user.getClass().getSimpleName().toUpperCase();
+        }
     	return role;
     	
     }
