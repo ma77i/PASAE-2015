@@ -12,7 +12,7 @@ public class SectorDTO {
 
 	private Long id;
 	private String nombre;
-	private Float monto;
+	private Long monto;
 	private Boolean agotado;
 	private Collection<FilaDTO> filas;
 
@@ -23,7 +23,7 @@ public class SectorDTO {
 	private Long espectaculoId;
 
 	@JsonCreator
-	public SectorDTO(@JsonProperty("id") Long id, @JsonProperty("nombre") String nombre, @JsonProperty("monto") Float monto, @JsonProperty("agotado") Boolean agotado, @JsonProperty("espectaculoId") Long espectaculoId, @JsonProperty("filas") Collection<FilaDTO> filas) {
+	public SectorDTO(@JsonProperty("id") Long id, @JsonProperty("nombre") String nombre, @JsonProperty("monto") Long monto, @JsonProperty("agotado") Boolean agotado, @JsonProperty("espectaculoId") Long espectaculoId, @JsonProperty("filas") Collection<FilaDTO> filas) {
 		super();
 		this.setId(id);
 		this.setNombre(nombre);
@@ -34,11 +34,11 @@ public class SectorDTO {
 	}
 
 
-	public Float getMonto() {
+	public Long getMonto() {
 		return monto;
 	}
 
-	public void setMonto(Float monto) {
+	public void setMonto(Long monto) {
 		this.monto = monto;
 	}
 

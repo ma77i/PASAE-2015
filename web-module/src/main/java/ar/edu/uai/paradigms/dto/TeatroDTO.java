@@ -12,13 +12,19 @@ public class TeatroDTO {
 
     private String direccion;
 
+    private String cuit;
+
+    private String propietario;
+
     private Long id;
 
     @JsonCreator
-    public TeatroDTO(@JsonProperty("nombre") String nombre, @JsonProperty("direccion") String direccion, @JsonProperty("id") Long id) {
+    public TeatroDTO(@JsonProperty("nombre") String nombre, @JsonProperty("direccion") String direccion, @JsonProperty("id") Long id,  @JsonProperty("cuit") String cuit, @JsonProperty("propietario") String propietario) {
         this.setNombre(nombre);
         this.setDireccion(direccion);
         this.setId(id);
+        this.setCuit(cuit);
+        this.setPropietario(propietario);
     }
 
 
@@ -38,6 +44,22 @@ public class TeatroDTO {
         this.direccion = direccion;
     }
 
+    public String getCuit() {
+        return cuit;
+    }
+
+    public void setCuit(String cuit) {
+        this.cuit = cuit;
+    }
+
+    public String getPropietario() {
+        return propietario;
+    }
+
+    public void setPropietario(String propietario) {
+        this.propietario = propietario;
+    }
+
     public Long getId() {
         return id;
     }
@@ -45,4 +67,6 @@ public class TeatroDTO {
     public void setId(Long id) {
         this.id = id;
     }
+
+
 }

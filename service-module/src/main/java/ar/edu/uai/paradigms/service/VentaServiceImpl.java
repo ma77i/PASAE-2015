@@ -94,7 +94,7 @@ public class VentaServiceImpl implements VentaService {
 	}
 
 	@Override
-	public Float calcularMontoFinal(Long id_sector, Integer cantidad_asientos) {
+	public Long calcularMontoFinal(Long id_sector, Integer cantidad_asientos) {
 		//return (this.calcularMontoNeto(id_sector, id_espectaculo) - this.aplicarDescuento(id_espectaculo));
 		return this.sectorService.retrieveSector(id_sector).getMonto() * cantidad_asientos;
 	}

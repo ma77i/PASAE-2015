@@ -70,4 +70,9 @@ public class FuncionServiceImpl implements FuncionService{
 		return funcionDAO.listarFuncionesDeEspectaculo(id_espectaculo);
 	}
 
+	@Override
+	public Long cantidadVentasDeFuncion(long id_funcion) {
+		return funcionDAO.cantidadVentasDeFuncion(id_funcion);
+	}
+
 }

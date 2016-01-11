@@ -27,7 +27,7 @@
         <sec:intercept-url pattern="/teatro/*" access="ROLE_ADMINISTRADOR"/>
         <sec:intercept-url pattern="/funcion/*" access="ROLE_ADMINISTRADOR,ROLE_EMPLEADO"/>
 
-        <sec:intercept-url pattern="/venta/*" access="ROLE_ADMINISTRADOR"/>
+        <!--<sec:intercept-url pattern="/venta/*" access="ROLE_ADMINISTRADOR"/>-->
         <sec:intercept-url pattern="/empleado/*" access="ROLE_ADMINISTRADOR"/>
         <sec:intercept-url pattern="/empleado/cambiardatospersonales/*" access="ROLE_EMPLEADO"/>
         <sec:intercept-url pattern="/empleado/cambiarestado/*" access="ROLE_EMPLEADO"/>

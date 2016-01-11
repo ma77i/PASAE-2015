@@ -11,7 +11,7 @@ public class Venta {
 
 	}
 
-	public Venta(Float monto, Integer coutas, String cvv, Collection<Asiento> asientos) {
+	public Venta(Long monto, Integer coutas, String cvv, Collection<Asiento> asientos) {
 		this.monto = monto;
 		this.costoAdicional = (float) 0;
 		this.fechaVenta =new Date();
@@ -26,7 +26,7 @@ public class Venta {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private long id;
 
-	private Float monto;
+	private Long monto;
 
 	private Float costoAdicional;
 	
@@ -53,7 +53,7 @@ public class Venta {
 	@ManyToOne(cascade = CascadeType.MERGE)
 	private Espectador comprador;
 
-	@OneToMany(cascade = CascadeType.REFRESH)
+	@OneToMany(cascade = CascadeType.PERSIST)
 	private Collection<Asiento> asientos;
 
 
@@ -71,11 +71,11 @@ public class Venta {
 		this.id = id;
 	}
 
-	public float getMonto() {
+	public Long getMonto() {
 		return monto;
 	}
 
-	public void setMonto(float monto) {
+	public void setMonto(Long monto) {
 		this.monto = monto;
 	}
 

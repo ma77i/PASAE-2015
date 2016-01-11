@@ -12,7 +12,7 @@ public class Sector {
 
 	private String nombre;
 	
-	private Float monto;
+	private Long monto;
 	
 	private Boolean agotado;
 
@@ -27,7 +27,7 @@ public class Sector {
 		
 	}
 
-	public Sector(String nombre, Float monto) {
+	public Sector(String nombre, Long monto) {
 		this.nombre = nombre;
 		this.monto = monto;
 		this.agotado = false;
@@ -58,11 +58,11 @@ public class Sector {
 		this.id = id;
 	}
 
-	public float getMonto() {
+	public Long getMonto() {
 		return monto;
 	}
 
-	public void setMonto(float monto) {
+	public void setMonto(Long monto) {
 		this.monto = monto;
 	}
 
@@ -72,10 +72,6 @@ public class Sector {
 
 	public void setAgotado(boolean agotado) {
 		this.agotado = agotado;
-	}
-
-	public void setMonto(Float monto) {
-		this.monto = monto;
 	}
 
 	public Collection<Fila> getFilas() {

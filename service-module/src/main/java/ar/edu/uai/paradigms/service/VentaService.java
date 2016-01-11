@@ -16,7 +16,7 @@ public interface VentaService {
 
 	public Collection<Venta> listarComprasDeEspectador(String username);
 
-	public Float calcularMontoFinal(Long id_sector, Integer cantidad_asientos);
+	public Long calcularMontoFinal(Long id_sector, Integer cantidad_asientos);
 	public Float calcularMontoNeto(long id_sector, long id_espectaculo);
 	public Float aplicarDescuento(long id_espectaculo);
 

@@ -120,7 +120,7 @@ public class VentaTranslator {
 				break;
 			}
 			case 11: {
-				result = "Diciembre";
+				result = "Noviembre";
 				break;
 			}
 			case 12: {

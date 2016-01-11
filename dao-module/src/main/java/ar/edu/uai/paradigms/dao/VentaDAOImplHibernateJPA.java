@@ -79,7 +79,7 @@ public class VentaDAOImplHibernateJPA  extends GenericDaoHibernateJPA<Venta> imp
 
 	@Override
 	public List<Object[]> listasdEspectaculosVendidos() {
-		Query consulta = this.entityManager.createQuery("SELECT v.funcion.espectaculo.nombre,count (v) from Venta v group by v.funcion.espectaculo.nombre ");
+		Query consulta = this.entityManager.createQuery("SELECT v.funcion.espectaculo.nombre,sum (v.monto) from Venta v group by v.funcion.espectaculo.nombre ");
 		return consulta.getResultList();
 	}
 
