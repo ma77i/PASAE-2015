@@ -107,7 +107,7 @@
 		<constructor-arg name="espectadorService" ref="espectadorServiceConcreta"/>
 		<constructor-arg name="espectadorTranslator" ref="espectadorTranslator"/>
         <constructor-arg name="tarjetaService" ref="tarjetaService"/>
-       <constructor-arg name="transaccionTranslator" ref="transaccionTranslator"/>
+        <constructor-arg name="transaccionTranslator" ref="transaccionTranslator"/>
 	</bean>
 	
 	<bean id="empleadoController" class="ar.edu.uai.paradigms.controller.EmpleadoController">
