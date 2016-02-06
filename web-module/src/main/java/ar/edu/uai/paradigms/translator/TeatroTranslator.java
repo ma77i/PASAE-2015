@@ -9,11 +9,11 @@ import ar.edu.uai.paradigms.dto.TeatroDTO;
 public class TeatroTranslator {
 
     public Teatro translate(TeatroDTO teatroDTO) {
-        return new Teatro(teatroDTO.getNombre(), teatroDTO.getDireccion());
+        return new Teatro(teatroDTO.getNombre(), teatroDTO.getDireccion(),teatroDTO.getCuit(),teatroDTO.getPropietario());
     }
 
     public TeatroDTO translateToDTO(Teatro teatro) {
-        return new TeatroDTO(teatro.getNombre(), teatro.getDireccion(), teatro.getId());
+        return new TeatroDTO(teatro.getNombre(), teatro.getDireccion(), teatro.getId(),teatro.getCuit(),teatro.getPropietario());
     }
 
 

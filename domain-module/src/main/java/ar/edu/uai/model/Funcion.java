@@ -36,7 +36,7 @@ public class Funcion {
 	//en el uml borrar la relacion con asientos
 	
 	
-	@OneToMany(mappedBy="funcion")
+	@OneToMany(mappedBy="funcion",cascade = {CascadeType.REMOVE, CascadeType.MERGE})
 	private Collection<Venta> ventas;
 	
 	public long getId() {

@@ -10,7 +10,7 @@ import java.util.Collection;
  */
 public class VentaDTO {
 	private Long id;
-	private Float monto;
+	private Long monto;
 	private Integer cuotas;
 	private Long funcionId;
 	private Long espectadorId;
@@ -21,7 +21,7 @@ public class VentaDTO {
 	@JsonCreator
 	public VentaDTO(
 			@JsonProperty("id") Long id,
-			@JsonProperty("monto") Float monto,
+			@JsonProperty("monto") Long monto,
 					@JsonProperty("cuotas") Integer cuotas, 
 					@JsonProperty("funcionId") Long funcionId,
 					@JsonProperty("numeroTarjeta") String numeroTarjeta,
@@ -65,11 +65,11 @@ public class VentaDTO {
 	}
 
 
-	public Float getMonto() {
+	public Long getMonto() {
 		return monto;
 	}
 
-	public void setMonto(Float monto) {
+	public void setMonto(Long monto) {
 		this.monto = monto;
 	}
 

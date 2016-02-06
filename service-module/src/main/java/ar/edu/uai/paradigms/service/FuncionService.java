@@ -19,5 +19,6 @@ public interface FuncionService {
 	void agregarFuncionParaEspectaculo(Funcion savedFuncion, Espectaculo espectaculo);
 
 	Collection<Funcion> listarFuncionesDeEspectaculo(long id_espectaculo);
-	
+
+	Long cantidadVentasDeFuncion (long id_funcion);
 }

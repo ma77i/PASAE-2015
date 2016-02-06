@@ -13,7 +13,7 @@ import java.util.Date;
 public class CompraDTO {
 
     private Long id;
-    private Float monto;
+    private Long monto;
     private FuncionDTO funcion;
     private String nombreEspectaculo;
     private Collection<AsientoDTO> asientos;
@@ -25,7 +25,7 @@ public class CompraDTO {
     @JsonCreator
     public CompraDTO(
             @JsonProperty("id") Long id,
-            @JsonProperty("monto") Float monto,
+            @JsonProperty("monto") Long monto,
             @JsonProperty("funcion") FuncionDTO funcion,
             @JsonProperty("nombreEspectaculo") String nombreEspectaculo,
             @JsonProperty("asientos") Collection<AsientoDTO> asientos,
@@ -49,11 +49,11 @@ public class CompraDTO {
         this.id = id;
     }
 
-    public Float getMonto() {
+    public Long getMonto() {
         return monto;
     }
 
-    public void setMonto(Float monto) {
+    public void setMonto(Long monto) {
         this.monto = monto;
     }
 

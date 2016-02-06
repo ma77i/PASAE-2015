@@ -68,5 +68,11 @@ public class FuncionController {
         this.funcionService.deleteFuncion(identifier);
     }
 
+    @RequestMapping(method = RequestMethod.GET, value = "/ventasdefuncion/{idfuncion}")
+    public @ResponseBody
+    Long getVentasSegunFuncion(@PathVariable long idfuncion) {
+        return this.funcionService.cantidadVentasDeFuncion(idfuncion);
+    }
+
 
 }
