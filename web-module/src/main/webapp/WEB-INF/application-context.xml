@@ -20,7 +20,6 @@
     <context:annotation-config/>
 
 
-//
         <sec:http entry-point-ref="restAuthenticationEntryPoint">
         <sec:intercept-url pattern="/administrador/*" access="ROLE_ADMINISTRADOR"/>
         <sec:intercept-url pattern="/sector/*" access="ROLE_ADMINISTRADOR"/>
