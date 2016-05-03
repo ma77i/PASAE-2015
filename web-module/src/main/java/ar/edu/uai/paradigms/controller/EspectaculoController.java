@@ -153,4 +153,11 @@ public class EspectaculoController {
 		return this.espectaculoService.cantidadEspectaculosDeTeatro(nombreteatro);
 	}
 
+	@RequestMapping(method = RequestMethod.GET, value = "/funcionesAsociadas/{idEspectaculo}")
+	public @ResponseBody
+	Long cantidadFuncionesSegunEspectaculo(@PathVariable long idEspectaculo) {
+		return this.espectaculoService.cantidadFuncionesDeEspectaculo(idEspectaculo);
+	}
+
+
 }

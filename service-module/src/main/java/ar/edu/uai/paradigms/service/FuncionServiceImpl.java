@@ -75,4 +75,6 @@ public class FuncionServiceImpl implements FuncionService{
 		return funcionDAO.cantidadVentasDeFuncion(id_funcion);
 	}
 
+
+
 }
