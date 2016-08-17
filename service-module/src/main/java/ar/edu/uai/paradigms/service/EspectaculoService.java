@@ -40,4 +40,6 @@ public interface EspectaculoService {
 	void agregarEspectaculoParaTeatro(Espectaculo e,Teatro teatro);
 
 	void agregarImagenAlEspectaculo(Espectaculo espectaculo, MultipartFile imagen) throws IOException, SQLException;
+
+	Long cantidadFuncionesDeEspectaculo(long idEspectaculo);
 }

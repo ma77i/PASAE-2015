@@ -148,5 +148,10 @@ public class EspectaculoServiceImpl implements EspectaculoService {
 		espectaculo.setImagen(imagenBlob);
 	}
 
+	@Override
+	public Long cantidadFuncionesDeEspectaculo(long idEspectaculo) {
+		return espectaculoDAO.cantidadFuncionesDeEspectaculo(idEspectaculo);
+	}
+
 
 }

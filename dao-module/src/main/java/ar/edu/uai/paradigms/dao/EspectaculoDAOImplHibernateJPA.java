@@ -120,4 +120,24 @@ public class EspectaculoDAOImplHibernateJPA extends GenericDaoHibernateJPA<Espec
         }
     }
 
+    @Override
+    public Long cantidadFuncionesDeEspectaculo(long idEspectaculo) {
+
+        try {
+            Query consulta = this.entityManager.createQuery("select count(f) from Espectaculo as e join e.funciones as f where e.id=?");
+            consulta.setParameter(1, idEspectaculo);
+            return (Long) consulta.getSingleResult();
+
+        }catch (HibernateException ex) {
+
+            throw new CustomUnexpectedEx("Unexpected error " + ex.getLocalizedMessage());
+
+        } catch (Exception ex) {
+            throw new CustomUnexpectedEx("Unexpected error: " + ex.getLocalizedMessage());
+
+        }
+
+
+    }
+
 }
