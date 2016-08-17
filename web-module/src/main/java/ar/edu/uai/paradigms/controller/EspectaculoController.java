@@ -72,13 +72,23 @@ public class EspectaculoController {
 	@RequestMapping(method = RequestMethod.GET, value = "/listadoespectaculos")
 	public
 	@ResponseBody
-	Collection<EspectaculoDTO> listadoEspectaculos() throws FileNotFoundException, SQLException {
+	Collection<EspectaculoDTO> listadoEspectaculos() throws FileNotFoundException, SQLException, InterruptedException {
 
 		Collection<EspectaculoDTO> espectaculos = new ArrayList<EspectaculoDTO>();
 		Collection<Espectaculo> coleccion = this.espectaculoService.listarEspectaculos();
 		for (Espectaculo e : coleccion) {
 			espectaculos.add(espectaculoTranslator.translateToDTO(e));
 		}
+		/*try {
+			while (true) {
+
+				Thread.sleep(10000);
+			}
+		}
+		catch (InterruptedException ex) {
+
+			Thread.currentThread().interrupt();
+		}*/
 		return espectaculos;
 	}
 
