@@ -50,4 +50,5 @@ public class SavedRequestAwareAuthenticationSuccessHandler extends SimpleUrlAuth
         clearAuthenticationAttributes(request);
     }
 
+
 }
