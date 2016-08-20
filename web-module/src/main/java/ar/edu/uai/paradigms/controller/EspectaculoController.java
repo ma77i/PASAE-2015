@@ -127,7 +127,7 @@ public class EspectaculoController {
 	@RequestMapping(method = RequestMethod.GET, value = "/listadoespectaculosentrefechas/{inicio}/{fin}")
 	public
 	@ResponseBody
-	Collection<EspectaculoDTO> getFuncionesEntreFechas(@PathVariable("inicio") @DateTimeFormat(pattern = "yyyy-MM-dd") Date inicio, @PathVariable("fin") @DateTimeFormat(pattern = "yyyy-MM-dd") Date fin) throws FileNotFoundException, SQLException {
+	Collection<EspectaculoDTO> getFuncionesEntreFechas(@PathVariable("inicio") @DateTimeFormat(pattern = "dd-MM-yyyy") Date inicio, @PathVariable("fin") @DateTimeFormat(pattern = "dd-MM-yyyy") Date fin) throws FileNotFoundException, SQLException {
 		Collection<EspectaculoDTO> espectaculos = new ArrayList<EspectaculoDTO>();
 		Collection<Espectaculo> coleccion = this.espectaculoService.listarEspectaculosEntreFechas(inicio, fin);
 		for (Espectaculo e : coleccion) {
