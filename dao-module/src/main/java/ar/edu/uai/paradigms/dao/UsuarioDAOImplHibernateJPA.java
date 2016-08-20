@@ -38,9 +38,29 @@ public class UsuarioDAOImplHibernateJPA<T> extends GenericDaoHibernateJPA<T> imp
     	
     }
 
+    @Override
+    public Boolean isUserActive (String email, String password) {
+
+        Usuario user;
+
+        try {
+
+            Query consulta=this.entityManager.createQuery("select u from Usuario as u where u.email=:email and u.password=:password and u.estado='activo'");
+            consulta.setParameter("email", email );
+            consulta.setParameter("password", password);
+            user= (Usuario)consulta.getSingleResult();
+        }
+        catch (NoResultException e) {
+
+            return false;
+
+        }
+
+        return true;
+    }
 
 
-	@Override
+    @Override
 	public Usuario retrieveByUserName(String username) {
         try {
             Query consulta = this.entityManager.createQuery("select u.email from Usuario as u where u.email=:email");

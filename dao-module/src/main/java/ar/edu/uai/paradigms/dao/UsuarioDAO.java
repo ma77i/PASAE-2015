@@ -14,5 +14,7 @@ public interface UsuarioDAO<T> extends GenericDAO<T> {
    * @return
    */
   String getUserRole(String email,String password);
+
+  Boolean isUserActive (String email, String password);
 	
 }

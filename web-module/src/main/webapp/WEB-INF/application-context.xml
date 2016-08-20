@@ -27,9 +27,9 @@
         <!--<sec:intercept-url pattern="/venta/*" access="ROLE_ADMINISTRADOR"/>-->
         <sec:intercept-url pattern="/empleado/*" access="ROLE_ADMINISTRADOR"/>
         <sec:intercept-url pattern="/empleado/cambiardatospersonales/*" access="ROLE_EMPLEADO"/>
-        <sec:intercept-url pattern="/empleado/cambiarestado/*" access="ROLE_EMPLEADO"/>
+        <sec:intercept-url pattern="/empleado/cambiarestado/*" access="ROLE_ADMINISTRADOR"/>
         <sec:intercept-url pattern="/espectador/cambiardatospersonales/*" access="ROLE_ESPECTADOR"/>
-        <sec:intercept-url pattern="/espectador/cambiarestado/*" access="ROLE_ESPECTADOR"/>
+        <sec:intercept-url pattern="/espectador/cambiarestado/*" access="ROLE_ADMINISTRADOR,ROLE_EMPLEADO"/>
         <sec:intercept-url pattern="/teatro/*" access="ROLE_ADMINISTRADOR"/>
         <sec:custom-filter ref="customFilter" position="FORM_LOGIN_FILTER"/>
         <sec:logout  invalidate-session="true" logout-url="/logout" success-handler-ref="logoutSuccessHandler" />
@@ -65,7 +65,7 @@
         <constructor-arg name="loginService" ref="loginService"/>
     </bean>
     <bean id="failureHandler"
-        class="org.springframework.security.web.authentication.SimpleUrlAuthenticationFailureHandler"/>
+        class="ar.edu.uai.paradigms.authentication.SavedRequestAwareAuthenticationFailureHandler"/>
 
     <bean id="jackson2HttpMessageConverter" class="org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter">
         <property name="messageConverters">
