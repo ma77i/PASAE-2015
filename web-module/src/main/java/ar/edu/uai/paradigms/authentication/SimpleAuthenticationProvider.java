@@ -1,14 +1,16 @@
 package ar.edu.uai.paradigms.authentication;
 
 import ar.edu.uai.paradigms.service.LoginService;
-
 import org.springframework.security.authentication.AnonymousAuthenticationToken;
 import org.springframework.security.authentication.AuthenticationProvider;
+import org.springframework.security.authentication.DisabledException;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
+import org.springframework.security.core.AuthenticationException;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -27,17 +29,26 @@ public class SimpleAuthenticationProvider implements AuthenticationProvider {
     private LoginService loginService;
 
     @Override
-    public Authentication authenticate(Authentication authentication) {
+    public Authentication authenticate(Authentication authentication) throws AuthenticationException {
+
         String name = authentication.getName();
         String password = authentication.getCredentials().toString();
         String role = loginService.authenticate(name, password);
-        if (role != null) {
-            List<GrantedAuthority> grants = new ArrayList();
-            grants.add(new SimpleGrantedAuthority(role));
-            return new UsernamePasswordAuthenticationToken(authentication.getName(), authentication.getCredentials().toString(), grants);
-        } else {
-            return null;
-        }
+        Boolean userActive = loginService.isUserActive (name,password);
+
+
+            if (role != null) {
+                    if (userActive){
+                        List<GrantedAuthority> grants = new ArrayList();
+                        grants.add(new SimpleGrantedAuthority(role));
+                        return new UsernamePasswordAuthenticationToken(authentication.getName(), authentication.getCredentials().toString(), grants);
+                    }
+                    else throw new DisabledException("USUARIO INACTIVO");
+            }
+            else throw new UsernameNotFoundException("USUARIO INEXISTENTE");
+
+
+    }
 
 //        if (name.equals("admin") && password.equals("admin")) {
 //            List<GrantedAuthority> grants = new ArrayList();
@@ -46,8 +57,8 @@ public class SimpleAuthenticationProvider implements AuthenticationProvider {
 //        } else {
 //            return null;
 //        }
-    }
-    
+
+
     public static String getUserLogged(){
     	Authentication auth = SecurityContextHolder.getContext().getAuthentication();  
     	return !(auth instanceof AnonymousAuthenticationToken) ? auth.getPrincipal().toString() : null;
