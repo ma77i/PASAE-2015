@@ -18,8 +18,6 @@
       </mvc:annotation-driven>
 
     <context:annotation-config/>
-
-
         <sec:http entry-point-ref="restAuthenticationEntryPoint">
         <sec:intercept-url pattern="/administrador/*" access="ROLE_ADMINISTRADOR"/>
         <sec:intercept-url pattern="/sector/*" access="ROLE_ADMINISTRADOR"/>
@@ -29,14 +27,14 @@
         <!--<sec:intercept-url pattern="/venta/*" access="ROLE_ADMINISTRADOR"/>-->
         <sec:intercept-url pattern="/empleado/*" access="ROLE_ADMINISTRADOR"/>
         <sec:intercept-url pattern="/empleado/cambiardatospersonales/*" access="ROLE_EMPLEADO"/>
-        <sec:intercept-url pattern="/empleado/cambiarestado/*" access="ROLE_EMPLEADO"/>
+        <sec:intercept-url pattern="/empleado/cambiarestado/*" access="ROLE_ADMINISTRADOR"/>
         <sec:intercept-url pattern="/espectador/cambiardatospersonales/*" access="ROLE_ESPECTADOR"/>
-        <sec:intercept-url pattern="/espectador/cambiarestado/*" access="ROLE_ESPECTADOR"/>
+        <sec:intercept-url pattern="/espectador/cambiarestado/*" access="ROLE_ADMINISTRADOR,ROLE_EMPLEADO"/>
         <sec:intercept-url pattern="/teatro/*" access="ROLE_ADMINISTRADOR"/>
         <sec:custom-filter ref="customFilter" position="FORM_LOGIN_FILTER"/>
         <sec:logout  invalidate-session="true" logout-url="/logout" success-handler-ref="logoutSuccessHandler" />
     </sec:http>
-    
+
     <bean id="logoutSuccessHandler" class="ar.edu.uai.paradigms.authentication.LogoutSuccessHandler" >
 	    <constructor-arg value="/logout" />
 	</bean>
@@ -67,7 +65,7 @@
         <constructor-arg name="loginService" ref="loginService"/>
     </bean>
     <bean id="failureHandler"
-        class="org.springframework.security.web.authentication.SimpleUrlAuthenticationFailureHandler"/>
+        class="ar.edu.uai.paradigms.authentication.SavedRequestAwareAuthenticationFailureHandler"/>
 
     <bean id="jackson2HttpMessageConverter" class="org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter">
         <property name="messageConverters">
@@ -106,29 +104,29 @@
 		<constructor-arg name="espectadorService" ref="espectadorServiceConcreta"/>
 		<constructor-arg name="espectadorTranslator" ref="espectadorTranslator"/>
         <constructor-arg name="tarjetaService" ref="tarjetaService"/>
-        <constructor-arg name="transaccionTranslator" ref="transaccionTranslator"/>
+       <constructor-arg name="transaccionTranslator" ref="transaccionTranslator"/>
 	</bean>
-	
+
 	<bean id="empleadoController" class="ar.edu.uai.paradigms.controller.EmpleadoController">
 		<constructor-arg name="empleadoService" ref="empleadoServiceConcreta"/>
 		<constructor-arg name="empleadoTranslator" ref="empleadoTranslator"/>
 	</bean>
 	<bean id="empleadoTranslator" class="ar.edu.uai.paradigms.translator.EmpleadoTranslator" />
-	
+
 	<bean id="administradorController" class="ar.edu.uai.paradigms.controller.AdministradorController">
 		<constructor-arg name="administradorService" ref="administradorServiceConcreta"/>
 		<constructor-arg name="administradorTranslator" ref="administradorTranslator"/>
 	</bean>
-	
+
 	<bean id="administradorTranslator" class="ar.edu.uai.paradigms.translator.AdministradorTranslator" />
-	
+
 	<bean id="ventaController" class="ar.edu.uai.paradigms.controller.VentaController">
 		<constructor-arg name="ventaService" ref="ventaService"/>
         <constructor-arg name="estadisticaService" ref="estadisticaService"/>
 		<constructor-arg name="ventaTranslator" ref="ventaTranslator"/>
         <constructor-arg name="compraTranslator" ref="compraTranslator"/>
 	</bean>
-	
+
 	<bean id="ventaTranslator" class="ar.edu.uai.paradigms.translator.VentaTranslator">
        <property name="espectadorService" ref="espectadorServiceConcreta"/>
        <property name="espectaculoService" ref="espectaculoService"/>
@@ -253,4 +251,5 @@
     </bean>
 
     <bean id="compraTranslator" class="ar.edu.uai.paradigms.translator.CompraTranslator"/>
+
 </beans>

@@ -24,5 +24,10 @@ public class LoginServiceImpl implements LoginService {
 		return usuarioDAO.getUserRole(email, password);
 	}
 
-	
+	@Override
+	public Boolean isUserActive(String email, String password) {
+		return usuarioDAO.isUserActive (email,password);
+	}
+
+
 }

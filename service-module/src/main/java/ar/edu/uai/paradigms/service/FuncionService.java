@@ -21,4 +21,6 @@ public interface FuncionService {
 	Collection<Funcion> listarFuncionesDeEspectaculo(long id_espectaculo);
 
 	Long cantidadVentasDeFuncion (long id_funcion);
+
+
 }
