@@ -19,7 +19,8 @@ public class RestAuthenticationEntryPoint implements AuthenticationEntryPoint {
                          AuthenticationException authException)
             throws IOException, ServletException {
         JSONObject json= new JSONObject();
-        json.put("401", "UNAUTHORIZED");
+        json.put("type", "401");
+        json.put("title","UNAUTHORIZED");
         response.setStatus(HttpServletResponse.SC_UNAUTHORIZED);
         response.setContentType("application/json");
         response.getWriter().write(json.toString());

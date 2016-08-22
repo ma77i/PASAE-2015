@@ -20,8 +20,9 @@ public class SavedRequestAwareAuthenticationFailureHandler extends SimpleUrlAuth
 
         JSONObject json = new JSONObject();
         response.setContentType("application/json");
-        json.put("401", "UNAUTHORIZED");
-        json.put("message", exception.getLocalizedMessage());
+        json.put("type", "401");
+        json.put("title","UNAUTHORIZED");
+        json.put("detail", exception.getLocalizedMessage());
         response.setStatus(HttpServletResponse.SC_UNAUTHORIZED);
         response.getWriter().write(json.toString());
 
