@@ -13,7 +13,8 @@ public class Espectaculo {
 
 	@Column(name = "nombre", unique = true)
 	private String nombre;
-	
+
+	@Column(name="descripcion",length = 1337)
 	private String descripcion;
 
 	@OneToMany(mappedBy = "espectaculo", cascade = CascadeType.REMOVE)
