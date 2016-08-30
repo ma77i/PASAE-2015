@@ -43,9 +43,9 @@ public class SimpleAuthenticationProvider implements AuthenticationProvider {
                         grants.add(new SimpleGrantedAuthority(role));
                         return new UsernamePasswordAuthenticationToken(authentication.getName(), authentication.getCredentials().toString(), grants);
                     }
-                    else throw new DisabledException("USUARIO INACTIVO");
+                    else throw new DisabledException("SU CUENTA HA SIDO DESACTIVADA");
             }
-            else throw new UsernameNotFoundException("USUARIO INEXISTENTE");
+            else throw new UsernameNotFoundException("USUARIO Y/O PASSWORD INCORRECTOS");
 
 
     }
