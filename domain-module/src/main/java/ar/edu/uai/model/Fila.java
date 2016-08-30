@@ -25,6 +25,7 @@ public class Fila {
 
 
     public Fila(Integer nro_fila) {
+
         this.nro_fila = nro_fila;
 
     }

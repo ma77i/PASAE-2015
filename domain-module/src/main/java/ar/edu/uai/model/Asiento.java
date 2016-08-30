@@ -1,6 +1,7 @@
 package ar.edu.uai.model;
 
 import javax.persistence.*;
+import javax.sound.sampled.BooleanControl;
 
 @Entity
 public class Asiento {
@@ -25,6 +26,12 @@ public class Asiento {
 		this.fila=fila;
 		this.ocupado = false;
 	}
+	public Asiento(Integer numero, Fila fila, Boolean ocupado) {
+		this.numero = numero;
+		this.fila=fila;
+		this.ocupado = ocupado;
+	}
+
 
 	public long getId() {
 		return id;

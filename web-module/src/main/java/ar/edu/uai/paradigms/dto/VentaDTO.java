@@ -106,7 +106,7 @@ public class VentaDTO {
 	}
 
 	public String toString() {
-		return "VentaDTO [monto=" + monto + ",cuotas=" + cuotas + ",comprador=" + espectadorId + "funcionId=" + funcionId + "]";
+		return "VentaDTO [monto=" + monto + ",cuotas=" + cuotas + ",comprador=" + espectadorId + ",funcionId=" + funcionId + "]";
 
 	}
 

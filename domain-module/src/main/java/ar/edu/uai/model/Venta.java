@@ -18,6 +18,7 @@ public class Venta {
 		this.coutas = coutas;
 		this.CVV = cvv;
 		this.asientos = asientos;
+
 	}
 
 

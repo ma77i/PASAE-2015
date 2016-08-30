@@ -47,7 +47,7 @@ public class VentaTranslator {
 		Collection<Asiento> asientos = new ArrayList<Asiento>();
 		for (AsientoDTO asiento : ventaDTO.getAsientos()) {
 			Fila f = new Fila(asiento.getNumero());
-			asientos.add(new Asiento(asiento.getNumero(), f));
+			asientos.add(new Asiento(asiento.getNumero(), f,asiento.isOcupado()));
 		}
 		return new Venta(ventaDTO.getMonto(), ventaDTO.getCuotas(), ventaDTO.getCvv(), asientos);
 
