@@ -7,9 +7,7 @@ import ar.edu.uai.paradigms.dto.AsientoDTO;
 import ar.edu.uai.paradigms.dto.EstEspectaculoDTO;
 import ar.edu.uai.paradigms.dto.EstadisticaDTO;
 import ar.edu.uai.paradigms.dto.VentaDTO;
-import ar.edu.uai.paradigms.service.EspectaculoService;
-import ar.edu.uai.paradigms.service.EspectadorService;
-import ar.edu.uai.paradigms.service.TarjetaService;
+import ar.edu.uai.paradigms.service.*;
 
 import java.util.ArrayList;
 import java.util.Collection;
@@ -21,12 +19,13 @@ public class VentaTranslator {
 
 	private EspectadorService espectadorService;
 
-
-
 	private EspectaculoService espectaculoService;
 
 	private TarjetaService tarjetaService;
 
+	private AsientoService asientoService;
+
+	private SectorService sectorService;
 
 
 	public void setEspectadorService(EspectadorService espectadorService) {
@@ -42,13 +41,26 @@ public class VentaTranslator {
 		this.tarjetaService = tarjetaService;
 	}
 
+	public void setAsientoService(AsientoService asientoService) {
+		this.asientoService = asientoService;
+	}
+
+	public void setSectorService(SectorService sectorService) {
+		this.sectorService = sectorService;
+	}
+
+
+
 
 	public Venta translate(VentaDTO ventaDTO) {
 		Collection<Asiento> asientos = new ArrayList<Asiento>();
-		for (AsientoDTO asiento : ventaDTO.getAsientos()) {
-			Fila f = new Fila(asiento.getNumero());
-			asientos.add(new Asiento(asiento.getNumero(), f));
-			asiento.setOcupado(true);
+		for (AsientoDTO asientoDTO : ventaDTO.getAsientos()) {
+			//Fila fila = new Fila((this.filaService.retrieveFila(asientoDTO.getFilaId())).getNro_fila());
+			//fila.setSector(this.sectorService.retrieveSector(fila.getSector().getId()));
+			Asiento asiento=this.asientoService.retrieveAsiento(asientoDTO.getId());
+			asiento.setOcupado(asientoDTO.isOcupado());
+			asientos.add(asiento);
+
 		}
 		return new Venta(ventaDTO.getMonto(), ventaDTO.getCuotas(), ventaDTO.getCvv(), asientos);
 
@@ -61,9 +73,9 @@ public class VentaTranslator {
 		}
 		return new VentaDTO(venta.getId(), venta.getMonto(), venta.getCoutas(), venta.getFuncion().getId(), null, null, asientosDTO);
 
-		
+
 	}
-	
+
 	public VentaDTO translateMontoToDTO(Venta venta){
 		return new VentaDTO(venta.getId(), venta.getMonto(), null, null, null, null, null);
 	}

@@ -133,6 +133,8 @@
        <property name="espectadorService" ref="espectadorServiceConcreta"/>
        <property name="espectaculoService" ref="espectaculoService"/>
        <property name="tarjetaService" ref="tarjetaService"/>
+       <property name="asientoService" ref="asientoService"/>
+       <property name="sectorService" ref="sectorService"/>
     </bean>
 
     <bean id="espectaculoController" class="ar.edu.uai.paradigms.controller.EspectaculoController">
