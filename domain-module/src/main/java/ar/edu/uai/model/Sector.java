@@ -16,7 +16,7 @@ public class Sector {
 	
 	private Boolean agotado;
 
-	@OneToMany(mappedBy="sector", cascade={CascadeType.PERSIST,CascadeType.REMOVE})
+	@OneToMany(mappedBy="sector", cascade={CascadeType.PERSIST,CascadeType.MERGE,CascadeType.REMOVE})
 	private Collection<Fila> filas;
 
 	@ManyToOne

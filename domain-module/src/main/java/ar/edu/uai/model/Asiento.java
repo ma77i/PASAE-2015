@@ -1,7 +1,6 @@
 package ar.edu.uai.model;
 
 import javax.persistence.*;
-import javax.sound.sampled.BooleanControl;
 
 @Entity
 public class Asiento {
@@ -18,7 +17,7 @@ public class Asiento {
 
 	private Boolean ocupado;
 
-	@ManyToOne(cascade = {CascadeType.PERSIST})
+	@ManyToOne(cascade = {CascadeType.MERGE  ,CascadeType.MERGE})
 	private Fila fila;
 
 	public Asiento(Integer numero, Fila fila) {

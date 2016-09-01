@@ -1,7 +1,6 @@
 package ar.edu.uai.paradigms.translator;
 
 import ar.edu.uai.model.Asiento;
-import ar.edu.uai.model.Fila;
 import ar.edu.uai.model.Venta;
 import ar.edu.uai.paradigms.dto.AsientoDTO;
 import ar.edu.uai.paradigms.dto.EstEspectaculoDTO;
@@ -57,7 +56,8 @@ public class VentaTranslator {
 		for (AsientoDTO asientoDTO : ventaDTO.getAsientos()) {
 			//Fila fila = new Fila((this.filaService.retrieveFila(asientoDTO.getFilaId())).getNro_fila());
 			//fila.setSector(this.sectorService.retrieveSector(fila.getSector().getId()));
-			Asiento asiento=this.asientoService.retrieveAsiento(asientoDTO.getId());
+			//Asiento asiento=this.asientoService.retrieveAsiento(asientoDTO.getId());
+			new Asiento();
 			asiento.setOcupado(asientoDTO.isOcupado());
 			asientos.add(asiento);
 

@@ -15,7 +15,7 @@ public class Fila {
 
     private Integer nro_fila;
 
-    @OneToMany(mappedBy="fila", cascade={CascadeType.PERSIST,CascadeType.REMOVE})
+    @OneToMany(mappedBy="fila", cascade={CascadeType.PERSIST,CascadeType.MERGE, CascadeType.REMOVE})
     private Collection<Asiento> asientos;
 
     @ManyToOne
