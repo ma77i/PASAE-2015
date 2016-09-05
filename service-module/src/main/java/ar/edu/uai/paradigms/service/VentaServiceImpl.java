@@ -35,12 +35,13 @@ public class VentaServiceImpl implements VentaService {
 		
 	}
 
-	public void setAsientoService(AsientoService asientoService) {
-		this.asientoService = asientoService;
-	}
-
 	public VentaServiceImpl(VentaDAO ventaDAO) {
 		this.ventaDAO = ventaDAO;
+	}
+
+
+	public void setAsientoService(AsientoService asientoService) {
+		this.asientoService = asientoService;
 	}
 
 	public VentaDAO getVentaDAO() {
@@ -82,7 +83,8 @@ public class VentaServiceImpl implements VentaService {
 			throw new CustomValidationEx("Datos de tarjeta invalidos");			
 		}
 		//Busco los asientos en la base
-		venta.setAsientos(this.asientoService.retrieveAsientos(venta.getAsientos()));
+		Collection<Asiento> asientosVendidos=venta.getAsientos();
+		venta.setAsientos(this.asientoService.retrieveAsientos(asientosVendidos));
 		for (Asiento asiento : venta.getAsientos()) {
 			if(asiento.isOcupado()){
 				throw new CustomValidationEx("Asiento Ocupado actualmente");

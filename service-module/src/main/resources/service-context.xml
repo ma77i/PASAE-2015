@@ -24,6 +24,7 @@
         <property name="funcionService" ref="funcionService"/>
         <property name="espectadorService" ref="espectadorServiceConcreta"/>
         <property name="sectorService" ref="sectorService"/>
+        <property name="asientoService" ref="asientoService"/>
     </bean>
     
     <bean id="espectaculoService" class="ar.edu.uai.paradigms.service.EspectaculoServiceImpl">
