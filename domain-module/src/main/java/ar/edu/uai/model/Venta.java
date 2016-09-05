@@ -18,10 +18,7 @@ public class Venta {
 		this.coutas = coutas;
 		this.CVV = cvv;
 		this.asientos = asientos;
-
 	}
-
-
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
@@ -56,7 +53,6 @@ public class Venta {
 
 	@OneToMany(cascade = {CascadeType.PERSIST,CascadeType.MERGE})
 	private Collection<Asiento> asientos;
-
 
 	/**
 	 * Aplica descuento a la venta

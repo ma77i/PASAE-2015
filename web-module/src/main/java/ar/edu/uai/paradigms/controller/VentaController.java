@@ -35,8 +35,6 @@ public class VentaController {
 
 	private CompraTranslator compraTranslator;
 
-	
-
 	public VentaController(VentaService ventaService, EstadisticaService estadisticaService,VentaTranslator ventaTranslator, CompraTranslator compraTranslator) {
 		super();
 		this.ventaService = ventaService;

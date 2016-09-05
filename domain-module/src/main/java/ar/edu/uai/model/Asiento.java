@@ -17,7 +17,7 @@ public class Asiento {
 
 	private Boolean ocupado;
 
-	@ManyToOne(cascade = {CascadeType.MERGE  ,CascadeType.MERGE})
+	@ManyToOne(cascade = {CascadeType.PERSIST  })
 	private Fila fila;
 
 	public Asiento(Integer numero, Fila fila) {

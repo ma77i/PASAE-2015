@@ -1,6 +1,7 @@
 package ar.edu.uai.paradigms.translator;
 
 import ar.edu.uai.model.Asiento;
+import ar.edu.uai.model.Fila;
 import ar.edu.uai.model.Venta;
 import ar.edu.uai.paradigms.dto.AsientoDTO;
 import ar.edu.uai.paradigms.dto.EstEspectaculoDTO;
@@ -48,19 +49,16 @@ public class VentaTranslator {
 		this.sectorService = sectorService;
 	}
 
-
-
-
 	public Venta translate(VentaDTO ventaDTO) {
 		Collection<Asiento> asientos = new ArrayList<Asiento>();
 		for (AsientoDTO asientoDTO : ventaDTO.getAsientos()) {
 			//Fila fila = new Fila((this.filaService.retrieveFila(asientoDTO.getFilaId())).getNro_fila());
 			//fila.setSector(this.sectorService.retrieveSector(fila.getSector().getId()));
 			//Asiento asiento=this.asientoService.retrieveAsiento(asientoDTO.getId());
-			new Asiento();
-			asiento.setOcupado(asientoDTO.isOcupado());
+			Asiento asiento = new Asiento(asientoDTO.getNumero(), new Fila(), asientoDTO.isOcupado());
+			asiento.setId(asientoDTO.getId());
+			asiento.getFila().setId(asientoDTO.getFilaId());
 			asientos.add(asiento);
-
 		}
 		return new Venta(ventaDTO.getMonto(), ventaDTO.getCuotas(), ventaDTO.getCvv(), asientos);
 
@@ -72,8 +70,6 @@ public class VentaTranslator {
 			asientosDTO.add(new AsientoDTO(asiento.getId(), asiento.getFila().getId(), asiento.getNumero(), asiento.isOcupado()));
 		}
 		return new VentaDTO(venta.getId(), venta.getMonto(), venta.getCoutas(), venta.getFuncion().getId(), null, null, asientosDTO);
-
-
 	}
 
 	public VentaDTO translateMontoToDTO(Venta venta){
