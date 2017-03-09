@@ -29,7 +29,6 @@ public class TeatroServiceImpl implements TeatroService {
 
 	@Override
 	public Teatro retrieveTeatro(long identifier) {
-		// TODO Auto-generated method stub
 		return teatroDAO.retrieve(Teatro.class, identifier);
 	}
 
@@ -40,9 +39,10 @@ public class TeatroServiceImpl implements TeatroService {
 
 	@Transactional
 	public Teatro modificarTeatro(Teatro teatro, String nombre, String direccion) {
-		teatro.setNombre(nombre);
-		teatro.setDireccion(direccion);
-		return this.teatroDAO.update(teatro);
+		Teatro t= this.retrieveTeatro(teatro.getId());
+		t.setNombre(nombre);
+		t.setDireccion(direccion);
+		return this.teatroDAO.update(t);
 	}
 
 	@Transactional
