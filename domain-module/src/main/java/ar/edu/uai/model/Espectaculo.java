@@ -32,6 +32,9 @@ public class Espectaculo {
 	@Lob
 	private Blob imagen;
 
+	@Lob
+	private Blob imagen_portada;
+
 
 
 	public Espectaculo() {
@@ -113,5 +116,13 @@ public class Espectaculo {
 
 	public void setImagen(Blob imagen) {
 		this.imagen = imagen;
+	}
+
+	public Blob getImagen_portada() {
+		return imagen_portada;
+	}
+
+	public void setImagen_portada(Blob imagen_portada) {
+		this.imagen_portada = imagen_portada;
 	}
 }

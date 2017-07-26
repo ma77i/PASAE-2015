@@ -16,9 +16,11 @@ public class EspectaculoDTO {
 	private long teatroId;
 	private MultipartFile imagen;
 	private byte[] bytesImagen;
+	private MultipartFile imagen_portada;
+	private byte[] bytesImagenPortada;
 
 	@JsonCreator
-	public EspectaculoDTO(@JsonProperty("id") Long id, @JsonProperty("nombre") String nombre, @JsonProperty("descripcion") String descripcion, @JsonProperty("categoriaId") long categoria, @JsonProperty("teatroId") long teatroId, @JsonProperty("imagen") MultipartFile imagen, @JsonProperty("bytesimagen") byte[] bytesImagen) {
+	public EspectaculoDTO(@JsonProperty("id") Long id, @JsonProperty("nombre") String nombre, @JsonProperty("descripcion") String descripcion, @JsonProperty("categoriaId") long categoria, @JsonProperty("teatroId") long teatroId, @JsonProperty("imagen") MultipartFile imagen, @JsonProperty("bytesimagen") byte[] bytesImagen, @JsonProperty("imagenportada") MultipartFile imagen_portada, @JsonProperty("bytesimagenportada") byte[] bytesImagenPortada) {
 		this.setId(id);
 		this.setNombre(nombre);
 		this.setDescripcion(descripcion);
@@ -26,6 +28,9 @@ public class EspectaculoDTO {
 		this.setTeatroId(teatroId);
 		this.setImagen(imagen);
 		this.setBytesImagen(bytesImagen);
+		this.setImagen_portada(imagen_portada);
+		this.setBytesImagenPortada(bytesImagenPortada);
+
 
 	}
 
@@ -85,6 +90,23 @@ public class EspectaculoDTO {
 	public void setBytesImagen(byte[] bytesImagen) {
 		this.bytesImagen = bytesImagen;
 	}
+
+	public MultipartFile getImagen_portada() {
+		return imagen_portada;
+	}
+
+	public void setImagen_portada(MultipartFile imagen_portada) {
+		this.imagen_portada = imagen_portada;
+	}
+
+	public byte[] getBytesImagenPortada() {
+		return bytesImagenPortada;
+	}
+
+	public void setBytesImagenPortada(byte[] bytesImagenPortada) {
+		this.bytesImagenPortada = bytesImagenPortada;
+	}
+
 
 
 	public String toString() {

@@ -13,7 +13,7 @@ import java.util.Date;
 
 
 public interface EspectaculoService {
-	public Espectaculo saveEspectaculo(Espectaculo espectaculo,long categoriaId,long teatroId,MultipartFile imagen);
+	public Espectaculo saveEspectaculo(Espectaculo espectaculo,long categoriaId,long teatroId,MultipartFile imagen, MultipartFile imagen_portada);
 
 	public Espectaculo retrieveEspectaculo(long identifier);
 
@@ -39,7 +39,7 @@ public interface EspectaculoService {
 
 	void agregarEspectaculoParaTeatro(Espectaculo e,Teatro teatro);
 
-	void agregarImagenAlEspectaculo(Espectaculo espectaculo, MultipartFile imagen) throws IOException, SQLException;
+	void agregarImagenesAlEspectaculo(Espectaculo espectaculo, MultipartFile imagen, MultipartFile imagen_portada) throws IOException, SQLException;
 
 	Long cantidadFuncionesDeEspectaculo(long idEspectaculo);
 }

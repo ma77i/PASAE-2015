@@ -16,7 +16,8 @@ public class EspectaculoTranslator {
 
 	public EspectaculoDTO translateToDTO(Espectaculo espectaculo) throws SQLException, FileNotFoundException {
 		byte [] bytesImagen=espectaculo.getImagen().getBytes(1,(int)espectaculo.getImagen().length());
-		return new EspectaculoDTO(espectaculo.getId(), espectaculo.getNombre(), espectaculo.getDescripcion(), espectaculo.getCategoria().getId(), espectaculo.getTeatro().getId(),null,bytesImagen);
+		byte [] bytesImagenPortada=espectaculo.getImagen_portada().getBytes(1,(int)espectaculo.getImagen_portada().length());
+		return new EspectaculoDTO(espectaculo.getId(), espectaculo.getNombre(), espectaculo.getDescripcion(), espectaculo.getCategoria().getId(), espectaculo.getTeatro().getId(),null,bytesImagen,null,bytesImagenPortada);
 	}
 
 }

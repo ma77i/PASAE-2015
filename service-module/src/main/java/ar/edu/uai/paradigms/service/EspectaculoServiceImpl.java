@@ -58,13 +58,13 @@ public class EspectaculoServiceImpl implements EspectaculoService {
 	}
 
 	@Transactional
-	public Espectaculo saveEspectaculo(Espectaculo espectaculo,long categoriaId,long teatroId,MultipartFile imagen) {
+	public Espectaculo saveEspectaculo(Espectaculo espectaculo,long categoriaId,long teatroId,MultipartFile imagen,MultipartFile imagen_portada) {
 		Categoria categoria = categoriaService.retrieveCategoria(categoriaId);
 		Teatro teatro = teatroService.retrieveTeatro(teatroId);
 		this.agregarEspectaculoParaCategoria(espectaculo, categoria);
 		this.agregarEspectaculoParaTeatro(espectaculo,teatro);
 		try {
-			this.agregarImagenAlEspectaculo(espectaculo,imagen);
+			this.agregarImagenesAlEspectaculo(espectaculo,imagen,imagen_portada);
 		} catch (IOException e) {
 			e.printStackTrace();
 		} catch (SQLException e) {
@@ -143,9 +143,11 @@ public class EspectaculoServiceImpl implements EspectaculoService {
 	}
 
 	@Override
-	public void agregarImagenAlEspectaculo(Espectaculo espectaculo, MultipartFile imagen) throws IOException, SQLException {
+	public void agregarImagenesAlEspectaculo(Espectaculo espectaculo, MultipartFile imagen, MultipartFile imagen_portada) throws IOException, SQLException {
 		Blob imagenBlob= new SerialBlob(imagen.getBytes());
+		Blob imagenPortadaBlob= new SerialBlob(imagen_portada.getBytes());
 		espectaculo.setImagen(imagenBlob);
+		espectaculo.setImagen_portada(imagenPortadaBlob);
 	}
 
 	@Override

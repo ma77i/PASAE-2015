@@ -21,18 +21,16 @@
         <sec:http entry-point-ref="restAuthenticationEntryPoint">
         <sec:intercept-url pattern="/administrador/*" access="ROLE_ADMINISTRADOR"/>
         <sec:intercept-url pattern="/sector/*" access="ROLE_ADMINISTRADOR"/>
+        <sec:intercept-url pattern="/teatro/listadoteatros" access="ROLE_ADMINISTRADOR, ROLE_EMPLEADO"/>
         <sec:intercept-url pattern="/teatro/*" access="ROLE_ADMINISTRADOR"/>
         <sec:intercept-url pattern="/funcion/*" access="ROLE_ADMINISTRADOR,ROLE_EMPLEADO"/>
-
-        <!--<sec:intercept-url pattern="/venta/*" access="ROLE_ADMINISTRADOR"/>-->
-        <sec:intercept-url pattern="/empleado/*" access="ROLE_ADMINISTRADOR"/>
         <sec:intercept-url pattern="/empleado/cambiardatospersonales/*" access="ROLE_EMPLEADO"/>
         <sec:intercept-url pattern="/empleado/cambiarestado/*" access="ROLE_ADMINISTRADOR"/>
+        <sec:intercept-url pattern="/empleado/*" access="ROLE_ADMINISTRADOR"/>
         <sec:intercept-url pattern="/espectador/cambiardatospersonales/*" access="ROLE_ESPECTADOR"/>
         <sec:intercept-url pattern="/espectador/cambiarestado/*" access="ROLE_ADMINISTRADOR,ROLE_EMPLEADO"/>
         <sec:intercept-url pattern="/espectador/listadoespectadores" access="ROLE_ADMINISTRADOR,ROLE_EMPLEADO"/>
         <sec:intercept-url pattern="/espectador/busquedaespectadores/*" access="ROLE_ADMINISTRADOR,ROLE_EMPLEADO"/>
-        <sec:intercept-url pattern="/teatro/*" access="ROLE_ADMINISTRADOR"/>
         <sec:custom-filter ref="customFilter" position="FORM_LOGIN_FILTER"/>
         <sec:logout  invalidate-session="true" logout-url="/logout" success-handler-ref="logoutSuccessHandler" />
     </sec:http>
