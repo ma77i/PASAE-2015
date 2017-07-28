@@ -4,6 +4,8 @@ import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 import java.util.Date;
 
 public class FuncionDTO {
@@ -11,11 +13,12 @@ public class FuncionDTO {
 
 	private Long id;
 
-	@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd")
+	@Temporal(TemporalType.DATE)
+	@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd", timezone = "Brazil/East")
 	private Date fecha;
 
-	@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "HH:mm")
-
+	@Temporal(TemporalType.DATE)
+	@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "HH:mm", timezone = "Brazil/East")
 	private Date hora;
 
 	private long espectaculoId;
