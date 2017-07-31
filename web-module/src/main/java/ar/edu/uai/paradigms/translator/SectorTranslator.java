@@ -47,7 +47,7 @@ public class SectorTranslator {
 		}
 
 
-		return new SectorDTO(sector.getId(), sector.getNombre(), sector.getMonto(), sector.isAgotado(), sector.getEspectaculo().getId(),filasDTO);
+		return new SectorDTO(sector.getId(), sector.getNombre(), sector.getMonto(), sector.isAgotado(), sector.getFuncion().getId(),filasDTO);
 
 	}
 }

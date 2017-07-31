@@ -55,7 +55,7 @@ public class SectorController {
 	@ResponseBody
 	SectorDTO createSector(@RequestBody SectorDTO sectorDTO) {
 		LOGGER.debug("Received DTO: " + sectorDTO);
-		return this.sectorTranslator.translateToDTO(this.sectorService.saveSector(this.sectorTranslator.translate(sectorDTO), sectorDTO.getEspectaculoId()));
+		return this.sectorTranslator.translateToDTO(this.sectorService.saveSector(this.sectorTranslator.translate(sectorDTO), sectorDTO.getFuncionId()));
 	}
 
 	@RequestMapping(method = RequestMethod.GET, value = "/{identifier}")
@@ -105,20 +105,28 @@ public class SectorController {
 	}
 
 
+	@Deprecated
 	@RequestMapping(method = RequestMethod.POST, value = "/agregarsectoresparaespectaculo")
 	@ResponseStatus(value = HttpStatus.OK)
 	public void agregarSectoresParaEspectaculo(@RequestBody SectoresDTO sectoresDTO) {
-		this.sectorService.saveSectoresParaEspectaculo(this.sectoresTranslator.translate(sectoresDTO), sectoresDTO.getIdEspectaculo());
+//		this.sectorService.saveSectoresParaEspectaculo(this.sectoresTranslator.translate(sectoresDTO), sectoresDTO.getIdEspectaculo());
+
+	}
+	
+	@RequestMapping(method = RequestMethod.POST, value = "/agregarsectoresparafuncion")
+	@ResponseStatus(value = HttpStatus.OK)
+	public void agregarSectoresParaFuncion(@RequestBody SectoresDTO sectoresDTO) {
+		this.sectorService.saveSectoresParaFuncion(this.sectoresTranslator.translate(sectoresDTO), sectoresDTO.getIdFuncion());
 
 	}
 
-	@RequestMapping(method = RequestMethod.GET, value = "/getsectores/{idespectaculo}")
+	@RequestMapping(method = RequestMethod.GET, value = "/getsectores/{idfuncion}")
 	public
 	@ResponseBody
-	Collection<SectorDTO> getSectores(@PathVariable Long idespectaculo) {
+	Collection<SectorDTO> getSectores(@PathVariable Long idfuncion) {
 
 		Collection<SectorDTO> sectores = new ArrayList<SectorDTO>();
-		Collection<Sector> coleccion = this.sectorService.listarSectoresDeEspectaculo(idespectaculo);
+		Collection<Sector> coleccion = this.sectorService.listarSectoresDeFuncion(idfuncion);
 		for (Sector sector : coleccion) {
 			sectores.add(sectorTranslator.translateToDTO(sector));
 		}

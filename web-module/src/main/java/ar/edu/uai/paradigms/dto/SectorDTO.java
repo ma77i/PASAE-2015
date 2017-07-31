@@ -20,16 +20,16 @@ public class SectorDTO {
 	//private Integer asientosLibres;
 	//private Integer nro_asientos;
 	//private Integer nro_filas;
-	private Long espectaculoId;
+	private Long funcionId;
 
 	@JsonCreator
-	public SectorDTO(@JsonProperty("id") Long id, @JsonProperty("nombre") String nombre, @JsonProperty("monto") Long monto, @JsonProperty("agotado") Boolean agotado, @JsonProperty("espectaculoId") Long espectaculoId, @JsonProperty("filas") Collection<FilaDTO> filas) {
+	public SectorDTO(@JsonProperty("id") Long id, @JsonProperty("nombre") String nombre, @JsonProperty("monto") Long monto, @JsonProperty("agotado") Boolean agotado, @JsonProperty("funcionId") Long funcionId, @JsonProperty("filas") Collection<FilaDTO> filas) {
 		super();
 		this.setId(id);
 		this.setNombre(nombre);
 		this.setMonto(monto);
 		this.setAgotado(agotado);
-		this.setEspectaculoId(espectaculoId);
+		this.setFuncionId(funcionId);
 		this.setFilas(filas);
 	}
 
@@ -48,14 +48,6 @@ public class SectorDTO {
 
 	public void setAgotado(Boolean agotado) {
 		this.agotado = agotado;
-	}
-
-	public Long getEspectaculoId() {
-		return espectaculoId;
-	}
-
-	public void setEspectaculoId(Long espectaculoId) {
-		this.espectaculoId = espectaculoId;
 	}
 
 	public Long getId() {
@@ -80,6 +72,16 @@ public class SectorDTO {
 
 	public void setFilas(Collection<FilaDTO> filas) {
 		this.filas = filas;
+	}
+
+
+	public Long getFuncionId() {
+		return funcionId;
+	}
+
+
+	public void setFuncionId(Long funcionId) {
+		this.funcionId = funcionId;
 	}
 
 

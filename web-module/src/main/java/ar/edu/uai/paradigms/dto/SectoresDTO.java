@@ -12,12 +12,12 @@ import java.util.Collection;
 public class SectoresDTO {
 
     private Collection<SectorDTO> sectores;
-    private Long idEspectaculo;
+    private Long idFuncion;
 
     @JsonCreator
-    public SectoresDTO(@JsonProperty("sectores") Collection<SectorDTO> sectores, @JsonProperty("espectaculoId") Long idEspectaculo) {
+    public SectoresDTO(@JsonProperty("sectores") Collection<SectorDTO> sectores, @JsonProperty("idFuncion") Long idFuncion) {
         this.setSectores(sectores);
-        this.setIdEspectaculo(idEspectaculo);
+        this.setIdFuncion(idFuncion);
     }
 
     public Collection<SectorDTO> getSectores() {
@@ -28,11 +28,12 @@ public class SectoresDTO {
         this.sectores = sectores;
     }
 
-    public Long getIdEspectaculo() {
-        return idEspectaculo;
-    }
+	public Long getIdFuncion() {
+		return idFuncion;
+	}
 
-    public void setIdEspectaculo(Long idEspectaculo) {
-        this.idEspectaculo = idEspectaculo;
-    }
+	public void setIdFuncion(Long idFuncion) {
+		this.idFuncion = idFuncion;
+	}
+
 }

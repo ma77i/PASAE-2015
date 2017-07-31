@@ -28,6 +28,9 @@ public class Funcion {
 	@ManyToOne
 	private Espectaculo espectaculo;
 	
+	@OneToMany(mappedBy = "funcion", cascade = CascadeType.REMOVE)
+	private Collection<Sector> sectores;
+	
 	// @OneToMany
 	//  @JoinTable(name = "FUN_SEC", joinColumns = @JoinColumn(name = "FUN_ID"), inverseJoinColumns = @JoinColumn(name = "SEC_ID"))
 	//private Collection<Sector> sectores;
@@ -94,5 +97,13 @@ public class Funcion {
 	 */
 	private int getAsientosLibres(){
 		return 0;
+	}
+
+	public Collection<Sector> getSectores() {
+		return sectores;
+	}
+
+	public void setSectores(Collection<Sector> sectores) {
+		this.sectores = sectores;
 	}
 }

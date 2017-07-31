@@ -20,7 +20,7 @@ public class Sector {
 	private Collection<Fila> filas;
 
 	@ManyToOne
-	private Espectaculo espectaculo;
+	private Funcion Funcion;
 
 
 	public Sector() {
@@ -40,14 +40,6 @@ public class Sector {
 
 	public void setNombre(String nombre) {
 		this.nombre = nombre;
-	}
-
-	public Espectaculo getEspectaculo() {
-		return espectaculo;
-	}
-
-	public void setEspectaculo(Espectaculo espectaculo) {
-		this.espectaculo = espectaculo;
 	}
 
 	public long getId() {
@@ -70,7 +62,7 @@ public class Sector {
 		return agotado;
 	}
 
-	public void setAgotado(boolean agotado) {
+	public void setAgotado(boolean agotado) { 
 		this.agotado = agotado;
 	}
 
@@ -80,5 +72,21 @@ public class Sector {
 
 	public void setFilas(Collection<Fila> filas) {
 		this.filas = filas;
+	}
+
+	public Boolean getAgotado() {
+		return agotado;
+	}
+
+	public void setAgotado(Boolean agotado) {
+		this.agotado = agotado;
+	}
+
+	public Funcion getFuncion() {
+		return Funcion;
+	}
+
+	public void setFuncion(Funcion funcion) {
+		Funcion = funcion;
 	}
 }

@@ -1,19 +1,22 @@
 package ar.edu.uai.paradigms.service;
 
-import ar.edu.uai.model.Asiento;
-import ar.edu.uai.model.Espectaculo;
-import ar.edu.uai.model.Sector;
-import ar.edu.uai.paradigms.dao.SectorDAO;
+import java.util.Collection;
+
 import org.springframework.beans.factory.annotation.Required;
 import org.springframework.transaction.annotation.Transactional;
 
-import java.util.Collection;
+import ar.edu.uai.model.Asiento;
+import ar.edu.uai.model.Funcion;
+import ar.edu.uai.model.Sector;
+import ar.edu.uai.paradigms.dao.SectorDAO;
 
 public class SectorServiceImpl implements SectorService {
 
 	private SectorDAO sectorDAO;
 
-	private EspectaculoService espectaculoService;
+//	private EspectaculoService espectaculoService;
+	
+	private FuncionService funcionService;
 	
 	public SectorServiceImpl (){
 		
@@ -32,13 +35,21 @@ public class SectorServiceImpl implements SectorService {
 		this.sectorDAO = sectorDAO;
 	}
 
-	public void setEspectaculoService(EspectaculoService espectaculoService) {
-		this.espectaculoService = espectaculoService;
+	public FuncionService getFuncionService() {
+		return funcionService;
 	}
 
+	public void setFuncionService(FuncionService funcionService) {
+		this.funcionService = funcionService;
+	}
+
+//	public void setEspectaculoService(EspectaculoService espectaculoService) {
+//		this.espectaculoService = espectaculoService;
+//	}
+
 	@Transactional
-	public Sector saveSector(Sector sector, Long espectaculoId) {
-		this.agregarSectorParaEspectaculo(sector, this.espectaculoService.retrieveEspectaculo(espectaculoId));
+	public Sector saveSector(Sector sector, Long funcionId) {
+		this.agregarSectorParaFuncion(sector, this.funcionService.retrieveFuncion(funcionId));
 		return sectorDAO.create(sector);
 	}
 
@@ -78,24 +89,24 @@ public class SectorServiceImpl implements SectorService {
 	}
 
 	@Override
-	public void agregarSectorParaEspectaculo(Sector sector, Espectaculo espectaculo) {
-		sector.setEspectaculo(espectaculo);
-		espectaculo.getSectores().add(sector);
-	}
-
-	@Override
 	@Transactional
-	public Collection<Sector> saveSectoresParaEspectaculo(Collection<Sector> sectores, Long idEspectaculo) {
+	public Collection<Sector> saveSectoresParaFuncion(Collection<Sector> sectores, Long idFuncion) {
 
 		for (Sector sector : sectores) {
-			this.saveSector(sector, idEspectaculo);
+			this.saveSector(sector, idFuncion);
 		}
 		return sectores;
 	}
 
 	@Override
-	public Collection<Sector> listarSectoresDeEspectaculo(Long idespectaculo) {
-		return sectorDAO.listarSectoresDeEspectaculo(idespectaculo);
+	public Collection<Sector> listarSectoresDeFuncion(Long idfuncion) {
+		return sectorDAO.listarSectoresDeFuncion(idfuncion);
+	}
+
+	@Override
+	public void agregarSectorParaFuncion(Sector sector, Funcion funcion) {
+		sector.setFuncion(funcion);
+		funcion.getSectores().add(sector);
 	}
 
 

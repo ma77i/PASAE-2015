@@ -1,14 +1,16 @@
 package ar.edu.uai.paradigms.dao;
 
+import java.util.Collection;
+
+import javax.persistence.NoResultException;
+import javax.persistence.Query;
+
+import org.hibernate.QueryException;
+
 import ar.edu.uai.model.Asiento;
 import ar.edu.uai.model.Sector;
 import ar.edu.uai.paradigms.ex.CustomQueryEx;
 import ar.edu.uai.paradigms.ex.CustomUnexpectedEx;
-import org.hibernate.QueryException;
-
-import javax.persistence.NoResultException;
-import javax.persistence.Query;
-import java.util.Collection;
 
 public class SectorDAOImplHibernateJPA extends GenericDaoHibernateJPA<Sector> implements SectorDAO {
 
@@ -89,14 +91,14 @@ public class SectorDAOImplHibernateJPA extends GenericDaoHibernateJPA<Sector> im
 	}
 
 	@Override
-	public Collection<Sector> listarSectoresDeEspectaculo(Long idespectaculo) {
+	public Collection<Sector> listarSectoresDeFuncion(Long idFuncion) {
 
 		try {
-			Query consulta = this.entityManager.createQuery("select s from Sector as s where s.espectaculo.id=?");
-			consulta.setParameter(1, idespectaculo);
+			Query consulta = this.entityManager.createQuery("select s from Sector as s where s.funcion.id=?");
+			consulta.setParameter(1, idFuncion);
 			return consulta.getResultList();
 		} catch (NoResultException e) {
-			System.out.println(" NO HAY SECTORES ASOCIADOS AL ESPECTACULO");
+			System.out.println(" NO HAY SECTORES ASOCIADOS A LA FUNCION");
 			return null;
 		}
 	}
