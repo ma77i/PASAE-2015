@@ -35,7 +35,7 @@
         
      <bean id="sectorService" class="ar.edu.uai.paradigms.service.SectorServiceImpl">
          <property name="sectorDAO" ref="sectorDAO"/>
-         <property name="espectaculoService" ref="espectaculoService"/>
+         <property name="funcionService" ref="funcionService"/>
      </bean>
     
     <bean id="espectadorServiceConcreta" class="ar.edu.uai.paradigms.service.EspectadorService" parent="espectadorService" >

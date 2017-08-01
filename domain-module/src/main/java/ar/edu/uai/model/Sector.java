@@ -20,7 +20,7 @@ public class Sector {
 	private Collection<Fila> filas;
 
 	@ManyToOne
-	private Funcion Funcion;
+	private Funcion funcion;
 
 
 	public Sector() {
@@ -83,10 +83,10 @@ public class Sector {
 	}
 
 	public Funcion getFuncion() {
-		return Funcion;
+		return funcion;
 	}
 
 	public void setFuncion(Funcion funcion) {
-		Funcion = funcion;
+		this.funcion = funcion;
 	}
 }
