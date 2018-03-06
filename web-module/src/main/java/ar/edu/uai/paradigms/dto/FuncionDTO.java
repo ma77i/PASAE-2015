@@ -6,6 +6,8 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+
+import java.util.Collection;
 import java.util.Date;
 
 public class FuncionDTO {
@@ -22,16 +24,26 @@ public class FuncionDTO {
 	private Date hora;
 
 	private long espectaculoId;
+	private Collection<SectorDTO> sectores;
+	
 
 
 	@JsonCreator
-	public FuncionDTO(@JsonProperty("id") Long id, @JsonProperty("fecha") Date fecha, @JsonProperty("hora") Date hora, @JsonProperty("espectaculoId") long espectaculoId) {
+	public FuncionDTO(@JsonProperty("id") Long id, @JsonProperty("fecha") Date fecha, @JsonProperty("hora") Date hora, @JsonProperty("espectaculoId") long espectaculoId,@JsonProperty("sectores") Collection<SectorDTO> sectores) {
 		super();
 		this.setId(id);
 		this.setFecha(fecha);
 		this.setHora(hora);
 		this.setEspectaculoId(espectaculoId);
+		this.setSectores(sectores);
+	}
 
+	public Collection<SectorDTO> getSectores() {
+		return sectores;
+	}
+
+	public void setSectores(Collection<SectorDTO> sectores) {
+		this.sectores = sectores;
 	}
 
 	public Long getId() {

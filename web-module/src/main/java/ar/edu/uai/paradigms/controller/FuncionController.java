@@ -43,7 +43,7 @@ public class FuncionController {
     FuncionDTO createFuncion(@RequestBody @Valid FuncionDTO funcionDTO) {
 
         LOGGER.debug("Received DTO: " + funcionDTO);
-        return this.funcionTranslator.translateToDTO(this.funcionService.saveFuncion(this.funcionTranslator.translate(funcionDTO), funcionDTO.getEspectaculoId()));
+        return this.funcionTranslator.translateToDTO(this.funcionService.saveFuncion(this.funcionTranslator.translate(funcionDTO)));
 
     }
 

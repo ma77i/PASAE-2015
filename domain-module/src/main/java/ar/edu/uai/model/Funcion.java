@@ -12,6 +12,12 @@ public class Funcion {
 		this.fecha = fecha;
 		this.hora = hora;
 	}
+	
+	public Funcion(Date fecha, Date hora, Collection<Sector> sectores) {
+		this.fecha = fecha;
+		this.hora = hora;
+		this.sectores = sectores;
+	}
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
@@ -28,7 +34,7 @@ public class Funcion {
 	@ManyToOne
 	private Espectaculo espectaculo;
 	
-	@OneToMany(mappedBy = "funcion", cascade = CascadeType.REMOVE)
+	@OneToMany(mappedBy = "funcion", cascade = {CascadeType.ALL})
 	private Collection<Sector> sectores;
 	
 	// @OneToMany

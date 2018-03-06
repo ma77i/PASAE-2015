@@ -6,7 +6,7 @@ import ar.edu.uai.model.Funcion;
 import java.util.Collection;
 
 public interface FuncionService {
-	public Funcion saveFuncion(Funcion funcion, long espectaculoId);
+	public Funcion saveFuncion(Funcion funcion);
 
 	public Funcion retrieveFuncion(long id_funcion);
 

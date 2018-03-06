@@ -236,7 +236,9 @@
 
     <bean id="tarjetaTranslator" class="ar.edu.uai.paradigms.translator.TarjetaTranslator"/>
 
-    <bean id="funcionTranslator" class="ar.edu.uai.paradigms.translator.FuncionTranslator"/>
+    <bean id="funcionTranslator" class="ar.edu.uai.paradigms.translator.FuncionTranslator">
+    	<constructor-arg name="sectorTranslator" ref="sectorTranslator"/>
+    </bean>
 
     <bean id="categoriaTranslator" class="ar.edu.uai.paradigms.translator.CategoriaTranslator"/>
 

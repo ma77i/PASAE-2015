@@ -29,9 +29,23 @@ public class FuncionServiceImpl implements FuncionService{
 		this.espectaculoService = espectaculoService;
 	}
 
+	
 	@Transactional
+	/**
+	 * Antes recibia una ID ahora recibe un espectaculo object
+	 *
+	 * @deprecated use {@link #new()} instead.  
+	 */
+	@Deprecated
 	public Funcion saveFuncion(Funcion funcion, long espectaculoId) {
 		Espectaculo espectaculo = espectaculoService.retrieveEspectaculo(espectaculoId);
+		this.agregarFuncionParaEspectaculo(funcion, espectaculo);
+		return funcionDAO.update(funcion);
+	}
+	
+	@Transactional
+	public Funcion saveFuncion(Funcion funcion) {
+		Espectaculo espectaculo = espectaculoService.retrieveEspectaculo(funcion.getEspectaculo().getId());
 		this.agregarFuncionParaEspectaculo(funcion, espectaculo);
 		return funcionDAO.update(funcion);
 	}
