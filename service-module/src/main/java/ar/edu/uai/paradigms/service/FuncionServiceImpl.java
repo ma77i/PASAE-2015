@@ -2,6 +2,7 @@ package ar.edu.uai.paradigms.service;
 
 import ar.edu.uai.model.Espectaculo;
 import ar.edu.uai.model.Funcion;
+import ar.edu.uai.model.Sector;
 import ar.edu.uai.paradigms.dao.FuncionDAO;
 import org.springframework.beans.factory.annotation.Required;
 import org.springframework.transaction.annotation.Transactional;
@@ -46,6 +47,9 @@ public class FuncionServiceImpl implements FuncionService{
 	@Transactional
 	public Funcion saveFuncion(Funcion funcion) {
 		Espectaculo espectaculo = espectaculoService.retrieveEspectaculo(funcion.getEspectaculo().getId());
+		for (Sector s : funcion.getSectores()) {
+			 s.setFuncion(funcion);
+		}
 		this.agregarFuncionParaEspectaculo(funcion, espectaculo);
 		return funcionDAO.update(funcion);
 	}

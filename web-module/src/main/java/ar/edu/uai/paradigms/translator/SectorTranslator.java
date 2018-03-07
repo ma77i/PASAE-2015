@@ -20,6 +20,7 @@ public class SectorTranslator {
 
 		Collection<Fila> filas = new ArrayList<Fila>();
 		Sector sector=new Sector(sectorDTO.getNombre(),sectorDTO.getMonto());
+
 		for (FilaDTO f : sectorDTO.getFilas()) {
 			Collection<Asiento> asientos = new ArrayList<Asiento>();
 			Fila fila=new Fila(f.getNro_fila());
@@ -30,7 +31,7 @@ public class SectorTranslator {
 			fila.setSector(sector);
 			filas.add(fila);
 		}
-		sector.setFilas(filas);
+		sector.setFilas(filas);;
 		return sector;
 
 	}

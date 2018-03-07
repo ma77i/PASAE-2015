@@ -6,7 +6,10 @@
     <file url="file://$PROJECT_DIR$/../FRONTEND/app/styles/main.css" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/../FRONTEND/app/views/agregarEmpleado.html" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/../FRONTEND/app/views/agregarTeatro.html" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/../FRONTEND/app/views/funcion.html" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/../FRONTEND/bower_components/angular-auto-validate/src/services/defaultErrorMessageResolver.js" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/../PASAE-AngularJS/app/scripts/controllers/reserva.js" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/../PASAE-AngularJS/app/scripts/services/sector.js" charset="UTF-8" />
     <file url="PROJECT" charset="UTF-8" />
   </component>
 </project>
